@@ -1,0 +1,61 @@
+<div class="sign">
+  <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your Email</mat-label>
+      <input
+        matInput
+        type="text"
+        ngModel
+        name="email"
+        #email="ngModel"
+        placeholder="Email@gmail.com"
+        required
+      />
+      <mat-error *ngIf="email.invalid"
+        >Email is <strong>required</strong></mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter password</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        ngModel
+        name="password"
+        #pst="ngModel"
+        required
+      />
+      <mat-error *ngIf="pst.invalid"
+        >Password is <strong>required</strong></mat-error
+      >
+
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <section class="example-section">
+    <span class="text-section" >
+
+    Slide Teacher !
+
+    </span>
+      <mat-slide-toggle
+          class="example-margin"
+          color="primary"
+          [checked]="checked"
+          [disabled]="disabled">
+      </mat-slide-toggle>
+    </section>
+    
+    <button mat-raised-button class="submit-button" type="submit">Login</button>
+  </form>
+</div>

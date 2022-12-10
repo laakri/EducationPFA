@@ -1,0 +1,270 @@
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: var(--whtiecolor);
+  background: var(--darkcolor);
+  font-family: "Roboto", sans-serif;
+
+  --bordercolor:rgb(44, 44, 44);
+
+  --darkcolor: #19181a;
+  --soft-darkcolor: #26272b;
+  --whitecolor: #e2e2e2;
+  --graycolor: #8a8d8e;
+  --maincolor: #3b7fed;
+  --maintranscolor: #3b7fed71;
+  --secendcolor: #c04e14;
+  --darktranscolor: #19181ada;
+  --soft-darktranscolor: #26272b69;
+  --goldcolor: #d48a0d;
+
+}
+
+body.bright-theme {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: black;
+  background: white;
+  font-family: "Roboto", sans-serif;
+
+  --bordercolor:rgb(219, 219, 219);
+
+
+  --darkcolor: #fdfdfd;
+  --soft-darkcolor: #e6e6e6;
+  --whitecolor: #000000;
+  --graycolor: #444444;
+  --maincolor: #3b7fed;
+  --maintranscolor: #3b7fed71;
+  --secendcolor: #c04e14;
+  --darktranscolor: #fdfdfdce;
+  --soft-darktranscolor: #94959769;
+  --goldcolor: #d48a0d;
+
+}
+
+a,
+button {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--whtiecolor);
+}
+.fas {
+  font-size: 27px;
+}
+ul {
+  list-style-type: none;
+}
+
+
+/*********************-Active Button********************/
+
+.activebutton {
+  background-color: #4242429c;
+}
+
+/*********************-Snack Bar************************/
+
+.red-snackbar {
+  background: #bf3735;
+  color: var(--whitecolor);
+}
+.green-snackbar {
+  background: #15703f;
+  color: var(--whitecolor);
+}
+/*********************-Dialog***************************/
+
+mat-dialog-container {
+  background-color: var(--soft-darkcolor) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.backdropBackground {
+  background-color: #120f1aa2;
+}
+/********************* -Slick ***************************/
+
+.slick-prev:before,
+.slick-next:before {
+  color: var() !important;
+  font-size: 28px !important ;
+  margin: -18px;
+}
+
+/********************* -Form ***************************/
+
+.mat-form-field-label {
+  color: var(--whtiecolor) !important;
+}
+.mat-select-arrow {
+  color: var(--whtiecolor) !important;
+}
+.mat-select-min-line {
+  color: var(--whtiecolor) !important;
+}
+.mat-focused .mat-form-field-label {
+  color: var(--whtiecolor) !important;
+}
+
+.mat-input-underline {
+  background-color: var(--whtiecolor) !important;
+}
+.mat-form-field-appearance .mat-form-field-underline::before {
+  background-color: var(--whtiecolor) !important;
+}
+
+.mat-input-element::placeholder {
+  color: var(--graycolor) !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: var(--graycolor) !important;
+}
+
+/********************* -Tooltip ***************************/
+
+.mat-tooltip {
+  background-color: var(--soft-darkcolor) !important;
+  color: var(--whitecolor) !important;
+  font-size: 12px;
+}
+/********************* -Divider ***************************/
+
+mat-divider {
+  margin: auto !important;
+  width: 95% !important ;
+  background-color: rgba(252, 252, 252, 0.24) !important;
+}
+
+/********************* ---stteper------ ***************************/
+.mat-stepper-horizontal-line {
+  background-color: rgba(128, 128, 128, 0.493) !important;
+}
+.mat-step-icon {
+  background-color: var(--graycolor) !important;
+  color: var(--whtiecolor) !important ;
+}
+
+.mat-step-icon-selected {
+  background-color: var(--maincolor) !important;
+}
+.mat-step-text-label {
+  color: var(--whtiecolor) !important;
+}
+.basic-container .mat-step-header .mat-step-icon-selected {
+  background-color: #6cb73a;
+  color: var(--whtiecolor);
+}
+
+.mat-step-header .mat-step-icon {
+  color: var(--whtiecolor);
+}
+
+
+/*********************-Mat paginator********************/
+.mat-paginator .mat-paginator-container {
+  background-color: var(--darkcolor) !important;
+  color: var(--whitecolor) !important;
+}
+.mat-select-arrow-wrapper {
+  color: var(--whitecolor) !important;
+  
+}
+.mat-select{
+  margin-left: 10px;
+}
+.mat-select-value{
+  color: var(--whitecolor) !important;
+}
+.mat-paginator-icon{
+  color: var(--whitecolor) !important;
+
+} 
+/*********************-Mat Checkbox********************/
+
+.mat-checkbox-checked .mat-checkbox-background {
+  background-color: var(--maincolor) !important;
+}
+
+.mat-checkbox-frame {
+  background-color: var(--whtiecolor) !important;
+}
+
+/*********************-MAt slide tagle ********************/
+
+.mat-slide-toggle{
+  color :var(--whtiecolor) !important;
+}
+
+/********************- mat chip  -**************************/
+
+mat-chip {
+  background-color: rgba(128, 128, 128, 0.295) !important;
+  color: var(--whitecolor) !important ;
+}
+
+
+/*******************************************************/
+.mat-elevation-z8 {
+  color: #088f1f !important;
+  background-color: var(--soft-darktranscolor) !important;
+}
+.mat-elevation-z8 th {
+  color: var(--graycolor) !important ;
+}
+.mat-elevation-z8 td {
+  color: var(--whitecolor) !important ;
+}
+
+/*************************** -tabs- ****************************/
+/* Styles for tab labels */
+.mat-tab-label {
+  min-width: 30px !important;
+  color: var(--whitecolor);
+  font-size: 16px;
+  
+}
+
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+  color: var(--whitecolor);
+
+}
+
+/* Styles for the ink bar */
+.mat-ink-bar {
+  background-color: var(--whitecolor) !important;
+}
+/*************************** -toggle-group- ****************************/
+
+.mat-button-toggle-group{
+  border: transparent solid 1px;
+}
+.mat-button-toggle{
+  background-color: transparent;
+  color: var(--whitecolor);
+  border: var(--bordercolor) solid 1px !important;
+  margin: auto 5px;
+  border-radius: 3px;
+
+}
+.mat-button-toggle mat-icon{
+  font-size: 20px;
+}
+.mat-button-toggle-checked {
+  background-color: var(--whitecolor);
+  color: var(--darkcolor) !important;
+
+}

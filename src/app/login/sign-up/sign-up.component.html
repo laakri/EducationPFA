@@ -1,0 +1,67 @@
+<div class="sign">
+  <form (submit)="onSignup(signUpForm)" #signUpForm="ngForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your Name</mat-label>
+      <input
+        matInput
+        type="text"
+        ngModel
+        name="name"
+        #name="ngModel"
+        placeholder="name"
+        minlength="4"
+        maxlength="20"
+        required
+      />
+      <mat-error *ngIf="name.invalid"
+        >Name is <strong>required</strong></mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Phone number</mat-label>
+      <input
+        ngModel
+        name="phonenum"
+        #phonenum="ngModel"
+        matInput
+        placeholder="24 *** ***"
+        required
+      />
+
+      <mat-error> Phone Number is <strong>required</strong> </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter password</mat-label>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        ngModel
+        name="password"
+        #pst="ngModel"
+        minlength="4"
+        maxlength="40"
+        required
+      />
+      <mat-error *ngIf="pst.invalid"
+        >Password is <strong>required</strong></mat-error
+      >
+
+      <button
+        type="button"
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button mat-raised-button class="submit-button" type="submit">
+      Submit
+    </button>
+  </form>
+</div>

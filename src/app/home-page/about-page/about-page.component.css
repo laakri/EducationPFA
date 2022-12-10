@@ -1,0 +1,121 @@
+.mainpage {
+    max-width: 1170px;
+    margin: auto;
+    min-height: 600px;
+    color: var(--whitecolor);
+  }
+  .h1-text {
+    margin: 100px 20px 0 20px;
+    font-size: 28px;
+    font-weight: 400;
+    max-width: max-content;
+  }
+  .h2-text {
+    margin: 30px 20px 0 20px;
+    font-size: 22px;
+    font-weight: 400;
+    max-width: max-content;
+  }
+  .h3-text {
+    margin: 20px 20px 50px 20px;
+    font-size: 16px;
+    color: var(--graycolor);
+    max-width: 550px;
+    line-height: 1.6;
+  }
+  /***********************************************/
+  
+  .assets-lists {
+    margin: 10px auto 60px auto;
+    display: flex;
+    min-height: 330px;
+    width: 100%;
+  }
+  .assets-list {
+    width: 240px;
+    margin: auto 10px;
+  }
+  .assets-list-top {
+    object-fit: fill;
+    border-top-left-radius: 25px;
+    width: 240px;
+    height: 120px;
+  }
+  .assets-list-top img {
+    border-top-left-radius: 25px;
+    object-fit: fill;
+    width: 240px;
+    height: 120px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
+  .assets-list-bottom {
+    background-color: var(--soft-darkcolor);
+    border: rgba(128, 128, 128, 0.274) 1px solid;
+    height: 200px;
+    margin-top: 10px;
+    border-bottom-right-radius: 25px;
+  }
+  .assets-list-text-1 {
+    width: 170px;
+    text-align: center;
+    font-size: 22px;
+    margin: 30px auto 20px;
+  }
+  .assets-list-text-2 {
+    margin: auto;
+    font-size: 16px;
+    line-height: 1.8;
+    width: 85%;
+  }
+  /***********************************************/
+  .search-bar {
+    margin: 20px auto 0 20px;
+    width: 350px;
+  }
+  .list-items {
+    margin: 20px auto 40px auto;
+    min-height: 500px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .list-item {
+    margin: 10px;
+    height: 220px;
+    width: 270px;
+    border-radius: 20px;
+    background-color: var(--soft-darkcolor);
+    border: var(--soft-darkcolor) 1px solid;
+    position: relative;
+  }
+  .list-item-type {
+    width: max-content;
+    height: 25px;
+    padding: 0 10px;
+    position: absolute;
+    background-color: white;
+    right: 25px;
+    top: 20px;
+    border-radius: 3px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 25px;
+  }
+  .list-item-logo {
+    margin: 10px;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+  }
+  .list-item-name {
+    margin: 30px 20px 10px 20px;
+    font-size: 18px;
+  }
+  .list-item-discription {
+    margin: 0 20px;
+    color: var(--graycolor);
+  }
+  

@@ -1,0 +1,118 @@
+.mainpage{
+    max-width: 1300px;
+    margin: auto;
+  }
+  
+.profile-header{
+  margin: 30px auto 10px auto ;
+  min-height: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.header-button{
+  background-color: rgba(128, 128, 128, 0.295);
+  color: var(--whitecolor);
+}
+
+
+::ng-deep .menu  {
+  background-color: rgba(128, 128, 128, 0.295);
+}
+::ng-deep .menu-item {
+  color: var(--whitecolor) !important ;
+}
+
+.left-content{
+height: 100%;
+min-width: 300px;
+margin: 20px;
+}
+.right-content{
+  width: max-content;
+  margin: 20px;
+}
+.user-name{
+  height: 35px;
+  width: max-content;
+  font-size: 30px;
+  margin: 20px  ;
+}
+.user-y-c{
+  display: flex;
+  margin: 20px;
+}
+.user-year{
+  font-size: 16px;
+
+}
+.user-category{
+  font-size: 16px;
+
+}
+
+
+
+  mat-tab-group {
+    margin: 40px auto 50px auto;
+    min-height: 500px;
+    color: var(--whitecolor) !important;
+  
+  }
+
+
+  .tab{
+    margin: 20px auto ;
+    min-height: 100px;
+    padding: 20px 0;
+  
+  }
+
+  table {
+    width: 100%;
+    margin: 20px auto;
+    box-shadow: none;
+    border: none;
+    background-color: transparent !important;
+}
+.demo-table {
+    width: 100%;
+  }
+  
+  .mat-row .mat-cell {
+    border-bottom: 1px solid transparent ;
+    border-top: 1px solid transparent ;
+    cursor: pointer;
+  }
+  
+  .mat-row:hover .mat-cell {
+    background-color: var(--soft-darkcolor);
+  }
+  
+  .demo-row-is-clicked {
+    font-weight: bold;
+  }
+  table th{
+    border-bottom: rgb(44, 44, 44) solid 1px;
+  }
+
+  .money-type{
+    display: flex;
+  }
+
+  
+  .icon-green {
+    margin:  3px;
+    color:rgb(51, 190, 51) !important;
+  }
+  .icon-orange{
+    margin:  3px;
+    color:rgb(187, 156, 56) !important;
+  }
+
+  .money-type span {
+    margin-left: 10px;
+    min-height: 25px;
+    display: inline-flex;
+    align-items: center;
+  }

@@ -1,0 +1,65 @@
+<div class="mainpage">
+  <div class="content">
+    <div class="content-div">
+      <span>FOR MORE INFORMATION OR REPORT?</span>
+      <p>DO NOT HESITATE TO CONTACT US</p>
+    </div>
+  </div>
+
+  <div class="secend-content">
+    <div class="secend-content-first">
+      <div class="secend-content-first-card"></div>
+    </div>
+    <div class="secend-content-secend">
+      <mat-card>
+        <form
+          
+        >
+          <h1>Send Message</h1>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Enter your name</mat-label>
+            <input
+              matInput
+              type="text"
+              ngModel
+              name="nom"
+              #nom="ngModel"
+              required
+            />
+            <mat-error *ngIf="nom.invalid">you must enter a value</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Enter your email</mat-label>
+            <input
+              matInput
+              placeholder="pat@example.com"
+              ngModel
+              name="email"
+              #email="ngModel"
+              required
+            />
+            <mat-error *ngIf="email.invalid">you must enter a value</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Message</mat-label>
+            <textarea
+              matInput
+              ngModel
+              name="textA"
+              #textA="ngModel"
+              required
+            ></textarea>
+            <mat-error *ngIf="textA.invalid">you must enter a value</mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button class="submit-button" type="submit">
+            Send
+          </button>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

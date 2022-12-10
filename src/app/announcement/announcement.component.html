@@ -1,0 +1,112 @@
+
+<div class="all-flex">
+    <div class="mainpage" >
+        <div class="top-div" >
+            <div class="top-div-text">
+                <p> Announcement </p>
+            </div>
+        </div>
+
+    <div class="announc-list" >
+        <div class="create-announ">
+        <mat-form-field  appearance="outline">
+            <textarea matInput placeholder="❉/  Create Announcememnt ..."></textarea>
+          </mat-form-field>
+          <button mat-flat-button	class="button-announ" >Submit</button>
+        </div>
+        <mat-divider></mat-divider>
+        
+        <div class="button-announ-section" >
+            <section>
+                <mat-button-toggle-group [(ngModel)]="fontStyle" aria-label="Font Style">
+                 
+                <mat-button-toggle value="all">
+                    <mat-icon  aria-label="all" >density_small</mat-icon>
+                </mat-button-toggle>
+                
+                <mat-button-toggle value="campaign">
+                    <mat-icon  aria-label="campaign" >campaign</mat-icon>
+                </mat-button-toggle>
+
+                <mat-button-toggle value="Teacher">
+                    <mat-icon  aria-label="Teacher" >wallet_travel</mat-icon>
+                </mat-button-toggle>
+                 
+                </mat-button-toggle-group>
+            </section>
+        </div>
+        
+        <div class="announc" >
+            <div class="announc-info" >
+                <mat-icon>campaign</mat-icon>
+                <h3>Announcement</h3>
+                <span>20.03.2022 11:30</span>
+            </div>
+            <span>
+                Do you want to know the best way to announce the 
+                winner of your giveaway?
+                Depending on your contests duration, theres a 
+                chance many people may have 
+                forgotten they entered.
+                So announcing the winner serves as a reminder to
+                 re-engage with your company.
+            </span>
+        </div>
+
+
+
+        <div class="announc" >
+            <div class="announc-info" >
+                <mat-icon>wallet_travel</mat-icon>
+                <div class="announc-teacher" >
+                <p class="announc-teacher-1">Samir Lousif</p>
+                <p class="announc-teacher-2">Informatique</p>
+                </div>
+                <span>20.03.2022 11:30</span>
+            </div>
+            <span>
+                Do you want to know the best way to announce the 
+                winner of your giveaway?
+                Depending on your contests duration, theres a 
+                chance many people may have 
+                forgotten they entered.
+                So announcing the winner serves as a reminder to
+                 re-engage with your company.
+            </span>
+        </div>
+
+
+
+    </div>
+
+
+    </div>
+
+    <div class="teacher-list" >
+
+        <h4>TEACHER</h4>
+        <mat-form-field class="search-bar" appearance="outline">
+            <mat-label> ❉/  Search</mat-label>
+        
+            <input
+              type="text"
+              matInput
+              [formControl]="myControl"
+              [matAutocomplete]="auto"
+            />
+        
+            <mat-autocomplete #auto="matAutocomplete"> </mat-autocomplete>
+          </mat-form-field>
+          <div class="groups-category" >
+            <div > 
+              <div class="groups-category-logo" >
+                <mat-icon  aria-label="computer" >people</mat-icon>
+                <span class="groups-category-name" >Saif eddine Jelassi</span>
+              </div> 
+
+            </div>
+
+          </div>
+
+    </div>
+</div>

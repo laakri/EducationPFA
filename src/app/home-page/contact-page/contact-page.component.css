@@ -1,0 +1,105 @@
+/*********************************/
+
+.mainpage {
+  max-width: 1200px;
+  margin: 20px auto;
+  min-height: 700px;
+}
+
+/*********************************/
+.content {
+  margin: auto;
+  width: 90%;
+}
+.content-div {
+  margin: 50px 20px;
+  line-height: 1.6;
+}
+.content-div span {
+  color: var(--maincolor);
+  font-size: 28px;
+  font-weight: lighter;
+}
+.content-div p {
+  line-height: 1.6;
+  color: var(--whitecolor);
+  font-weight: lighter;
+  font-size: 18px;
+  margin-top: 19px;
+}
+/*********************************/
+
+.secend-content {
+  min-height: 450px;
+
+  margin: auto;
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
+.secend-content-first {
+  width: 45%;
+}
+.secend-content-first-card {
+  background-image: url(../../../assets/contact.jpg);
+  filter: grayscale(0.7);
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  width: 99%;
+  height: 100%;
+}
+
+.secend-content-secend {
+  width: 50%;
+}
+.secend-content-secend mat-card {
+  border:solid 1px var(--bordercolor);
+  background-color: var(--soft-darkcolor);
+  color: var(--whitecolor);
+  width: 90%;
+  height: 93%;
+  overflow: auto;
+
+}
+
+.secend-content-secend h1{
+text-align: center;
+}
+/*************************************/
+
+mat-form-field{
+  margin: auto;
+  width: 70%;
+
+}
+.submit-button{
+width: 50%;
+margin: auto;
+margin-bottom: 10px;
+color: var(--whitecolor);
+background-color: var(--maincolor);
+}
+
+form {
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/********************Screen***************************/
+@media only screen and (max-width: 1150px) {
+  .secend-content {
+    flex-direction: column;
+  }
+  .secend-content-first {
+    margin: auto;
+    width: 80%;
+  }
+  .secend-content-secend {
+    margin: auto;
+    width: 80%;
+  }
+}

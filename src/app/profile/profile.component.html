@@ -1,0 +1,140 @@
+<div class="mainpage" >
+
+
+    <div class="profile-header" >
+        <div class="left-content" >
+                <div class="user-name" >Jelassi saif Eddine</div>
+                <mat-chip-list class="user-y-c" >
+                    <mat-chip class="user-year" > premier annee</mat-chip>
+                    <mat-chip class="user-category" >Informatique</mat-chip>
+                </mat-chip-list>    
+        </div>
+
+        <div class="right-content" >
+
+            <button mat-mini-fab class="header-button" 
+            [matMenuTriggerFor]="beforeMenu"
+            aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #beforeMenu="matMenu" 
+              xPosition="before"
+              class="menu"
+              >
+
+                <button mat-menu-item class="menu-item" >
+                  <mat-icon class="menu-item" >dialpad</mat-icon>
+                  <span >Redial</span>
+                </button>
+    
+                <button mat-menu-item class="menu-item" >
+                  <mat-icon class="menu-item" >notifications_off</mat-icon>
+                  <span>Disable alerts</span>
+                </button>
+              </mat-menu>
+
+
+
+
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+
+
+    <mat-tab-group fitInkBarToContent  mat-align-tabs="start">
+
+
+<!----------------------------------------->
+
+        <mat-tab label="First"  >
+            <div class="tab" >
+                
+              <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+            </mat-paginator>    
+                            
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef> Type </th>
+        <td mat-cell *matCellDef="let element"> 
+             
+        <div class="money-type" > 
+            <mat-icon  *ngIf="element.type == 'None'" class="icon-orange" >remove_circle_outline</mat-icon> 
+            <mat-icon  *ngIf="element.type == 'Cash'" class="icon-green">arrow_circle_down</mat-icon> 
+            <mat-icon  *ngIf="element.type == 'Check'"class="icon-green">check_circle_outline</mat-icon> 
+            <span>{{element.type}}</span>
+        </div>
+        </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.Description}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="Date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.Date}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> Amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.amount}} DT</td>
+      </ng-container>
+    
+      <ng-container matColumnDef="State">
+        <th mat-header-cell *matHeaderCellDef> State </th>
+        <td mat-cell *matCellDef="let element"> {{element.State}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+
+
+
+
+                
+            </div>
+
+        </mat-tab>
+
+
+
+
+
+
+
+
+
+
+
+<!----------------------------------------->
+
+        <mat-tab label="Secend"  >
+                <div class="tab" >
+                    content 2
+                </div>
+    
+            </mat-tab>
+
+
+
+<!----------------------------------------->
+
+            <mat-tab label="Third"  >
+                <div class="tab" >
+                    content 3
+                </div>
+    
+            </mat-tab>
+    </mat-tab-group>
+
+
+</div>

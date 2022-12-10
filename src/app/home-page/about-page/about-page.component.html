@@ -1,0 +1,80 @@
+<div class="mainpage">
+    <div class="h1-text">Explore the Education Code</div>
+    <div class="h3-text">
+      Find the perfect Design for your NFT business Powered by creators
+      everywhere.
+    </div>
+    <mat-divider></mat-divider>
+    <div class="h2-text">Brand assets</div>
+    <div class="h3-text">Download the logo and other brand assets here.</div>
+  
+    <div class="assets-lists">
+      <div class="assets-list">
+        <a href="https://opensea.io/" target="_blank">
+          <div class="assets-list-top">
+            <img src="../../../assets/education1.jpg" alt="NFT" /></div
+        ></a>
+        <div class="assets-list-bottom">
+          <div class="assets-list-text-1">Opensea</div>
+          <div class="assets-list-text-2">
+            OpenSea is an American online NFT marketplace headquartered in New
+            York City .
+          </div>
+        </div>
+      </div>
+  
+      <div class="assets-list">
+        <div class="assets-list-top">
+          <img src="../../../assets/education2.jpg" alt="NFT" />
+        </div>
+        <div class="assets-list-bottom">
+          <div class="assets-list-text-1">Lockup</div>
+          <div class="assets-list-text-2">
+            Commonly used where the full Uniswap branding needs to be displayed .
+          </div>
+        </div>
+      </div>
+      <div class="assets-list">
+        <div class="assets-list-top">
+          <img src="../../../assets/education3.webp" alt="NFT" />
+        </div>
+        <div class="assets-list-bottom">
+          <div class="assets-list-text-1">Logos</div>
+          <div class="assets-list-text-2">Genefyt created Logos and design .</div>
+        </div>
+      </div>
+    </div>
+  
+    <mat-divider></mat-divider>
+    <div class="h2-text">The used Technologies</div>
+    <div class="h3-text">
+      the result of accumulated knowledge and application of skills, methods .
+    </div>
+  
+    <mat-form-field class="search-bar" appearance="outline">
+      <mat-label> ❉/ Search</mat-label>
+  
+      <input
+        type="text"
+        matInput
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+      />
+  
+      <mat-autocomplete #auto="matAutocomplete"> </mat-autocomplete>
+    </mat-form-field>
+  
+    <div class="list-items">
+      <div class="list-item" *ngFor="let option of filteredOptions | async">
+        <div class="list-item-type">{{ option.type }}</div>
+        <div class="list-item-logo">
+          <img class="list-item-logo" src="{{ option.imgPath }}" alt="logo" />
+        </div>
+        <div class="list-item-name">{{ option.name }}</div>
+        <div class="list-item-discription">
+          {{ option.discription }}
+        </div>
+      </div>
+    </div>
+  </div>
+  

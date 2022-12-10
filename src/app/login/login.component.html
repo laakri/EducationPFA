@@ -1,0 +1,38 @@
+
+
+ 
+
+<div class="header" >
+    
+    <div class="closer" mat-button mat-dialog-close >
+        <mat-icon>close</mat-icon>
+    </div> 
+
+    <div class="header-img" > <img
+        alt="Angular Logo"
+        src="../../assets/logo.png"
+    />
+    <span>Education</span> 
+
+    </div>
+
+</div>
+
+<div class="content">
+
+    <div class="toolbar" >
+        <div class="toolbar-items" >
+            <a (click)='Sign("login")' class="toolbar-item" [ngClass]="{'toolbar-item-active': isLogin == true}"><div >Log In </div></a>
+            <a (click)='Sign("signup")' class="toolbar-item" [ngClass]="{'toolbar-item-active': isLogin == false}"><div >Sign Up </div></a>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="all-sign">
+    
+        <app-sign-in *ngIf="isLogin" ></app-sign-in>
+        <app-sign-up *ngIf="!isLogin" ></app-sign-up>
+    </div>
+
+</div>
+
+

@@ -1,0 +1,40 @@
+.sign{
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    position: relative;
+}
+.sign mat-form-field{
+    width: 90%;
+    margin: 7px auto;
+}
+.sign mat-form-field:first-child{
+    margin-top: 20px;
+}
+
+
+.submit-button{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    width: 140px;
+    bottom: 5px;
+    background: linear-gradient(to right, #7a80a1 0%, #5764af 50%, #3145b4 100%);
+    font-size: 16px;
+    color:var(--whitecolor);
+
+}
+.submit-button:hover{
+    color: var(--whitecolor);
+
+}
+.mat-primary {
+    color: var(--whitecolor) !important;
+   }
+  .mat-icon {
+    color: var(--graycolor) !important;
+  }

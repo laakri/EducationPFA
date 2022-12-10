@@ -1,0 +1,21 @@
+
+
+.adduser{
+    min-height: 500px;
+    width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid rgb(44, 44, 44);
+
+
+    }
+    form {
+        width: 100%;
+        height: 100%;
+        display: flex;
+    flex-direction: column;
+    }
+    .detail-text{
+        font-size: 25px;
+        margin-bottom: 30px;
+    }

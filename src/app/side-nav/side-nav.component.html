@@ -1,0 +1,45 @@
+    <div  class="logo1">
+
+    <img src="../../assets/logo.png"  class="logo"alt="Logo">
+
+    </div>
+
+    <div  class="sidebar-content"><button mat-button [routerLink]="['/Homepage']"routerLinkActive="activebutton" >
+        <mat-icon  aria-label="home"  >home</mat-icon>
+    </button>
+    </div>
+
+
+    <div  class="sidebar-content"><button mat-button [routerLink]="['/Announcement']"routerLinkActive="activebutton">
+        <mat-icon  aria-label="campaign" >campaign</mat-icon>
+    </button>
+    </div>
+
+    <div  class="sidebar-content"><button mat-button [routerLink]="['/Group/CatGroup']" routerLinkActive="activebutton">
+        <mat-icon  aria-label="Groupe"  >school</mat-icon>
+    </button>
+    </div>  
+
+    <div  class="sidebar-content"><button mat-button  >
+        <mat-icon  aria-label="settings" >settings</mat-icon>
+    </button>
+    </div>    
+    <div  class="sidebar-content"><button mat-button  >
+        <mat-icon  aria-label="person" (click)="login()" >person</mat-icon>
+    </button>
+    </div>    
+    <div  class="sidebar-content"><button mat-button  [routerLink]="['/Profile']" routerLinkActive="activebutton">
+        <mat-icon  aria-label="person" >person</mat-icon>
+    </button>
+    </div>
+
+
+    <div  class="sidebar-content"><button mat-button (click)="change_theme()" >
+        <mat-icon  aria-label="campaign" >brightness_medium</mat-icon>
+    </button>
+    </div>
+
+    <div  class="sidebar-content"><button mat-button  >
+        <mat-icon  aria-label="logout" class="logout-icon">logout</mat-icon>
+    </button>
+    </div>

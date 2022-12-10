@@ -1,0 +1,41 @@
+const mongoose = require("mongoose");
+const uniqueValidator = require("mongoose-unique-validator");
+const enumValues = require("mongoose-enumvalues");
+
+const userSchema = mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    phonenum: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    email: { type: String, unique: true , default: "None"},
+    imgPath: { type: String, default: "../../assets/deafault-profile-pic.png" },
+    location: { type: String, default: "None" },
+    level: { type: String, default: "None" },
+    speciality: { type: String, default: "None" },
+    
+    roles: {
+      type: [
+        {
+          type: String,
+          enum: ["student","professeur", "admin"],
+        },
+      ],
+      default: "student",
+    },
+    groups: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Group"
+      }
+    ],
+  },
+  { timestamps: true }
+);
+
+const enumOptions = {};
+
+userSchema.plugin(enumValues, enumOptions);
+
+userSchema.plugin(uniqueValidator);
+
+module.exports = mongoose.model("User", userSchema);

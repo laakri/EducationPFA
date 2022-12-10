@@ -1,0 +1,68 @@
+<div class="addgroup" >
+<div class="detail-text" > Add Group </div>
+<form (submit)="onSubmit(signUpForm)" #signUpForm="ngForm">
+
+
+<mat-form-field appearance="outline">
+  <mat-label>Group Name</mat-label>
+  <input
+    ngModel
+    name="groupName"
+    matInput
+    placeholder="INFO_5"
+    required
+  />
+  <mat-error> Phone Number is <strong>required</strong> </mat-error>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+    <mat-label>Group Speciality</mat-label>
+    <mat-select >
+      <mat-option  *ngFor="let Speciality of Specialitys"  
+      [value]="Speciality.value">
+        {{Speciality.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Teacher</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let Professeur of Professeurs"  
+      [value]="Professeur.value">
+        {{Professeur.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label>Lesson Count</mat-label>
+    <mat-select    >
+      <mat-option value="1">1</mat-option>
+        <mat-option value="2">2</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Lesson Dates</mat-label>
+    <input
+      ngModel
+      name="groupLessondate"
+      matInput
+      placeholder="20/32/2002 - 6:00pm "
+      required
+    />
+    <mat-error> Phone Number is <strong>required</strong> </mat-error>
+  </mat-form-field>
+
+
+  <button mat-raised-button   type="submit">
+    Submit
+  </button>
+
+</form>
+
+
+</div>
