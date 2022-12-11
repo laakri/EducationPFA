@@ -6,6 +6,10 @@ interface Speciality {
   value: string;
   viewValue: string;
 }
+interface Category {
+  value: string;
+  viewValue: string;
+}
 interface Professeur {
   value: string;
   viewValue: string;
@@ -19,21 +23,27 @@ export class AddGroupComponent implements OnInit {
   selected = 1;
 
   Specialitys: Speciality[] = [
-    {value: '0', viewValue: 'Math'},
-    {value: '1', viewValue: 'Informmatique'},
-    {value: '2', viewValue: 'Physique'},
+    {value: 'Math', viewValue: 'Math'},
+    {value: 'Informmatique', viewValue: 'Informmatique'},
+    {value: 'Physique', viewValue: 'Physique'},
+  ];
+
+  Categorys: Category[] = [
+    {value: 'MDW', viewValue: 'MDW'},
+    {value: 'Programation', viewValue: 'Programation'},
+    {value: 'Construction', viewValue: 'Construction'},
   ];
 
   Professeurs: Professeur[] = [
-    {value: '0', viewValue: 'Hmed Bouaasba'},
-    {value: '1', viewValue: 'Satour Nafkha'},
-    {value: '2', viewValue: 'Nato Lemkhalet'},
+    {value: 'Hmed Bouaasba', viewValue: 'Hmed Bouaasba'},
+    {value: 'Satour Nafkha', viewValue: 'Satour Nafkha'},
+    {value: 'Nato Lemkhalet', viewValue: 'Nato Lemkhalet'},
   ];
 
-
-
+  daycountvar:any;
+  count = 2;
   selectFormControl = new FormControl('', Validators.required);
-
+  lessonDate ="";
   constructor(public GroupService: GroupService) { }
 
   ngOnInit(): void {
@@ -44,20 +54,37 @@ export class AddGroupComponent implements OnInit {
   {
     console.log("ddd");
   }
+
+
+  daycount(count: any) {
+    this.count = +count.value;
+    this.daycountvar = Array(this.count).fill(0).map((x,i)=>i);
+  }
+  
   onSubmit(form: NgForm) {
     if (form.invalid) {
       return;
     }
-    /*this.GroupService.addGroup(
+    this.GroupService.addGroup(
       form.value.groupName,
+      form.value.groupCategory,
       form.value.groupSpeciality,
       form.value.groupTeacher,
+      form.value.groupLessonHours,
       form.value.groupLessoncount,
-      form.value.groupLessondate
-    );*/
+      this.lessonDate
+    );
     console.log(
       form.value
       )
+  }
+
+  onAddDate(form:NgForm){
+    if (form.invalid) {
+      return;
+    }
+    this.lessonDate =this.lessonDate + form.value.day +" "+ form.value.groupLessondate+";";
+    console.log(this.lessonDate)
   }
 
 }

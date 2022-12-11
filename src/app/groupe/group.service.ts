@@ -19,27 +19,32 @@ export class GroupService {
 
 
       addGroup(
-         groupName: string,
+          groupName: string,
+          groupCategory: string,
           groupSpeciality: string,
           groupTeacher: string,
+          groupLessonHours: string,
           groupLessoncount: string,
-          groupLessondate: string) {
+          groupLessondate: string
+          ) {
             
         const group: Group = {
 
           groupId: '',
           groupName: groupName,
+          groupCategory: groupCategory,
           groupSpeciality: groupSpeciality,
           groupTeacher: groupTeacher,
+          groupLessonHours: groupLessonHours,      
           groupLessoncount: groupLessoncount,      
           groupLessondate: groupLessondate,      
     
         };
         this.http
-          .post<{ message: string }>('http://localhost:4401/api/users/signup', group)
+          .post<{ message: string }>('http://localhost:4401/api/groups/AddGroup', group)
           .subscribe(
             () => {
-              console.log('User Added !');
+              console.log('Group Added !');
             },
             (error) => {
               console.log(error);

@@ -8,10 +8,9 @@ const userSchema = mongoose.Schema(
     phonenum: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     email: { type: String, unique: true , default: "None"},
-    imgPath: { type: String, default: "../../assets/deafault-profile-pic.png" },
-    location: { type: String, default: "None" },
-    level: { type: String, default: "None" },
+    category: { type: String, default: "None" },
     speciality: { type: String, default: "None" },
+    location:{type :String , default :"None"},
     
     roles: {
       type: [

@@ -1,5 +1,4 @@
 import { User } from './user.model';
-import { Student } from './student.model';
 
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
@@ -30,25 +29,27 @@ export class UsersService {
     private _snackBar: MatSnackBar
   ) {}
 
-  addUser(name: string, phonenum: string, password: string) {
-    const student: Student = {
+  addUser(name: string, phonenum: string, password: string,
+          email: string, category: string, speciality: string,location: string
+          ) 
+    {
+    const user: User = {
       name: name,
       phonenum: phonenum,
       password: password,
+      email: email,
+      category: category,
+      speciality: speciality,
+      location: location,
       userId: '',
-      email: '',      
-      imgPath: '',      
-      location: '',
-      level: '',
-      speciality: '',      
       createdAt: '',
       updatedAt: '',
     };
     this.http
-      .post<{ message: string }>('http://localhost:4401/api/users/signup', student)
+      .post<{ message: string }>('http://localhost:4401/api/users/signup', user)
       .subscribe(
         () => {
-          this.login(phonenum, password);
+          
           console.log('User Added !');
         },
         (error) => {
@@ -83,21 +84,16 @@ export class UsersService {
     return this.authAdminStatusListener.asObservable();
   }
 
-  login(email: string, password: string) {
+  login(phonenum: string, password: string) {
     const user: User = {
-      email: email,
+      phonenum: phonenum,
       password: password,
       userId: '',
       name: '',
-      Wallet: '',
-      imgPath: '',
-      country: '',
-      verified: '',
-      occupation: '',
-      rate: '',
-      responsTime: '',
-      skills: '',
-      description: '',
+      email: '',
+      category: '',
+      speciality: '',
+      location: '',
       createdAt: '',
       updatedAt: '',
     };
@@ -277,18 +273,32 @@ export class UsersService {
 
   /*************************************************/
 
-  getuserimgPath(UserId: string) {
+  getusers() {
     this.http
       .get<{ message: string; users: any }>(
-        'http://localhost:4401/api/users/data/' + UserId
+        'http://localhost:4401/api/users/data'
       )
       .pipe(
         map((usertData) => {
-          return usertData.users.map((user: { imgPath: any }) => {
-            return {
-              imgPath: user.imgPath,
-            };
-          });
+          return usertData.users.map(
+            (user: {
+              _id: any;
+              name: any;
+              category: any;
+              speciality: any;
+              createdAt: any;
+              updatedAt: any;
+            }) => {
+              return {
+                userId: user._id,
+                name: user.name,
+                category: user.category,
+                speciality: user.speciality,
+                createdAt: user.createdAt,
+                updatedAt: user.updatedAt,
+              };
+            }
+          );
         })
       )
       .subscribe((transformedUser) => {
@@ -296,8 +306,9 @@ export class UsersService {
         this.userUpdated.next([...this.users]);
       });
   }
-  getUserimgPathListener() {
+
+  getUserUpdateListener() {
     return this.userUpdated.asObservable();
   }
-  /*************************************************/
+
 }

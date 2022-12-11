@@ -3,9 +3,8 @@
 .adduser{
     min-height: 500px;
     width: 500px;
-    margin: 50px auto;
+    margin: 20px 50px ;
     padding: 20px;
-    border: 1px solid rgb(44, 44, 44);
 
 
     }
@@ -18,4 +17,9 @@
     .detail-text{
         font-size: 25px;
         margin-bottom: 30px;
+    }
+    .submit-button{
+        width: 100px;
+        background-color: var(--maincolor);
+        color: var(--whtiecolor);
     }

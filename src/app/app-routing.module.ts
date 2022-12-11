@@ -29,7 +29,7 @@ const routes: Routes = [
   ]
 },
 
-{ path: 'Profile', component: ProfileComponent },
+{ path: 'Profile/:userId', component: ProfileComponent },
 { path: 'Announcement', component: AnnouncementComponent },
 
 

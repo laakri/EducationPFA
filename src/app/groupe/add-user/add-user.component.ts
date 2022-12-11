@@ -1,21 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm, Validators} from '@angular/forms';
-import { GroupService } from './../group.service';
+import { UsersService } from '../../login/user.service';
 
 interface Speciality {
   value: string;
   viewValue: string;
 }
-interface Professeur {
+interface Category {
   value: string;
   viewValue: string;
 }
-interface Lesson {
-  value: string;
-  viewValue: string;
-}
-
-
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
@@ -24,28 +18,20 @@ interface Lesson {
 export class AddUserComponent implements OnInit {
 
   Specialitys: Speciality[] = [
-    {value: '0', viewValue: 'Math'},
-    {value: '1', viewValue: 'Informmatique'},
-    {value: '2', viewValue: 'Physique'},
+    {value: 'Math', viewValue: 'Math'},
+    {value: 'Informmatique', viewValue: 'Informmatique'},
+    {value: 'Physique', viewValue: 'Physique'},
   ];
 
-  Professeurs: Professeur[] = [
-    {value: '0', viewValue: 'Hmed Bouaasba'},
-    {value: '1', viewValue: 'Satour Nafkha'},
-    {value: '2', viewValue: 'Nato Lemkhalet'},
+  Categorys: Category[] = [
+    {value: 'MDW', viewValue: 'MDW'},
+    {value: 'Programation', viewValue: 'Programation'},
+    {value: 'Construction', viewValue: 'Construction'},
   ];
-
-  Lessons: Lesson[] = [
-    {value: '0', viewValue: '1'},
-    {value: '1', viewValue: '2'},
-    {value: '2', viewValue: '3'},
-    {value: '3', viewValue: '4'},
-  ];
-
 
   selectFormControl = new FormControl('', Validators.required);
 
-  constructor(public GroupService: GroupService) { }
+  constructor(public UsersService: UsersService) { }
 
   ngOnInit(): void {
   }
@@ -54,13 +40,15 @@ export class AddUserComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    /*this.GroupService.addGroup(
-      form.value.groupName,
-      form.value.groupSpeciality,
-      form.value.groupTeacher,
-      form.value.groupLessoncount,
-      form.value.groupLessondate
-    );*/
+    this.UsersService.addUser(
+      form.value.name,
+      form.value.phonenum,
+      form.value.phonenum,
+      form.value.email,
+      form.value.category,
+      form.value.spec,
+      form.value.location,
+    );
     console.log(
       form.value
       )

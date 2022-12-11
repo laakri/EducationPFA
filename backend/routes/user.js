@@ -15,6 +15,10 @@ router.post("/signup", (req, res, next) => {
       name: req.body.name,
       phonenum: req.body.phonenum,
       password: hash,
+      email: req.body.email,
+      category: req.body.category,
+      speciality: req.body.speciality,
+      location: req.body.location,
     });
 
     user
@@ -76,23 +80,6 @@ router.post("/login", (req, res, next) => {
 
 
 
-const addStudentToGroup = function(groupId, user) {
-  return Group.findByIdAndUpdate(
-    groupId,
-    { $push: { users: user._id } },
-    { new: true, useFindAndModify: false }
-  );
-};
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -118,19 +105,13 @@ router.get("/data/:id", (req, res, next) => {
 });
 /*************-Get Users-********** */
 
-router.get("/data", checkauth, (req, res, next) => {
+router.get("/data", (req, res, next) => {
   User.find()
     .select([
+      "-phonenum",
       "-password",
-      "-skills",
-      "-description",
-      "-responsTime",
-      "-occupation",
-      "-verified",
-      "-imgPath",
-      "-country",
-      "-roles",
-      "-Wallet",
+      "-email",
+      "-location",
       "-__v",
     ])
     .then((documents) => {

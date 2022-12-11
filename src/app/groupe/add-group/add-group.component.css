@@ -3,9 +3,8 @@
 .addgroup{
 min-height: 500px;
 width: 500px;
-margin: 50px auto;
+margin: 20px 50px ;
 padding: 20px;
-border: 1px solid rgb(44, 44, 44);
 
 }
 form {
@@ -17,4 +16,28 @@ flex-direction: column;
 .detail-text{
     font-size: 25px;
     margin-bottom: 30px;
+}
+.lesson-date {
+    display: flex;
+    justify-content: space-between;
+}
+.lesson-houre-week{
+    display: flex;
+    justify-content: space-between;
+}
+.lesson-houre-week mat-form-field{
+    width: 48%;
+}
+.lesson-date mat-form-field{
+    width: 38%;
+}
+.lesson-date button{
+    width: 20%;
+    height: 40px;
+    margin-top: 10px;
+}
+.submit-button{
+    width: 100px;
+    background-color: var(--maincolor);
+    color: var(--whitecolor);
 }

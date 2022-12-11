@@ -1,69 +1,117 @@
 <div class="adduser" >
     <div class="detail-text" > Add user </div>
-    <form (submit)="onSubmit(signUpForm)" #signUpForm="ngForm">
-    
-    
-    <mat-form-field appearance="outline">
-      <mat-label>user Name</mat-label>
-      <input
-        ngModel
-        name="userName"
+    <form (submit)="onSubmit(signUpForm)"  #signUpForm="ngForm">
+
+      <mat-form-field appearance="outline">
+        
+        <mat-label>Enter Name</mat-label>
+        <input
+          matInput
+          type="text"
+          ngModel
+          name="name"
+          #name="ngModel"
+          placeholder="name"
+          minlength="4"
+          maxlength="20"
+          required
+        />
+        <mat-error *ngIf="name.invalid"
+          >Name is <strong>required</strong></mat-error
+        >
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Enter Phone number</mat-label>
+        <input
+          ngModel
+          name="phonenum"
+          #phonenum="ngModel"
+          matInput
+          placeholder="24 *** ***"
+          required
+        />
+  
+        <mat-error> Phone Number is <strong>required</strong> </mat-error>
+      </mat-form-field>
+  
+
+      <mat-form-field appearance="outline">
+        
+        <mat-label>Enter Email</mat-label>
+        <input
+          matInput
+          type="email"
+          ngModel
+          name="email"
+          #email="ngModel"
+          placeholder="Gringa@gmail.com.."
+          minlength="4"
+          maxlength="20"
+          required
+        />
+        <mat-error *ngIf="email.invalid"
+          >Email is <strong>required</strong></mat-error
+        >
+      </mat-form-field>
+
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Group Category</mat-label>
+        <mat-select 
+       
         matInput
-        placeholder="INFO_5"
-        required
-      />
-      <mat-error> Phone Number is <strong>required</strong> </mat-error>
-    </mat-form-field>
-    
-    <mat-form-field appearance="outline">
-        <mat-label>user Speciality</mat-label>
-        <mat-select >
-          <mat-option  *ngFor="let Speciality of Specialitys"  
-          [value]="Speciality.value">
+        ngModel
+        name="category"
+        #category="ngModel"
+        >
+          <mat-option  
+          *ngFor="let Speciality of Specialitys"  
+          required
+          [value]="Speciality.value" >
             {{Speciality.viewValue}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-      
-      
       <mat-form-field appearance="outline">
-        <mat-label>Teacher</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let Professeur of Professeurs"  
-          [value]="Professeur.value">
-            {{Professeur.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    
-    
-      <mat-form-field appearance="outline">
-        <mat-label>Lesson Count</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let Lesson of Lessons" [value]="Lesson.value">
-            {{Lesson.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    
-      <mat-form-field appearance="outline">
-        <mat-label>Lesson Dates</mat-label>
-        <input
-          ngModel
-          name="userLessondate"
-          matInput
-          placeholder="20/32/2002 - 6:00pm "
+        <mat-label>Group Speciality</mat-label>
+        <mat-select 
+        matInput
+        ngModel
+        name="spec"
+        #spec="ngModel">
+          <mat-option  *ngFor="let Category of Categorys"  
           required
-        />
-        <mat-error> Phone Number is <strong>required</strong> </mat-error>
+          [value]="Category.value" >
+            {{Category.viewValue}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
-    
-    
-      <button mat-raised-button   type="submit">
+        
+
+
+
+      <mat-form-field appearance="outline">
+        
+        <mat-label>Enter Location</mat-label>
+        <textarea
+          matInput
+          type="text"
+          ngModel
+          name="location"
+          #location="ngModel"
+          placeholder="6 *** Rue *** Mourouj ***"
+          minlength="4"
+          maxlength="20"
+          required
+        ></textarea>
+        <mat-error *ngIf="location.invalid"
+          >location is <strong>required</strong></mat-error
+        >
+      </mat-form-field>
+      <button mat-raised-button class="submit-button" type="submit">
         Submit
       </button>
-    
     </form>
-    
     
     </div>

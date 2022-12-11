@@ -1,9 +1,15 @@
 
 <mat-toolbar color="primary">
     
-    <button mat-button class="top-bar-button" routerLinkActive="activebutton" [routerLink]="['/Group/View']">Groups</button>
-    <button mat-button class="top-bar-button" routerLinkActive="activebutton" [routerLink]="['/Group/AddGroup']">Add Group</button>
-    <button mat-button class="top-bar-button" routerLinkActive="activebutton" [routerLink]="['/Group/AddUser']">Add User</button>
+    <button mat-button class="top-bar-button" 
+    routerLinkActive="activebutton" [routerLink]="['/Group/View']">Groups</button>
+    <button mat-button class="top-bar-button" 
+    routerLinkActive="activebutton" [routerLink]="['/Group/CatGroup']">Category</button>
+    <button mat-button class="top-bar-button" 
+    routerLinkActive="activebutton" [routerLink]="['/Group/AddGroup']">Add Group</button>
+    <button mat-button class="top-bar-button" 
+    routerLinkActive="activebutton" [routerLink]="['/Group/AddUser']">Add User</button>
+
   </mat-toolbar>
 
   <mat-drawer-container class="full-content" >
@@ -24,21 +30,20 @@
         
             <mat-autocomplete #auto="matAutocomplete"> </mat-autocomplete>
           </mat-form-field>
-          <div class="groups-category" >
-            <div > 
+
+
+          <div class="groups-category" 
+          *ngFor="let user of users" 
+          [routerLink]="['/Profile', user.userId]">
               <div class="groups-category-logo" >
                 <mat-icon  aria-label="computer" >people</mat-icon>
-                <span class="groups-category-name" >Saif eddine Jelassi</span>
+                <span class="groups-category-name" >{{user.name}}</span>
               </div> 
-
-            </div>
             <mat-divider></mat-divider>
 
-            <div>
               <div class="groups-category-info">
-                  Informatique
+                {{user.category}}
               </div>
-            </div>
           </div> 
           <!------------------------------------------------------------------->
 
