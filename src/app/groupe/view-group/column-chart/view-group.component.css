@@ -1,0 +1,10 @@
+.mainpage{
+    width: 1100px;
+    margin: auto;
+}
+.sparkline-chart{
+    width: 400px;
+    background-color: var(--soft-darkcolor);
+    border-radius: 10px;
+    padding: 5px;
+}

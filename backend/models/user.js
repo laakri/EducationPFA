@@ -16,10 +16,10 @@ const userSchema = mongoose.Schema(
       type: [
         {
           type: String,
-          enum: ["student","professeur", "admin"],
+          enum: ['student','teacher', 'admin'],
         },
       ],
-      default: "student",
+      default: 'student',
     },
     groups: [
       {

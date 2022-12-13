@@ -45,7 +45,8 @@
 .groups-category{
     height: 75px;
     max-width: 100%;
-    background-color: var(--soft-darkcolor);
+    background-color: transparent;
+    border: var(--bordercolor)solid 1px;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 20px;

@@ -20,7 +20,10 @@ import { ContactPageComponent } from './home-page/contact-page/contact-page.comp
 import { AboutPageComponent } from './home-page/about-page/about-page.component';
 import { SpecialityGroupComponent } from './groupe/speciality-group/speciality-group.component';
 import { ViewGroupComponent } from './groupe/view-group/view-group.component';
+import { ErrorComponent } from './error/error.component';
+import { ErrorInterceptor } from './error-interceptor';
 
+import { ViewGroupComponentColumnChart } from './groupe/view-group/column-chart/view-group.component';
 
 /* *******************MODELS******************** */
 
@@ -57,6 +60,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { NgApexchartsModule } from "ng-apexcharts";
+import {MatRadioModule} from '@angular/material/radio';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 /* ********************************************* */
@@ -82,6 +88,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     ContactPageComponent,
     SpecialityGroupComponent,
     ViewGroupComponent,
+    ViewGroupComponentColumnChart
   ],
   imports: [
     BrowserModule,
@@ -122,10 +129,17 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatSliderModule,
     MatCheckboxModule,
     MatTabsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    NgApexchartsModule,
+    MatRadioModule,
+    MatProgressBarModule
     
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent],
+
 })
 export class AppModule { }

@@ -48,6 +48,7 @@
 .button-announ-section{
     margin: 30px auto 10px auto;
     width: 90%;
+    height: 30px;
 }
 mat-form-field{
     width: 100%;
@@ -57,6 +58,8 @@ mat-form-field{
     margin-top: -10px;
     background-color: var(--maincolor);
     color: white;
+    border-radius: 30px;
+    
 }
 .announc{
     margin: 20px 20px;
@@ -67,6 +70,7 @@ mat-form-field{
     display: flex;
     margin-bottom:10px ;
     position: relative;
+    
 
 }
 .announc-teacher{
@@ -87,12 +91,7 @@ bottom: -13px;
 left: 50px;
 font-size: 12px;
 }
-.announc-info span{
- height: 27px;
- line-height: 32px;
- color: var(--graycolor);
- font-size: 13px;
-}
+
 .teacher-list{
     height: fit-content;
     min-width: 320px;
@@ -104,31 +103,56 @@ font-size: 12px;
     position: sticky;
     top: 20px;
 }
+.header-button{
+    background-color: rgba(128, 128, 128, 0.295);
+    color: var(--whitecolor);
+    float: right;
+  }
+::ng-deep .menu  {
+    background-color: rgb(85, 85, 85);
+  }
+  ::ng-deep .menu-item {
+    color: var(--whitecolor) !important ;
+  }
 /*****************************************************/
 .groups-category {
-    height: 45px;
+    height: 85px;
     max-width: 100%;
     background-color: var(--soft-darkcolor);
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 20px;
 }
-.groups-category:hover{
-    border: var(--whitecolor) solid 1px ;
-    cursor: pointer;
-}
-.groups-category div {
-    height: 50%;
-    margin-bottom: 10px;
-    display: flex;
-}
-.groups-category-logo{
+
+.groups-category-up{
     min-height: 22px;
     width: 25px;
     padding: 10px;
     border-radius:10px ;
+    display: flex;
 
 }
+.group-category-down{
+    margin: 10px;
+    color: var(--graycolor);
+    display: flex;
+    justify-content: space-between;
+}
+.group-category-down span{
+    margin-top: 5px;
+    height: 20px;
+    font-size: 16px;
+
+}
+.group-category-down button i{
+    font-size: 18px;
+}
+
+.group-category-down button{
+    margin-top: -3px;
+    font-size: 10px;
+}
+
 .groups-category-name{
     height: 32px;
     line-height: 35px;
@@ -137,6 +161,8 @@ font-size: 12px;
     margin-left: 20px;
     font-size: 16px;
 }
-
-
+.date{
+    margin-top: 10px;
+    color: var(--graycolor);
+    font-size: 13px;}
 /*****************************************************/

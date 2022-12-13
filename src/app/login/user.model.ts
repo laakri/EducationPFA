@@ -7,6 +7,7 @@ export interface User {
     category: string ;
     speciality: string ;
     location: string ;
+    role:string;
     createdAt: string ;
     updatedAt: string ;
   }

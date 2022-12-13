@@ -109,6 +109,20 @@
           >location is <strong>required</strong></mat-error
         >
       </mat-form-field>
+
+      <div class="radio-button" >
+        <label>User Role : </label>
+        <mat-radio-group 
+        matInput
+          ngModel
+          name="role"
+          #role="ngModel"
+          color="primary"
+          value="student">
+          <mat-radio-button value="student"  >Student</mat-radio-button>
+          <mat-radio-button value="teacher"  >Teacher</mat-radio-button>
+        </mat-radio-group>
+      </div>
       <button mat-raised-button class="submit-button" type="submit">
         Submit
       </button>

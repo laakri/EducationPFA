@@ -8,3 +8,10 @@
 .top-bar-button{
     margin:  auto 5px;
 }
+.absolute{
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(2px);
+}

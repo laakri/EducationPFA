@@ -48,6 +48,7 @@ export class AddUserComponent implements OnInit {
       form.value.category,
       form.value.spec,
       form.value.location,
+      form.value.role,
     );
     console.log(
       form.value

@@ -23,3 +23,6 @@
         background-color: var(--maincolor);
         color: var(--whtiecolor);
     }
+    .radio-button{
+        margin: 10px 0 30px 0;
+    }

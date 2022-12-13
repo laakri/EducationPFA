@@ -9,9 +9,8 @@ import {ThemePalette} from '@angular/material/core';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
+  private userId: any;
   hide = true;
-  checked = false;
-  disabled = false;
   constructor(private UsersService: UsersService) { }
 
   ngOnInit(): void {
@@ -20,6 +19,7 @@ export class SignInComponent implements OnInit {
     if (form.invalid){
       return;
     }
-    this.UsersService.login(form.value.email, form.value.password);
+    this.userId = localStorage.getItem('userId');
+    this.UsersService.login(form.value.phonenum, form.value.password);
   }
 }

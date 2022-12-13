@@ -18,7 +18,7 @@ body {
   --soft-darkcolor: #26272b;
   --whitecolor: #e2e2e2;
   --graycolor: #8a8d8e;
-  --maincolor: #3b7fed;
+  --maincolor: #6b69e0;
   --maintranscolor: #3b7fed71;
   --secendcolor: #c04e14;
   --darktranscolor: #19181ada;
@@ -44,7 +44,7 @@ body.bright-theme {
   --soft-darkcolor: #e6e6e6;
   --whitecolor: #000000;
   --graycolor: #444444;
-  --maincolor: #3b7fed;
+  --maincolor: #6b69e0;
   --maintranscolor: #3b7fed71;
   --secendcolor: #c04e14;
   --darktranscolor: #fdfdfdce;
@@ -267,4 +267,14 @@ mat-chip {
   background-color: var(--whitecolor);
   color: var(--darkcolor) !important;
 
+}
+
+/*************************** -radio button- ****************************/
+
+
+.mat-radio-outer-circle{
+  border: var(--whitecolor);
+}
+.mat-radio-button{
+  margin: auto 10px;
 }

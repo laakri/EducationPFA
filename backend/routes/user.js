@@ -10,6 +10,7 @@ const checkauth = require("../middleware/check-user");
 /*************-Signup-********** */
 
 router.post("/signup", (req, res, next) => {
+  
   bcrypt.hash(req.body.password, 10).then((hash) => {
     const user = new User({
       name: req.body.name,
@@ -19,8 +20,9 @@ router.post("/signup", (req, res, next) => {
       category: req.body.category,
       speciality: req.body.speciality,
       location: req.body.location,
-    });
+      roles :[req.body.role]
 
+    });
     user
       .save()
       .then((result) => {
@@ -41,11 +43,11 @@ router.post("/signup", (req, res, next) => {
 
 router.post("/login", (req, res, next) => {
   let fetchedUser;
-  User.findOne({ email: req.body.email })
+  User.findOne({ phonenum: req.body.phonenum })
     .then((user) => {
       if (!user) {
         return res.status(401).json({
-          message: "Incorrect Email !",
+          message: "Incorrect Phone number !",
         });
       }
       fetchedUser = user;
@@ -58,9 +60,9 @@ router.post("/login", (req, res, next) => {
         });
       }
       const token = jwt.sign(
-        { email: fetchedUser.email, userId: fetchedUser._id },
+        { phonenum: fetchedUser.phonenum, userId: fetchedUser._id },
         "secret_this_should_be_longer",
-        { expiresIn: "1h" }
+        { expiresIn: "1h" },
       );
       res.status(200).json({
         token: token,
@@ -76,11 +78,6 @@ router.post("/login", (req, res, next) => {
       });
     });
 });
-
-
-
-
-
 
 
 
@@ -106,11 +103,35 @@ router.get("/data/:id", (req, res, next) => {
 /*************-Get Users-********** */
 
 router.get("/data", (req, res, next) => {
-  User.find()
+  User.find({roles: "student"})
     .select([
       "-phonenum",
       "-password",
       "-email",
+      "-location",
+      "-__v",
+    ])
+    .then((documents) => {
+      res.status(200).json({
+        message: "Users data runs seccesfully !",
+        users: documents,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: err,
+        message: "Users data Failed !",
+      });
+    });
+});
+/*************-Get Teachers-********** */
+
+router.get("/datateacher", (req, res, next) => {
+  User.find({roles: "teacher"})
+    .select([
+      "-phonenum",
+      "-password",
       "-location",
       "-__v",
     ])

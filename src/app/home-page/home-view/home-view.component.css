@@ -33,7 +33,8 @@
     font-size: 20px;
   }
   #button1{
-    background-color: var(--secendcolor);
+    background-color: var(--maincolor);
+    border-radius: 30px;
     color: white;
   }
   
@@ -108,14 +109,14 @@
   }
   .icon-logo-1{
     color: white;
-    background-color: rgb(24, 90, 233);
+    background-color: rgb(233, 48, 24);
     cursor: default;
     margin: 10px auto ;
     
   }
   .icon-logo-2{
     color: white;
-    background-color: rgb(233, 48, 24);
+    background-color: var(--maincolor);
     cursor: default;
     margin: 10px auto ;
   }

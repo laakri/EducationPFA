@@ -1,0 +1,122 @@
+.mainpage{
+    width: 1300px;
+    margin: auto;
+
+}
+.sparkline-chart{
+    width: 58%;
+    background-color: var(--soft-darkcolor);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.first-content{
+    display: flex;
+    justify-content: space-between;
+    height: 400px;
+    width: 100%;
+    margin: 40px auto 20px auto;
+
+}
+.first-content-left{
+    width: 40%;
+}
+
+.first-content-left-div1{
+    display: flex;
+    width: 100%;
+    height: 48%;  
+    margin-bottom: 15px; 
+}
+
+.first-content-left-div1:last-child{
+       margin-bottom:0 ;
+}
+.first-content-item{
+    background-color: var(--soft-darkcolor);
+    height: 100%;
+    width: 50%;
+    margin: auto 10px;
+    border-radius: 10px;
+    display: flex;
+    position: relative;
+}
+.first-content-item-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+}
+.content-item-logo{
+    background-color: #4f3e58;
+    color: #b37990;
+    height: 90px;
+    width: 60px;
+    border-radius: 10px;
+    margin-left:-20px ;
+    position: relative;
+
+}
+.logo-blue{
+    background-color: #364464;
+    color: #3e81b3;
+}
+.logo-purple{
+    background-color: #443c67;
+    color: #a789e2;
+}
+.logo-pink{
+    background-color: #385258;
+    color: #1acea1;
+}
+.content-item-logo i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.content-item-stat{
+    font-size: 45px;
+    text-align: center;
+    margin: 20px ;
+}
+.content-item-object{
+    font-size: 20px;
+    color: var(--graycolor);
+    text-align: center;
+}
+
+.secend-content{
+    display: flex;
+    justify-content: space-between;
+    height: 400px;
+    width: 100%;
+    margin: 20px auto;
+}
+.secend-content-left{
+    background-color: var(--soft-darkcolor);
+    width: 60%;
+    border-radius: 10px;
+
+}
+.column-chart{
+    width: 38%;
+    background-color: var(--soft-darkcolor);
+    border-radius: 10px;
+    padding: 5px;
+}
+table{
+    width: 100%;
+    height: 100%;
+background-color: transparent !important;
+box-shadow: none;
+}
+table td:last-child {
+    right: 20px !important;
+
+}
+table th:last-child {
+    right: 20px !important;
+
+}

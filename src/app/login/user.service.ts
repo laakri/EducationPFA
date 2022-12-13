@@ -30,7 +30,8 @@ export class UsersService {
   ) {}
 
   addUser(name: string, phonenum: string, password: string,
-          email: string, category: string, speciality: string,location: string
+          email: string, category: string, speciality: string,
+          location: string,role: string
           ) 
     {
     const user: User = {
@@ -41,6 +42,7 @@ export class UsersService {
       category: category,
       speciality: speciality,
       location: location,
+      role: role,
       userId: '',
       createdAt: '',
       updatedAt: '',
@@ -94,6 +96,7 @@ export class UsersService {
       category: '',
       speciality: '',
       location: '',
+      role: '',
       createdAt: '',
       updatedAt: '',
     };
@@ -133,7 +136,12 @@ export class UsersService {
               this.userName,
               this.userRole
             );
-
+            const successMessage = 'User Added Successfuly !';
+            this._snackBar.openFromComponent(SuccesComponent, {
+              data: { message: successMessage },
+              duration: 2500,
+              panelClass: ['green-snackbar'],
+            });
             this.router.navigate(['/Profile/' + this.userId]);
           }
         },
@@ -256,8 +264,7 @@ export class UsersService {
       )
       .subscribe(
         () => {
-          console.log('User Updated !');
-          console.log('Updateded Successfuly !');
+          console.log('User Updateded Successfuly !');
           const successMessage = 'Updateded Successfuly !';
           this._snackBar.openFromComponent(SuccesComponent, {
             data: { message: successMessage },

@@ -12,6 +12,7 @@ import { AnnouncementComponent } from './announcement/announcement.component';
 import { ContactPageComponent } from './home-page/contact-page/contact-page.component';
 import { SpecialityGroupComponent } from './groupe/speciality-group/speciality-group.component';
 import { ViewGroupComponent } from './groupe/view-group/view-group.component';
+import { AuthGuard } from './login/user.guard';
 
 
 const routes: Routes = [
@@ -53,6 +54,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard],
 })
 export class AppRoutingModule { }

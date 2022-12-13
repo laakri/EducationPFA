@@ -6,13 +6,13 @@
         matInput
         type="text"
         ngModel
-        name="email"
-        #email="ngModel"
-        placeholder="Email@gmail.com"
+        name="phonenum"
+        #phonenum="ngModel"
+        placeholder="22 333 444"
         required
       />
-      <mat-error *ngIf="email.invalid"
-        >Email is <strong>required</strong></mat-error
+      <mat-error *ngIf="phonenum.invalid"
+        >Phone Number is <strong>required</strong></mat-error
       >
     </mat-form-field>
 
@@ -42,20 +42,7 @@
       </button>
     </mat-form-field>
 
-    <section class="example-section">
-    <span class="text-section" >
 
-    Slide Teacher !
-
-    </span>
-      <mat-slide-toggle
-          class="example-margin"
-          color="primary"
-          [checked]="checked"
-          [disabled]="disabled">
-      </mat-slide-toggle>
-    </section>
-    
     <button mat-raised-button class="submit-button" type="submit">Login</button>
   </form>
 </div>
