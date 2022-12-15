@@ -49,19 +49,17 @@ export class AnnouncementComponent implements OnInit {
     this.AnnounSub = this.AnnouncementService.getAnnouncUpdateListener()
     .subscribe((Announs: []) => {
     this.Announs = Announs.reverse();
-
-    this.AnnouncementService.getTeachers();
-    this.userSub = this.AnnouncementService
-    .getUserUpdateListener().subscribe(
-      (users: User[]) => {
-        this.users = users;
-        console.log(this.users);
-
-      }
-    );
-    
   });
   
+  this.AnnouncementService.getTeachers();
+  this.userSub = this.AnnouncementService
+  .getUserUpdateListener().subscribe(
+    (users: User[]) => {
+      this.users = users;
+      console.log(this.users);
+
+    }
+  );
   }
   onChange(filter: string) {
     console.log(filter)
@@ -70,7 +68,8 @@ export class AnnouncementComponent implements OnInit {
     this.AnnouncementService.getAnnouncs(this.filterToSend);
     this.AnnounSub = this.AnnouncementService.getAnnouncUpdateListener().subscribe((Announs: []) => {
     this.Announs = Announs;
-    });
+    
+  });
   }
 
   onAddAnnounc(form: NgForm){

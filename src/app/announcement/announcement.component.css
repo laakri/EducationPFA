@@ -8,9 +8,9 @@
     
 }
 .mainpage{
+    width:100%;
     max-width: 900px;
-    margin: 0 auto 0 0 ;
-    border-right:solid var(--bordercolor) 1px ;
+    margin: 0 auto;
 
     min-height: 100%;
 }
@@ -66,6 +66,17 @@ mat-form-field{
     padding: 20px;  
     border-bottom: var(--bordercolor) solid 1px;
 }
+.announc_null{
+    border: var(--graycolor) solid 1px;
+    color: var(--graycolor);
+    border-radius: 5px;
+    text-align: center;
+    margin: 60px auto;
+    width: 90%;
+    height: 50px;
+    line-height: 50px;
+    font-size:16px ;
+}
 .announc-info{
     display: flex;
     margin-bottom:10px ;
@@ -109,7 +120,7 @@ font-size: 12px;
     float: right;
   }
 ::ng-deep .menu  {
-    background-color: rgb(85, 85, 85);
+    background-color: var(--soft-darkcolor);
   }
   ::ng-deep .menu-item {
     color: var(--whitecolor) !important ;

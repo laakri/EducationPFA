@@ -13,16 +13,18 @@ export class GroupeComponent implements OnInit {
   myControl = new FormControl();
   userSub: Subscription = new Subscription();
   users: any;
-
+  userlength = 0;
   constructor( private UsersService :UsersService) { }
   Show(){
     this.showFiller=!this.showFiller
   }
   ngOnInit(): void {
     this.UsersService.getusers();
-    this.userSub = this.UsersService.getUserUpdateListener().subscribe(
+    this.userSub = this.UsersService
+    .getUserUpdateListener().subscribe(
       (users: User[]) => {
         this.users = users;
+        this.userlength=users.length;
       }
     );
   }

@@ -16,6 +16,17 @@
     color: var(--whitecolor);
 }
   
+.announc_null{
+    border: var(--graycolor) solid 1px;
+    color: var(--graycolor);
+    border-radius: 5px;
+    text-align: center;
+    margin: 60px auto;
+    width: 90%;
+    height: 50px;
+    line-height: 50px;
+    font-size:16px ;
+}
 
 .seach-content {
     background-color: var(--darkcolor);
@@ -46,7 +57,7 @@
     height: 75px;
     max-width: 100%;
     background-color: transparent;
-    border: var(--bordercolor)solid 1px;
+    border: var(--graycolor)solid 1px;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 20px;

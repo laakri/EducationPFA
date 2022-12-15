@@ -59,9 +59,9 @@
     ngModel
     name="groupTeacher"
     #groupTeacher="ngModel">
-      <mat-option *ngFor="let Professeur of Professeurs"  
-      [value]="Professeur.value">
-        {{Professeur.viewValue}}
+      <mat-option *ngFor="let user of users"  
+      [value]="user.name">
+        {{user.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>

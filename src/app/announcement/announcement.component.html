@@ -22,7 +22,8 @@
             >Content is <strong>required</strong></mat-error
           ></textarea>
           </mat-form-field>
-          <button mat-flat-button	class="button-announ" type="submit" >Submit</button>
+          <button mat-flat-button	class="button-announ" type="submit" >
+            Submit</button>
         </form>
         </div>
         
@@ -53,9 +54,7 @@
         
 
         <div class="announc" *ngFor="let Announc of Announs">
-          <div class="announc" *ngIf="Announc.content == ''" >
-            <h2>There is no announcement !</h2>
-          </div>
+          
             <div class="announc-info" >
                 <mat-icon *ngIf="Announc.userRole == 'student'">wallet_travel</mat-icon>
                 <mat-icon *ngIf="Announc.userRole == 'admin'">campaign</mat-icon>
@@ -72,6 +71,13 @@
               <span>Created at {{Announc.createdAt}}</span>
             </div>
         </div>
+
+        <div class="announc_null" *ngIf="Announs.length <= 0 " >
+          
+            There is no announcement !
+
+        </div>
+
 
 
 
@@ -91,6 +97,11 @@
               matInput
             />
           </mat-form-field>
+          <div class="announc_null" *ngIf="users.length <= 0 " >
+          
+            There is no Teacher !
+
+        </div>
           <div class="groups-category" *ngFor="let user of users" >
             <div  > 
               <div class="groups-category-up" >

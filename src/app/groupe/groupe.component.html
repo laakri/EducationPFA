@@ -31,7 +31,11 @@
             <mat-autocomplete #auto="matAutocomplete"> </mat-autocomplete>
           </mat-form-field>
 
+          <div class="announc_null" *ngIf="userlength <= 0 " >
+          
+            There is no Students !
 
+          </div>
           <div class="groups-category" 
           *ngFor="let user of users" 
           [routerLink]="['/Profile', user.userId]">

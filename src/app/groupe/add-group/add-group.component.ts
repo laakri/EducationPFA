@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm, Validators} from '@angular/forms';
 import { GroupService } from './../group.service';
+import { AnnouncementService } from '../../announcement/announcement.service'
+import {User} from '../../login/user.model'
+import { Subscription } from 'rxjs';
 
 interface Speciality {
   value: string;
@@ -34,20 +37,31 @@ export class AddGroupComponent implements OnInit {
     {value: 'Construction', viewValue: 'Construction'},
   ];
 
-  Professeurs: Professeur[] = [
-    {value: 'Hmed Bouaasba', viewValue: 'Hmed Bouaasba'},
-    {value: 'Satour Nafkha', viewValue: 'Satour Nafkha'},
-    {value: 'Nato Lemkhalet', viewValue: 'Nato Lemkhalet'},
-  ];
+ 
 
   daycountvar:any;
   count = 2;
   selectFormControl = new FormControl('', Validators.required);
   lessonDate ="";
-  constructor(public GroupService: GroupService) { }
+  userSub: Subscription = new Subscription();
+  users: any;
+
+
+
+  constructor(public GroupService: GroupService,
+    private AnnouncementService : AnnouncementService,
+    ) { }
 
   ngOnInit(): void {
 
+    this.AnnouncementService.getTeachers();
+    this.userSub = this.AnnouncementService
+    .getUserUpdateListener().subscribe(
+      (users: User[]) => {
+        this.users = users;
+
+      }
+    );
 
   }
   someMethod()
