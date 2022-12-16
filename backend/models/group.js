@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 const enumValues = require("mongoose-enumvalues");
+const Categ = require("./category");
 
 
 
 const groupSchema = mongoose.Schema(
   {
+    
+    categId: { type: mongoose.Schema.Types.ObjectId, ref: Categ  },  
     groupName: { type: String, required: true ,unique: true },
     groupCategory: { type: String, required: true},
     groupSpeciality: { type: String, required: true},

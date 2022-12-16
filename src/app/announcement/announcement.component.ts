@@ -24,7 +24,8 @@ export class AnnouncementComponent implements OnInit {
   AnnounSub: Subscription = new Subscription();
   userSub: Subscription = new Subscription();
   users: any;
-  
+  userlength = 0;
+  announslength = 0;
   constructor(
     private AnnouncementService : AnnouncementService,
      private activatedRoute: ActivatedRoute,
@@ -49,6 +50,8 @@ export class AnnouncementComponent implements OnInit {
     this.AnnounSub = this.AnnouncementService.getAnnouncUpdateListener()
     .subscribe((Announs: []) => {
     this.Announs = Announs.reverse();
+    this.announslength=Announs.length;
+
   });
   
   this.AnnouncementService.getTeachers();
@@ -57,6 +60,7 @@ export class AnnouncementComponent implements OnInit {
     (users: User[]) => {
       this.users = users;
       console.log(this.users);
+      this.userlength=users.length;
 
     }
   );

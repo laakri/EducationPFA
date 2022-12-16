@@ -17,14 +17,14 @@ import { AuthGuard } from './login/user.guard';
 
 const routes: Routes = [
 
-  { path: '', component: HomePageComponent },
+  { path: '', component: HomePageComponent},
 
   
   {path: 'Homepage',
   component: HomePageComponent,
   children:[
    { path: '', redirectTo: '/Homepage/View', pathMatch: 'full' },
-   {path:'View',component: HomeViewComponent},
+   {path:'View',component: HomeViewComponent } ,
    {path:'AboutUs',component: AboutPageComponent},
    {path:'ContactUs',component: ContactPageComponent},
   ]
