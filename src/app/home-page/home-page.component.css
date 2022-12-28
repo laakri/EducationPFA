@@ -1,7 +1,11 @@
 .mat-toolbar{
     height: 45px;
-    background-color: #19181a;
-    border-bottom: 1px solid rgb(44, 44, 44);
+    background-color: #0c1017;
+    border-bottom: 1px solid var(--bordercolor);
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 

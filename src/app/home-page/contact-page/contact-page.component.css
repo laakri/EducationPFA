@@ -3,7 +3,7 @@
 .mainpage {
   max-width: 1200px;
   margin: 20px auto;
-  min-height: 700px;
+  min-height: 300px;
 }
 
 /*********************************/
@@ -32,7 +32,7 @@
 .secend-content {
   min-height: 450px;
 
-  margin: auto;
+  margin:  auto auto 30px auto;
   display: flex;
   width: 80%;
   justify-content: space-between;
@@ -101,5 +101,60 @@ form {
   .secend-content-secend {
     margin: auto;
     width: 80%;
+  }
+}
+/********************Screen***************************/
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  
+}
+
+.intro {
+  margin-bottom: 40px;
+}
+
+.intro h2 {
+  font-size: 2em;
+  margin: 20px 0;
+}
+
+.intro p {
+  line-height: 1.5;
+  margin: 20px 0;
+}
+
+.featured-courses,
+.popular-resources {
+  width: 50%;
+  float: left;
+}
+.featured-courses h3,
+.popular-resources h3 {
+  font-size: 1.5em;
+  margin: 20px 0;
+}
+
+.featured-courses ul,
+.popular-resources ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.featured-courses li,
+.popular-resources li {
+  margin: 10px 0;
+}
+
+
+
+@media (max-width: 600px) {
+  .featured-courses,
+  .popular-resources {
+    width: 100%;
+    float: none;
   }
 }

@@ -19,7 +19,7 @@
     position: relative;
 }
 .header-img{
-    height: 50px;
+    height: 80px;
     width: max-content;
     display: flex;
     position: absolute;
@@ -30,13 +30,13 @@
 }
 .header-img img{
     margin-top: 5px;
-    width: 40px;
-    height: 40px;
+    height: 70px;
+    width: 80px;
 }
 .header-img span{
-    margin-left: 10px;
-    font-size: 33px;
-    line-height: 50px;
+    margin-left: 5px;
+    font-size: 28px;
+    line-height: 90px;
 }
 
 .toolbar-items{

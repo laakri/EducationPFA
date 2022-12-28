@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { GroupService } from './../group.service';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -10,33 +13,52 @@ interface Food {
   viewValue: string;
 }
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
+  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
 ];
 @Component({
   selector: 'app-category-group',
   templateUrl: './category-group.component.html',
-  styleUrls: ['./category-group.component.css']
+  styleUrls: ['./category-group.component.css'],
 })
 export class CatGroupsComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  GroupSub: Subscription = new Subscription();
+  Groups: any;
+  CatToSend?: string;
+  private routeSub: Subscription | undefined;
+  CategoryName = '';
+  displayedColumns: string[] = [
+    'id',
+    'teacherId',
+    'groupLevel',
+    'groupStartDate',
+    'groupPeriode',
+    'groupPrice',
+    'createdAt',
+  ];
   dataSource = ELEMENT_DATA;
   foods: Food[] = [
-    {value: '0', viewValue: 'Name'},
-    {value: '1', viewValue: 'Age'},
-    {value: '2', viewValue: 'Section'},
+    { value: '0', viewValue: 'Name' },
+    { value: '1', viewValue: 'Age' },
+    { value: '2', viewValue: 'Section' },
   ];
-  constructor() { }
- 
-  ngOnInit(): void {
-  }
+  constructor(
+    public route: ActivatedRoute,
+    private GroupService: GroupService
+  ) {}
 
+  ngOnInit(): void {
+    this.routeSub = this.route.params.subscribe((params) => {
+      this.CategoryName = params['groupName'];
+    });
+    this.CatToSend = '?groupCategory=' + this.CategoryName;
+
+    this.GroupService.getGroups(this.CatToSend);
+    this.GroupSub = this.GroupService.getGroupUpdateListener().subscribe(
+      (Groups: []) => {
+        this.Groups = Groups.reverse();
+        console.log(this.Groups);
+      }
+    );
+  }
 }

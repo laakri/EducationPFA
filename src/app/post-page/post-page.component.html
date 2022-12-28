@@ -1,0 +1,99 @@
+<div *ngFor="let Group of Groups">
+  <div class="header">
+    <div>
+      <img src="../../assets/post-img.png" class="header-bg-img" alt="" />
+    </div>
+    <div class="container">
+      <div class="container-header">
+        <div class="container-header-left">
+          <mat-chip-list>
+            <mat-chip>{{ Group.groupCategory }}</mat-chip>
+          </mat-chip-list>
+
+          <div class="post-tag">
+            <span>
+              {{ Group.groupObject }}
+            </span>
+          </div>
+          <h2 style="color: var(--maincolor)">
+            Beggins in {{ days }} days - {{ hours }} houres -
+            {{ minutes }} minutes - {{ seconds }} secends
+          </h2>
+
+          <div class="post-small-description">
+            <span>
+              {{ Group.groupDescription }}
+            </span>
+          </div>
+          <div class="post-buttons">
+            <button mat-raised-button class="tada-element">Start Now</button>
+          </div>
+        </div>
+
+        <div class="container-header-right">
+          <img
+            src="{{ Group.groupFilePath }}"
+            class="container-header-right-img"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="under-header">
+    <div class="container">
+      <div class="under-header-flex">
+        <div class="under-header-item">
+          <div class="under-header-item-icon">
+            <mat-icon>code</mat-icon>
+          </div>
+          <div class="under-header-item-text">{{ Group.groupLevel }}</div>
+        </div>
+        <div class="under-header-item">
+          <div class="under-header-item-icon">
+            <mat-icon>access_time</mat-icon>
+          </div>
+          <div class="under-header-item-text">{{ Group.groupPeriode }}</div>
+        </div>
+        <div class="under-header-item">
+          <div class="under-header-item-icon">
+            <mat-icon>av_timer</mat-icon>
+          </div>
+          <div class="under-header-item-text">
+            {{ Group.groupHourPerWeek }} H / Week
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="content-details">
+      <!---------------------------------------------------------->
+
+      <mat-card>
+        <h1>the knowledge and skills you will acquire</h1>
+        <p>{{ Group.groupExperienseGain }}</p>
+
+        <p>Some of the Futures you will learn:</p>
+        <div class="class-chip">
+          <mat-chip-list>
+            <mat-chip *ngFor="let chip of chips"> {{ chip }} </mat-chip>
+          </mat-chip-list>
+        </div>
+      </mat-card>
+      <mat-divider></mat-divider>
+      <!---------------------------------------------------------->
+      <mat-card>
+        <h1>further information</h1>
+        <p>
+          {{ Group.groupDetails }}
+        </p>
+      </mat-card>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+  <div class="container"></div>
+</div>

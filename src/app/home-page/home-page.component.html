@@ -1,11 +1,48 @@
 <mat-toolbar color="primary">
-    
-    <button mat-button class="top-bar-button" routerLinkActive="activebutton" [routerLink]="['/Homepage/View']" >Home</button>
-    <button mat-button class="top-bar-button" routerLinkActive="activebutton" [routerLink]="['/Homepage/AboutUs']">About us</button>
-    <button mat-button class="top-bar-button" routerLinkActive="activebutton" [routerLink]="['/Homepage/ContactUs']">Contact</button>
-  </mat-toolbar>
-
+  <button
+    mat-button
+    class="top-bar-button"
+    routerLinkActive="activebutton"
+    [routerLink]="['/Homepage/View']"
+  >
+    Home
+  </button>
+  <button
+    mat-button
+    class="top-bar-button"
+    routerLinkActive="activebutton"
+    [routerLink]="['/Homepage/AboutUs']"
+  >
+    About us
+  </button>
+  <button
+    mat-button
+    class="top-bar-button"
+    routerLinkActive="activebutton"
+    [routerLink]="['/Homepage/ContactUs']"
+  >
+    Contact
+  </button>
+  <button
+    mat-button
+    class="top-bar-button"
+    routerLinkActive="activebutton"
+    [routerLink]="['/Homepage/PostPage/63aac740ddd3d25b418e4966']"
+  >
+    PostPage
+  </button>
+  <button
+    mat-button
+    class="top-bar-button"
+    routerLinkActive="activebutton"
+    [routerLink]="['/Homepage/GroupsList']"
+  >
+    GroupsList
+  </button>
+</mat-toolbar>
+<!--
   <div class="absolute">
     <img src="../../assets/design1.png" alt="home" class="home-victors">
   </div>
-  <router-outlet></router-outlet>
+  -->
+<router-outlet></router-outlet>

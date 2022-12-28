@@ -27,7 +27,9 @@ export class SideNavComponent implements OnInit {
     });
   }
 
-  
+  logout(){
+    this.UsersService.logout()
+  }
   change_theme(): void {
     document.body.classList.toggle('bright-theme');
   }

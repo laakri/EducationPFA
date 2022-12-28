@@ -1,0 +1,144 @@
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+.header {
+  min-height: 500px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.header-bg-img {
+  position: absolute;
+  width: max-content;
+  height: 870px;
+  top: -160px;
+  right: -15%;
+  z-index: -1;
+  opacity: 0.4;
+  filter: blur(1px);
+}
+.container-header {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.post-tag {
+  min-height: 22%;
+  margin: 20px;
+  font-size: 30px;
+  line-height: 1.5;
+  max-width: 550px;
+}
+.post-small-description {
+  margin: 20px;
+  min-height: 40%;
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 550px;
+  color: var(--graycolor);
+}
+.post-buttons {
+  margin: 20px;
+  display: flex;
+}
+.post-buttons button {
+  height: 40px;
+  width: 200px;
+  font-size: 18px;
+  background-color: var(--maincolor);
+  color: white;
+}
+.container-header-left {
+  margin: 40px auto;
+  width: 55%;
+}
+
+.container-header-right {
+  margin: 40px auto;
+  width: 40%;
+}
+.container-header-right-img {
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 40%;
+  border-bottom-right-radius: 40%;
+}
+
+.under-header {
+  height: 130px;
+  /*background-color: var(--soft-darkcolor);*/
+}
+.under-header-flex {
+  height: 100%;
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  justify-content: space-around;
+  height: 100%;
+}
+.under-header-item {
+  border-radius: 5px;
+  height: 100px;
+  width: 25%;
+  border: var(--bordercolor) solid 1px;
+}
+.under-header-item-icon {
+  font-size: 18px;
+  margin-top: 20px;
+  text-align: center;
+}
+.under-header-item-text {
+  font-size: 22px;
+  margin-top: 5px;
+  text-align: center;
+}
+@keyframes tada {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  10%,
+  20% {
+    transform: scale(0.95) rotate(-3deg);
+  }
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: scale(1.01) rotate(3deg);
+  }
+  40%,
+  60%,
+  80% {
+    transform: scale(1.01) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+.tada-element {
+  animation: tada 2s ease-in-out;
+}
+
+.content-details > * {
+  margin: 20px;
+}
+.class-chip {
+  margin: 10px;
+}
+.class-chip mat-chip-list {
+  flex-wrap: wrap;
+}
+
+.class-chip mat-chip-list mat-chip {
+  margin: 15px 5px;
+  font-size: 16px;
+}
+p {
+  margin-left: 10px;
+  font-size: 16px;
+  line-height: 1.3;
+  font-size: 18px;
+}

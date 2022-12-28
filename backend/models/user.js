@@ -7,25 +7,25 @@ const userSchema = mongoose.Schema(
     name: { type: String, required: true },
     phonenum: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    email: { type: String, unique: true , default: "None"},
+    email: { type: String, unique: true, default: "None" },
     category: { type: String, default: "None" },
     speciality: { type: String, default: "None" },
-    location:{type :String , default :"None"},
-    
+    location: { type: String, default: "None" },
+
     roles: {
       type: [
         {
           type: String,
-          enum: ['student','teacher', 'admin'],
+          enum: ["student", "teacher", "admin"],
         },
       ],
-      default: 'student',
+      default: "student",
     },
     groups: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Group"
-      }
+        ref: "Group",
+      },
     ],
   },
   { timestamps: true }

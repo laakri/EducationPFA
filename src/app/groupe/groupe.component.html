@@ -1,66 +1,98 @@
-
 <mat-toolbar color="primary">
-    
-    <button mat-button class="top-bar-button" 
-    routerLinkActive="activebutton" [routerLink]="['/Group/View']">Groups</button>
-    <button mat-button class="top-bar-button" 
-    routerLinkActive="activebutton" [routerLink]="['/Group/CatGroup']">Category</button>
-    <button mat-button class="top-bar-button" 
-    routerLinkActive="activebutton" [routerLink]="['/Group/AddGroup']">Add Group</button>
-    <button mat-button class="top-bar-button" 
-    routerLinkActive="activebutton" [routerLink]="['/Group/AddUser']">Add User</button>
+  <button
+    mat-button
+    class="top-bar-button"
+    routerLinkActive="activebutton"
+    [routerLink]="['/Group/View']"
+  >
+    Groups
+  </button>
+  <button
+    mat-button
+    class="top-bar-button"
+    routerLinkActive="activebutton"
+    [routerLink]="['/Group/CatGroup/Informatique']"
+  >
+    Category
+  </button>
 
-  </mat-toolbar>
+  <button
+    mat-button
+    class="top-bar-button"
+    routerLinkActive="activebutton"
+    [routerLink]="['/Group/AddUser']"
+  >
+    Add User
+  </button>
+  <button
+    mat-button
+    class="top-bar-button"
+    routerLinkActive="activebutton"
+    [routerLink]="['/Group/AddCategory']"
+  >
+    Add Category
+  </button>
+  <button
+    mat-button
+    class="top-bar-button"
+    routerLinkActive="activebutton"
+    [routerLink]="['/Group/CreatePost']"
+  >
+    CreatePost
+  </button>
+</mat-toolbar>
 
-  <mat-drawer-container class="full-content" >
+<mat-drawer-container class="full-content">
+  <mat-drawer #drawer class="seach-content" mode="side" opened>
+    <h4>STUDENTS</h4>
+    <mat-form-field class="search-bar" appearance="outline">
+      <mat-label> ❉/ Search</mat-label>
 
+      <input
+        type="text"
+        matInput
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+      />
 
+      <mat-autocomplete #auto="matAutocomplete"> </mat-autocomplete>
+    </mat-form-field>
+    <div class="my-spinner-div" *ngIf="spinner">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="announc_null" *ngIf="userlength <= 0">
+      There is no Students !
+    </div>
+    <div
+      class="groups-category"
+      *ngFor="let user of users"
+      [routerLink]="['/Profile', user.userId]"
+    >
+      <div class="groups-category-logo">
+        <mat-icon aria-label="computer">people</mat-icon>
+        <span class="groups-category-name">{{ user.name }}</span>
+      </div>
+      <mat-divider></mat-divider>
 
-    <mat-drawer #drawer class="seach-content" mode="side" opened>
-        <h4>STUDENTS</h4>
-        <mat-form-field class="search-bar" appearance="outline">
-            <mat-label> ❉/  Search</mat-label>
-        
-            <input
-              type="text"
-              matInput
-              [formControl]="myControl"
-              [matAutocomplete]="auto"
-            />
-        
-            <mat-autocomplete #auto="matAutocomplete"> </mat-autocomplete>
-          </mat-form-field>
-
-          <div class="announc_null" *ngIf="userlength <= 0 " >
-          
-            There is no Students !
-
-          </div>
-          <div class="groups-category" 
-          *ngFor="let user of users" 
-          [routerLink]="['/Profile', user.userId]">
-              <div class="groups-category-logo" >
-                <mat-icon  aria-label="computer" >people</mat-icon>
-                <span class="groups-category-name" >{{user.name}}</span>
-              </div> 
-            <mat-divider></mat-divider>
-
-              <div class="groups-category-info">
-                {{user.category}}
-              </div>
-          </div> 
-          <!------------------------------------------------------------------->
-
-    </mat-drawer>
-    <div class="result-content">
-      <div><button type="button" mat-raised-button (click)="drawer.toggle()" 
-        (click)="Show()" class="open-side-button">
+      <div class="groups-category-info">
+        {{ user.category }}
+      </div>
+    </div>
+    <!------------------------------------------------------------------->
+  </mat-drawer>
+  <div class="result-content">
+    <div>
+      <button
+        type="button"
+        mat-raised-button
+        (click)="drawer.toggle()"
+        (click)="Show()"
+        class="open-side-button"
+      >
         <i class="material-icons" *ngIf="showFiller">arrow_forward_ios</i>
         <i class="material-icons" *ngIf="!showFiller">arrow_back_ios_new</i>
       </button>
     </div>
   </div>
-    <router-outlet></router-outlet>
-
-  </mat-drawer-container>
-
+  <router-outlet></router-outlet>
+</mat-drawer-container>

@@ -6,6 +6,7 @@ const userRoutes = require("./routes/user");
 const groupRoutes = require("./routes/group");
 const emailRoutes = require("./routes/email");
 const annnouncRoutes = require("./routes/announc");
+const categRoutes = require("./routes/category");
 
 const app = express();
 
@@ -44,5 +45,6 @@ app.use("/api/users", userRoutes);
 app.use("/api/email", emailRoutes);
 app.use("/api/groups", groupRoutes);
 app.use("/api/announcs", annnouncRoutes);
+app.use("/api/categs", categRoutes);
 
 module.exports = app;

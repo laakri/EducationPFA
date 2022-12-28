@@ -1,13 +1,13 @@
 import { User } from './user.model';
-
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { UserToUpdate } from './userToUpdate.model';
-import { SuccesComponent } from 'src/app/succes/succes.component';
+import { SuccesComponent } from './../succes/succes.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { map } from 'rxjs/operators';
+import { environment } from '@envi/environment';
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
@@ -22,6 +22,7 @@ export class UsersService {
   private authStatusListener = new Subject<boolean>();
   private authAdminStatusListener = new Subject<boolean>();
   private userUpdated = new Subject<User[]>();
+  apiURL = environment.apiURL;
 
   constructor(
     private http: HttpClient,
@@ -29,11 +30,16 @@ export class UsersService {
     private _snackBar: MatSnackBar
   ) {}
 
-  addUser(name: string, phonenum: string, password: string,
-          email: string, category: string, speciality: string,
-          location: string,role: string
-          ) 
-    {
+  addUser(
+    name: string,
+    phonenum: string,
+    password: string,
+    email: string,
+    category: string,
+    speciality: string,
+    location: string,
+    role: string
+  ) {
     const user: User = {
       name: name,
       phonenum: phonenum,
@@ -48,10 +54,9 @@ export class UsersService {
       updatedAt: '',
     };
     this.http
-      .post<{ message: string }>('http://localhost:4401/api/users/signup', user)
+      .post<{ message: string }>(this.apiURL + '/api/users/signup', user)
       .subscribe(
         () => {
-          
           console.log('User Added !');
         },
         (error) => {
@@ -107,7 +112,7 @@ export class UsersService {
         userId: string;
         userName: string;
         userRole: string;
-      }>('http://localhost:4401/api/users/login', user)
+      }>(this.apiURL + '/api/users/login', user)
       .subscribe(
         (response) => {
           const token = response.token;
@@ -186,7 +191,7 @@ export class UsersService {
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
     console.log('Logout runs seccesfully!');
-    this.router.navigate(['/']);
+    this.router.navigate(['/Homepage/View']);
   }
 
   private setAuthTimer(duration: number) {
@@ -258,10 +263,7 @@ export class UsersService {
     userData.append('skills', skills);
 
     this.http
-      .patch<{ message: string }>(
-        'http://localhost:4401/api/users/up/',
-        userData
-      )
+      .patch<{ message: string }>(this.apiURL + '/api/users/up/', userData)
       .subscribe(
         () => {
           console.log('User Updateded Successfuly !');
@@ -282,9 +284,7 @@ export class UsersService {
 
   getusers() {
     this.http
-      .get<{ message: string; users: any }>(
-        'http://localhost:4401/api/users/data'
-      )
+      .get<{ message: string; users: any }>(this.apiURL + '/api/users/data')
       .pipe(
         map((usertData) => {
           return usertData.users.map(
@@ -317,5 +317,4 @@ export class UsersService {
   getUserUpdateListener() {
     return this.userUpdated.asObservable();
   }
-
 }

@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="filter-section"></div>
+  <mat-paginator
+    #paginator
+    class="demo-paginator"
+    (page)="handlePageEvent($event)"
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="pageIndex"
+    aria-label="Select page"
+  >
+  </mat-paginator>
+  <div class="posts">
+    <div class="post" *ngFor="let group of groups">
+      <div>
+        <img class="post-img" src="{{ group.groupFilePath }}" alt="" />
+      </div>
+
+      <div class="post-tag">
+        {{ group.groupObject }}
+      </div>
+
+      <div class="post-description">
+        {{ group.groupDescription }}
+      </div>
+      <div class="post-more">
+        <div>
+          <mat-icon> code </mat-icon>
+          <span class="post-more-text"> {{ group.groupLevel }}</span>
+        </div>
+
+        <div>
+          <mat-icon> access_time </mat-icon>
+          <span class="post-more-text"> {{ group.groupPeriode }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

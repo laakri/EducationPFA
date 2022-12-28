@@ -1,15 +1,15 @@
 .example-container {
-    width: 100%;
-    background-color: var(--dark-color) !important;
-    height: 100%;
-    color: var(--whitecolor);
+  width: 100%;
+  background-color: var(--dark-color) !important;
+  height: 100%;
+  color: var(--whitecolor);
 }
 
-  .sidebar {
-    width: 75px;
-    height: 100%;
-    padding: 5px;
-    border-right: solid rgb(44, 44, 44) 1px;
-    background-color: #19181a;
-    color: #e2e2e2;
-  }
+.sidebar {
+  width: 75px;
+  height: 100%;
+  padding: 5px;
+  border-right: solid rgb(44, 44, 44) 1px;
+  background-color: #0c1017;
+  color: #e2e2e2;
+}

@@ -8,7 +8,6 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { GroupeComponent } from './groupe/groupe.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { CatGroupsComponent } from './groupe/category-group/category-group.component';
-import { AddGroupComponent } from './groupe/add-group/add-group.component';
 import { SignUpComponent } from './login/sign-up/sign-up.component';
 import { SignInComponent } from './login/sign-in/sign-in.component';
 import { LoginComponent } from './login/login.component';
@@ -18,15 +17,16 @@ import { ProfileComponent } from './profile/profile.component';
 import { AnnouncementComponent } from './announcement/announcement.component';
 import { ContactPageComponent } from './home-page/contact-page/contact-page.component';
 import { AboutPageComponent } from './home-page/about-page/about-page.component';
-import { SpecialityGroupComponent } from './groupe/speciality-group/speciality-group.component';
 import { ViewGroupComponent } from './groupe/view-group/view-group.component';
 import { ErrorComponent } from './error/error.component';
 import { ErrorInterceptor } from './error-interceptor';
-
 import { ViewGroupComponentColumnChart } from './groupe/view-group/column-chart/view-group.component';
+import { AddCategoryComponent } from './groupe/add-category/add-category.component';
+import { PostPageComponent } from './post-page/post-page.component';
+import { CreatePostComponent } from './groupe/create-post/create-post.component';
+import { GroupsListComponent } from './groups-list/groups-list.component';
 
 /* *******************MODELS******************** */
-
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
@@ -51,7 +51,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatChipsModule } from '@angular/material/chips';
-/*import { SlickCarouselModule } from 'ngx-slick-carousel';*/
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -59,15 +59,13 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import { NgApexchartsModule } from "ng-apexcharts";
-import {MatRadioModule} from '@angular/material/radio';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-
-
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 /* ********************************************* */
-
-
 
 @NgModule({
   declarations: [
@@ -76,7 +74,6 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     HomePageComponent,
     GroupeComponent,
     CatGroupsComponent,
-    AddGroupComponent,
     SignUpComponent,
     SignInComponent,
     LoginComponent,
@@ -86,9 +83,12 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     ProfileComponent,
     AnnouncementComponent,
     ContactPageComponent,
-    SpecialityGroupComponent,
     ViewGroupComponent,
-    ViewGroupComponentColumnChart
+    ViewGroupComponentColumnChart,
+    AddCategoryComponent,
+    PostPageComponent,
+    CreatePostComponent,
+    GroupsListComponent,
   ],
   imports: [
     BrowserModule,
@@ -120,7 +120,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatAutocompleteModule,
     BrowserAnimationsModule,
     MatChipsModule,
-   /* SlickCarouselModule,*/
+    /* SlickCarouselModule,*/
     ClipboardModule,
     MatTooltipModule,
     MatStepperModule,
@@ -132,14 +132,15 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatButtonToggleModule,
     NgApexchartsModule,
     MatRadioModule,
-    MatProgressBarModule
-    
+    MatProgressBarModule,
+    SlickCarouselModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
   entryComponents: [ErrorComponent],
-
 })
-export class AppModule { }
+export class AppModule {}

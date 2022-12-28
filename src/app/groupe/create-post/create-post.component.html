@@ -1,0 +1,337 @@
+<div class="mainpage">
+  <ng-container [ngSwitch]="stepperOrientation | async"> </ng-container>
+  <form (submit)="addinfo(formGroup)" [formGroup]="formGroup">
+    <mat-stepper
+      class="example-stepper"
+      [orientation]="(stepperOrientation | async)!"
+      [linear]="isLinear"
+      formArrayName="formArray"
+    >
+      <!------------------------------------First------------------------------------------------->
+
+      <mat-step
+        label="Fill out your Group Type"
+        formGroupName="0"
+        [stepControl]="formArray?.get([0])!"
+        ><div class="mat-step-content">
+          <!--------------------- Object ---------------------->
+
+          <mat-form-field appearance="outline">
+            <mat-label>Object</mat-label>
+            <input
+              matInput
+              placeholder="I will make a NFT collection for you"
+              formControlName="objectFormCtrl"
+              required
+            />
+          </mat-form-field>
+          <!--------------------- Category ---------------------->
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Category</mat-label>
+
+            <input
+              type="text"
+              matInput
+              [formControl]="myControl"
+              formControlName="categoryFormCtrl"
+              [matAutocomplete]="auto"
+              #tooltip="matTooltip"
+              matTooltip="category"
+              matTooltipHideDelay="100"
+              required
+            />
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option
+                *ngFor="let option of filteredOptions | async"
+                [value]="option"
+              >
+                {{ option.name }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <!--------------------- Teacher ---------------------->
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Teacher</mat-label>
+
+            <input
+              type="text"
+              matInput
+              [formControl]="myControl"
+              formControlName="teacherFormCtrl"
+              [matAutocomplete]="auto"
+              #tooltip="matTooltip"
+              matTooltip="catégorie"
+              matTooltipHideDelay="100"
+              required
+            />
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option
+                *ngFor="let option of filteredOptions | async"
+                [value]="option"
+              >
+                {{ option.name }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <!--------------------- Description ---------------------->
+
+          <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea
+              matInput
+              name="description"
+              placeholder="Ex. It makes me feel..."
+              formControlName="descriptionFormCtrl"
+              required
+            ></textarea>
+          </mat-form-field>
+
+          <!--------------------- File Path ---------------------->
+
+          <div class="profile-pic-flex">
+            <div class="profile-pic-text">Upload Group picture</div>
+            <button
+              type="button"
+              class="profile-pic"
+              (click)="filepicker.click()"
+            >
+              <div
+                *ngIf="imagePreview != '' && imagePreview"
+                class="imagePreview"
+              >
+                <img [src]="imagePreview" alt="sdf" />
+              </div>
+              <span class="material-icons">file_upload</span>
+            </button>
+            <input
+              type="file"
+              formControlName="groupFilePathFormCtrl"
+              #filepicker
+              (change)="onFilePicked($event)"
+              required
+            />
+          </div>
+
+          <div>
+            <button
+              mat-button
+              type="button"
+              class="action-button"
+              matStepperNext
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </mat-step>
+
+      <!---------------------------------------Secend------------------------------------------------>
+
+      <mat-step
+        label="Fill out your address"
+        formGroupName="1"
+        [stepControl]="formArray?.get([1])!"
+      >
+        <div class="mat-step-content">
+          <div class="secend-step-content-flex">
+            <div class="secend-step-content">
+              <!--------------------- Price ---------------------->
+
+              <mat-form-field appearance="outline">
+                <mat-label>Price</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  placeholder="50 ** DT"
+                  formControlName="groupPriceFormCtrl"
+                  required
+                />
+              </mat-form-field>
+              <!--------------------- Level ---------------------->
+
+              <mat-form-field appearance="outline">
+                <mat-label>Experience Level</mat-label>
+                <mat-select formControlName="groupLevelFormCtrl">
+                  <mat-option value="Beginner">Beginner </mat-option>
+                  <mat-option value="Intermediate">Intermediate</mat-option>
+                  <mat-option value="Advanced">Advanced</mat-option>
+                  <mat-option value="Expert">Expert</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <!--------------------- Date Picker ---------------------->
+              <mat-form-field appearance="outline">
+                <mat-label>Select the starting date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  [formControlName]="'selectedDate'"
+                  (dateChange)="checkDate(picker)"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+
+                <mat-error *ngIf="showError"
+                  >The selected date cannot be before today</mat-error
+                >
+              </mat-form-field>
+              <!--------------------- Time Section ---------------------->
+
+              <div class="secend-step-content-time">
+                <mat-form-field appearance="outline">
+                  <mat-label>Learning period </mat-label>
+                  <input
+                    matInput
+                    type="number"
+                    placeholder="1 ** 100"
+                    formControlName="groupPeriodeFormCtrl"
+                    min="1"
+                    max="3"
+                    [(ngModel)]="value"
+                    required
+                  />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>Month / Day / Week </mat-label>
+                  <mat-select formControlName="groupPeriodeTimeFormCtrl">
+                    <mat-option value="Month">Month</mat-option>
+                    <mat-option value="Week">Week</mat-option>
+                    <mat-option value="Day">Day</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <mat-form-field appearance="outline">
+                <mat-label>Hours / Week</mat-label>
+                <input
+                  matInput
+                  type="number"
+                  max="20"
+                  placeholder="1 ** 20"
+                  formControlName="groupHourPerWeekFormCtrl"
+                  required
+                />
+              </mat-form-field>
+
+              <!--------------------- Xp ---------------------->
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Experiense Needed</mat-label>
+                <textarea
+                  matInput
+                  name="description"
+                  placeholder="Ex. It makes me feel..."
+                  formControlName="groupExperienseNeedFormCtrl"
+                  required
+                ></textarea>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Experiense to be Gained</mat-label>
+                <textarea
+                  matInput
+                  name="description"
+                  placeholder="Ex. It makes me feel..."
+                  formControlName="groupExperienseGainFormCtrl"
+                ></textarea>
+              </mat-form-field>
+
+              <!----------------- mat chip-------------------->
+
+              <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Futures</mat-label>
+                <mat-chip-list
+                  #chipGrid
+                  aria-label="Enter keywords"
+                  [formControl]="chipControl"
+                >
+                  <mat-chip
+                    *ngFor="let keyword of keywords"
+                    (removed)="removeKeyword(keyword)"
+                  >
+                    {{ keyword }}
+                    <button
+                      matChipRemove
+                      style="color: white"
+                      aria-label="'remove ' + keyword"
+                    >
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                </mat-chip-list>
+                <input
+                  class="mat-chip-input"
+                  placeholder="New keyword..."
+                  [matChipInputFor]="chipGrid"
+                  (matChipInputTokenEnd)="add($event)"
+                />
+              </mat-form-field>
+
+              <!------------------------------------->
+
+              <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>More Details</mat-label>
+                <textarea
+                  matInput
+                  name="description"
+                  placeholder="Ex. It makes me feel..."
+                  formControlName="groupDetailsFormCtrl"
+                  required
+                ></textarea>
+              </mat-form-field>
+            </div>
+            <!------------------------------------------------->
+          </div>
+          <div>
+            <button
+              mat-button
+              type="button"
+              class="action-button"
+              matStepperPrevious
+            >
+              Back
+            </button>
+            <button
+              mat-button
+              type="button"
+              class="action-button"
+              matStepperNext
+            >
+              Next
+            </button>
+          </div>
+        </div>
+      </mat-step>
+
+      <!----------------------------------------Third------------------------------------------->
+
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <div class="mat-step-content">
+          <div class="done-div">
+            <p>You are now done</p>
+
+            <span class="material-icons">check_circle_outline</span>
+          </div>
+          <div>
+            <button
+              mat-button
+              class="action-button"
+              type="button"
+              matStepperPrevious
+            >
+              Back
+            </button>
+            <button mat-button class="action-button" type="submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </form>
+</div>

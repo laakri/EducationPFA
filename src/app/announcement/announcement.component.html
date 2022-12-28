@@ -1,126 +1,107 @@
-
 <div class="all-flex">
-    <div class="mainpage" >
-        <div class="top-div" >
-            <div class="top-div-text">
-                <p> Announcement </p>
-            </div>
-        </div>
+  <div class="mainpage">
+    <div class="top-div">
+      <div class="top-div-text">
+        <p>Announcement</p>
+      </div>
+    </div>
 
-    <div class="announc-list" >
-        <div class="create-announ">
-          <form (submit)="onAddAnnounc(addAnn)" #addAnn="ngForm">
-        <mat-form-field  appearance="outline"  
-        >
-            <textarea 
-            matInput
-            ngModel
-            name="content"
-            required
-            #content="ngModel" placeholder="❉/  Create Announcememnt ...">
+    <div class="announc-list">
+      <div class="create-announ">
+        <form (submit)="onAddAnnounc(addAnn)" #addAnn="ngForm">
+          <mat-form-field appearance="outline">
+            <textarea
+              matInput
+              ngModel
+              name="content"
+              required
+              #content="ngModel"
+              placeholder="❉/  Create Announcememnt ..."
+            >
             <mat-error *ngIf="content.invalid"
             >Content is <strong>required</strong></mat-error
-          ></textarea>
+          ></textarea
+            >
           </mat-form-field>
-          <button mat-flat-button	class="button-announ" type="submit" >
-            Submit</button>
+          <button mat-flat-button class="button-announ" type="submit">
+            Submit
+          </button>
         </form>
-        </div>
-        
-        <div class="button-announ-section" >
+      </div>
 
+      <div class="button-announ-section">
+        <button
+          mat-mini-fab
+          class="header-button"
+          [matMenuTriggerFor]="beforeMenu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>filter_list</mat-icon>
+        </button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before" class="menu">
+          <button
+            mat-menu-item
+            class="menu-item"
+            *ngFor="let option of options"
+            (click)="onChange(option.value)"
+          >
+            <mat-icon class="menu-item">{{ option.iconvalue }}</mat-icon>
+            <span>{{ option.namevalue }}</span>
+          </button>
+        </mat-menu>
+      </div>
 
-            <button mat-mini-fab class="header-button" 
-            [matMenuTriggerFor]="beforeMenu"
-            aria-label="Example icon-button with a menu">
-                <mat-icon>filter_list</mat-icon>
-              </button>
-              <mat-menu #beforeMenu="matMenu" 
-              xPosition="before"
-              class="menu"
-              >
-
-              <button mat-menu-item class="menu-item" 
-              *ngFor="let option of options"
-              (click)="onChange(option.value)"
-              >
-                <mat-icon class="menu-item" >{{option.iconvalue}}</mat-icon>
-                <span >{{option.namevalue}}</span>
-              </button>
-
-              </mat-menu>
-        </div>
-        
-        
-
-        <div class="announc" *ngFor="let Announc of Announs">
-          
-            <div class="announc-info" >
-                <mat-icon *ngIf="Announc.userRole == 'student'">wallet_travel</mat-icon>
-                <mat-icon *ngIf="Announc.userRole == 'admin'">campaign</mat-icon>
-                <h3 *ngIf="Announc.userRole == 'admin'" >Announcement</h3>
-                <div *ngIf="Announc.userRole == 'student'" class="announc-teacher" >
-                <p class="announc-teacher-1">{{Announc.userId.name}}</p>
-                <p class="announc-teacher-2">{{Announc.userId.category}}</p>
-                </div>
-            </div>
-            <span>
-                {{Announc.content}}
-            </span>
-            <div class="date" >
-              <span>Created at {{Announc.createdAt}}</span>
-            </div>
-        </div>
-
-        <div class="announc_null" *ngIf="announslength <= 0 " >
-          
-            There is no announcement !
-
-        </div>
-
-
-
-
-    </div>
-
-
-    </div>
-
-    <div class="teacher-list" >
-
-        <h4>TEACHER</h4>
-        <mat-form-field class="search-bar" appearance="outline">
-            <mat-label> ❉/  Search</mat-label>
-        
-            <input
-              type="text"
-              matInput
-            />
-          </mat-form-field>
-          <div class="announc_null" *ngIf="userlength <= 0 " >
-          
-            There is no Teacher !
-
-        </div>
-          <div class="groups-category" *ngFor="let user of users" >
-            <div  > 
-              <div class="groups-category-up" >
-                <mat-icon  aria-label="computer" >people</mat-icon>
-                <span class="groups-category-name" >{{user.name}}</span>
-
-              </div> 
-              <mat-divider></mat-divider>
-
-              <div class="group-category-down" >
-                  <span>{{user.email}}</span>
-                  <button mat-button 
-                  (click)="onCopy(user.email)"
-                  ><i class="material-icons">content_copy</i> </button>
-              </div>
-
-            </div>
-
+      <div class="announc" *ngFor="let Announc of Announs">
+        <div class="announc-info">
+          <mat-icon *ngIf="Announc.userRole == 'student'"
+            >wallet_travel</mat-icon
+          >
+          <mat-icon *ngIf="Announc.userRole == 'admin'">campaign</mat-icon>
+          <h3 *ngIf="Announc.userRole == 'admin'">Announcement</h3>
+          <div *ngIf="Announc.userRole == 'student'" class="announc-teacher">
+            <p class="announc-teacher-1">{{ Announc.userId.name }}</p>
+            <p class="announc-teacher-2">{{ Announc.userId.category }}</p>
           </div>
+        </div>
+        <span>
+          {{ Announc.content }}
+        </span>
+        <div class="date">
+          <span>Created at {{ Announc.createdAt }}</span>
+        </div>
+      </div>
 
+      <div class="announc_null" *ngIf="announslength <= 0">
+        There is no announcement !
+      </div>
     </div>
+  </div>
+
+  <div class="teacher-list">
+    <h4>TEACHER</h4>
+    <mat-form-field class="search-bar" appearance="outline">
+      <mat-label> ❉/ Search</mat-label>
+
+      <input type="text" matInput />
+    </mat-form-field>
+    <div class="announc_null" *ngIf="userlength <= 0">
+      There is no Teacher !
+    </div>
+    <div class="groups-category" *ngFor="let user of users">
+      <div>
+        <div class="groups-category-up">
+          <mat-icon aria-label="computer">people</mat-icon>
+          <span class="groups-category-name">{{ user.name }}</span>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div class="group-category-down">
+          <span>{{ user.email }}</span>
+          <button mat-button (click)="onCopy(user.email)">
+            <i class="material-icons">content_copy</i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

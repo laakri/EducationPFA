@@ -2,11 +2,12 @@
 <div class="mainpage" >
 
 
-
     <div class="first-content-flexebility" >
       <div class="left-text-field " >
-        <span  class="left-text-field-span" >Studying Online is now much easier </span>
-        <p class="left-text-field-p" >Accès aux résultats d'analyse en ligne </p>
+        <span  class="left-text-field-span" >Welcome to  NextGen" </span>
+        <p class="left-text-field-p" >
+          Sign up for a formation course and take the first step towards reaching your potential !
+        </p>
         <button mat-raised-button id="button1" routerLink="/auth/signup"  >Join Us</button>
       </div>
     
@@ -16,11 +17,10 @@
     
       <div>
         <mat-card class="right-card-field " >
-          <img mat-card-image src="../../../assets/mainpage-pic.jpg" alt="analyse">
+          <img mat-card-image src="../../../assets/3847366.jpg" alt="analyse">
           <mat-card-content>
             <p style="text-align:center; font-size: larger;" >
-              Une belle équipe motivées font tourner des appareils d’analyse high-tech avec en plus deux biologistes.
-    
+              Expert professionals offer top-quality formation courses to help you reach your goals.
             </p>
           </mat-card-content>
         </mat-card>
@@ -55,9 +55,90 @@
     
     </div>
     
-    
-    
-    
+    <!--------------------------------------------------------------------------------------->
+
+    <div class="between-component-text" >
+      <span>Des details a Notre Laboratoire</span>
+  </div>
+  <div class="one-content">
+  <div class="mainpage">
+    <div class="one-content-flex">
+      <div class="one-content-left">
+        <div class="one-content-text">COMUNICATION PROTOCOL</div>
+        <h1>Whether you're looking to advance your career</h1>
+
+        <h3>
+           start a new business,
+           or simply learn something new,
+           our formation courses are tailored to your individual needs and goals.
+        </h3>
+      </div>
+
+      <div class="one-content-right">
+        <div class="one-content-right-item"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    <!--------------------------------------------------------------------------------------->
+
+<div class="slick-carousel-content">
+  <div class="slick-carousel-content-size">
+    <mat-divider ></mat-divider>
+    <div class="see-more" >
+      <a mat-button	>
+      <span>See More</span>
+      <mat-icon>arrow_forward_ios</mat-icon>
+      </a>
+
+    </div>
+    <ngx-slick-carousel
+      class="carousel"
+      #slickModal="slick-carousel"
+      [config]="slideConfig"
+    >
+      <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+               
+        
+        
+        <div class="post" width="280px;" height="370px;" > 
+          <div  >
+            <img class="post-img"src="../../../assets/post-img.jpg" alt="">
+          </div>
+        
+          <div class="post-tag" >
+            Data Engineering with AWS with angular material
+          </div>
+          
+          <div class="post-description" >
+            Data Engineering with AWS with angular material
+            Data Engineering with AWS with angular material
+            Data Engineering with AWS with angular material
+          </div>
+          <div class="post-more" >
+        
+            <div>
+              <mat-icon> code </mat-icon>
+              <span class="post-more-text"> Beginner</span>
+            </div>
+        
+            <div>
+              <mat-icon> access_time </mat-icon>
+              <span class="post-more-text"> 4 Months</span>
+            </div>
+        
+          </div>
+        
+          </div>
+        
+      </div>
+    </ngx-slick-carousel>
+  </div>
+</div>
+
+<!--------------------------------------------------------------------------------------->
+
+  
     
     <div>
     </div>

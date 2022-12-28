@@ -1,28 +1,40 @@
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 const enumValues = require("mongoose-enumvalues");
-const Categ = require("./category");
-
-
+const User = require("./user");
 
 const groupSchema = mongoose.Schema(
   {
-    
-    categId: { type: mongoose.Schema.Types.ObjectId, ref: Categ  },  
-    groupName: { type: String, required: true ,unique: true },
-    groupCategory: { type: String, required: true},
-    groupSpeciality: { type: String, required: true},
-    groupTeacher: { type: String, required: true},
-    groupLessonHours:{type :String,default:"1" },
-    groupLessoncount:{type :String,default:"1" },
-    groupLessondate:{type:String ,  required:true },
-    groupUsers: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "User",
-        }
-      ],
+    /*teacherId: { type: mongoose.Schema.Types.ObjectId, ref: User },*/
 
+    groupObject: { type: String, required: true },
+    groupCategory: { type: String, required: true },
+    teacherId: { type: String, required: true },
+    groupDescription: { type: String, required: true },
+
+    groupFilePath: {
+      type: String,
+      default: "../../assets/reactjs.png",
+    },
+
+    groupPrice: { type: String, required: true },
+    groupLevel: { type: String, default: "Beginner" },
+    groupStartDate: { type: String, required: true },
+    groupPeriode: { type: String, default: "1" },
+    groupHourPerWeek: { type: String, default: "10" },
+
+    groupExperienseNeed: { type: String, default: "None" },
+    groupExperienseGain: { type: String, default: "None" },
+    groupFuturesGain: { type: String, default: "None" },
+
+    groupDetails: { type: String, default: "None" },
+
+    groupUsers: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   { timestamps: true }
 );

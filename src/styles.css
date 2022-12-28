@@ -1,5 +1,6 @@
 @import "@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 html,
 body {
@@ -12,10 +13,10 @@ body {
   background: var(--darkcolor);
   font-family: "Roboto", sans-serif;
 
-  --bordercolor:rgb(44, 44, 44);
+  --bordercolor: #2f353c;
 
-  --darkcolor: #19181a;
-  --soft-darkcolor: #26272b;
+  --darkcolor: #0c1017;
+  --soft-darkcolor: #171a22;
   --whitecolor: #e2e2e2;
   --graycolor: #8a8d8e;
   --maincolor: #6b69e0;
@@ -24,7 +25,6 @@ body {
   --darktranscolor: #19181ada;
   --soft-darktranscolor: #26272b69;
   --goldcolor: #d48a0d;
-
 }
 
 body.bright-theme {
@@ -37,11 +37,10 @@ body.bright-theme {
   background: white;
   font-family: "Roboto", sans-serif;
 
-  --bordercolor:rgb(219, 219, 219);
-
+  --bordercolor: rgb(219, 219, 219);
 
   --darkcolor: #fdfdfd;
-  --soft-darkcolor: #e6e6e6;
+  --soft-darkcolor: #f1f0f0;
   --whitecolor: #000000;
   --graycolor: #444444;
   --maincolor: #6b69e0;
@@ -50,7 +49,6 @@ body.bright-theme {
   --darktranscolor: #fdfdfdce;
   --soft-darktranscolor: #94959769;
   --goldcolor: #d48a0d;
-
 }
 
 a,
@@ -66,22 +64,21 @@ ul {
   list-style-type: none;
 }
 
-
 /*********************-Active Button********************/
 
 .activebutton {
-  background-color: #4242429c;
+  background-color: #2e37469c;
 }
 
 /*********************-Snack Bar************************/
 
 .red-snackbar {
   background: #bf3735;
-  color: var(--whitecolor);
+  color: white;
 }
 .green-snackbar {
   background: #15703f;
-  color: var(--whitecolor);
+  color: white;
 }
 /*********************-Dialog***************************/
 
@@ -94,15 +91,20 @@ mat-dialog-container {
 .backdropBackground {
   background-color: #120f1aa2;
 }
+/********************* -Mat-card ***************************/
+.mat-card {
+  background-color: transparent;
+  color: var(--whitecolor);
+}
+
 /********************* -Slick ***************************/
 
 .slick-prev:before,
 .slick-next:before {
-  color: var() !important;
-  font-size: 28px !important ;
+  color: var(--whitecolor) !important;
+  font-size: 25px !important ;
   margin: -18px;
 }
-
 /********************* -Form ***************************/
 
 .mat-form-field-label {
@@ -149,7 +151,7 @@ mat-divider {
 
 /********************* ---stteper------ ***************************/
 .mat-stepper-horizontal-line {
-  background-color: rgba(128, 128, 128, 0.493) !important;
+  background-color: rgba(185, 178, 178, 0.493) !important;
 }
 .mat-step-icon {
   background-color: var(--graycolor) !important;
@@ -160,7 +162,7 @@ mat-divider {
   background-color: var(--maincolor) !important;
 }
 .mat-step-text-label {
-  color: var(--whtiecolor) !important;
+  color: var(--whitecolor) !important;
 }
 .basic-container .mat-step-header .mat-step-icon-selected {
   background-color: #6cb73a;
@@ -171,7 +173,6 @@ mat-divider {
   color: var(--whtiecolor);
 }
 
-
 /*********************-Mat paginator********************/
 .mat-paginator .mat-paginator-container {
   background-color: var(--darkcolor) !important;
@@ -179,18 +180,16 @@ mat-divider {
 }
 .mat-select-arrow-wrapper {
   color: var(--whitecolor) !important;
-  
 }
-.mat-select{
+.mat-select {
   margin-left: 10px;
 }
-.mat-select-value{
+.mat-select-value {
   color: var(--whitecolor) !important;
 }
-.mat-paginator-icon{
+.mat-paginator-icon {
   color: var(--whitecolor) !important;
-
-} 
+}
 /*********************-Mat Checkbox********************/
 
 .mat-checkbox-checked .mat-checkbox-background {
@@ -203,8 +202,8 @@ mat-divider {
 
 /*********************-MAt slide tagle ********************/
 
-.mat-slide-toggle{
-  color :var(--whtiecolor) !important;
+.mat-slide-toggle {
+  color: var(--whtiecolor) !important;
 }
 
 /********************- mat chip  -**************************/
@@ -213,7 +212,6 @@ mat-chip {
   background-color: rgba(128, 128, 128, 0.295) !important;
   color: var(--whitecolor) !important ;
 }
-
 
 /*******************************************************/
 .mat-elevation-z8 {
@@ -233,48 +231,41 @@ mat-chip {
   min-width: 30px !important;
   color: var(--whitecolor);
   font-size: 16px;
-  
 }
-
 
 /* Styles for the active tab label */
 .mat-tab-label.mat-tab-label-active {
   color: var(--whitecolor);
-
 }
-
 /* Styles for the ink bar */
 .mat-ink-bar {
   background-color: var(--whitecolor) !important;
 }
 /*************************** -toggle-group- ****************************/
 
-.mat-button-toggle-group{
+.mat-button-toggle-group {
   border: transparent solid 1px;
 }
-.mat-button-toggle{
+.mat-button-toggle {
   background-color: transparent;
   color: var(--whitecolor);
   border: var(--bordercolor) solid 1px !important;
   margin: auto 5px;
   border-radius: 3px;
-
 }
-.mat-button-toggle mat-icon{
+.mat-button-toggle mat-icon {
   font-size: 20px;
 }
 .mat-button-toggle-checked {
   background-color: var(--whitecolor);
   color: var(--darkcolor) !important;
-
 }
 
 /*************************** -radio button- ****************************/
 
-
-.mat-radio-outer-circle{
+.mat-radio-outer-circle {
   border: var(--whitecolor);
 }
-.mat-radio-button{
+.mat-radio-button {
   margin: auto 10px;
 }
