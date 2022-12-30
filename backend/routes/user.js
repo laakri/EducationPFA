@@ -115,6 +115,27 @@ router.get("/data", (req, res, next) => {
       });
     });
 });
+/*************-Get Users with filter-********** */
+
+router.get("/search", (req, res) => {
+  const query = req.query.name;
+
+  User.find({ name: { $regex: "^" + query, $options: "i" }, roles: "student" })
+    .then((documents) => {
+      res.status(200).json({
+        message: "User runs seccesfully !",
+        users: documents,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: err,
+        message: "User Failed !",
+      });
+    });
+});
+
 /*************-Get Teachers-********** */
 
 router.get("/datateacher", (req, res, next) => {

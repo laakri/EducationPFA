@@ -151,20 +151,26 @@ router.get("/GetOne/:id", (req, res, next) => {
 router.get("/GetAllFiltred", (req, res, next) => {
   const { groupCategory, groupLevel } = req.query;
   const limit = req.query.pageSize;
-  const skip = req.query.page;
+  const page = req.query.page;
 
+  const skip = page * limit;
+
+  console.log(skip);
   const filter = {};
   if (groupCategory) {
     filter.groupCategory = groupCategory;
   }
   if (groupLevel) {
     filter.groupLevel = groupLevel;
-  }
-
+  } /*
+  var currentDate = new Date();
+  
+  filter.groupStartDate = { $gte: currentDate };
+*/
   Group.find(filter)
     .limit(limit)
     .skip(skip)
-    /*.sort({ groupStartDate: -1 })*/
+    .sort({ groupStartDate: 1 })
     .select(["-groupUsers", "-__v"])
     .then((documents) => {
       res.status(200).json({

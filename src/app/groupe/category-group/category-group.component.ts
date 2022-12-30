@@ -57,7 +57,6 @@ export class CatGroupsComponent implements OnInit {
     this.GroupSub = this.GroupService.getGroupUpdateListener().subscribe(
       (Groups: []) => {
         this.Groups = Groups.reverse();
-        console.log(this.Groups);
       }
     );
   }

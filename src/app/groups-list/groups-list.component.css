@@ -1,8 +1,45 @@
 .container {
-  max-width: 1290px;
-  min-height: 300px;
+  max-width: 1200px;
+  min-height: 10px;
   margin: auto;
 }
+.filter-section {
+  margin: 10px auto;
+  border-bottom: var(--bordercolor) solid 1px;
+  padding: 20px;
+}
+.filter-section mat-form-field {
+  margin: auto 20px;
+}
+
+.hype-banner {
+  background-color: var(--soft-darkcolor);
+  min-height: 180px;
+  border-bottom: var(--bordercolor) solid 1px;
+  position: relative;
+  overflow: hidden;
+  z-index: -2;
+}
+
+.hype-banner img {
+  top: -170px;
+  height: 530px;
+  right: 50px;
+  position: absolute;
+  z-index: -1;
+}
+.hype-banner-text {
+  margin: 20px;
+  height: 100%;
+  max-width: 70%;
+  font-size: 25px;
+  line-height: 1.5;
+}
+.hype-banner button {
+  margin: auto 20px;
+  font-size: 16px;
+}
+
 /********************************************************************************/
 .posts {
   margin: 40px auto;
@@ -14,9 +51,21 @@
   margin: 20px 15px;
   background-color: var(--soft-darkcolor);
   border-radius: 10px;
-  width: 290px;
+  width: 260px;
   height: 390px;
   position: relative;
+}
+.post:hover {
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(
+      to top,
+      var(--darkcolor),
+      var(--whitecolor),
+      var(--darkcolor)
+    )
+    1 100%;
+  cursor: pointer;
 }
 .post-img {
   border-top-left-radius: 10px;
@@ -48,7 +97,7 @@
 }
 
 .post-more-text {
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .post-more div {
@@ -60,5 +109,16 @@
   line-height: 1.6;
   word-break: break-word;
   font-size: 14px;
+  color: var(--graycolor);
+}
+.missing-post {
+  border: solid 1px var(--bordercolor);
+  margin: 50px auto;
+  border-radius: 10px;
+  height: 50px;
+  width: 200px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 18px;
   color: var(--graycolor);
 }

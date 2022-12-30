@@ -282,9 +282,11 @@ export class UsersService {
 
   /*************************************************/
 
-  getusers() {
+  getusers(filter: string) {
     this.http
-      .get<{ message: string; users: any }>(this.apiURL + '/api/users/data')
+      .get<{ message: string; users: any }>(
+        this.apiURL + '/api/users/search/' + filter
+      )
       .pipe(
         map((usertData) => {
           return usertData.users.map(

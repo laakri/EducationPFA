@@ -48,7 +48,6 @@ export class ViewGroupComponent implements OnInit {
     this.categSub = this.CategoryService.getCategUpdateListener().subscribe(
       (categs: Categ[]) => {
         this.categs = categs;
-        console.log(this.categs);
         this.categlength = categs.length;
       }
     );

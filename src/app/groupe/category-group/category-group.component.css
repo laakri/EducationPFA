@@ -1,86 +1,78 @@
-
-.info-section{
-
-    border: rgb(44, 44, 44) solid 1px;
-    height: 160px;
-    width: 95%;
-    padding: 20px;
-    margin: 20px auto;
-    border-radius: 10px;
-    display:flex ;
+.info-section {
+  border: rgb(44, 44, 44) solid 1px;
+  height: 160px;
+  width: 90%;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  display: flex;
 }
-.info-text{
-    margin: auto 50px;
+.info-text {
+  margin: auto 50px;
 }
-.span-text{
-    color: var(--graycolor);
+.span-text {
+  color: var(--graycolor);
 }
-.info-square{
-    height: 98%;
-    width: 250px;
-    border-radius: 10px;
-    margin: auto 30px;
-    border: solid 1px rgb(44, 44, 44);
-
+.info-square {
+  height: 98%;
+  width: 250px;
+  border-radius: 10px;
+  margin: auto 30px;
+  border: solid 1px rgb(44, 44, 44);
 }
-.square2{
-    border: solid 1px rgb(44, 44, 44);
-
+.square2 {
+  border: solid 1px rgb(44, 44, 44);
 }
-.info-square-logo{
-    height: 55px;
- }
- .info-square-logo mat-icon{
-    font-size: 40px;
-    margin: 10px;
-    color: #b1b1b1;
-    padding: 0px 15px;
-
- }
-.info-square-info{
-    height: 35px;
-    color: var(--whitecolor);
-    margin: 10px auto;
-    font-size: 16px;
-    padding: 5px 20px;
-
+.info-square-logo {
+  height: 55px;
 }
-.info-square-number{
-    height: 25px;
-    margin: 5px auto;
-    padding: 0 25px;
-    font-size: 18px;
-
-
+.info-square-logo mat-icon {
+  font-size: 40px;
+  margin: 10px;
+  color: #b1b1b1;
+  padding: 0px 15px;
+}
+.info-square-info {
+  height: 35px;
+  color: var(--whitecolor);
+  margin: 10px auto;
+  font-size: 16px;
+  padding: 5px 20px;
+}
+.info-square-number {
+  height: 25px;
+  margin: 5px auto;
+  padding: 0 25px;
+  font-size: 18px;
 }
 
 table {
-    width: 98%;
-    margin: 20px auto;
-    box-shadow: none;
-    border: none;
-    background-color: transparent !important;
+  width: 98%;
+  margin: 20px auto;
+  box-shadow: none;
+  border: none;
+  background-color: transparent !important;
 }
 .demo-table {
-    width: 100%;
-  }
-  
-  .mat-row .mat-cell {
-    border-bottom: 1px solid transparent ;
-    border-top: 1px solid transparent ;
-    cursor: pointer;
-  }
-  
-  .mat-row:hover .mat-cell {
-    border-color: currentColor;
-  }
-  
-  .demo-row-is-clicked {
-    font-weight: bold;
-  }
-  table th{
-    border-bottom: var(--bordercolor) solid 1px ;
-  }
-.filter-section{
-    margin-left: 20px;
+  width: 100%;
+}
+
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+table th {
+  border-bottom: var(--bordercolor) solid 1px;
+}
+.filter-section {
+  margin-left: 20px;
 }

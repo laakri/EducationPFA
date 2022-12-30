@@ -1,5 +1,44 @@
+<div class="hype-banner">
+  <img src="../../assets/post-img.png" alt="" />
+  <div class="container">
+    <div class="hype-banner-text">
+      "Take control of your professional development and invest in yourself with
+      one of our high-quality formations. You won't regret it
+    </div>
+    <button mat-raised-button>Enroll Now</button>
+  </div>
+</div>
+<div class="filter-section">
+  <div class="container">
+    <mat-form-field appearance="outline">
+      <mat-label>Filter By Category</mat-label>
+      <mat-select
+        [(ngModel)]="groupCategory"
+        (ngModelChange)="onChangeCategory(groupCategory)"
+      >
+        <mat-option
+          *ngFor="let option of categoryoptions"
+          [value]="option.value"
+        >
+          {{ option.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Filter By Difficulty</mat-label>
+      <mat-select
+        [(ngModel)]="groupLevel"
+        (ngModelChange)="onChangeLevel(groupLevel)"
+      >
+        <mat-option *ngFor="let option of leveloptions" [value]="option.value">
+          {{ option.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+
 <div class="container">
-  <div class="filter-section"></div>
   <mat-paginator
     #paginator
     class="demo-paginator"
@@ -7,12 +46,17 @@
     [length]="length"
     [pageSize]="pageSize"
     [pageSizeOptions]="pageSizeOptions"
-    [pageIndex]="pageIndex"
+    [pageIndex]="page"
     aria-label="Select page"
   >
   </mat-paginator>
+  <div class="missing-post" *ngIf="groups.length < 0">FirrJ Yeser Gay</div>
   <div class="posts">
-    <div class="post" *ngFor="let group of groups">
+    <div
+      class="post"
+      *ngFor="let group of groups"
+      [routerLink]="['/Homepage/PostPage', group.id]"
+    >
       <div>
         <img class="post-img" src="{{ group.groupFilePath }}" alt="" />
       </div>

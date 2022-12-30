@@ -51,18 +51,15 @@
       <input
         type="text"
         matInput
-        [formControl]="myControl"
-        [matAutocomplete]="auto"
+        [(ngModel)]="searchQuery"
+        (keyup)="searchSubject.next(searchQuery)"
       />
-
-      <mat-autocomplete #auto="matAutocomplete"> </mat-autocomplete>
     </mat-form-field>
+
     <div class="my-spinner-div" *ngIf="spinner">
       <mat-spinner></mat-spinner>
     </div>
-    <div class="announc_null" *ngIf="userlength <= 0">
-      There is no Students !
-    </div>
+    <div class="announc_null" *ngIf="userlength <= 0">"Student directory"</div>
     <div
       class="groups-category"
       *ngFor="let user of users"
