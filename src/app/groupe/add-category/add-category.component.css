@@ -1,25 +1,22 @@
+.addgroup {
+  color: var(--whitecolor);
+  width: 500px;
+  margin: 20px 50px;
+  padding: 20px;
+}
+form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.detail-text {
+  font-size: 25px;
+  margin-bottom: 30px;
+}
 
-
-.addgroup{
-    min-height: 500px;
-    width: 500px;
-    margin: 20px 50px ;
-    padding: 20px;
-    
-    }
-    form {
-        width: 100%;
-        height: 100%;
-        display: flex;
-    flex-direction: column;
-    }
-    .detail-text{
-        font-size: 25px;
-        margin-bottom: 30px;
-    }
-
-    .submit-button{
-        width: 100px;
-        background-color: var(--maincolor);
-        color: var(--whitecolor);
-    }
+.submit-button {
+  width: 100px;
+  background-color: var(--maincolor);
+  color: var(--whitecolor);
+}

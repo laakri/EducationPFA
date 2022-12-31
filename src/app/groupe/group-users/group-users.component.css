@@ -1,0 +1,27 @@
+table {
+  width: 98%;
+  margin: 20px auto;
+  box-shadow: none;
+  border: none;
+  background-color: transparent !important;
+}
+.demo-table {
+  width: 100%;
+}
+
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+table th {
+  border-bottom: var(--bordercolor) solid 1px;
+}

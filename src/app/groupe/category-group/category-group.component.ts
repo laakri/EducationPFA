@@ -52,7 +52,6 @@ export class CatGroupsComponent implements OnInit {
       this.CategoryName = params['groupName'];
     });
     this.CatToSend = '?groupCategory=' + this.CategoryName;
-
     this.GroupService.getGroups(this.CatToSend);
     this.GroupSub = this.GroupService.getGroupUpdateListener().subscribe(
       (Groups: []) => {

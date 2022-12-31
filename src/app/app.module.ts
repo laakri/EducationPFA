@@ -25,6 +25,7 @@ import { AddCategoryComponent } from './groupe/add-category/add-category.compone
 import { PostPageComponent } from './post-page/post-page.component';
 import { CreatePostComponent } from './groupe/create-post/create-post.component';
 import { GroupsListComponent } from './groups-list/groups-list.component';
+import { GroupUsersComponent } from './groupe/group-users/group-users.component';
 
 /* *******************MODELS******************** */
 
@@ -65,7 +66,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { GroupUsersComponent } from './groupe/group-users/group-users.component';
 /* ********************************************* */
 
 @NgModule({

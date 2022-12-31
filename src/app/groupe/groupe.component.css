@@ -49,6 +49,7 @@
   padding: 20px 30px;
 }
 .open-side-button {
+  margin-right: 10px;
   background-color: transparent;
   border: solid var(--bordercolor) 1px;
   color: var(--whitecolor);

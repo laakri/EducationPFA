@@ -40,6 +40,14 @@
   >
     CreatePost
   </button>
+  <button
+    mat-button
+    class="top-bar-button"
+    routerLinkActive="activebutton"
+    [routerLink]="['/Group/GroupUsers/63aed2e008a96023e6f0464e']"
+  >
+    GroupUsers
+  </button>
 </mat-toolbar>
 
 <mat-drawer-container class="full-content">
@@ -89,7 +97,31 @@
         <i class="material-icons" *ngIf="showFiller">arrow_forward_ios</i>
         <i class="material-icons" *ngIf="!showFiller">arrow_back_ios_new</i>
       </button>
-    </div>
+      <button
+        mat-raised-button
+        class="open-side-button"
+        matTooltip="Add new Category"
+        (click)="login()"
+      >
+        <i class="material-icons">category</i>
+        <i class="material-icons">add</i>
+      </button>
+
+      <button
+        mat-raised-button
+        class="open-side-button"
+        matTooltip="Add new Post"
+        [routerLink]="['/Group/CreatePost']"
+      >
+        <i class="material-icons">auto_stories</i>
+        <i class="material-icons">add</i>
+      </button>
+      <!--
+    <button mat-raised-button class="open-side-button">
+      <i class="material-icons">admin_panel_settings</i>
+      <i class="material-icons">add</i>
+    </button>
+    --></div>
   </div>
   <router-outlet></router-outlet>
 </mat-drawer-container>

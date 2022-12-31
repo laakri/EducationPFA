@@ -15,6 +15,7 @@ import { AddCategoryComponent } from './groupe/add-category/add-category.compone
 import { PostPageComponent } from './post-page/post-page.component';
 import { CreatePostComponent } from './groupe/create-post/create-post.component';
 import { GroupsListComponent } from './groups-list/groups-list.component';
+import { GroupUsersComponent } from './groupe/group-users/group-users.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -45,6 +46,7 @@ const routes: Routes = [
       { path: 'AddUser', component: AddUserComponent },
       { path: 'AddCategory', component: AddCategoryComponent },
       { path: 'CreatePost', component: CreatePostComponent },
+      { path: 'GroupUsers/:groupId', component: GroupUsersComponent },
     ],
   },
 ];

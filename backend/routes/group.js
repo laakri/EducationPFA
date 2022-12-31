@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const Group = require("../models/group");
+const User = require("../models/user");
 
 const MIME_TYPE_MAP = {
   "image/png": "png",
@@ -74,7 +75,7 @@ router.post(
   }
 );
 
-/******************-Add Student to Group-**********/
+/******************-Add User <=> Group-**********/
 
 const addStudentToGroup = function (groupId, user) {
   return Group.findByIdAndUpdate(
@@ -83,24 +84,110 @@ const addStudentToGroup = function (groupId, user) {
     { new: true, useFindAndModify: true }
   );
 };
-
-router.post("/test", (req, res, next) => {
+const addGroupToStudent = function (groupId, user) {
+  return User.findByIdAndUpdate(
+    user,
+    { $push: { groups: groupId } },
+    { new: true, useFindAndModify: true }
+  );
+};
+router.post("/AddUserGroup", (req, res, next) => {
+  const groupId = req.query.groupId;
+  const userId = req.query.userId;
   const start = async () => {
-    const tutorial = await addStudentToGroup(
-      "63aac6f9ddd3d25b418e495d",
-      "639846618d0579527ffa4830"
-    );
+    const Group = await addStudentToGroup(groupId, userId);
+    const User = await addGroupToStudent(groupId, userId);
   };
   start()
     .then((result) => {
       res.status(201).json({
-        message: "User Added to Group Succesfully ",
+        message: "User <=> Group Succesfully ",
       });
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json({
-        message: "Couldn't Add User to Group  !",
+        message: "Couldn't Add User <=> Group  !",
+        error: err,
+      });
+    });
+});
+
+/******************-get User <=> Group-**********/
+
+router.get("/GetUsersByGroup", (req, res, next) => {
+  const { groupId } = req.query;
+
+  Group.findById(groupId)
+    .select([
+      "-groupObject",
+      "-groupCategory",
+      "-teacherId",
+      "-groupDescription",
+      "-groupFilePath",
+      "-groupPrice",
+      "-groupLevel",
+      "-groupExperienseNeed",
+      "-groupExperienseGain",
+      "-groupFuturesGain",
+      "-groupDetails",
+      "-__v",
+    ])
+    .populate({
+      path: "groupUsers",
+      select: "-password -category -speciality -roles -groups -updatedAt -__v",
+    })
+    .then((documents) => {
+      res.status(200).json({
+        result: documents,
+      });
+    })
+    .then()
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: err,
+      });
+    });
+});
+
+/******************-Delete User <=> Group-**********/
+
+const deleteStudentToGroup = function (groupId, user) {
+  return Group.findByIdAndUpdate(
+    groupId,
+    { $pull: { groupUsers: user } },
+    { new: true, useFindAndModify: true }
+  );
+};
+const deleteGroupToStudent = function (groupId, user) {
+  return User.findByIdAndUpdate(
+    user,
+    { $pull: { groups: groupId } },
+    { new: true, useFindAndModify: true }
+  );
+};
+router.post("/DeleteUserGroup", (req, res, next) => {
+  const start = async () => {
+    const Group = await deleteStudentToGroup(
+      "63aac6f9ddd3d25b418e495d",
+      "639846a9d0a18de5770ae976"
+    );
+    const User = await deleteGroupToStudent(
+      "63aac6f9ddd3d25b418e495d",
+      "639846a9d0a18de5770ae976"
+    );
+  };
+  start()
+    .then((result) => {
+      res.status(201).json({
+        message: "Delete User <=> Group Succesfully ",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        message: "Couldn't Delete User <=> Group  !",
         error: err,
       });
     });
@@ -155,7 +242,6 @@ router.get("/GetAllFiltred", (req, res, next) => {
 
   const skip = page * limit;
 
-  console.log(skip);
   const filter = {};
   if (groupCategory) {
     filter.groupCategory = groupCategory;

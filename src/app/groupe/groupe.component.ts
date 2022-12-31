@@ -4,7 +4,8 @@ import { UsersService } from '../login/user.service';
 import { Subject, Subscription } from 'rxjs';
 import { User } from '../login/user.model';
 import { debounceTime } from 'rxjs/operators';
-
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AddCategoryComponent } from './add-category/add-category.component';
 @Component({
   selector: 'app-groupe',
   templateUrl: './groupe.component.html',
@@ -21,7 +22,7 @@ export class GroupeComponent implements OnInit {
   userlength = 0;
   query = '';
   defaultName = '?name=';
-  constructor(private UsersService: UsersService) {}
+  constructor(public dialog: MatDialog, private UsersService: UsersService) {}
   Show() {
     this.showFiller = !this.showFiller;
   }
@@ -39,5 +40,12 @@ export class GroupeComponent implements OnInit {
     });
 
     this.spinner = false;
+  }
+  login(): void {
+    const dialogRef = this.dialog.open(AddCategoryComponent, {
+      width: '630px',
+      minHeight: '250px',
+      backdropClass: 'backdropBackground',
+    });
   }
 }
