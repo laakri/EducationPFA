@@ -1,32 +1,44 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="information-section">
+  <div>
+    <div>Group Id</div>
+    <span>{{ groupUser?._id }}</span>
+  </div>
+  <div>
+    <div>Starting At</div>
+    <span>{{ groupUser?.groupStartDate }}</span>
+  </div>
+  <div>
+    <div>Week</div>
+    <span>{{ groupUser?.groupHourPerWeek }} Hour/Week</span>
+  </div>
+  <div>
+    <div>Group Duration</div>
+    <span>{{ groupUser?.groupPeriode }}</span>
+  </div>
+  <div>
+    <div>Created At</div>
+    <span>{{ groupUser?.createdAt }}</span>
+  </div>
+</div>
+<table mat-table [dataSource]="groupUser?.groupUsers" class="mat-elevation-z8">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>id</th>
-    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    <td mat-cell *matCellDef="let element">{{ element._id }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="teacherId">
-    <th mat-header-cell *matHeaderCellDef>teacherId</th>
-    <td mat-cell *matCellDef="let element">{{ element.teacherId }}</td>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="groupLevel">
-    <th mat-header-cell *matHeaderCellDef>groupLevel.</th>
-    <td mat-cell *matCellDef="let element">{{ element.groupLevel }}</td>
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>email</th>
+    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
   </ng-container>
 
-  <ng-container matColumnDef="groupStartDate">
-    <th mat-header-cell *matHeaderCellDef>groupStartDate.</th>
-    <td mat-cell *matCellDef="let element">{{ element.groupStartDate }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="groupPeriode">
-    <th mat-header-cell *matHeaderCellDef>GroupPeriode</th>
-    <td mat-cell *matCellDef="let element">{{ element.groupPeriode }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="groupPrice">
-    <th mat-header-cell *matHeaderCellDef>GroupPrice</th>
-    <td mat-cell *matCellDef="let element">{{ element.groupPrice }}</td>
+  <ng-container matColumnDef="phonenum">
+    <th mat-header-cell *matHeaderCellDef>Phone Number</th>
+    <td mat-cell *matCellDef="let element">{{ element.phonenum }}</td>
   </ng-container>
 
   <ng-container matColumnDef="createdAt">
@@ -37,3 +49,6 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+<div *ngIf="groupUserLength == 0" class="UsersNone">
+  No users have been added yet
+</div>

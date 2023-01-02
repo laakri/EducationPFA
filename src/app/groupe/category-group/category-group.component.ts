@@ -2,20 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { GroupService } from './../group.service';
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+
 interface Food {
   value: string;
   viewValue: string;
 }
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-];
+
 @Component({
   selector: 'app-category-group',
   templateUrl: './category-group.component.html',
@@ -36,7 +28,6 @@ export class CatGroupsComponent implements OnInit {
     'groupPrice',
     'createdAt',
   ];
-  dataSource = ELEMENT_DATA;
   foods: Food[] = [
     { value: '0', viewValue: 'Name' },
     { value: '1', viewValue: 'Age' },

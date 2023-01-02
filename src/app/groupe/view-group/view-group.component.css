@@ -87,7 +87,8 @@
 .secend-content {
   display: flex;
   justify-content: space-between;
-  height: 400px;
+  width: none;
+  min-height: 400px;
   width: 100%;
   margin: 20px auto;
 }

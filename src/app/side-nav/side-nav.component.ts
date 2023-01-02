@@ -6,14 +6,12 @@ import { LoginComponent } from '../login/login.component';
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
-  styleUrls: ['./side-nav.component.css']
+  styleUrls: ['./side-nav.component.css'],
 })
 export class SideNavComponent implements OnInit {
+  constructor(public dialog: MatDialog, public UsersService: UsersService) {}
 
-  constructor(public dialog: MatDialog, public UsersService: UsersService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   login(): void {
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '530px',
@@ -21,16 +19,16 @@ export class SideNavComponent implements OnInit {
       backdropClass: 'backdropBackground',
     });
 
-
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
   }
 
-  logout(){
-    this.UsersService.logout()
+  logout() {
+    this.UsersService.logout();
   }
   change_theme(): void {
+    //localStorage.setItem('mode', 'bright-theme');
     document.body.classList.toggle('bright-theme');
   }
 }

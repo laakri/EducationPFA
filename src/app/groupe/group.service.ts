@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { Group } from './group.model';
+import { Group, GroupUsers } from './group.model';
 import { SuccesComponent } from './../succes/succes.component';
 import { environment } from '@envi/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -13,8 +13,10 @@ export class GroupService {
   apiURL = environment.apiURL;
   private groups: [] = [];
   private group: [] = [];
+  private groupUsers: GroupUsers | null = null;
   private groupUpdate = new Subject<[]>();
   private onegroupUpdate = new Subject<[]>();
+  private groupUsersUpdate = new Subject<GroupUsers>();
 
   constructor(
     private http: HttpClient,
@@ -190,60 +192,26 @@ export class GroupService {
       )
       .pipe(
         map((groupData) => {
-          return groupData.result.map(
-            (group: {
-              _id: any;
-              groupObject: any;
-              groupCategory: any;
-              teacherId: any;
-              groupDescription: any;
-              groupFilePath: any;
-              groupPrice: any;
-              groupLevel: any;
-              groupStartDate: any;
-              groupPeriode: any;
-              groupHourPerWeek: any;
-              groupExperienseNeed: any;
-              groupExperienseGain: any;
-              groupFuturesGain: any;
-              groupDetails: any;
-              createdAt: any;
-              updatedAt: any;
-            }) => {
-              return {
-                id: group._id,
-                groupObject: group.groupObject,
-                groupCategory: group.groupCategory,
-                teacherId: group.teacherId,
-                groupDescription: group.groupDescription,
-                groupFilePath: group.groupFilePath,
-                groupPrice: group.groupPrice,
-                groupLevel: group.groupLevel,
-                groupPeriode: group.groupPeriode,
-                groupHourPerWeek: group.groupHourPerWeek,
-                groupExperienseNeed: group.groupExperienseNeed,
-                groupExperienseGain: group.groupExperienseGain,
-                groupFuturesGain: group.groupFuturesGain,
-                groupDetails: group.groupDetails,
-
-                groupStartDate: new Date(group.groupStartDate)
-                  .toUTCString()
-                  .split(' ')
-                  .slice(0, 5)
-                  .join(' '),
-                createdAt: new Date(group.createdAt)
-                  .toUTCString()
-                  .split(' ')
-                  .slice(0, 4)
-                  .join(' '),
-                updatedAt: new Date(group.updatedAt)
-                  .toUTCString()
-                  .split(' ')
-                  .slice(0, 4)
-                  .join(' '),
-              };
-            }
-          );
+          return groupData.result.map((group: Group) => {
+            return {
+              ...group,
+              groupStartDate: new Date(group.groupStartDate)
+                .toUTCString()
+                .split(' ')
+                .slice(0, 5)
+                .join(' '),
+              createdAt: new Date(group.createdAt)
+                .toUTCString()
+                .split(' ')
+                .slice(0, 4)
+                .join(' '),
+              updatedAt: new Date(group.updatedAt)
+                .toUTCString()
+                .split(' ')
+                .slice(0, 4)
+                .join(' '),
+            };
+          });
         })
       )
       .subscribe((transformedGroup) => {
@@ -262,46 +230,35 @@ export class GroupService {
         this.apiURL + '/api/groups/GetUsersByGroup/' + id
       )
       .pipe(
-        map((groupData) => {
-          return groupData.result.map(
-            (group: {
-              _id: any;
-              groupStartDate: any;
-              groupPeriode: any;
-              groupHourPerWeek: any;
-              groupUsers: any;
-              createdAt: any;
-              updatedAt: any;
-            }) => {
-              return {
-                id: group._id,
-                groupStartDate: group.groupStartDate,
-                groupPeriode: group.groupPeriode,
-                groupHourPerWeek: group.groupHourPerWeek,
-                groupUsers: group.groupUsers,
-
-                createdAt: new Date(group.createdAt)
-                  .toUTCString()
-                  .split(' ')
-                  .slice(0, 4)
-                  .join(' '),
-                updatedAt: new Date(group.updatedAt)
-                  .toUTCString()
-                  .split(' ')
-                  .slice(0, 4)
-                  .join(' '),
-              };
-            }
-          );
+        map((groupData): { result: GroupUsers } => {
+          return {
+            result: {
+              ...groupData.result,
+              createdAt: new Date(groupData.result.createdAt)
+                .toUTCString()
+                .split(' ')
+                .slice(0, 4)
+                .join(' '),
+              groupStartDate: new Date(groupData.result.groupStartDate)
+                .toUTCString()
+                .split(' ')
+                .slice(0, 4)
+                .join(' '),
+            },
+          };
         })
       )
       .subscribe((transformedGroup) => {
-        this.group = transformedGroup;
-        this.onegroupUpdate.next([...this.group]);
+        this.groupUsers = transformedGroup.result;
+        this.groupUsersUpdate.next(this.groupUsers);
       });
   }
 
   getGroupUsersUpdateListener() {
     return this.groupUpdate.asObservable();
+  }
+
+  getGroupUsersUpdateListenerTwo() {
+    return this.groupUsersUpdate.asObservable();
   }
 }

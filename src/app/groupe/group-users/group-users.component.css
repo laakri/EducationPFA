@@ -1,3 +1,19 @@
+.information-section {
+  height: 80px;
+  display: flex;
+  margin: 20px auto 20px 20px;
+}
+.information-section > * {
+  flex-grow: 1;
+  width: fit-content;
+  font-size: 18px;
+}
+.information-section > * > * {
+  padding: 10px;
+}
+.information-section span {
+  color: var(--graycolor);
+}
 table {
   width: 98%;
   margin: 20px auto;
@@ -24,4 +40,13 @@ table {
 }
 table th {
   border-bottom: var(--bordercolor) solid 1px;
+}
+.UsersNone {
+  border: var(--bordercolor) solid 1px;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 20px;
+  width: 250px;
+  margin: 50px auto;
+  color: var(--graycolor);
 }

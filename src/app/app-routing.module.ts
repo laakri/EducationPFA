@@ -18,7 +18,7 @@ import { GroupsListComponent } from './groups-list/groups-list.component';
 import { GroupUsersComponent } from './groupe/group-users/group-users.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent },
+  { path: '', redirectTo: '/Homepage/View', pathMatch: 'full' },
 
   {
     path: 'Homepage',
@@ -30,10 +30,10 @@ const routes: Routes = [
       { path: 'ContactUs', component: ContactPageComponent },
       { path: 'PostPage/:groupId', component: PostPageComponent },
       { path: 'GroupsList', component: GroupsListComponent },
+      { path: 'Profile/:userId', component: ProfileComponent },
     ],
   },
 
-  { path: 'Profile/:userId', component: ProfileComponent },
   { path: 'Announcement', component: AnnouncementComponent },
 
   {

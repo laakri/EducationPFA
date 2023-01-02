@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
+const { async } = require("rxjs");
 const Group = require("../models/group");
 const User = require("../models/user");
+const fs = require("fs");
 
 const MIME_TYPE_MAP = {
   "image/png": "png",
@@ -77,120 +79,96 @@ router.post(
 
 /******************-Add User <=> Group-**********/
 
-const addStudentToGroup = function (groupId, user) {
-  return Group.findByIdAndUpdate(
-    groupId,
-    { $push: { groupUsers: user } },
-    { new: true, useFindAndModify: true }
-  );
-};
-const addGroupToStudent = function (groupId, user) {
-  return User.findByIdAndUpdate(
-    user,
-    { $push: { groups: groupId } },
-    { new: true, useFindAndModify: true }
-  );
-};
-router.post("/AddUserGroup", (req, res, next) => {
+router.post("/AddUserGroup", async (req, res, next) => {
   const groupId = req.query.groupId;
   const userId = req.query.userId;
-  const start = async () => {
-    const Group = await addStudentToGroup(groupId, userId);
-    const User = await addGroupToStudent(groupId, userId);
-  };
-  start()
-    .then((result) => {
-      res.status(201).json({
-        message: "User <=> Group Succesfully ",
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        message: "Couldn't Add User <=> Group  !",
-        error: err,
-      });
+
+  try {
+    await Group.findByIdAndUpdate(
+      groupId,
+      { $push: { groupUsers: userId } },
+      { new: true, useFindAndModify: true }
+    );
+    await User.findByIdAndUpdate(
+      userId,
+      { $push: { groups: groupId } },
+      { new: true, useFindAndModify: true }
+    );
+
+    res.status(201).json({
+      message: "User <=> Group Succesfully ",
     });
+  } catch (err) {
+    res.status(500).json({
+      message: "Couldn't Add User <=> Group  !",
+      error: err,
+    });
+  }
 });
 
 /******************-get User <=> Group-**********/
 
-router.get("/GetUsersByGroup", (req, res, next) => {
+router.get("/GetUsersByGroup", async (req, res, next) => {
   const { groupId } = req.query;
+  try {
+    const documents = await Group.findById(groupId)
+      .select([
+        "-groupObject",
+        "-groupCategory",
+        "-teacherId",
+        "-groupDescription",
+        "-groupFilePath",
+        "-groupPrice",
+        "-groupLevel",
+        "-groupExperienseNeed",
+        "-groupExperienseGain",
+        "-groupFuturesGain",
+        "-groupDetails",
+        "-__v",
+      ])
+      .populate({
+        path: "groupUsers",
+        select:
+          "-password -category -speciality -roles -groups -updatedAt -__v",
+      });
 
-  Group.findById(groupId)
-    .select([
-      "-groupObject",
-      "-groupCategory",
-      "-teacherId",
-      "-groupDescription",
-      "-groupFilePath",
-      "-groupPrice",
-      "-groupLevel",
-      "-groupExperienseNeed",
-      "-groupExperienseGain",
-      "-groupFuturesGain",
-      "-groupDetails",
-      "-__v",
-    ])
-    .populate({
-      path: "groupUsers",
-      select: "-password -category -speciality -roles -groups -updatedAt -__v",
-    })
-    .then((documents) => {
-      res.status(200).json({
-        result: documents,
-      });
-    })
-    .then()
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: err,
-      });
+    res.status(200).json({
+      result: documents,
     });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      error: err,
+    });
+  }
 });
-
 /******************-Delete User <=> Group-**********/
 
-const deleteStudentToGroup = function (groupId, user) {
-  return Group.findByIdAndUpdate(
-    groupId,
-    { $pull: { groupUsers: user } },
-    { new: true, useFindAndModify: true }
-  );
-};
-const deleteGroupToStudent = function (groupId, user) {
-  return User.findByIdAndUpdate(
-    user,
-    { $pull: { groups: groupId } },
-    { new: true, useFindAndModify: true }
-  );
-};
-router.post("/DeleteUserGroup", (req, res, next) => {
-  const start = async () => {
-    const Group = await deleteStudentToGroup(
-      "63aac6f9ddd3d25b418e495d",
-      "639846a9d0a18de5770ae976"
+router.post("/DeleteUserGroup", async (req, res, next) => {
+  const groupId = req.query.groupId;
+  const userId = req.query.userId;
+
+  try {
+    await Group.findByIdAndUpdate(
+      groupId,
+      { $pull: { groupUsers: userId } },
+      { new: true, useFindAndModify: true }
     );
-    const User = await deleteGroupToStudent(
-      "63aac6f9ddd3d25b418e495d",
-      "639846a9d0a18de5770ae976"
+    await User.findByIdAndUpdate(
+      userId,
+      { $pull: { groups: groupId } },
+      { new: true, useFindAndModify: true }
     );
-  };
-  start()
-    .then((result) => {
-      res.status(201).json({
-        message: "Delete User <=> Group Succesfully ",
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        message: "Couldn't Delete User <=> Group  !",
-        error: err,
-      });
+
+    res.status(201).json({
+      message: "Delete User <=> Group Succesfully ",
     });
+  } catch (err) {
+    res.status(500).json({
+      message: "Couldn't Delete User <=> Group  !",
+      error: err,
+    });
+  }
 });
 
 /******************-Get Groups by Category -**********/
@@ -205,7 +183,6 @@ router.get("/GetAll", (req, res, next) => {
         result: documents,
       });
     })
-    .then()
     .catch((err) => {
       console.log(err);
       res.status(500).json({
@@ -263,13 +240,73 @@ router.get("/GetAllFiltred", (req, res, next) => {
         result: documents,
       });
     })
-    .then()
     .catch((err) => {
       console.log(err);
       res.status(500).json({
         error: err,
       });
     });
+});
+/******************-Get Stats -**********/
+router.get("/GetStats", async (req, res, next) => {
+  try {
+    const StudentCount = await User.find({ roles: "student" }).count();
+    const TeacherCount = await User.find({ roles: "teacher" }).count();
+    const GroupCount = await Group.find().count();
+    const groupCategory = await Group.aggregate([
+      {
+        $group: {
+          _id: "$groupCategory",
+          count: { $sum: 1 },
+        },
+      },
+      { $sort: { count: -1 } },
+      { $limit: 1 },
+    ])
+      .exec()
+      .then((results) => {
+        return results[0]._id;
+      });
+
+    const stat = {
+      StudentCount: StudentCount,
+      TeacherCount: TeacherCount,
+      GroupCount: GroupCount,
+      groupCategory: groupCategory,
+    };
+
+    res.status(200).json({
+      result: stat,
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err,
+    });
+  }
+});
+
+/***************-Delete Group-*******************/
+
+router.delete("/delete", async (req, res, next) => {
+  try {
+    const filepath = await Group.findById(req.params.id).select(
+      "groupFilePath"
+    );
+    fs.unlink(filepath, (err) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+    });
+    await Group.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      message: "User Deleted seccesfully !",
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err,
+    });
+  }
 });
 
 module.exports = router;

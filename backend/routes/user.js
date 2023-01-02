@@ -215,16 +215,18 @@ router.patch(
 );
 
 /***************-Delete-*******************/
-router.delete("/delete/:id", checkauth, (req, res, next) => {
-  User.deleteOne({ _id: req.params.id })
-    .then((result) => {
-      res.status(200).json({ message: "User deleted !" });
-    })
-    .catch((err) => {
-      console.log(err);
-      return res.status(500).json({
-        message: "Problem In deleting User !",
-      });
+
+router.delete("/delete", async (req, res, next) => {
+  try {
+    await User.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      message: "User Deleted seccesfully !",
     });
+  } catch (err) {
+    res.status(500).json({
+      error: err,
+    });
+  }
 });
+
 module.exports = router;

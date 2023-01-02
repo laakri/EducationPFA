@@ -19,4 +19,16 @@ export interface Group {
   groupFuturesGain: string;
 
   groupDetails: string;
+  createdAt: string;
+  updatedAt: string;
 }
+
+export type GroupUsers = {
+  _id: any;
+  groupStartDate: any;
+  groupPeriode: any;
+  groupHourPerWeek: any;
+  groupUsers: any;
+  createdAt: any;
+  updatedAt: any;
+};

@@ -50,27 +50,30 @@
           </button>
         </mat-menu>
       </div>
-
-      <div class="announc" *ngFor="let Announc of Announs">
-        <div class="announc-info">
-          <mat-icon *ngIf="Announc.userRole == 'student'"
-            >wallet_travel</mat-icon
-          >
-          <mat-icon *ngIf="Announc.userRole == 'admin'">campaign</mat-icon>
-          <h3 *ngIf="Announc.userRole == 'admin'">Announcement</h3>
-          <div *ngIf="Announc.userRole == 'student'" class="announc-teacher">
-            <p class="announc-teacher-1">{{ Announc.userId.name }}</p>
-            <p class="announc-teacher-2">{{ Announc.userId.category }}</p>
+      <div class="spinner" *ngIf="spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div *ngIf="!spinner">
+        <div class="announc" *ngFor="let Announc of Announs">
+          <div class="announc-info">
+            <mat-icon *ngIf="Announc.userRole == 'student'"
+              >wallet_travel</mat-icon
+            >
+            <mat-icon *ngIf="Announc.userRole == 'admin'">campaign</mat-icon>
+            <h3 *ngIf="Announc.userRole == 'admin'">Announcement</h3>
+            <div *ngIf="Announc.userRole == 'student'" class="announc-teacher">
+              <p class="announc-teacher-1">{{ Announc.userId.name }}</p>
+              <p class="announc-teacher-2">{{ Announc.userId.category }}</p>
+            </div>
+          </div>
+          <span>
+            {{ Announc.content }}
+          </span>
+          <div class="date">
+            <span>Created at {{ Announc.createdAt }}</span>
           </div>
         </div>
-        <span>
-          {{ Announc.content }}
-        </span>
-        <div class="date">
-          <span>Created at {{ Announc.createdAt }}</span>
-        </div>
       </div>
-
       <div class="announc_null" *ngIf="announslength <= 0">
         There is no announcement !
       </div>
