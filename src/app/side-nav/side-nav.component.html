@@ -37,31 +37,29 @@
     <mat-icon aria-label="settings">settings</mat-icon>
   </button>
 </div>
-<div class="sidebar-content">
-  <button mat-button>
-    <mat-icon aria-label="person" (click)="login()">person</mat-icon>
-  </button>
-</div>
-<div class="sidebar-content">
-  <button
-    mat-button
-    [routerLink]="['/Homepage/Profile/12313131']"
-    routerLinkActive="activebutton"
-  >
-    <mat-icon aria-label="person">person</mat-icon>
-  </button>
-</div>
-
-<div class="sidebar-content">
-  <button mat-button (click)="change_theme()">
-    <mat-icon aria-label="campaign">brightness_medium</mat-icon>
-  </button>
-</div>
-
-<div class="sidebar-content">
-  <button mat-button>
-    <mat-icon aria-label="logout" class="logout-icon" (click)="logout()"
-      >logout</mat-icon
+<div class="side-bar-bottom">
+  <mat-divider></mat-divider>
+  <div class="sidebar-content">
+    <button
+      mat-button
+      [routerLink]="['/Homepage/Profile/12313131']"
+      routerLinkActive="activebutton"
     >
-  </button>
+      <mat-icon aria-label="person">person</mat-icon>
+    </button>
+  </div>
+
+  <div class="sidebar-content">
+    <button mat-button (click)="change_theme()">
+      <mat-icon aria-label="campaign">brightness_medium</mat-icon>
+    </button>
+  </div>
+
+  <div class="sidebar-content">
+    <button mat-button>
+      <mat-icon aria-label="logout" class="logout-icon" (click)="logout()"
+        >logout</mat-icon
+      >
+    </button>
+  </div>
 </div>

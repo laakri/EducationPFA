@@ -261,4 +261,35 @@ export class GroupService {
   getGroupUsersUpdateListenerTwo() {
     return this.groupUsersUpdate.asObservable();
   }
+
+  /**************** Stats ******************** */
+  getStats() {
+    this.http
+      .get<{ message: string; result: any }>(
+        this.apiURL + '/api/groups/GetStats'
+      )
+      .pipe(
+        map((groupData): { result: any } => {
+          return {
+            result: {
+              ...groupData.result,
+              createdAt: new Date(groupData.result.createdAt)
+                .toUTCString()
+                .split(' ')
+                .slice(0, 4)
+                .join(' '),
+              groupStartDate: new Date(groupData.result.groupStartDate)
+                .toUTCString()
+                .split(' ')
+                .slice(0, 4)
+                .join(' '),
+            },
+          };
+        })
+      )
+      .subscribe((transformedGroup) => {
+        this.groupUsers = transformedGroup.result;
+        //this.groupUsersUpdate.next(this.groupUsers);
+      });
+  }
 }

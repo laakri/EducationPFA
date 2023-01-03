@@ -1,24 +1,34 @@
-.mat-toolbar{
-    height: 45px;
-    background-color: #0c1017;
-    border-bottom: 1px solid var(--bordercolor);
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+.mat-toolbar {
+  height: 50px;
+  background-color: #0c1017;
+  border-bottom: 1px solid var(--bordercolor);
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
+.top-bar-button {
+  margin: auto 5px;
+}
+.absolute {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(2px);
+}
+.home-victors {
+  width: 100%;
+}
+.puch-right {
+  flex: 1 1 auto;
+}
+.right-navbar-button {
+  margin: auto 40px;
+}
 
-.top-bar-button{
-    margin:  auto 5px;
-}
-.absolute{
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    backdrop-filter: blur(2px);
-}
-.home-victors{
-    width: 100%;
+.right-navbar-button > * {
+  margin: auto 7px;
+  font-size: 16px;
 }

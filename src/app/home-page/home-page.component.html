@@ -37,8 +37,13 @@
     routerLinkActive="activebutton"
     [routerLink]="['/Homepage/GroupsList']"
   >
-    GroupsList
+    Discover
   </button>
+  <div class="puch-right"></div>
+  <div class="right-navbar-button">
+    <button mat-button (click)="login()">login</button>
+    <button mat-raised-button (click)="login()">Get started</button>
+  </div>
 </mat-toolbar>
 <!--
   <div class="absolute">

@@ -19,3 +19,7 @@
 .logout-icon {
   color: #ce2c2a;
 }
+.side-bar-bottom {
+  position: absolute;
+  bottom: 0;
+}

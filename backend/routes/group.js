@@ -202,7 +202,6 @@ router.get("/GetOne/:id", (req, res, next) => {
         result: documents,
       });
     })
-    .then()
     .catch((err) => {
       console.log(err);
       res.status(500).json({
