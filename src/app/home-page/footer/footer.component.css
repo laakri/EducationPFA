@@ -1,0 +1,40 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.mainpage {
+  max-width: 1350px;
+  margin: auto;
+}
+
+hr {
+  border-top-color: rgb(121, 112, 112);
+  opacity: 0.3;
+}
+.footer {
+  color: var(--whitecolor);
+  height: 60px;
+}
+.footer p {
+  font-size: 16px;
+  color: var(--graycolor);
+}
+
+.footer p a {
+  color: var(--whitecolor);
+}
+
+.footer-flex {
+  margin: auto 20px;
+  display: flex;
+  line-height: 55px;
+}
+
+.logos {
+  display: flex;
+}
+
+.logos a {
+  color: var(--darkcolor);
+  background-color: var(--maincolor);
+  margin: auto 10px;
+}

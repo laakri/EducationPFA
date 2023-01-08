@@ -26,6 +26,7 @@ import { PostPageComponent } from './post-page/post-page.component';
 import { CreatePostComponent } from './groupe/create-post/create-post.component';
 import { GroupsListComponent } from './groups-list/groups-list.component';
 import { GroupUsersComponent } from './groupe/group-users/group-users.component';
+import { FooterComponent } from './home-page/footer/footer.component';
 
 /* *******************MODELS******************** */
 
@@ -66,6 +67,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AddUserGroupComponent } from './groupe/add-user-group/add-user-group.component';
 /* ********************************************* */
 
 @NgModule({
@@ -91,6 +93,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     CreatePostComponent,
     GroupsListComponent,
     GroupUsersComponent,
+    AddUserGroupComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

@@ -32,3 +32,7 @@
   margin: auto 7px;
   font-size: 16px;
 }
+.right-navbar-button > *:last-child {
+  background-color: var(--maincolor);
+  color: var(--darkcolor);
+}

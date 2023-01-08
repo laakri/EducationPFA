@@ -1,0 +1,22 @@
+<div class="addgroup">
+  <div class="detail-text">Add User To Group</div>
+  <form (submit)="onSubmit(signUpForm)" #signUpForm="ngForm">
+    <mat-form-field appearance="outline">
+      <mat-label>User Id</mat-label>
+      <input matInput ngModel name="UserId" #UserId="ngModel" required />
+      <mat-error> Group Name is <strong>required</strong> </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Payment Statu</mat-label>
+      <mat-select ngModel name="Paymentstatu" #Paymentstatu="ngModel" required>
+        <mat-option value="payed">Payed</mat-option>
+        <mat-option value="not-payed">Not Payed</mat-option>
+      </mat-select>
+      <mat-error> User Id is <strong>required</strong> </mat-error>
+    </mat-form-field>
+    <button mat-raised-button class="submit-button" type="submit">
+      Submit
+    </button>
+  </form>
+</div>

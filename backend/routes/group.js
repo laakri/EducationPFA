@@ -5,6 +5,7 @@ const { async } = require("rxjs");
 const Group = require("../models/group");
 const User = require("../models/user");
 const fs = require("fs");
+const { group } = require("console");
 
 const MIME_TYPE_MAP = {
   "image/png": "png",
@@ -82,6 +83,7 @@ router.post(
 router.post("/AddUserGroup", async (req, res, next) => {
   const groupId = req.query.groupId;
   const userId = req.query.userId;
+  const Paymentstatu = req.query.Paymentstatu;
 
   try {
     await Group.findByIdAndUpdate(
@@ -89,10 +91,16 @@ router.post("/AddUserGroup", async (req, res, next) => {
       { $push: { groupUsers: userId } },
       { new: true, useFindAndModify: true }
     );
+
     await User.findByIdAndUpdate(
       userId,
       { $push: { groups: groupId } },
       { new: true, useFindAndModify: true }
+    );
+    await User.findByIdAndUpdate(
+      userId,
+      { Paymentstatu: Paymentstatu },
+      { new: true }
     );
 
     res.status(201).json({
@@ -211,7 +219,7 @@ router.get("/GetOne/:id", (req, res, next) => {
 });
 
 /******************-Get Groups -**********/
-router.get("/GetAllFiltred", (req, res, next) => {
+router.get("/GetAllFiltred", async (req, res, next) => {
   const { groupCategory, groupLevel } = req.query;
   const limit = req.query.pageSize;
   const page = req.query.page;
@@ -229,22 +237,22 @@ router.get("/GetAllFiltred", (req, res, next) => {
   
   filter.groupStartDate = { $gte: currentDate };
 */
-  Group.find(filter)
-    .limit(limit)
-    .skip(skip)
-    .sort({ groupStartDate: 1 })
-    .select(["-groupUsers", "-__v"])
-    .then((documents) => {
-      res.status(200).json({
-        result: documents,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: err,
-      });
+  try {
+    const documents = await Group.find(filter)
+      .limit(limit)
+      .skip(skip)
+      .sort({ groupStartDate: 1 })
+      .select(["-groupUsers", "-__v"]);
+
+    res.status(200).json({
+      result: documents,
     });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      error: err,
+    });
+  }
 });
 /******************-Get Stats -**********/
 router.get("/GetStats", async (req, res, next) => {

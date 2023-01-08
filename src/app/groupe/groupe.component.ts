@@ -6,6 +6,8 @@ import { User } from '../login/user.model';
 import { debounceTime } from 'rxjs/operators';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { Clipboard } from '@angular/cdk/clipboard';
+
 @Component({
   selector: 'app-groupe',
   templateUrl: './groupe.component.html',
@@ -22,7 +24,11 @@ export class GroupeComponent implements OnInit {
   userlength = 0;
   query = '';
   defaultName = '?name=';
-  constructor(public dialog: MatDialog, private UsersService: UsersService) {}
+  constructor(
+    public dialog: MatDialog,
+    private UsersService: UsersService,
+    private clipboard: Clipboard
+  ) {}
   Show() {
     this.showFiller = !this.showFiller;
   }
@@ -47,5 +53,8 @@ export class GroupeComponent implements OnInit {
       minHeight: '250px',
       backdropClass: 'backdropBackground',
     });
+  }
+  onCopy(id: string) {
+    this.clipboard.copy(id);
   }
 }

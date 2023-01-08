@@ -3,7 +3,7 @@
 .mainpage {
   max-width: 1200px;
   margin: 20px auto;
-  min-height: 300px;
+  min-height: 830px;
 }
 
 /*********************************/
@@ -32,7 +32,7 @@
 .secend-content {
   min-height: 450px;
 
-  margin:  auto auto 30px auto;
+  margin: auto auto 30px auto;
   display: flex;
   width: 80%;
   justify-content: space-between;
@@ -46,6 +46,8 @@
   object-fit: cover;
   background-repeat: no-repeat;
   background-position: center;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
   border-radius: 5px;
   width: 99%;
   height: 100%;
@@ -55,31 +57,29 @@
   width: 50%;
 }
 .secend-content-secend mat-card {
-  border:solid 1px var(--bordercolor);
+  border: solid 1px var(--bordercolor);
   background-color: var(--soft-darkcolor);
   color: var(--whitecolor);
   width: 90%;
   height: 93%;
   overflow: auto;
-
 }
 
-.secend-content-secend h1{
-text-align: center;
+.secend-content-secend h1 {
+  text-align: center;
 }
 /*************************************/
 
-mat-form-field{
+mat-form-field {
   margin: auto;
   width: 70%;
-
 }
-.submit-button{
-width: 50%;
-margin: auto;
-margin-bottom: 10px;
-color: var(--whitecolor);
-background-color: var(--maincolor);
+.submit-button {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 10px;
+  color: var(--darkcolor);
+  background-color: var(--maincolor);
 }
 
 form {
@@ -104,57 +104,3 @@ form {
   }
 }
 /********************Screen***************************/
-
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 20px;
-  
-}
-
-.intro {
-  margin-bottom: 40px;
-}
-
-.intro h2 {
-  font-size: 2em;
-  margin: 20px 0;
-}
-
-.intro p {
-  line-height: 1.5;
-  margin: 20px 0;
-}
-
-.featured-courses,
-.popular-resources {
-  width: 50%;
-  float: left;
-}
-.featured-courses h3,
-.popular-resources h3 {
-  font-size: 1.5em;
-  margin: 20px 0;
-}
-
-.featured-courses ul,
-.popular-resources ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.featured-courses li,
-.popular-resources li {
-  margin: 10px 0;
-}
-
-
-
-@media (max-width: 600px) {
-  .featured-courses,
-  .popular-resources {
-    width: 100%;
-    float: none;
-  }
-}

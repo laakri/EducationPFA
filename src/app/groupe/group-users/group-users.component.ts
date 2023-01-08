@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { GroupService } from './../group.service';
 import { GroupUsers } from './../group.model';
-
 @Component({
   selector: 'app-group-users',
   templateUrl: './group-users.component.html',

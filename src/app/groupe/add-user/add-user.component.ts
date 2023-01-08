@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, NgForm, Validators} from '@angular/forms';
+import { FormControl, NgForm, Validators, FormGroup } from '@angular/forms';
 import { UsersService } from '../../login/user.service';
 
 interface Speciality {
@@ -13,28 +13,32 @@ interface Category {
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css']
+  styleUrls: ['./add-user.component.css'],
 })
 export class AddUserComponent implements OnInit {
-
   Specialitys: Speciality[] = [
-    {value: 'Math', viewValue: 'Math'},
-    {value: 'Informmatique', viewValue: 'Informmatique'},
-    {value: 'Physique', viewValue: 'Physique'},
+    { value: 'Math', viewValue: 'Math' },
+    { value: 'Informmatique', viewValue: 'Informmatique' },
+    { value: 'Physique', viewValue: 'Physique' },
   ];
 
   Categorys: Category[] = [
-    {value: 'MDW', viewValue: 'MDW'},
-    {value: 'Programation', viewValue: 'Programation'},
-    {value: 'Construction', viewValue: 'Construction'},
+    { value: 'MDW', viewValue: 'MDW' },
+    { value: 'Programation', viewValue: 'Programation' },
+    { value: 'Construction', viewValue: 'Construction' },
   ];
 
   selectFormControl = new FormControl('', Validators.required);
 
-  constructor(public UsersService: UsersService) { }
+  formGroup!: FormGroup;
+  ngForm!: NgForm;
+  trueFile!: File;
+  imagePreview!: string;
+  imageName!: string;
 
-  ngOnInit(): void {
-  }
+  constructor(public UsersService: UsersService) {}
+
+  ngOnInit(): void {}
 
   onSubmit(form: NgForm) {
     if (form.invalid) {
@@ -48,10 +52,23 @@ export class AddUserComponent implements OnInit {
       form.value.category,
       form.value.spec,
       form.value.location,
-      form.value.role,
+      form.value.role
     );
-    console.log(
-      form.value
-      )
+    console.log(form.value);
+  }
+
+  onFilePicked(event: Event) {
+    const file = ((event.target as HTMLInputElement).files as FileList)[0];
+    if (this.formGroup !== undefined) {
+      this.formGroup.patchValue({ filePath: file });
+      this.formGroup.get('filePath') as any;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
+    this.trueFile = file;
+    this.imageName = file.name;
   }
 }

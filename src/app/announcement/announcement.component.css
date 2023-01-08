@@ -1,18 +1,9 @@
 .spinner {
   margin: 40px;
 }
-.all-flex {
-  display: flex;
-  max-width: 1300px;
-  margin: auto;
-  min-height: 1900px;
-  justify-content: space-around;
-}
 .mainpage {
-  width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
-
   min-height: 100%;
 }
 .top-div {
@@ -38,13 +29,12 @@
   border: solid transparent 1px;
 }
 .create-announ {
-  /*display: none;*/
   margin: 10px auto;
   width: 90%;
   overflow: auto;
 }
 .button-announ-section {
-  margin: 30px auto 10px auto;
+  margin: 10px auto 60px auto;
   width: 90%;
   height: 30px;
 }
@@ -55,13 +45,16 @@ mat-form-field {
   float: right;
   margin-top: -10px;
   background-color: var(--maincolor);
-  color: white;
+  color: var(--darkcolor);
   border-radius: 30px;
 }
 .announc {
   margin: 20px 20px;
   padding: 20px;
-  border-bottom: var(--bordercolor) solid 1px;
+}
+.announc:hover {
+  border-radius: 10px;
+  background-color: var(--soft-darkcolor);
 }
 .announc_null {
   border: var(--graycolor) solid 1px;
@@ -87,40 +80,41 @@ mat-form-field {
   margin: auto 20px;
 }
 .announc-teacher-1 {
-  margin: 0 20px;
   font-size: 16px;
 }
 .announc-teacher-2 {
   color: var(--graycolor);
   position: absolute;
-  bottom: -13px;
-  left: 50px;
-  font-size: 12px;
-}
-
-.teacher-list {
-  height: fit-content;
-  min-width: 320px;
-  border-radius: 5px;
-  margin: 10px;
-  padding: 10px;
-  border: solid 1px var(--bordercolor);
-  position: -webkit-sticky;
-  position: sticky;
-  top: 20px;
+  bottom: -15px;
+  font-size: 14px;
 }
 .header-button {
   background-color: rgba(128, 128, 128, 0.295);
   color: var(--whitecolor);
-  float: right;
+  float: left;
 }
+/*****************************************************/
+
+.teacher-list {
+  height: 100%;
+  min-width: 320px;
+  border-radius: 5px;
+  padding: 10px;
+  border-left: solid 1px var(--bordercolor);
+  position: sticky;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  padding: 20px;
+}
+
 ::ng-deep .menu {
   background-color: var(--soft-darkcolor);
 }
 ::ng-deep .menu-item {
   color: var(--whitecolor) !important ;
 }
-/*****************************************************/
+
 .groups-category {
   height: 85px;
   max-width: 100%;

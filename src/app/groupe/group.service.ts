@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Group, GroupUsers } from './group.model';
@@ -17,7 +17,6 @@ export class GroupService {
   private groupUpdate = new Subject<[]>();
   private onegroupUpdate = new Subject<[]>();
   private groupUsersUpdate = new Subject<GroupUsers>();
-
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -263,33 +262,32 @@ export class GroupService {
   }
 
   /**************** Stats ******************** */
-  getStats() {
+  AddUserGroup(paramms: string) {
+    const queryParams = new HttpParams({ fromString: paramms });
+
     this.http
-      .get<{ message: string; result: any }>(
-        this.apiURL + '/api/groups/GetStats'
+      .post<{ message: string }>(
+        this.apiURL + '/api/groups/AddUserGroup',
+        {
+          message: 'This is the body of the POST request',
+        },
+        {
+          params: queryParams,
+        }
       )
-      .pipe(
-        map((groupData): { result: any } => {
-          return {
-            result: {
-              ...groupData.result,
-              createdAt: new Date(groupData.result.createdAt)
-                .toUTCString()
-                .split(' ')
-                .slice(0, 4)
-                .join(' '),
-              groupStartDate: new Date(groupData.result.groupStartDate)
-                .toUTCString()
-                .split(' ')
-                .slice(0, 4)
-                .join(' '),
-            },
-          };
-        })
-      )
-      .subscribe((transformedGroup) => {
-        this.groupUsers = transformedGroup.result;
-        //this.groupUsersUpdate.next(this.groupUsers);
-      });
+      .subscribe(
+        () => {
+          console.log('user <=> group Added !');
+          const successMessage = 'User Added To group Successfully!';
+          this._snackBar.openFromComponent(SuccesComponent, {
+            data: { message: successMessage },
+            duration: 2500,
+            panelClass: ['green-snackbar'],
+          });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 }

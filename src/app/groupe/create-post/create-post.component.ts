@@ -38,6 +38,7 @@ export class CreatePostComponent implements OnInit {
   private userId: any;
   Alltime!: string;
   trueFile!: File;
+
   /********************************************************** */
   showError: boolean = true;
   selectedDate: any;

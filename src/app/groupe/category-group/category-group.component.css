@@ -60,11 +60,11 @@ table {
 .mat-row .mat-cell {
   border-bottom: 1px solid transparent;
   border-top: 1px solid transparent;
-  cursor: pointer;
 }
 
 .mat-row:hover .mat-cell {
-  border-color: currentColor;
+  border: var(--bordercolor);
+  background: var(--soft-darkcolor);
 }
 
 .demo-row-is-clicked {
@@ -75,4 +75,9 @@ table th {
 }
 .filter-section {
   margin-left: 20px;
+}
+.AddButton {
+  font-size: 16px;
+  border: solid 1px var(--bordercolor);
+  color: var(--graycolor);
 }

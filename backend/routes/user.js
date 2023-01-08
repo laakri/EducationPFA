@@ -6,37 +6,67 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 const multer = require("multer");
 const checkauth = require("../middleware/check-user");
+const cron = require("cron");
+
+const MIME_TYPE_MAP = {
+  "image/png": "png",
+  "image/jpeg": "jpg",
+  "image/jpg": "jpg",
+};
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const isValid = MIME_TYPE_MAP[file.mimetype];
+    let error = new Error("Invalid mime type");
+    if (isValid) {
+      error = null;
+    }
+    cb(error, "backend/file-profile");
+  },
+  filename: (req, file, cb) => {
+    const name = file.originalname.toLowerCase().split(" ").join("-");
+    const ext = MIME_TYPE_MAP[file.mimetype];
+    cb(null, name + "-" + Date.now() + "." + ext);
+  },
+});
 
 /*************-Signup-********** */
 
-router.post("/signup", (req, res, next) => {
-  bcrypt.hash(req.body.password, 10).then((hash) => {
-    const user = new User({
-      name: req.body.name,
-      phonenum: req.body.phonenum,
-      password: hash,
-      email: req.body.email,
-      category: req.body.category,
-      speciality: req.body.speciality,
-      location: req.body.location,
-      roles: [req.body.role],
-    });
-    user
-      .save()
-      .then((result) => {
-        res.status(201).json({
-          message: "user created!",
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json({
-          error: err,
-          message: "This user already exited !",
-        });
+router.post(
+  "/signup",
+  multer({ storage: storage }).single("imgPath"),
+  (req, res, next) => {
+    bcrypt.hash(req.body.password, 10).then((hash) => {
+      const url = req.protocol + "://" + req.get("host");
+
+      const user = new User({
+        name: req.body.name,
+        phonenum: req.body.phonenum,
+        imgPath: url + "/file-profile/" + req.file.filename,
+        password: hash,
+        email: req.body.email,
+        category: req.body.category,
+        speciality: req.body.speciality,
+        location: req.body.location,
+        roles: [req.body.role],
       });
-  });
-});
+      user
+        .save()
+        .then((result) => {
+          res.status(201).json({
+            message: "user created!",
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({
+            error: err,
+            message: "This user already exited !",
+          });
+        });
+    });
+  }
+);
 /*************-Login-********** */
 
 router.post("/login", (req, res, next) => {
@@ -158,30 +188,8 @@ router.get("/datateacher", (req, res, next) => {
 
 /*************-Update User-********** */
 
-const MIME_TYPE_MAP = {
-  "image/png": "png",
-  "image/jpeg": "jpg",
-  "image/jpg": "jpg",
-};
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    const isValid = MIME_TYPE_MAP[file.mimetype];
-    let error = new Error("Invalid mime type");
-    if (isValid) {
-      error = null;
-    }
-    cb(error, "backend/file-folder");
-  },
-  filename: (req, file, cb) => {
-    const name = file.originalname.toLowerCase().split(" ").join("-");
-    const ext = MIME_TYPE_MAP[file.mimetype];
-    cb(null, name + "-" + Date.now() + "." + ext);
-  },
-});
-
 router.patch(
-  "/up",
+  "/UpdateUser",
   multer({ storage: storage }).single("imgPath"),
   async (req, res, next) => {
     try {
@@ -189,15 +197,16 @@ router.patch(
       const url = req.protocol + "://" + req.get("host");
 
       const userUpdated = {
-        userId: req.body.userId,
-        Wallet: req.body.Wallet,
-        country: req.body.country,
-        responsTime: req.body.responsTime,
+        name: req.body.name,
+        phonenum: req.body.phonenum,
         imgPath: url + "/file-folder/" + req.file.filename,
-        description: req.body.description,
-        occupation: req.body.occupation,
-        skills: req.body.skills,
-        verified: "yes",
+
+        password: hash,
+        email: req.body.email,
+        category: req.body.category,
+        speciality: req.body.speciality,
+        location: req.body.location,
+        roles: [req.body.role],
       };
       const options = { new: true };
 

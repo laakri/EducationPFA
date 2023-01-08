@@ -59,7 +59,7 @@
 }
 
 .groups-category {
-  height: 75px;
+  min-height: 75px;
   max-width: 100%;
   background-color: transparent;
   border: var(--graycolor) solid 1px;
@@ -94,9 +94,13 @@
 
 .groups-category-info {
   background-color: var(--darkcolor);
-  font-size: 14px;
   padding: 5px;
   border-radius: 5px;
-  margin: 6px 0;
-  width: max-content;
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.groups-category-info span {
+  font-size: 14px;
 }

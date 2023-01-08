@@ -31,10 +31,9 @@ const routes: Routes = [
       { path: 'PostPage/:groupId', component: PostPageComponent },
       { path: 'GroupsList', component: GroupsListComponent },
       { path: 'Profile/:userId', component: ProfileComponent },
+      { path: 'Announcement', component: AnnouncementComponent },
     ],
   },
-
-  { path: 'Announcement', component: AnnouncementComponent },
 
   {
     path: 'Group',

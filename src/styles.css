@@ -19,7 +19,7 @@ body {
   --soft-darkcolor: #171a22;
   --whitecolor: #e2e2e2;
   --graycolor: #8a8d8e;
-  --maincolor: #6b69e0;
+  --maincolor: #84ccbf;
   --maintranscolor: #3b7fed71;
   --secendcolor: #c04e14;
   --darktranscolor: #19181ada;
@@ -63,7 +63,18 @@ button {
 ul {
   list-style-type: none;
 }
+/************ scroll bar ****************/
+::-webkit-scrollbar {
+  width: 13px;
+  background-color: var(--bordercolor);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--maincolor);
+}
 
+::-webkit-scrollbar-track {
+  background-color: var(--soft-darktranscolor);
+}
 /*********************-Active Button********************/
 
 .activebutton {

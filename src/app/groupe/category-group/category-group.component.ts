@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { GroupService } from './../group.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddUserGroupComponent } from '../add-user-group/add-user-group.component';
 
 interface Food {
   value: string;
@@ -27,6 +29,8 @@ export class CatGroupsComponent implements OnInit {
     'groupPeriode',
     'groupPrice',
     'createdAt',
+    'deep',
+    'AddUSer',
   ];
   foods: Food[] = [
     { value: '0', viewValue: 'Name' },
@@ -34,6 +38,8 @@ export class CatGroupsComponent implements OnInit {
     { value: '2', viewValue: 'Section' },
   ];
   constructor(
+    public dialog: MatDialog,
+
     public route: ActivatedRoute,
     private GroupService: GroupService
   ) {}
@@ -46,8 +52,17 @@ export class CatGroupsComponent implements OnInit {
     this.GroupService.getGroups(this.CatToSend);
     this.GroupSub = this.GroupService.getGroupUpdateListener().subscribe(
       (Groups: []) => {
-        this.Groups = Groups.reverse();
+        this.Groups = Groups;
       }
     );
+  }
+
+  AddUser(id: string): void {
+    const dialogRef = this.dialog.open(AddUserGroupComponent, {
+      data: { id: id },
+      width: '630px',
+      minHeight: '350px',
+      backdropClass: 'backdropBackground',
+    });
   }
 }
