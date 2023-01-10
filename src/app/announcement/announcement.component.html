@@ -55,8 +55,9 @@
         <div class="announc-info">
           <h3 *ngIf="Announc.userRole == 'admin'">Announcement</h3>
           <div *ngIf="Announc.userRole == 'student'" class="announc-teacher">
-            <p class="announc-teacher-1">{{ Announc.userId.name }}</p>
-            <p class="announc-teacher-2">{{ Announc.userId.category }}</p>
+            <img src="{{ Announc.userId.imgPath }}" alt="" />
+            <span>{{ Announc.userId.name }}</span>
+            <span>{{ Announc.userId.category }}</span>
           </div>
         </div>
         <span>
@@ -74,27 +75,42 @@
 </div>
 
 <div class="teacher-list">
-  <h4>TEACHER</h4>
+  <h4>STUDENTS</h4>
   <mat-form-field class="search-bar" appearance="outline">
     <mat-label> ❉/ Search</mat-label>
 
-    <input type="text" matInput />
+    <input
+      type="text"
+      matInput
+      [(ngModel)]="searchQuery"
+      (keyup)="searchSubject.next(searchQuery)"
+    />
   </mat-form-field>
-  <div class="announc_null" *ngIf="userlength <= 0">There is no Teacher !</div>
-  <div class="groups-category" *ngFor="let user of users">
-    <div>
-      <div class="groups-category-up">
-        <mat-icon aria-label="computer">people</mat-icon>
-        <span class="groups-category-name">{{ user.name }}</span>
-      </div>
-      <mat-divider></mat-divider>
 
-      <div class="group-category-down">
-        <span>{{ user.email }}</span>
-        <button mat-button (click)="onCopy(user.email)">
-          <i class="material-icons">content_copy</i>
-        </button>
-      </div>
+  <div class="my-spinner-div" *ngIf="spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div class="announc_null" *ngIf="userlength <= 0">"Teacher directory"</div>
+
+  <div class="users" *ngFor="let user of users">
+    <div class="users-img">
+      <img
+        src="{{ user.imgPath }}"
+        [routerLink]="['/Homepage/Profile', user.userId]"
+        alt="imgPath"
+      />
+    </div>
+    <div class="users-text">
+      <span>{{ user.name }}</span>
+      <span>
+        {{ user.email }}
+      </span>
+    </div>
+    <div class="flex-it-to-right"></div>
+    <div class="users-button">
+      <button mat-raised-button (click)="onCopy(user.userId)">
+        <i class="material-icons">content_copy</i>
+      </button>
     </div>
   </div>
 </div>

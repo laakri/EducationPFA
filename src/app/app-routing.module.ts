@@ -11,7 +11,6 @@ import { AnnouncementComponent } from './announcement/announcement.component';
 import { ContactPageComponent } from './home-page/contact-page/contact-page.component';
 import { ViewGroupComponent } from './groupe/view-group/view-group.component';
 import { AuthGuard } from './login/user.guard';
-import { AddCategoryComponent } from './groupe/add-category/add-category.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import { CreatePostComponent } from './groupe/create-post/create-post.component';
 import { GroupsListComponent } from './groups-list/groups-list.component';
@@ -43,7 +42,6 @@ const routes: Routes = [
       { path: 'View', component: ViewGroupComponent },
       { path: 'CatGroup/:groupName', component: CatGroupsComponent },
       { path: 'AddUser', component: AddUserComponent },
-      { path: 'AddCategory', component: AddCategoryComponent },
       { path: 'CreatePost', component: CreatePostComponent },
       { path: 'GroupUsers/:groupId', component: GroupUsersComponent },
     ],

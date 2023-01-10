@@ -44,9 +44,10 @@ export class AddUserComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    this.UsersService.addUser(
+    this.UsersService.addUserAsAdmin(
       form.value.name,
       form.value.phonenum,
+      this.trueFile,
       form.value.phonenum,
       form.value.email,
       form.value.category,
@@ -54,7 +55,7 @@ export class AddUserComponent implements OnInit {
       form.value.location,
       form.value.role
     );
-    console.log(form.value);
+    console.log(this.trueFile, form.value);
   }
 
   onFilePicked(event: Event) {

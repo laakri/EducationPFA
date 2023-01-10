@@ -15,10 +15,15 @@
               {{ Group.groupObject }}
             </span>
           </div>
-          <h2 style="color: var(--maincolor)">
-            Beggins in {{ days }} days - {{ hours }} houres -
-            {{ minutes }} minutes - {{ seconds }} secends
-          </h2>
+
+          <div *ngIf="seconds > 0" class="begin-date">
+            Beggins in {{ days }} days {{ hours }} houres {{ minutes }} minutes
+            {{ seconds }} secends
+          </div>
+          <div *ngIf="seconds < 0" class="begin-date">
+            <span>LIVE</span>
+            <i class="material-icons date-live">radio_button_on</i>
+          </div>
 
           <div class="post-small-description">
             <span>
@@ -90,9 +95,34 @@
           {{ Group.groupDetails }}
         </p>
       </mat-card>
-      <mat-divider></mat-divider>
     </div>
   </div>
 
-  <div class="container"></div>
+  <div class="container">
+    <div class="pricing-content">
+      <div class="pricing-details"></div>
+
+      <div class="pricing-price">
+        <div class="pricing-price1">
+          <div class="pricing-price1-flexy">
+            <span>Get with all-access</span>
+            <button mat-flat-button>Get all access -></button>
+          </div>
+          <div class="pricing-price1-flex">
+            <div class="pricing-price1-price">299$</div>
+            <div class="pricing-price1-span">
+              <span>one-time payment</span>
+              <span>plus local taxes</span>
+            </div>
+          </div>
+          <p class="pricing-price1-p">
+            Get lifetime access to every one of our website templates as well as
+            all of our component examples for a single one-time purchase.
+          </p>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="pricing-price2"></div>
+      </div>
+    </div>
+  </div>
 </div>

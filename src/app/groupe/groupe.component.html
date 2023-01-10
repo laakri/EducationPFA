@@ -24,14 +24,7 @@
   >
     Add User
   </button>
-  <button
-    mat-button
-    class="top-bar-button"
-    routerLinkActive="activebutton"
-    [routerLink]="['/Group/AddCategory']"
-  >
-    Add Category
-  </button>
+
   <button
     mat-button
     class="top-bar-button"
@@ -68,26 +61,29 @@
       <mat-spinner></mat-spinner>
     </div>
     <div class="announc_null" *ngIf="userlength <= 0">"Student directory"</div>
-    <div class="groups-category" *ngFor="let user of users">
-      <div class="groups-category-logo">
-        <mat-icon aria-label="computer">people</mat-icon>
-        <span
-          class="groups-category-name"
-          [routerLink]="['/Homepage/Profile', user.userId]"
-          >{{ user.name }}</span
-        >
-      </div>
-      <mat-divider></mat-divider>
 
-      <div class="groups-category-info">
+    <div class="users" *ngFor="let user of users">
+      <div class="users-img">
+        <img
+          src="{{ user.imgPath }}"
+          [routerLink]="['/Homepage/Profile', user.userId]"
+          alt="imgPath"
+        />
+      </div>
+      <div class="users-text">
+        <span>{{ user.name }}</span>
         <span>
-          {{ user.category }}
+          {{ user.email }}
         </span>
-        <a (click)="onCopy(user.userId)">
+      </div>
+      <div class="flex-it-to-right"></div>
+      <div class="users-button">
+        <button mat-raised-button (click)="onCopy(user.userId)">
           <i class="material-icons">content_copy</i>
-        </a>
+        </button>
       </div>
     </div>
+
     <!------------------------------------------------------------------->
   </mat-drawer>
   <div class="result-content">

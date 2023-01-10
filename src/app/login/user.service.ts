@@ -30,9 +30,10 @@ export class UsersService {
     private _snackBar: MatSnackBar
   ) {}
 
-  addUser(
+  addUserAsAdmin(
     name: string,
     phonenum: string,
+    file: File,
     password: string,
     email: string,
     category: string,
@@ -40,21 +41,22 @@ export class UsersService {
     location: string,
     role: string
   ) {
-    const user: User = {
-      name: name,
-      phonenum: phonenum,
-      password: password,
-      email: email,
-      category: category,
-      speciality: speciality,
-      location: location,
-      role: role,
-      userId: '',
-      createdAt: '',
-      updatedAt: '',
-    };
+    const userData = new FormData();
+    userData.append('name', name);
+    userData.append('phonenum', phonenum);
+    userData.append('file', file);
+    userData.append('password', password);
+    userData.append('email', email);
+    userData.append('category', category);
+    userData.append('speciality', speciality);
+    userData.append('location', location);
+    userData.append('role', role);
+
     this.http
-      .post<{ message: string }>(this.apiURL + '/api/users/signup', user)
+      .post<{ message: string }>(
+        this.apiURL + '/api/users/AdminAddUser',
+        userData
+      )
       .subscribe(
         () => {
           console.log('User Added !');
@@ -65,6 +67,32 @@ export class UsersService {
       );
   }
 
+  SignUp(name: string, phonenum: string, password: string) {
+    const userData: User = {
+      name: name,
+      phonenum: phonenum,
+      password: password,
+      userId: '',
+      email: '',
+      category: '',
+      speciality: '',
+      location: '',
+      role: '',
+      createdAt: '',
+      updatedAt: '',
+    };
+
+    this.http
+      .post<{ message: string }>(this.apiURL + '/api/users/signup', userData)
+      .subscribe(
+        () => {
+          console.log('User Added !');
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
   getToken() {
     return this.token;
   }
@@ -141,13 +169,13 @@ export class UsersService {
               this.userName,
               this.userRole
             );
-            const successMessage = 'User Added Successfuly !';
+            const successMessage = 'Login Successfuly !';
             this._snackBar.openFromComponent(SuccesComponent, {
               data: { message: successMessage },
               duration: 2500,
               panelClass: ['green-snackbar'],
             });
-            this.router.navigate(['/Profile/' + this.userId]);
+            /*  this.router.navigate(['/Profile/' + this.userId]);*/
           }
         },
         (error) => {
@@ -282,7 +310,7 @@ export class UsersService {
 
   /*************************************************/
 
-  getusers(filter: string) {
+  getusersearch(filter: string) {
     this.http
       .get<{ message: string; users: any }>(
         this.apiURL + '/api/users/search/' + filter
@@ -290,21 +318,12 @@ export class UsersService {
       .pipe(
         map((usertData) => {
           return usertData.users.map(
-            (user: {
-              _id: any;
-              name: any;
-              category: any;
-              speciality: any;
-              createdAt: any;
-              updatedAt: any;
-            }) => {
+            (user: { _id: any; name: any; email: any; imgPath: any }) => {
               return {
                 userId: user._id,
                 name: user.name,
-                category: user.category,
-                speciality: user.speciality,
-                createdAt: user.createdAt,
-                updatedAt: user.updatedAt,
+                email: user.email,
+                imgPath: user.imgPath,
               };
             }
           );

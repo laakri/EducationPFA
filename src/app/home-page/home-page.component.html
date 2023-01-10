@@ -41,8 +41,19 @@
   </button>
   <div class="puch-right"></div>
   <div class="right-navbar-button">
-    <button mat-button (click)="login()">login</button>
-    <button mat-raised-button (click)="login()">Get started</button>
+    <div *ngIf="isAuth" class="username-text">{{ userName }}</div>
+    <img
+      *ngIf="isAuth"
+      src="../../assets/deafault-profile-pic.png"
+      alt="userPic"
+      [routerLink]="['/Homepage/Profile/', '63ba8b3e75924707c96ee71a']"
+    />
+    <button *ngIf="!isAuth" mat-button id="button1" (click)="login()">
+      login
+    </button>
+    <button *ngIf="!isAuth" mat-raised-button id="button2" (click)="login()">
+      Get started
+    </button>
   </div>
 </mat-toolbar>
 <!--

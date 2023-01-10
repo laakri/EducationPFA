@@ -43,7 +43,7 @@ body.bright-theme {
   --soft-darkcolor: #f1f0f0;
   --whitecolor: #000000;
   --graycolor: #444444;
-  --maincolor: #6b69e0;
+  --maincolor: #13a187;
   --maintranscolor: #3b7fed71;
   --secendcolor: #c04e14;
   --darktranscolor: #fdfdfdce;
@@ -218,7 +218,6 @@ mat-divider {
 }
 
 /********************- mat chip  -**************************/
-
 mat-chip {
   background-color: rgba(128, 128, 128, 0.295) !important;
   color: var(--whitecolor) !important ;
@@ -238,8 +237,11 @@ mat-chip {
 
 /*************************** -tabs- ****************************/
 /* Styles for tab labels */
+.mat-tab-list {
+  border-bottom: var(--bordercolor) solid 1px !important;
+}
 .mat-tab-label {
-  min-width: 30px !important;
+  min-width: 150px !important;
   color: var(--whitecolor);
   font-size: 16px;
 }
@@ -248,6 +250,7 @@ mat-chip {
 .mat-tab-label.mat-tab-label-active {
   color: var(--whitecolor);
 }
+
 /* Styles for the ink bar */
 .mat-ink-bar {
   background-color: var(--whitecolor) !important;

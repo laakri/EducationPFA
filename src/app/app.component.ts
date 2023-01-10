@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsersService } from './login/user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'EducationWebsite';
+
+  constructor(private UsersService: UsersService) {}
+  ngOnInit() {
+    this.UsersService.autoAuthUser();
+  }
 }

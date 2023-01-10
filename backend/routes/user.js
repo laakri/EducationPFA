@@ -30,11 +30,11 @@ const storage = multer.diskStorage({
   },
 });
 
-/*************-Signup-********** */
+/*************-Admin Add User-********** */
 
 router.post(
-  "/signup",
-  multer({ storage: storage }).single("imgPath"),
+  "/AdminAddUser",
+  multer({ storage: storage }).single("file"),
   (req, res, next) => {
     bcrypt.hash(req.body.password, 10).then((hash) => {
       const url = req.protocol + "://" + req.get("host");
@@ -66,7 +66,31 @@ router.post(
         });
     });
   }
-);
+); /*************-Signup-********** */
+
+router.post("/signup", (req, res, next) => {
+  bcrypt.hash(req.body.password, 10).then((hash) => {
+    const user = new User({
+      name: req.body.name,
+      phonenum: req.body.phonenum,
+      password: hash,
+    });
+    user
+      .save()
+      .then((result) => {
+        res.status(201).json({
+          message: "user created!",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({
+          error: err,
+          message: "This user already exited !",
+        });
+      });
+  });
+});
 /*************-Login-********** */
 
 router.post("/login", (req, res, next) => {
@@ -107,11 +131,16 @@ router.post("/login", (req, res, next) => {
     });
 });
 
-/*************-Get User-********** */
+/*************-Get User for profile -********** */
 
 router.get("/data/:id", (req, res, next) => {
   User.find({ _id: req.params.id })
     .select(["-password", "-__v"])
+    .populate({
+      path: "groups",
+      select:
+        "-groupObject -groupDescription -groupPrice -groupExperienseNeed -groupExperienseGain -groupDetails -groupUsers -createdAt -updatedAt -__v",
+    })
     .then((documents) => {
       res.status(200).json({
         message: "Profile runs seccesfully !",
@@ -147,43 +176,47 @@ router.get("/data", (req, res, next) => {
 });
 /*************-Get Users with filter-********** */
 
-router.get("/search", (req, res) => {
+router.get("/search", async (req, res) => {
   const query = req.query.name;
 
-  User.find({ name: { $regex: "^" + query, $options: "i" }, roles: "student" })
-    .then((documents) => {
-      res.status(200).json({
-        message: "User runs seccesfully !",
-        users: documents,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: err,
-        message: "User Failed !",
-      });
+  try {
+    const user = await User.find({
+      name: { $regex: "^" + query, $options: "i" },
+      roles: "student",
+    }).select(["_id", "name", "imgPath", "email"]);
+    res.status(200).json({
+      message: "User runs seccesfully !",
+      users: user,
     });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      error: err,
+      message: "User Failed !",
+    });
+  }
 });
+/*************-Get Teachers with filter-********** */
 
-/*************-Get Teachers-********** */
+router.get("/searchTeacher", async (req, res) => {
+  const query = req.query.name;
 
-router.get("/datateacher", (req, res, next) => {
-  User.find({ roles: "teacher" })
-    .select(["-phonenum", "-password", "-location", "-__v"])
-    .then((documents) => {
-      res.status(200).json({
-        message: "Profile runs seccesfully !",
-        users: documents,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: err,
-        message: "Profile Failed !",
-      });
+  try {
+    const user = await User.find({
+      name: { $regex: "^" + query, $options: "i" },
+      roles: "teacher",
+    }).select(["_id", "name", "imgPath", "email"]);
+    res.status(200).json({
+      message: "User runs seccesfully !",
+      users: user,
     });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      error: err,
+      message: "User Failed !",
+    });
+  }
 });
 
 /*************-Update User-********** */

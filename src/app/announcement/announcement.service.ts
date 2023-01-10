@@ -23,30 +23,38 @@ export class AnnouncementService {
   ) {}
 
   /***************************************************** */
-  addAnnounc(userId: string, userRole: string, content: string) {
-    const resultData: Announc = {
-      userId: userId,
-      userRole: userRole,
-      content: content,
-      id: '',
-      createdAt: '',
-      updatedAt: '',
-    };
+  addAnnounc(userId: string, userRole: string, content: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const resultData: Announc = {
+        userId: userId,
+        userRole: userRole,
+        content: content,
+        id: '',
+        createdAt: '',
+        updatedAt: '',
+      };
 
-    this.http
-      .post<{ message: string; result: Announc }>(
-        this.apiURL + '/api/announcs/Add/',
-        resultData
-      )
-      .subscribe((responseData) => {
-        console.log('Announc added successfully');
-        const successMessage = 'Announc Added Successfuly !';
-        this._snackBar.openFromComponent(SuccesComponent, {
-          data: { message: successMessage },
-          duration: 2500,
-          panelClass: ['green-snackbar'],
-        });
-      });
+      this.http
+        .post<{ message: string; result: Announc }>(
+          this.apiURL + '/api/announcs/Add/',
+          resultData
+        )
+        .subscribe(
+          (responseData) => {
+            console.log('Announc added successfully');
+            const successMessage = 'Announc Added Successfuly !';
+            this._snackBar.openFromComponent(SuccesComponent, {
+              data: { message: successMessage },
+              duration: 2500,
+              panelClass: ['green-snackbar'],
+            });
+            resolve();
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
   }
 
   /***************************************************** */
@@ -92,32 +100,20 @@ export class AnnouncementService {
   }
 
   /*************************************************/
-
-  getTeachers() {
+  getTeachers(filter: string) {
     this.http
       .get<{ message: string; users: any }>(
-        this.apiURL + '/api/users/datateacher'
+        this.apiURL + '/api/users/searchTeacher/' + filter
       )
       .pipe(
         map((usertData) => {
           return usertData.users.map(
-            (user: {
-              _id: any;
-              name: any;
-              email: any;
-              category: any;
-              speciality: any;
-              createdAt: any;
-              updatedAt: any;
-            }) => {
+            (user: { _id: any; name: any; email: any; imgPath: any }) => {
               return {
                 userId: user._id,
                 name: user.name,
                 email: user.email,
-                category: user.category,
-                speciality: user.speciality,
-                createdAt: user.createdAt,
-                updatedAt: user.updatedAt,
+                imgPath: user.imgPath,
               };
             }
           );
@@ -129,7 +125,7 @@ export class AnnouncementService {
       });
   }
 
-  getUserUpdateListener() {
+  getTeacherUpdateListener() {
     return this.userUpdated.asObservable();
   }
 }

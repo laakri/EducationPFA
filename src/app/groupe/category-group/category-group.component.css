@@ -1,57 +1,59 @@
+.mainpage {
+  max-width: 1300px;
+  margin: auto;
+}
+
 .info-section {
-  border: rgb(44, 44, 44) solid 1px;
-  height: 160px;
-  width: 90%;
-  padding: 20px;
+  min-height: 160px;
+  width: 97%;
+  border-radius: 10px;
   margin: 20px auto;
-  border-radius: 10px;
   display: flex;
+  gap: 10px;
+  justify-content: space-between;
 }
-.info-text {
-  margin: auto 50px;
-}
-.span-text {
-  color: var(--graycolor);
-}
+
 .info-square {
-  height: 98%;
-  width: 250px;
+  height: 80px;
+  width: 30%;
   border-radius: 10px;
-  margin: auto 30px;
-  border: solid 1px rgb(44, 44, 44);
-}
-.square2 {
-  border: solid 1px rgb(44, 44, 44);
+  background-color: var(--soft-darkcolor);
+  border: solid 1px var(--bordercolor);
+  display: flex;
+  align-items: center;
 }
 .info-square-logo {
-  height: 55px;
+  height: 100%;
+  width: 80px;
+  background-color: var(--maincolor);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 .info-square-logo mat-icon {
+  margin-top: 20px;
+  margin-left: 10px;
   font-size: 40px;
-  margin: 10px;
-  color: #b1b1b1;
+  color: var(--darkcolor);
   padding: 0px 15px;
 }
 .info-square-info {
-  height: 35px;
   color: var(--whitecolor);
-  margin: 10px auto;
-  font-size: 16px;
-  padding: 5px 20px;
+  margin: 10px 20px;
+  font-size: 26px;
 }
 .info-square-number {
-  height: 25px;
-  margin: 5px auto;
-  padding: 0 25px;
-  font-size: 18px;
+  margin: 10px 20px;
+  font-size: 20px;
+  color: var(--graycolor);
 }
 
 table {
   width: 98%;
+  min-height: 500px;
   margin: 20px auto;
   box-shadow: none;
-  border: none;
-  background-color: transparent !important;
+  background-color: var(--soft-darkcolor) !important;
+  border-radius: 20px;
 }
 .demo-table {
   width: 100%;

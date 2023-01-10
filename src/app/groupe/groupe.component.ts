@@ -36,10 +36,11 @@ export class GroupeComponent implements OnInit {
     this.spinner = true;
 
     this.searchSubject.pipe(debounceTime(100)).subscribe((query) => {
-      this.UsersService.getusers(this.defaultName + query);
+      this.UsersService.getusersearch(this.defaultName + query);
       this.userSub = this.UsersService.getUserUpdateListener().subscribe(
         (users: User[]) => {
           this.users = users;
+          console.log(this.users);
           this.userlength = users.length;
         }
       );

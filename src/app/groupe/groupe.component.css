@@ -37,8 +37,8 @@
   background-color: var(--darkcolor);
   color: var(--whitecolor);
   border-right: solid var(--bordercolor) 1px;
-  padding: 30px;
-  width: 300px;
+  padding: 30px 10px;
+  width: 350px;
   margin: auto;
 }
 .search-bar {
@@ -58,49 +58,50 @@
   font-size: 16px;
 }
 
-.groups-category {
+.users {
   min-height: 75px;
   max-width: 100%;
-  background-color: transparent;
-  border: var(--graycolor) solid 1px;
+  margin: 10px auto;
   border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-.groups-category:hover {
-  border: var(--whitecolor) solid 1px;
-  cursor: pointer;
-}
-.groups-category-info-lower {
-  height: 40px;
-  margin-bottom: 10px;
   display: flex;
-}
-.groups-category-logo {
-  height: 20px;
-  width: 25px;
-  padding: 10px;
-  border-radius: 10px;
-  display: flex;
-}
-.groups-category-name {
-  height: 32px;
-  line-height: 35px;
-  min-width: 150px;
-  margin-top: -7px;
-  margin-left: 20px;
-  font-size: 16px;
+  flex-wrap: wrap;
+  border: var(--bordercolor) solid 1px;
+  align-items: center;
 }
 
-.groups-category-info {
-  background-color: var(--darkcolor);
-  padding: 5px;
-  border-radius: 5px;
-  margin-top: 10px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
+.users-img {
+  cursor: pointer;
+  height: 40px;
+  width: 20%;
 }
-.groups-category-info span {
-  font-size: 14px;
+.users-img img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+.users-text {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+.users-text :last-child {
+  color: var(--graycolor);
+}
+.flex-it-to-right {
+  flex: 1 1 auto;
+}
+.users-button {
+  width: 25%;
+}
+.users-button button {
+  background-color: transparent;
+  border: var(--bordercolor) solid 1px;
+  color: var(--graycolor);
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.users-button i {
+  font-size: 18px;
 }

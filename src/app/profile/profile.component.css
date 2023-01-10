@@ -1,118 +1,151 @@
-.mainpage{
-    max-width: 1300px;
-    margin: auto;
-  }
-  
-.profile-header{
-  margin: 30px auto 10px auto ;
+.mainpage {
+  max-width: 1100px;
+  margin: auto;
+  min-height: 860px;
+}
+
+.profile-header {
+  margin: 30px auto 10px auto;
   min-height: 150px;
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.header-button{
+.header-button {
   background-color: rgba(128, 128, 128, 0.295);
   color: var(--whitecolor);
 }
 
-
-::ng-deep .menu  {
+::ng-deep .menu {
   background-color: rgba(128, 128, 128, 0.295);
 }
 ::ng-deep .menu-item {
   color: var(--whitecolor) !important ;
 }
 
-.left-content{
-height: 100%;
-min-width: 300px;
-margin: 20px;
+.left-content {
+  height: 100%;
+  min-width: 300px;
+  margin: 20px;
+  display: flex;
 }
-.right-content{
+
+.left-content-1 {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+.left-content-1 img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+.left-content-2 {
+  margin-left: 20px;
+  padding-top: 10px;
+}
+
+.right-content {
   width: max-content;
   margin: 20px;
 }
-.user-name{
+.user-name {
   height: 35px;
   width: max-content;
   font-size: 30px;
-  margin: 20px  ;
+  margin: 20px;
 }
-.user-y-c{
+.user-y-c {
   display: flex;
   margin: 20px;
 }
-.user-year{
+.user-year {
   font-size: 16px;
-
 }
-.user-category{
+.user-category {
   font-size: 16px;
-
 }
 
+mat-tab-group {
+  margin: 40px auto 50px auto;
+  min-height: 500px;
+  color: var(--whitecolor) !important;
+}
 
-
-  mat-tab-group {
-    margin: 40px auto 50px auto;
-    min-height: 500px;
-    color: var(--whitecolor) !important;
-  
-  }
-
-
-  .tab{
-    margin: 20px auto ;
-    min-height: 100px;
-    padding: 20px 0;
-  
-  }
-
-  table {
-    width: 100%;
-    margin: 20px auto;
-    box-shadow: none;
-    border: none;
-    background-color: transparent !important;
+.tab {
+  margin: 20px auto;
+  min-height: 100px;
+  padding: 20px 0;
+}
+.profile-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+.profile-content div {
+  width: 40%;
+  margin: 30px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.profile-content span {
+  color: var(--graycolor);
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.profile-content p {
+  font-size: 18px;
+  color: var(--whitecolor);
+}
+table {
+  width: 100%;
+  margin: 20px auto;
+  box-shadow: none;
+  border: none;
+  background-color: transparent !important;
 }
 .demo-table {
-    width: 100%;
-  }
-  
-  .mat-row .mat-cell {
-    border-bottom: 1px solid transparent ;
-    border-top: 1px solid transparent ;
-    cursor: pointer;
-  }
-  
-  .mat-row:hover .mat-cell {
-    background-color: var(--soft-darkcolor);
-  }
-  
-  .demo-row-is-clicked {
-    font-weight: bold;
-  }
-  table th{
-    border-bottom: rgb(44, 44, 44) solid 1px;
-  }
+  width: 100%;
+}
 
-  .money-type{
-    display: flex;
-  }
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
 
-  
-  .icon-green {
-    margin:  3px;
-    color:rgb(51, 190, 51) !important;
-  }
-  .icon-orange{
-    margin:  3px;
-    color:rgb(187, 156, 56) !important;
-  }
+.mat-row:hover .mat-cell {
+  background-color: var(--soft-darkcolor);
+}
 
-  .money-type span {
-    margin-left: 10px;
-    min-height: 25px;
-    display: inline-flex;
-    align-items: center;
-  }
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+table th {
+  border-bottom: rgb(44, 44, 44) solid 1px;
+}
+
+.money-type {
+  display: flex;
+}
+
+.icon-green {
+  padding: 1px 10px;
+  border-radius: 10px;
+  font-weight: 500;
+  color: #195f35;
+  background-color: #bbddc6;
+}
+.icon-red {
+  padding: 1px 10px;
+  border-radius: 10px;
+  font-weight: 500;
+  color: #af3544;
+  background-color: #ecc5c5;
+}
+
+.money-type span {
+  margin-left: 10px;
+  min-height: 25px;
+  display: inline-flex;
+  align-items: center;
+}

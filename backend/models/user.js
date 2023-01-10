@@ -6,7 +6,10 @@ const userSchema = mongoose.Schema(
   {
     name: { type: String, required: true },
     phonenum: { type: String, required: true, unique: true },
-    imgPath: { type: String, required: true },
+    imgPath: {
+      type: String,
+      default: "../../assets/deafault-profile-pic.png",
+    },
     password: { type: String, required: true },
     email: { type: String, unique: true, default: "None" },
     category: { type: String, default: "None" },

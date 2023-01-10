@@ -3,10 +3,11 @@ import { NgForm } from '@angular/forms';
 import { AnnouncementService } from './announcement.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
 import { reverse } from 'dns';
 import { User } from '../login/user.model';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { debounceTime } from 'rxjs/operators';
+import { Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-announcement',
@@ -27,6 +28,11 @@ export class AnnouncementComponent implements OnInit {
   userlength = 0;
   announslength = 0;
   spinner = false;
+  query = '';
+  searchSubject = new Subject<string>();
+  searchQuery = '';
+  defaultName = '?name=';
+
   constructor(
     private AnnouncementService: AnnouncementService,
     private activatedRoute: ActivatedRoute,
@@ -52,19 +58,23 @@ export class AnnouncementComponent implements OnInit {
     this.AnnounSub =
       this.AnnouncementService.getAnnouncUpdateListener().subscribe(
         (Announs: []) => {
-          this.Announs = Announs.reverse();
+          this.Announs = Announs;
+          console.log(this.Announs);
           this.announslength = Announs.length;
         }
       );
 
-    this.AnnouncementService.getTeachers();
-    this.userSub = this.AnnouncementService.getUserUpdateListener().subscribe(
-      (users: User[]) => {
-        this.users = users;
-        console.log(this.users);
-        this.userlength = users.length;
-      }
-    );
+    this.searchSubject.pipe(debounceTime(500)).subscribe((query) => {
+      this.AnnouncementService.getTeachers(this.defaultName + query);
+      this.userSub =
+        this.AnnouncementService.getTeacherUpdateListener().subscribe(
+          (users: User[]) => {
+            this.users = users;
+            console.log(this.users);
+            this.userlength = users.length;
+          }
+        );
+    });
     this.spinner = false;
   }
   onChange(filter: string) {
@@ -79,14 +89,14 @@ export class AnnouncementComponent implements OnInit {
         }
       );
   }
-
-  onAddAnnounc(form: NgForm) {
+  async onAddAnnounc(form: NgForm) {
     if (form.invalid) {
       return;
     }
     this.userId = localStorage.getItem('userId');
     this.userRole = localStorage.getItem('userRole');
-    this.AnnouncementService.addAnnounc(
+
+    await this.AnnouncementService.addAnnounc(
       this.userId,
       this.userRole,
       form.value.content
