@@ -15,6 +15,7 @@ import { PostPageComponent } from './post-page/post-page.component';
 import { CreatePostComponent } from './groupe/create-post/create-post.component';
 import { GroupsListComponent } from './groups-list/groups-list.component';
 import { GroupUsersComponent } from './groupe/group-users/group-users.component';
+import { GroupMeetComponent } from './groupe/group-meet/group-meet.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Homepage/View', pathMatch: 'full' },
@@ -44,6 +45,7 @@ const routes: Routes = [
       { path: 'AddUser', component: AddUserComponent },
       { path: 'CreatePost', component: CreatePostComponent },
       { path: 'GroupUsers/:groupId', component: GroupUsersComponent },
+      { path: 'GroupMeet', component: GroupMeetComponent },
     ],
   },
 ];

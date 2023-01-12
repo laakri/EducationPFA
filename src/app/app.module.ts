@@ -27,6 +27,7 @@ import { CreatePostComponent } from './groupe/create-post/create-post.component'
 import { GroupsListComponent } from './groups-list/groups-list.component';
 import { GroupUsersComponent } from './groupe/group-users/group-users.component';
 import { FooterComponent } from './home-page/footer/footer.component';
+import { GroupMeetComponent } from './groupe/group-meet/group-meet.component';
 
 /* *******************MODELS******************** */
 
@@ -95,6 +96,7 @@ import { AddUserGroupComponent } from './groupe/add-user-group/add-user-group.co
     GroupUsersComponent,
     AddUserGroupComponent,
     FooterComponent,
+    GroupMeetComponent,
   ],
   imports: [
     BrowserModule,

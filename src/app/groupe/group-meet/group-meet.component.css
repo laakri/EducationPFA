@@ -1,0 +1,24 @@
+.meet-view {
+  height: 500px;
+  width: 80%;
+  margin: auto;
+  border: solid 1px red;
+}
+
+.fas {
+  padding-right: 10px;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.item-center {
+  text-align: center;
+}
+
+.grey-color {
+  color: grey;
+}
+
+.red-color {
+  color: red;
+}

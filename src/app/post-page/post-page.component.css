@@ -25,6 +25,34 @@
   display: flex;
   justify-content: space-around;
 }
+.begin-date {
+  color: var(--maincolor);
+  margin: 20px;
+  padding: 5px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+@keyframes rotate {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.2;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.date-live {
+  margin-left: 10px;
+  color: var(--maincolor);
+  animation-name: rotate;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
 
 .post-tag {
   min-height: 20%;
@@ -65,8 +93,8 @@
 }
 .container-header-right-img {
   margin: auto;
-  height: 100%;
-  width: 100%;
+  height: 90%;
+  width: 90%;
   border-top-left-radius: 35%;
   border-bottom-right-radius: 35%;
 }
@@ -146,8 +174,22 @@ p {
   line-height: 1.3;
   font-size: 18px;
 }
+.pricing-content-text {
+  margin: 80px auto 0 auto;
+  font-size: 40px;
+  text-align: center;
+}
+.pricing-content-text-span {
+  text-align: center;
+  margin: 40px auto;
+  font-size: 20px;
+  color: var(--graycolor);
+  max-width: 580px;
+  line-height: 1.8;
+}
+
 .pricing-content {
-  height: 500px;
+  min-height: 500px;
   display: flex;
   justify-content: center;
   margin: 80px auto;
@@ -155,21 +197,33 @@ p {
 
 .pricing-details {
   margin: auto 0;
+  padding: 20px;
   width: 35%;
-  height: 80%;
-  border: var(--bordercolor) solid 1px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  height: 300px;
+  border-left: var(--bordercolor) solid 1px;
+  border-top: var(--bordercolor) solid 1px;
+  border-bottom: var(--bordercolor) solid 1px;
+  background-color: var(--soft-darkcolor);
 }
-
+.pricing-details-div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 33%;
+}
+.pricing-details-div b {
+  font-size: 18px;
+  font-weight: 500;
+}
+.pricing-details-div div:last-child {
+  font-size: 16px;
+  color: var(--graycolor);
+}
 .pricing-price {
   border-radius: 30px;
   width: 50%;
   border: var(--bordercolor) solid 1px;
-  background-color: var(--soft-darkcolor);
-}
-.pricing-price1 {
-  margin-bottom: 50px;
+  padding: 10px;
 }
 .pricing-price1-flexy {
   display: flex;
@@ -194,6 +248,7 @@ p {
 }
 .pricing-price1-price {
   font-size: 40px;
+  letter-spacing: 2px;
   font-weight: 600;
 }
 .pricing-price1-span {
@@ -209,31 +264,31 @@ p {
   margin: 20px;
   color: var(--graycolor);
 }
-.begin-date {
-  color: var(--maincolor);
-  margin: 20px;
-  padding: 5px;
-  font-size: 20px;
+
+.pricing-price2 {
   display: flex;
-  align-items: center;
+}
+.pricing-price2-content {
+  padding: 20px;
+  height: 120px;
+  margin: 10px;
+  width: 100%;
+  border: solid 1px var(--bordercolor);
+  border-radius: 20px;
 }
 
-@keyframes rotate {
-  0% {
-    scale: 1;
-  }
-  50% {
-    scale: 1.1;
-  }
-  100% {
-    scale: 1;
-  }
-}
-
-.date-live {
-  margin-left: 20px;
+.pricing-price2-content i {
   color: var(--maincolor);
-  animation-name: rotate;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
+  border-radius: 10px;
+  margin: 10px;
+  font-size: 40px;
+}
+.pricing-price2-content span {
+  margin: 20px;
+  font-size: 16px;
+  color: var(--graycolor);
+}
+.pricing-price2-content b {
+  font-weight: 500;
+  font-size: 20px;
 }

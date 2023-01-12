@@ -9,7 +9,14 @@ import { GroupUsers } from './../group.model';
   styleUrls: ['./group-users.component.css'],
 })
 export class GroupUsersComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'email', 'phonenum', 'createdAt'];
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'email',
+    'phonenum',
+    'createdAt',
+    'view',
+  ];
   dataSource: any;
   private routeSub: Subscription | undefined;
   groupId = '';

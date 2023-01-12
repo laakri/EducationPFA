@@ -54,17 +54,12 @@
   width: 260px;
   height: 390px;
   position: relative;
+  border: 2px solid transparent;
 }
 .post:hover {
   border-width: 1px;
   border-style: solid;
-  border-image: linear-gradient(
-      to top,
-      var(--darkcolor),
-      var(--whitecolor),
-      var(--darkcolor)
-    )
-    1 100%;
+  border: var(--whitecolor) solid 2px;
   cursor: pointer;
 }
 .post-img {

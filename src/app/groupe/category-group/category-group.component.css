@@ -47,6 +47,11 @@
   color: var(--graycolor);
 }
 
+.div-table {
+  min-height: 600px;
+  background-color: var(--soft-darkcolor);
+  border-radius: 20px;
+}
 table {
   width: 98%;
   min-height: 500px;

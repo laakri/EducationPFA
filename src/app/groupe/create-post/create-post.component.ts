@@ -23,7 +23,7 @@ import { GroupService } from '../group.service';
 })
 export class CreatePostComponent implements OnInit {
   formGroup!: FormGroup;
-  isLinear = false;
+  isLinear = true;
   filteredOptions!: Observable<categ[]>;
   myControl = new FormControl();
   value = 1;

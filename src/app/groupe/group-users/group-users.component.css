@@ -1,12 +1,22 @@
+.mainpage {
+  max-width: 1300px;
+  margin: auto;
+}
 .information-section {
-  height: 80px;
+  min-height: 90px;
+  width: 98%;
   display: flex;
-  margin: 20px auto 20px 20px;
+  flex-wrap: wrap;
+  margin: 20px auto;
+  gap: 10px;
 }
 .information-section > * {
   flex-grow: 1;
+  background-color: var(--soft-darkcolor);
   width: fit-content;
+  border-radius: 20px;
   font-size: 18px;
+  padding: 10px;
 }
 .information-section > * > * {
   padding: 10px;
@@ -14,32 +24,34 @@
 .information-section span {
   color: var(--graycolor);
 }
+.div-table {
+  min-height: 700px;
+  background-color: var(--soft-darkcolor);
+  border-radius: 20px;
+}
 table {
   width: 98%;
   margin: 20px auto;
+  background-color: var(--soft-darkcolor) !important ;
   box-shadow: none;
   border: none;
-  background-color: transparent !important;
 }
 .demo-table {
   width: 100%;
 }
 
 .mat-row .mat-cell {
-  border-bottom: 1px solid transparent;
-  border-top: 1px solid transparent;
   cursor: pointer;
 }
-
+table th {
+  border-bottom: 1px solid var(--bordercolor);
+}
 .mat-row:hover .mat-cell {
-  border-color: currentColor;
+  background-color: var(--soft-darkcolor);
 }
 
 .demo-row-is-clicked {
   font-weight: bold;
-}
-table th {
-  border-bottom: var(--bordercolor) solid 1px;
 }
 .UsersNone {
   border: var(--bordercolor) solid 1px;
@@ -49,4 +61,7 @@ table th {
   width: 250px;
   margin: 50px auto;
   color: var(--graycolor);
+}
+.view-button {
+  border: var(--bordercolor) solid 1px;
 }

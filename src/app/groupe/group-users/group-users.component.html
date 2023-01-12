@@ -1,54 +1,76 @@
-<div class="information-section">
-  <div>
-    <div>Group Id</div>
-    <span>{{ groupUser?._id }}</span>
+<div class="mainpage">
+  <div class="information-section">
+    <div>
+      <div>Group Id</div>
+      <span>{{ groupUser?._id }}</span>
+    </div>
+    <div>
+      <div>Starting At</div>
+      <span>{{ groupUser?.groupStartDate }}</span>
+    </div>
+    <div>
+      <div>Week</div>
+      <span>{{ groupUser?.groupHourPerWeek }} Hour/Week</span>
+    </div>
+    <div>
+      <div>Group Duration</div>
+      <span>{{ groupUser?.groupPeriode }}</span>
+    </div>
+    <div>
+      <div>Created At</div>
+      <span>{{ groupUser?.createdAt }}</span>
+    </div>
   </div>
-  <div>
-    <div>Starting At</div>
-    <span>{{ groupUser?.groupStartDate }}</span>
+  <div class="div-table">
+    <table
+      mat-table
+      [dataSource]="groupUser?.groupUsers"
+      class="mat-elevation-z8"
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>id</th>
+        <td mat-cell *matCellDef="let element">{{ element._id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="phonenum">
+        <th mat-header-cell *matHeaderCellDef>Phone Number</th>
+        <td mat-cell *matCellDef="let element">{{ element.phonenum }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef>CreatedAt</th>
+        <td mat-cell *matCellDef="let element">{{ element.createdAt }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="view">
+        <th mat-header-cell *matHeaderCellDef>View Profile</th>
+        <td mat-cell *matCellDef="let element">
+          <a
+            mat-button
+            class="view-button"
+            [routerLink]="['/Homepage/Profile', element._id]"
+            target="_blank"
+          >
+            View
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <div *ngIf="groupUserLength == 0" class="UsersNone">
+      No users have been added yet
+    </div>
   </div>
-  <div>
-    <div>Week</div>
-    <span>{{ groupUser?.groupHourPerWeek }} Hour/Week</span>
-  </div>
-  <div>
-    <div>Group Duration</div>
-    <span>{{ groupUser?.groupPeriode }}</span>
-  </div>
-  <div>
-    <div>Created At</div>
-    <span>{{ groupUser?.createdAt }}</span>
-  </div>
-</div>
-<table mat-table [dataSource]="groupUser?.groupUsers" class="mat-elevation-z8">
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef>id</th>
-    <td mat-cell *matCellDef="let element">{{ element._id }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>name</th>
-    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef>email</th>
-    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="phonenum">
-    <th mat-header-cell *matHeaderCellDef>Phone Number</th>
-    <td mat-cell *matCellDef="let element">{{ element.phonenum }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="createdAt">
-    <th mat-header-cell *matHeaderCellDef>CreatedAt</th>
-    <td mat-cell *matCellDef="let element">{{ element.createdAt }}</td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
-<div *ngIf="groupUserLength == 0" class="UsersNone">
-  No users have been added yet
 </div>

@@ -15,6 +15,14 @@
   >
     Category
   </button>
+  <button
+    mat-button
+    class="top-bar-button"
+    routerLinkActive="activebutton"
+    [routerLink]="['/Group/GroupMeet']"
+  >
+    GroupMeet
+  </button>
 
   <button
     mat-button
@@ -33,14 +41,15 @@
   >
     CreatePost
   </button>
-  <button
+  <a
     mat-button
     class="top-bar-button"
     routerLinkActive="activebutton"
     [routerLink]="['/Group/GroupUsers/63aac6f9ddd3d25b418e495d']"
+    target="_blank"
   >
     GroupUsers
-  </button>
+  </a>
 </mat-toolbar>
 
 <mat-drawer-container class="full-content">

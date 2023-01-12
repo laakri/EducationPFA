@@ -1,13 +1,28 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GroupService } from './../groupe/group.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-post-page',
   templateUrl: './post-page.component.html',
   styleUrls: ['./post-page.component.css'],
 })
 export class PostPageComponent implements OnInit {
+  @ViewChild('info')
+  public info!: ElementRef;
+
+  public infoStruc(): void {
+    setImmediate(() => {
+      this.info.nativeElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+        inline: 'start',
+      });
+    });
+  }
+
   private routeSub: Subscription | undefined;
   goupId = '';
   Groups!: any;
@@ -21,6 +36,7 @@ export class PostPageComponent implements OnInit {
   public seconds: number = 0;
   /*********************************************** */
   constructor(
+    private router: Router,
     public route: ActivatedRoute,
     private GroupService: GroupService
   ) {}
