@@ -15,10 +15,19 @@
 <div class="sidebar-content">
   <button
     mat-button
-    [routerLink]="['/Homepage/Announcement']"
+    [routerLink]="['/Formation/Announcement']"
     routerLinkActive="activebutton"
   >
     <mat-icon aria-label="campaign">campaign</mat-icon>
+  </button>
+</div>
+<div class="sidebar-content">
+  <button
+    mat-button
+    [routerLink]="['/Formation/Meeting']"
+    routerLinkActive="activebutton"
+  >
+    <mat-icon aria-label="adjust" class="button-live">adjust</mat-icon>
   </button>
 </div>
 
@@ -28,13 +37,7 @@
     [routerLink]="['/Group/View']"
     routerLinkActive="activebutton"
   >
-    <mat-icon aria-label="Groupe">school</mat-icon>
-  </button>
-</div>
-
-<div class="sidebar-content">
-  <button mat-button>
-    <mat-icon aria-label="settings">settings</mat-icon>
+    <mat-icon aria-label="Groupe">admin_panel_settings</mat-icon>
   </button>
 </div>
 <div class="side-bar-bottom">

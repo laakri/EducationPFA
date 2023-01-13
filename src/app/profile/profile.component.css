@@ -82,8 +82,11 @@ mat-tab-group {
   flex-wrap: wrap;
 }
 .profile-content div {
+  background-color: var(--soft-darkcolor);
+  border-radius: 20px;
   width: 40%;
   margin: 30px 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
 }

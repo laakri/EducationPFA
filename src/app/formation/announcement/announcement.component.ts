@@ -4,7 +4,7 @@ import { AnnouncementService } from './announcement.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { reverse } from 'dns';
-import { User } from '../login/user.model';
+import { User } from '../../login/user.model';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { debounceTime } from 'rxjs/operators';
 import { Subject, Subscription } from 'rxjs';

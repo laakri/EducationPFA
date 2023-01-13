@@ -23,3 +23,21 @@
   position: absolute;
   bottom: 0;
 }
+@keyframes scaling {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.2;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.button-live {
+  color: var(--maincolor);
+  animation-name: scaling;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}

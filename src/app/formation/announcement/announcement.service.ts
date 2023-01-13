@@ -3,10 +3,10 @@ import { Announc } from './announcement.model';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SuccesComponent } from './../succes/succes.component';
+import { SuccesComponent } from '../../succes/succes.component';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { User } from '../login/user.model';
+import { User } from '../../login/user.model';
 import { environment } from '@envi/environment';
 
 @Injectable({ providedIn: 'root' })

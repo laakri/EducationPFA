@@ -14,7 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { AddUserComponent } from './groupe/add-user/add-user.component';
 import { HomeViewComponent } from './home-page/home-view/home-view.component';
 import { ProfileComponent } from './profile/profile.component';
-import { AnnouncementComponent } from './announcement/announcement.component';
+import { AnnouncementComponent } from './formation/announcement/announcement.component';
 import { ContactPageComponent } from './home-page/contact-page/contact-page.component';
 import { AboutPageComponent } from './home-page/about-page/about-page.component';
 import { ViewGroupComponent } from './groupe/view-group/view-group.component';
@@ -27,7 +27,10 @@ import { CreatePostComponent } from './groupe/create-post/create-post.component'
 import { GroupsListComponent } from './groups-list/groups-list.component';
 import { GroupUsersComponent } from './groupe/group-users/group-users.component';
 import { FooterComponent } from './home-page/footer/footer.component';
-import { GroupMeetComponent } from './groupe/group-meet/group-meet.component';
+import { GroupMeetComponent } from './formation/group-meet/group-meet.component';
+import { AddUserGroupComponent } from './groupe/add-user-group/add-user-group.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FormationComponent } from './formation/formation.component';
 
 /* *******************MODELS******************** */
 
@@ -68,7 +71,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { AddUserGroupComponent } from './groupe/add-user-group/add-user-group.component';
+
 /* ********************************************* */
 
 @NgModule({
@@ -97,6 +100,8 @@ import { AddUserGroupComponent } from './groupe/add-user-group/add-user-group.co
     AddUserGroupComponent,
     FooterComponent,
     GroupMeetComponent,
+    NavbarComponent,
+    FormationComponent,
   ],
   imports: [
     BrowserModule,
