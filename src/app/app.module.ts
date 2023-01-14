@@ -31,6 +31,7 @@ import { GroupMeetComponent } from './formation/group-meet/group-meet.component'
 import { AddUserGroupComponent } from './groupe/add-user-group/add-user-group.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormationComponent } from './formation/formation.component';
+import { WaitingListComponent } from './groupe/waiting-list/waiting-list.component';
 
 /* *******************MODELS******************** */
 
@@ -71,7 +72,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
 /* ********************************************* */
 
 @NgModule({
@@ -102,6 +102,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     GroupMeetComponent,
     NavbarComponent,
     FormationComponent,
+    WaitingListComponent,
   ],
   imports: [
     BrowserModule,

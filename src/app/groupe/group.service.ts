@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Group, GroupUsers } from './group.model';
+import { Wuser } from './waitlist.model';
 import { SuccesComponent } from './../succes/succes.component';
 import { environment } from '@envi/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,12 +12,18 @@ import { Subject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class GroupService {
   apiURL = environment.apiURL;
+  private groupUpdate = new Subject<[]>();
+  private onegroupUpdate = new Subject<[]>();
+
   private groups: [] = [];
   private group: [] = [];
   private groupUsers: GroupUsers | null = null;
-  private groupUpdate = new Subject<[]>();
-  private onegroupUpdate = new Subject<[]>();
   private groupUsersUpdate = new Subject<GroupUsers>();
+
+  private waitlist: [] = [];
+  private waitlistUpdate = new Subject<[]>();
+  private waitlists: Wuser | null = null;
+  private waitlistsUpdate = new Subject<Wuser>();
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -289,5 +296,63 @@ export class GroupService {
           console.log(error);
         }
       );
+  }
+  /******************** Waitlist *********************** */
+  AddToWl(userId: string, groupId: string) {
+    const resultData: Wuser = {
+      userId: userId,
+      groupId: groupId,
+      createdAt: '',
+      updatedAt: '',
+    };
+
+    this.http
+      .post<{ message: string }>(this.apiURL + '/api/wuser/AddToWl', resultData)
+      .subscribe(
+        () => {
+          const successMessage = "We'll respond via Gmail shortly ";
+          this._snackBar.openFromComponent(SuccesComponent, {
+            data: { message: successMessage },
+            duration: 4500,
+            panelClass: ['green-snackbar'],
+          });
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
+  /**************************************** */
+  getWaitlistUsers() {
+    this.http
+      .get<{ message: string; result: any }>(this.apiURL + '/api/wuser/GetAll/')
+      .pipe(
+        map((groupData): { result: Wuser } => {
+          return {
+            result: {
+              ...groupData.result,
+              createdAt: new Date(groupData.result.createdAt)
+                .toUTCString()
+                .split(' ')
+                .slice(0, 4)
+                .join(' '),
+              groupStartDate: new Date(groupData.result.groupStartDate)
+                .toUTCString()
+                .split(' ')
+                .slice(0, 4)
+                .join(' '),
+            },
+          };
+        })
+      )
+      .subscribe((transformedGroup) => {
+        this.waitlists = transformedGroup.result;
+        this.waitlistsUpdate.next(this.waitlists);
+      });
+  }
+
+  getWaitListUpdateListener() {
+    return this.waitlistUpdate.asObservable();
   }
 }

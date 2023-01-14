@@ -17,6 +17,7 @@ import { GroupsListComponent } from './groups-list/groups-list.component';
 import { GroupUsersComponent } from './groupe/group-users/group-users.component';
 import { GroupMeetComponent } from './formation/group-meet/group-meet.component';
 import { FormationComponent } from './formation/formation.component';
+import { WaitingListComponent } from './groupe/waiting-list/waiting-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Homepage/View', pathMatch: 'full' },
@@ -54,6 +55,7 @@ const routes: Routes = [
       { path: 'AddUser', component: AddUserComponent },
       { path: 'CreatePost', component: CreatePostComponent },
       { path: 'GroupUsers/:groupId', component: GroupUsersComponent },
+      { path: 'WaitingList', component: WaitingListComponent },
     ],
   },
 ];

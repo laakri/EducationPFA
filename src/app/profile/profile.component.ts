@@ -10,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
+  spinner = false;
+
   UserID!: string;
   userSub: Subscription = new Subscription();
   users: any;
@@ -28,6 +30,8 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.spinner = true;
+
     this.routeSub = this.route.params.subscribe((params) => {
       this.UserID = params['userId'];
     });
@@ -40,5 +44,6 @@ export class ProfileComponent implements OnInit {
         console.log(this.users);
       }
     );
+    this.spinner = false;
   }
 }

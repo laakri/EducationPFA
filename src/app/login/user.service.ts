@@ -175,7 +175,7 @@ export class UsersService {
               duration: 2500,
               panelClass: ['green-snackbar'],
             });
-            /*  this.router.navigate(['/Profile/' + this.userId]);*/
+            this.router.navigate(['/Homepage/Profile/' + this.userId]);
           }
         },
         (error) => {

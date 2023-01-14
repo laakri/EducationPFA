@@ -1,3 +1,9 @@
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+}
 .mainpage {
   max-width: 1100px;
   margin: auto;

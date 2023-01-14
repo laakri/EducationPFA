@@ -13,21 +13,12 @@ export class PostPageComponent implements OnInit {
   @ViewChild('info')
   public info!: ElementRef;
 
-  public infoStruc(): void {
-    setImmediate(() => {
-      this.info.nativeElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end',
-        inline: 'start',
-      });
-    });
-  }
-
   private routeSub: Subscription | undefined;
   goupId = '';
   Groups!: any;
   chips!: any;
   GroupSub: Subscription = new Subscription();
+  userId: any;
   /*********************************************** */
   countdownDate!: Date;
   public days: number = 0;
@@ -61,6 +52,12 @@ export class PostPageComponent implements OnInit {
     setInterval(() => {
       this.updateTimer();
     }, 1000);
+  }
+
+  public infoStruc() {
+    this.userId = localStorage.getItem('userId');
+    console.log(this.userId, this.goupId);
+    this.GroupService.AddToWl(this.userId, this.goupId);
   }
 
   updateTimer(): void {

@@ -84,12 +84,18 @@ ul {
 /*********************-Snack Bar************************/
 
 .red-snackbar {
-  background: #bf3735;
+  background: #381d1d;
+  text-align: center;
   color: white;
+  font-size: 15px;
+  border-left: solid 10px red;
 }
 .green-snackbar {
-  background: #15703f;
+  background: #1d3826;
+  text-align: center;
   color: white;
+  font-size: 15px;
+  border-left: solid 10px green;
 }
 /*********************-Dialog***************************/
 
