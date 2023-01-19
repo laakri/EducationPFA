@@ -326,22 +326,12 @@ export class GroupService {
   /**************************************** */
   getWaitlistUsers() {
     this.http
-      .get<{ message: string; result: any }>(this.apiURL + '/api/wuser/GetAll/')
+      .get<{ message: string; result: any }>(this.apiURL + '/api/wuser/GetAll')
       .pipe(
         map((groupData): { result: Wuser } => {
           return {
             result: {
               ...groupData.result,
-              createdAt: new Date(groupData.result.createdAt)
-                .toUTCString()
-                .split(' ')
-                .slice(0, 4)
-                .join(' '),
-              groupStartDate: new Date(groupData.result.groupStartDate)
-                .toUTCString()
-                .split(' ')
-                .slice(0, 4)
-                .join(' '),
             },
           };
         })

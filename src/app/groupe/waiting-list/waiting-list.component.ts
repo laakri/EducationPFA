@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GroupService } from '../group.service';
+
 @Component({
   selector: 'app-waiting-list',
   templateUrl: './waiting-list.component.html',

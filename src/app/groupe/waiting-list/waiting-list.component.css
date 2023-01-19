@@ -1,7 +1,7 @@
 .stacked-list {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 90%;
   margin: auto;
   padding: 10px;
 }
@@ -23,7 +23,7 @@ a {
   width: 100%;
   border: var(--bordercolor) 1px solid;
   border-radius: 20px;
-  padding: 20px;
+  padding: 10px 20px;
   justify-content: space-between;
 }
 
