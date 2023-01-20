@@ -22,8 +22,8 @@ export class GroupService {
 
   private waitlist: [] = [];
   private waitlistUpdate = new Subject<[]>();
-  private waitlists: Wuser | null = null;
-  private waitlistsUpdate = new Subject<Wuser>();
+  private waitlists: any;
+  private waitlistsUpdate = new Subject<any>();
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -328,21 +328,41 @@ export class GroupService {
     this.http
       .get<{ message: string; result: any }>(this.apiURL + '/api/wuser/GetAll')
       .pipe(
-        map((groupData): { result: Wuser } => {
-          return {
-            result: {
-              ...groupData.result,
-            },
-          };
+        map((groupData) => {
+          return groupData.result.map(
+            (group: {
+              _id: any;
+              userId: any;
+              groupId: any;
+              createdAt: any;
+              updatedAt: any;
+            }) => {
+              return {
+                id: group._id,
+                userId: group.userId,
+                groupId: group.groupId,
+
+                createdAt: new Date(group.createdAt)
+                  .toUTCString()
+                  .split(' ')
+                  .slice(0, 4)
+                  .join(' '),
+                updatedAt: new Date(group.updatedAt)
+                  .toUTCString()
+                  .split(' ')
+                  .slice(0, 4)
+                  .join(' '),
+              };
+            }
+          );
         })
       )
       .subscribe((transformedGroup) => {
-        this.waitlists = transformedGroup.result;
-        this.waitlistsUpdate.next(this.waitlists);
+        this.waitlists = transformedGroup;
+        this.waitlistsUpdate.next([...this.waitlists]);
       });
   }
-
   getWaitListUpdateListener() {
-    return this.waitlistUpdate.asObservable();
+    return this.groupUpdate.asObservable();
   }
 }
