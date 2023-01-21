@@ -363,6 +363,6 @@ export class GroupService {
       });
   }
   getWaitListUpdateListener() {
-    return this.groupUpdate.asObservable();
+    return this.waitlistsUpdate.asObservable();
   }
 }

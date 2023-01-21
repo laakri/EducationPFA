@@ -1,23 +1,23 @@
 <div class="stacked-list">
   <div class="top-text">Waitlist Information</div>
 
-  <div class="stacked-list-item">
+  <div class="stacked-list-item" *ngFor="let waitlist of waitlists">
     <div class="left-div">
       <img
-        src="../../../assets/education2.jpg"
+        src="{{ waitlist.userId.imgPath }}"
         alt="user-img"
         class="user-img"
       />
       <div class="user-info">
-        <p class="user-name">John Doe</p>
-        <p class="user-email">johndoe@example.com</p>
+        <p class="user-name">{{ waitlist.userId.name }}</p>
+        <p class="user-email">{{ waitlist.userId.email }}</p>
       </div>
     </div>
 
     <div class="middle-div">
-      <p class="created-at">Applied on: January 1, 2020</p>
+      <p class="created-at">Applied on: {{ waitlist.createdAt }}</p>
       <p class="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        {{ waitlist.groupId.groupCategory }}
       </p>
     </div>
 
@@ -33,5 +33,4 @@
       </a>
     </div>
   </div>
-  <!-- Repeat for additional list items -->
 </div>

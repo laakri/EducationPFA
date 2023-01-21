@@ -32,11 +32,11 @@ router.get("/GetAll", (req, res, next) => {
     .select(["-__v"])
     .populate({
       path: "userId",
-      select: "_id category name imgPath",
+      select: "_id email name imgPath",
     })
     .populate({
       path: "groupId",
-      select: "_id groupStartDate ",
+      select: "_id groupStartDate groupCategory ",
     })
     .sort({ createdAt: 1 })
     .then((documents) => {
