@@ -76,28 +76,36 @@
       <mat-tab label="secend">
         <div class="tab">
           <table mat-table [dataSource]="user.groups" class="mat-elevation-z8">
-            <ng-container matColumnDef="Description">
+            <ng-container matColumnDef="img">
               <th mat-header-cell *matHeaderCellDef>Description</th>
-              <td mat-cell *matCellDef="let element">
-                {{ element.groupFilePath }}
+              <td mat-cell *matCellDef="let element" class="groupcategory">
+                <img
+                  class="groupimg"
+                  src="{{ element.groupFilePath }}"
+                  alt=""
+                /><span> {{ element.groupCategory }}</span>
               </td>
             </ng-container>
 
-            <ng-container matColumnDef="Date">
-              <th mat-header-cell *matHeaderCellDef>Date</th>
-              <td mat-cell *matCellDef="let element">{{ element.Date }}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="amount">
-              <th mat-header-cell *matHeaderCellDef>Amount</th>
+            <ng-container matColumnDef="groupLevel">
+              <th mat-header-cell *matHeaderCellDef>Group Levels</th>
               <td mat-cell *matCellDef="let element">
-                {{ element.amount }} DT
+                {{ element.groupLevel }}
               </td>
             </ng-container>
 
-            <ng-container matColumnDef="State">
-              <th mat-header-cell *matHeaderCellDef>State</th>
-              <td mat-cell *matCellDef="let element">{{ element.State }}</td>
+            <ng-container matColumnDef="groupStartDate">
+              <th mat-header-cell *matHeaderCellDef>Group Start Date</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.groupStartDate }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="groupPeriode">
+              <th mat-header-cell *matHeaderCellDef>Group Periode</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.groupPeriode }}
+              </td>
             </ng-container>
             <ng-container matColumnDef="statu">
               <th mat-header-cell *matHeaderCellDef>Status</th>
@@ -116,12 +124,6 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
           </table>
         </div>
-      </mat-tab>
-
-      <!----------------------------------------->
-
-      <mat-tab label="Third">
-        <div class="tab">content 3</div>
       </mat-tab>
     </mat-tab-group>
   </div>

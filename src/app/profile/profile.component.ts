@@ -18,10 +18,10 @@ export class ProfileComponent implements OnInit {
   private routeSub: Subscription | undefined;
 
   displayedColumns: string[] = [
-    'Description',
-    'Date',
-    'amount',
-    'State',
+    'img',
+    'groupLevel',
+    'groupStartDate',
+    'groupPeriode',
     'statu',
   ];
   constructor(

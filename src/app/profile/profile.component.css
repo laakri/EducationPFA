@@ -158,3 +158,17 @@ table th {
   display: inline-flex;
   align-items: center;
 }
+.groupcategory {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+.groupimg {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+.groupcategory span {
+  margin-left: 10px;
+  margin-top: 3px;
+}
