@@ -1,6 +1,9 @@
 .spinner {
   margin: 40px;
 }
+.example-spacer {
+  flex: 1 1 auto;
+}
 .mainpage {
   max-width: 1000px;
 
@@ -181,5 +184,14 @@ mat-form-field {
   margin-top: 10px;
   color: var(--graycolor);
   font-size: 13px;
+  display: flex;
+}
+
+.date a:last-child {
+  color: rgb(219, 52, 52);
+}
+
+.date a:hover {
+  background-color: rgba(155, 89, 89, 0.151);
 }
 /*****************************************************/
