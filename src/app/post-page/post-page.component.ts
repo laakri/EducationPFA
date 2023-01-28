@@ -10,9 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./post-page.component.css'],
 })
 export class PostPageComponent implements OnInit {
-  @ViewChild('info')
-  public info!: ElementRef;
-
+  @ViewChild('here') here!: ElementRef;
   private routeSub: Subscription | undefined;
   goupId = '';
   Groups!: any;
@@ -33,7 +31,9 @@ export class PostPageComponent implements OnInit {
   ) {}
 
   /******************************************* */
-
+  scrollToHere() {
+    this.here.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
   ngOnInit() {
     this.routeSub = this.route.params.subscribe((params) => {
       this.goupId = params['groupId'];

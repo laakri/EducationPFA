@@ -34,7 +34,7 @@
             <button
               mat-raised-button
               class="tada-element"
-              (click)="infoStruc()"
+              (click)="scrollToHere()"
             >
               Start Now
             </button>
@@ -140,11 +140,13 @@
         </div>
       </div>
 
-      <div class="pricing-price">
+      <div class="pricing-price" #here>
         <div class="pricing-price1">
           <div class="pricing-price1-flexy">
             <span>Get with all-access</span>
-            <button mat-flat-button>Get all access -></button>
+            <button mat-flat-button (click)="infoStruc()">
+              Get all access ->
+            </button>
           </div>
           <div class="pricing-price1-flex">
             <div class="pricing-price1-price">{{ Group.groupPrice }}$</div>

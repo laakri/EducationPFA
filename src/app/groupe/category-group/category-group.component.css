@@ -25,7 +25,6 @@
 .info-square-logo {
   height: 100%;
   width: 80px;
-  background-color: var(--maincolor);
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -33,13 +32,13 @@
   margin-top: 20px;
   margin-left: 10px;
   font-size: 40px;
-  color: var(--darkcolor);
+  color: var(--maincolor);
   padding: 0px 15px;
 }
 .info-square-info {
   color: var(--whitecolor);
   margin: 10px 20px;
-  font-size: 26px;
+  font-size: 22px;
 }
 .info-square-number {
   margin: 10px 20px;
