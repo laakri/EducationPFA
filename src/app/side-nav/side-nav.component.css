@@ -1,17 +1,24 @@
 .logo1 {
-  margin: 20px auto 40px auto;
-  width: 50px;
-  height: 50px;
+  margin: 10px auto;
+  width: max-content;
+  height: max-content;
+  display: flex;
+  align-items: center;
 }
 .logo {
   width: 50px;
   height: 45px;
 }
+.logo-text {
+  font-size: 20px;
+}
 .sidebar-content {
   border-radius: 4px;
   margin: 35px auto;
-  width: max-content;
   height: max-content;
+}
+.sidebar-content span {
+  margin-left: 15px;
 }
 .mat-icon {
   font-size: 25px;

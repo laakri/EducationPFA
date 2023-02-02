@@ -1,5 +1,6 @@
 <div class="logo1">
   <img src="../../assets/logo1.png" class="logo" alt="Logo" />
+  <span *ngIf="showContentOnHover" class="logo-text">Next Gen</span>
 </div>
 
 <div class="sidebar-content">
@@ -9,6 +10,7 @@
     routerLinkActive="activebutton"
   >
     <mat-icon aria-label="home">home</mat-icon>
+    <span *ngIf="showContentOnHover">Home</span>
   </button>
 </div>
 
@@ -19,6 +21,7 @@
     routerLinkActive="activebutton"
   >
     <mat-icon aria-label="campaign">campaign</mat-icon>
+    <span *ngIf="showContentOnHover">Announce</span>
   </button>
 </div>
 <div class="sidebar-content">
@@ -28,6 +31,7 @@
     routerLinkActive="activebutton"
   >
     <mat-icon aria-label="adjust" class="button-live">adjust</mat-icon>
+    <span *ngIf="showContentOnHover" class="button-live">LIVE Cour</span>
   </button>
 </div>
 
@@ -38,6 +42,7 @@
     routerLinkActive="activebutton"
   >
     <mat-icon aria-label="Groupe">admin_panel_settings</mat-icon>
+    <span *ngIf="showContentOnHover">Admin Section</span>
   </button>
 </div>
 <div class="sidebar-content">
@@ -47,6 +52,7 @@
     routerLinkActive="activebutton"
   >
     <mat-icon aria-label="Groupe">notifications</mat-icon>
+    <span *ngIf="showContentOnHover">Notification</span>
   </button>
 </div>
 <div class="side-bar-bottom">
@@ -58,6 +64,7 @@
       routerLinkActive="activebutton"
     >
       <mat-icon aria-label="person">person</mat-icon>
+      <span *ngIf="showContentOnHover">Account</span>
     </button>
   </div>
   <div class="sidebar-content" *ngIf="isAuth">
@@ -70,14 +77,20 @@
   <div class="sidebar-content">
     <button mat-button (click)="change_theme()">
       <mat-icon aria-label="campaign">brightness_medium</mat-icon>
+      <span *ngIf="showContentOnHover">Theme</span>
     </button>
   </div>
 
   <div class="sidebar-content">
-    <button mat-button [routerLink]="['/Homepage/AboutUs']">
+    <button
+      mat-button
+      [routerLink]="['/Homepage/AboutUs']"
+      routerLinkActive="activebutton"
+    >
       <mat-icon aria-label="logout" class="info_outline" (click)="logout()"
         >info_outline</mat-icon
       >
+      <span *ngIf="showContentOnHover">About</span>
     </button>
   </div>
 </div>

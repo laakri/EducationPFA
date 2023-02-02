@@ -1,6 +1,11 @@
 .container {
-  max-width: 1200px;
+  max-width: 1500px;
   min-height: 10px;
+  margin: auto;
+}
+.container2 {
+  max-width: 1500px;
+  min-height: 600px;
   margin: auto;
 }
 .filter-section {
@@ -54,17 +59,17 @@
   width: 260px;
   height: 390px;
   position: relative;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
 }
 .post:hover {
   border-width: 1px;
   border-style: solid;
-  border: var(--whitecolor) solid 2px;
+  border: var(--maincolor) solid 3px;
   cursor: pointer;
 }
 .post-img {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   height: 120px;
   width: 100%;
   background-color: var(--soft-darkcolor);

@@ -6,7 +6,7 @@
 }
 
 .sidebar {
-  width: 75px;
+  min-width: 75px;
   height: 100%;
   padding: 5px;
   border-right: solid rgb(44, 44, 44) 1px;

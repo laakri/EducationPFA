@@ -1,8 +1,13 @@
 <mat-drawer-container class="example-container">
-  <mat-drawer class="sidebar" mode="side" opened>
-    <app-side-nav></app-side-nav>
+  <mat-drawer
+    (mouseenter)="hovered = true"
+    (mouseleave)="hovered = false"
+    class="sidebar"
+    mode="side"
+    opened
+  >
+    <app-side-nav [showContentOnHover]="hovered"></app-side-nav>
   </mat-drawer>
-
   <mat-drawer-content>
     <router-outlet></router-outlet>
   </mat-drawer-content>

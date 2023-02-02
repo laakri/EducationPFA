@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UsersService } from '../login/user.service';
 import { Subscription } from 'rxjs';
 
@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./side-nav.component.css'],
 })
 export class SideNavComponent implements OnInit {
+  @Input() showContentOnHover?: boolean;
   isAuth = false;
   private isAuthListenerSubs!: Subscription;
 

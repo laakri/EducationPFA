@@ -8,6 +8,7 @@ import { UsersService } from './login/user.service';
 })
 export class AppComponent {
   title = 'EducationWebsite';
+  hovered = false;
 
   constructor(private UsersService: UsersService) {}
   ngOnInit() {
