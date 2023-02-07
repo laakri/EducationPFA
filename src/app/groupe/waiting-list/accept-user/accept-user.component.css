@@ -1,0 +1,35 @@
+.accept{
+    padding: 20px;
+    color: var(--whitecolor);
+    
+}
+.accept-icon{
+    margin:20px auto;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    background-color: #a5e5ba;
+    text-align: center;
+    align-items: center;
+}
+
+.accept-icon i{
+    margin-top: 15px;
+    color: #2fb663;
+    font-size: 30px;
+}
+.accept-text{
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 22px;    
+}
+.accept-select{
+    text-align: center;
+}
+.accept-button{
+    margin: 20px;
+    text-align: center;
+}
+.accept-button button{
+    width: 200px;
+}

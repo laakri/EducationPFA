@@ -28,7 +28,10 @@
       <a mat-flat-button>
         <i class="material-icons">delete_outline</i>
       </a>
-      <a mat-flat-button>
+      <a
+        mat-flat-button
+        (click)="Accept(waitlist.userId._id, waitlist.groupId._id)"
+      >
         <i class="material-icons">check</i>
       </a>
     </div>

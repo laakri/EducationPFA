@@ -6,7 +6,6 @@ const User = require("./user");
 const groupSchema = mongoose.Schema(
   {
     /*teacherId: { type: mongoose.Schema.Types.ObjectId, ref: User },*/
-
     groupObject: { type: String, required: true },
     groupCategory: { type: String, required: true },
     teacherId: { type: String, required: true },

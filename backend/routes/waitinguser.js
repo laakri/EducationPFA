@@ -52,4 +52,20 @@ router.get("/GetAll", (req, res, next) => {
       });
     });
 });
+
+/******************-Delete from waitlist-**********/
+
+router.delete("/delete", async (req, res, next) => {
+  try {
+    await Wuser.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      message: "User  Deleted succesfully !",
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err,
+    });
+  }
+});
+
 module.exports = router;

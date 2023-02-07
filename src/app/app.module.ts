@@ -72,6 +72,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AcceptUserComponent } from './groupe/waiting-list/accept-user/accept-user.component';
 /* ********************************************* */
 
 @NgModule({
@@ -103,6 +104,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     NavbarComponent,
     FormationComponent,
     WaitingListComponent,
+    AcceptUserComponent,
   ],
   imports: [
     BrowserModule,

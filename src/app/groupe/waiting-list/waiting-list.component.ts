@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GroupService } from '../group.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AcceptUserComponent } from './accept-user/accept-user.component';
 
 @Component({
   selector: 'app-waiting-list',
@@ -10,14 +12,26 @@ import { GroupService } from '../group.service';
 export class WaitingListComponent implements OnInit {
   waitlistSub: Subscription = new Subscription();
   waitlists: any;
-  constructor(private GroupService: GroupService) {}
+  constructor(private GroupService: GroupService, public dialog: MatDialog) {}
+
+  Accept(userId: any, groupId: any): void {
+    console.log(userId, groupId);
+
+    const dialogRef = this.dialog.open(AcceptUserComponent, {
+      width: '520px',
+      minHeight: '320px',
+      backdropClass: 'backdropBackground',
+      data: { userId: userId, groupId: groupId },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {});
+  }
 
   ngOnInit(): void {
     this.GroupService.getWaitlistUsers();
     this.waitlistSub = this.GroupService.getWaitListUpdateListener().subscribe(
       (waitlists: []) => {
         this.waitlists = waitlists;
-        console.log(this.waitlists);
       }
     );
   }
