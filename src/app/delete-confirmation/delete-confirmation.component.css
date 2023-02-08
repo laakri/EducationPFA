@@ -1,0 +1,56 @@
+.delete{
+    padding: 20px;
+    color: var(--whitecolor);
+}
+.delete-flexy{
+    display: flex;
+}
+.flexy-first{
+    width: 30%;
+}
+.delete-icon{
+    margin:20px auto;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: #e5a5a5;
+    text-align: center;
+    align-items: center;
+}
+.delete-icon i{
+    margin-top: 10px;
+    color: #b62f2f;
+    font-size: 30px;
+}
+.delete-big-text{
+    margin: 10px;
+    font-size: 22px;
+}
+.delete-text{
+    margin-left: 10px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    color: var(--graycolor);    
+}
+.delete-select{
+    text-align: center;
+}
+.delete-button{
+    float: right;
+    margin: 25px;
+    text-align: center;
+}
+.delete-button button{
+    width: 140px;
+    margin-left: 20px;
+}
+.delete-button button:first-child{
+    background-color: transparent;
+    border: solid var(--bordercolor) 1px;
+    color: white;
+}
+
+.delete-button button:last-child{
+    background-color: #e5a5a5;
+    color: #b62f2f;
+}

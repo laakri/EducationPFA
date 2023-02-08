@@ -73,6 +73,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AcceptUserComponent } from './groupe/waiting-list/accept-user/accept-user.component';
+import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 /* ********************************************* */
 
 @NgModule({
@@ -105,6 +106,7 @@ import { AcceptUserComponent } from './groupe/waiting-list/accept-user/accept-us
     FormationComponent,
     WaitingListComponent,
     AcceptUserComponent,
+    DeleteConfirmationComponent,
   ],
   imports: [
     BrowserModule,

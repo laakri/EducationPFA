@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { GroupService } from '../group.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AcceptUserComponent } from './accept-user/accept-user.component';
+import { DeleteConfirmationComponent } from '../../delete-confirmation/delete-confirmation.component';
 
 @Component({
   selector: 'app-waiting-list',
@@ -26,7 +27,16 @@ export class WaitingListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {});
   }
+  Delete(Id: any): void {
+    const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
+      width: '620px',
+      minHeight: '150px',
+      backdropClass: 'backdropBackground',
+      data: { id: Id, data: 'delete from Waitlist' },
+    });
 
+    dialogRef.afterClosed().subscribe((result) => {});
+  }
   ngOnInit(): void {
     this.GroupService.getWaitlistUsers();
     this.waitlistSub = this.GroupService.getWaitListUpdateListener().subscribe(
