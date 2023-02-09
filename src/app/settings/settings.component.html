@@ -1,8 +1,6 @@
 <div class="adduser">
-  <div class="detail-text">Add User</div>
-  <div class="detail-span">
-    Verify all details before adding a new user to our platform.
-  </div>
+  <div class="detail-text">Settings</div>
+  <div class="detail-span">Verify all details before edit your profile.</div>
   <form (submit)="onSubmit(signUpForm)" #signUpForm="ngForm">
     <div class="form-content-flexy">
       <div>
@@ -112,21 +110,6 @@
         >location is <strong>required</strong></mat-error
       >
     </mat-form-field>
-
-    <div class="radio-button">
-      <label>User Role : </label>
-      <mat-radio-group
-        matInput
-        ngModel
-        name="role"
-        #role="ngModel"
-        color="primary"
-        value="student"
-      >
-        <mat-radio-button value="student">Student</mat-radio-button>
-        <mat-radio-button value="teacher">Teacher</mat-radio-button>
-      </mat-radio-group>
-    </div>
 
     <button mat-raised-button class="submit-button" type="submit">
       Submit

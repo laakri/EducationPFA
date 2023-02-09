@@ -66,7 +66,44 @@ router.post(
         });
     });
   }
-); /*************-Signup-********** */
+);
+/*************-Edit User-********** */
+
+router.patch(
+  "/EditUser",
+  multer({ storage: storage }).single("file"),
+  async (req, res, next) => {
+    try {
+      const id = req.body.userId;
+      const url = req.protocol + "://" + req.get("host");
+
+      const userUpdated = {
+        userId: req.body.userId,
+        name: req.body.name,
+        phonenum: req.body.phonenum,
+        imgPath: url + "/file-profile/" + req.file.filename,
+        password: hash,
+        email: req.body.email,
+        category: req.body.category,
+        speciality: req.body.speciality,
+        location: req.body.location,
+      };
+      const options = { new: true };
+
+      const userYP = await User.findByIdAndUpdate(id, userUpdated, options);
+      res.send(userYP);
+      console.log("User updated !");
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        error: err,
+        message: "User update failed !",
+      });
+    }
+  }
+);
+
+/*************-Signup-********** */
 
 router.post("/signup", (req, res, next) => {
   bcrypt.hash(req.body.password, 10).then((hash) => {

@@ -13,9 +13,13 @@
   font-size: 20px;
 }
 .sidebar-content {
-  border-radius: 4px;
-  margin: 35px auto;
+  margin: 35px 0;
   height: max-content;
+}
+.sidebar-content button {
+  height: 100%;
+  width: 100%;
+  text-align: left;
 }
 .sidebar-content span {
   margin-left: 15px;

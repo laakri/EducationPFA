@@ -67,6 +67,38 @@ export class UsersService {
       );
   }
 
+  editUser(
+    userId: string,
+    name: string,
+    phonenum: string,
+    file: File,
+    password: string,
+    email: string,
+    category: string,
+    location: string
+  ) {
+    const userData = new FormData();
+    userData.append('userId', userId);
+    userData.append('name', name);
+    userData.append('phonenum', phonenum);
+    userData.append('file', file);
+    userData.append('password', password);
+    userData.append('email', email);
+    userData.append('category', category);
+    userData.append('location', location);
+
+    this.http
+      .post<{ message: string }>(this.apiURL + '/api/users/EditUser', userData)
+      .subscribe(
+        () => {
+          console.log('User Added !');
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
   SignUp(name: string, phonenum: string, password: string) {
     const userData: User = {
       name: name,

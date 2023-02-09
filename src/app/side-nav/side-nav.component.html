@@ -56,10 +56,10 @@
 </div>
 <div class="side-bar-bottom">
   <mat-divider></mat-divider>
-  <div class="sidebar-content">
+  <div class="sidebar-content" *ngIf="isAuth">
     <button
       mat-button
-      [routerLink]="['/Homepage/Profile/12313131']"
+      [routerLink]="['/Homepage/Profile', getUserId]"
       routerLinkActive="activebutton"
     >
       <mat-icon aria-label="person">person</mat-icon>
@@ -71,6 +71,7 @@
       <mat-icon aria-label="logout" class="logout-icon" (click)="logout()"
         >logout</mat-icon
       >
+      <span class="logout-icon" *ngIf="showContentOnHover">LOGOUT</span>
     </button>
   </div>
   <div class="sidebar-content">

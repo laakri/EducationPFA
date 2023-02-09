@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm, Validators, FormGroup } from '@angular/forms';
-import { UsersService } from '../../login/user.service';
-import { CategoryService } from '../category.service';
+import { UsersService } from '../login/user.service';
+import { CategoryService } from '../groupe/category.service';
 import { Subscription } from 'rxjs';
-import { Categ } from '../category.model';
-
+import { Categ } from '../groupe/category.model';
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css'],
+  selector: 'app-settings',
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.css'],
 })
-export class AddUserComponent implements OnInit {
+export class SettingsComponent implements OnInit {
   selectFormControl = new FormControl('', Validators.required);
 
   categSub: Subscription = new Subscription();
@@ -22,6 +21,7 @@ export class AddUserComponent implements OnInit {
   trueFile!: File;
   imagePreview!: string;
   imageName!: string;
+  getUserId: any;
 
   constructor(
     public UsersService: UsersService,
@@ -29,11 +29,11 @@ export class AddUserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getUserId = this.UsersService.getUserId();
     this.CategoryService.getCategs();
     this.categSub = this.CategoryService.getCategUpdateListener().subscribe(
       (categs: Categ[]) => {
         this.categs = categs;
-        console.log(this.categs);
         this.categlength = categs.length;
       }
     );
@@ -42,18 +42,17 @@ export class AddUserComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    this.UsersService.addUserAsAdmin(
+    this.UsersService.editUser(
+      this.getUserId,
       form.value.name,
       form.value.phonenum,
       this.trueFile,
       form.value.phonenum,
       form.value.email,
       form.value.category,
-      form.value.spec,
-      form.value.location,
-      form.value.role
+      form.value.location
     );
-    console.log(this.trueFile, form.value);
+    console.log(form.value);
   }
 
   onFilePicked(event: Event) {

@@ -11,12 +11,11 @@ export class SideNavComponent implements OnInit {
   @Input() showContentOnHover?: boolean;
   isAuth = false;
   private isAuthListenerSubs!: Subscription;
-
-  userName = '';
+  getUserId: any;
   constructor(public UsersService: UsersService) {}
 
   ngOnInit(): void {
-    this.userName = this.UsersService.getUserName();
+    this.getUserId = this.UsersService.getUserId();
     this.isAuth = this.UsersService.getIsAuth();
     this.isAuthListenerSubs =
       this.UsersService.getAuthStatusListener().subscribe((isAuthenticated) => {

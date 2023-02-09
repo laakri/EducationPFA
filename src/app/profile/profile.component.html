@@ -27,9 +27,13 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #beforeMenu="matMenu" xPosition="before" class="menu">
-          <button mat-menu-item class="menu-item">
-            <mat-icon class="menu-item">dialpad</mat-icon>
-            <span>Redial</span>
+          <button
+            mat-menu-item
+            class="menu-item"
+            [routerLink]="['/Homepage/Settings']"
+          >
+            <mat-icon class="menu-item">Settings</mat-icon>
+            <span>Settings</span>
           </button>
 
           <button mat-menu-item class="menu-item">

@@ -32,7 +32,9 @@ import { AddUserGroupComponent } from './groupe/add-user-group/add-user-group.co
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormationComponent } from './formation/formation.component';
 import { WaitingListComponent } from './groupe/waiting-list/waiting-list.component';
-
+import { AcceptUserComponent } from './groupe/waiting-list/accept-user/accept-user.component';
+import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
+import { SettingsComponent } from './settings/settings.component';
 /* *******************MODELS******************** */
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -72,8 +74,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { AcceptUserComponent } from './groupe/waiting-list/accept-user/accept-user.component';
-import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
+
 /* ********************************************* */
 
 @NgModule({
@@ -107,6 +108,7 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
     WaitingListComponent,
     AcceptUserComponent,
     DeleteConfirmationComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
