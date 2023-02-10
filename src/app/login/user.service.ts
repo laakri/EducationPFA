@@ -370,4 +370,30 @@ export class UsersService {
   getUserUpdateListener() {
     return this.userUpdated.asObservable();
   }
+
+  /*************************************************/
+
+  getTeachers() {
+    this.http
+      .get<{ message: string; result: any }>(
+        this.apiURL + '/api/users/GetTeacher'
+      )
+      .pipe(
+        map((teacherData) => {
+          return teacherData.result.map((teacher: { _id: any; name: any }) => {
+            return {
+              id: teacher._id,
+              name: teacher.name,
+            };
+          });
+        })
+      )
+      .subscribe((transformedTeacher) => {
+        this.teachers = transformedTeacher;
+        this.teacherUpdate.next([...this.teachers]);
+      });
+  }
+  getTeacherUpdateListener() {
+    return this.teacherUpdate.asObservable();
+  }
 }

@@ -87,7 +87,8 @@ export class CreatePostComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     breakpointObserver: BreakpointObserver,
-    private GroupService: GroupService
+    private GroupService: GroupService,
+    private GroupService: GroupService,
   ) {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 1000px)')
@@ -107,6 +108,19 @@ export class CreatePostComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.AnnouncementService.getTeachers(this.defaultName + query);
+    this.userSub =
+      this.AnnouncementService.getTeacherUpdateListener().subscribe(
+        (users: User[]) => {
+          this.users = users;
+          console.log(this.users);
+          this.userlength = users.length;
+        }
+      );
+
+
+
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map((value) => (typeof value === 'string' ? value : value.name)),

@@ -255,6 +255,23 @@ router.get("/searchTeacher", async (req, res) => {
     });
   }
 });
+/*************-Get Teachers -********** */
+
+router.get("/GetTeacher", async (req, res) => {
+  try {
+    const user = await User.find().select(["_id", "name"]);
+    res.status(200).json({
+      message: "Get Teachers runs seccesfully !",
+      users: user,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      error: err,
+      message: "Get Teachers Failed !",
+    });
+  }
+});
 
 /*************-Update User-********** */
 
