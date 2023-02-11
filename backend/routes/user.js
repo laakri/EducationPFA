@@ -259,7 +259,7 @@ router.get("/searchTeacher", async (req, res) => {
 
 router.get("/GetTeacher", async (req, res) => {
   try {
-    const user = await User.find().select(["_id", "name"]);
+    const user = await User.find({ roles: "teacher" }).select(["_id", "name"]);
     res.status(200).json({
       message: "Get Teachers runs seccesfully !",
       users: user,

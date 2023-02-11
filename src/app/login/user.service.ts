@@ -19,9 +19,11 @@ export class UsersService {
   private token: any;
   private tokenTimer: any;
   private users: User[] = [];
+  private teachers: User[] = [];
   private authStatusListener = new Subject<boolean>();
   private authAdminStatusListener = new Subject<boolean>();
   private userUpdated = new Subject<User[]>();
+  private teacherUpdate = new Subject<User[]>();
   apiURL = environment.apiURL;
 
   constructor(
@@ -375,12 +377,12 @@ export class UsersService {
 
   getTeachers() {
     this.http
-      .get<{ message: string; result: any }>(
+      .get<{ message: string; users: any }>(
         this.apiURL + '/api/users/GetTeacher'
       )
       .pipe(
         map((teacherData) => {
-          return teacherData.result.map((teacher: { _id: any; name: any }) => {
+          return teacherData.users.map((teacher: { _id: any; name: any }) => {
             return {
               id: teacher._id,
               name: teacher.name,

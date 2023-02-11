@@ -25,55 +25,46 @@
               required
             />
           </mat-form-field>
-          <!--------------------- Category ---------------------->
+          <!--------------------- Category --------------------->
 
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Category</mat-label>
 
-            <input
+            <mat-select
               type="text"
               matInput
               [formControl]="myControl"
               formControlName="categoryFormCtrl"
-              [matAutocomplete]="auto"
               #tooltip="matTooltip"
               matTooltip="category"
               matTooltipHideDelay="100"
               required
-            />
-            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-              <mat-option
-                *ngFor="let option of filteredOptions | async"
-                [value]="option"
-              >
-                {{ option.name }}
+            >
+              <mat-option *ngFor="let categ of categs" [value]="categ.name">
+                {{ categ.categName }}
               </mat-option>
-            </mat-autocomplete>
+            </mat-select>
           </mat-form-field>
-          <!--------------------- Teacher ---------------------->
+
+          <!-------------------- Teacher ---------------------->
 
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Teacher</mat-label>
 
-            <input
+            <mat-select
               type="text"
               matInput
               [formControl]="myControl"
               formControlName="teacherFormCtrl"
-              [matAutocomplete]="auto"
               #tooltip="matTooltip"
-              matTooltip="catégorie"
+              matTooltip="Teacher"
               matTooltipHideDelay="100"
               required
-            />
-            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-              <mat-option
-                *ngFor="let option of filteredOptions | async"
-                [value]="option"
-              >
-                {{ option.name }}
+            >
+              <mat-option *ngFor="let user of users" [value]="user.name">
+                {{ user.name }}
               </mat-option>
-            </mat-autocomplete>
+            </mat-select>
           </mat-form-field>
           <!--------------------- Description ---------------------->
 

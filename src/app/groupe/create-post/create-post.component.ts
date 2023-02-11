@@ -15,6 +15,12 @@ export interface categ {
   name: string;
 }
 import { GroupService } from '../group.service';
+import { CategoryService } from '../category.service';
+import { UsersService } from '../../login/user.service';
+import { User } from '../../login/user.model';
+import { Categ } from '../category.model';
+
+import { Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-create-gig',
@@ -24,14 +30,17 @@ import { GroupService } from '../group.service';
 export class CreatePostComponent implements OnInit {
   formGroup!: FormGroup;
   isLinear = true;
-  filteredOptions!: Observable<categ[]>;
   myControl = new FormControl();
   value = 1;
   valuebase = 1;
+  users: User[] | undefined;
+  categs: any;
   valuetrait = 1;
   valuevariation = 1;
   valuetype = 'Hour';
   Revisionsnumbre = '1';
+  userSub: Subscription = new Subscription();
+  categSub: Subscription = new Subscription();
 
   imagePreview!: string;
   imageName!: string;
@@ -88,19 +97,12 @@ export class CreatePostComponent implements OnInit {
     private _formBuilder: FormBuilder,
     breakpointObserver: BreakpointObserver,
     private GroupService: GroupService,
-    private GroupService: GroupService,
+    private CategoryService: CategoryService,
+    private UsersService: UsersService
   ) {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 1000px)')
       .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
-  }
-
-  private _filter(name: string): categ[] {
-    const filterValue = name.toLowerCase();
-
-    return this.options.filter((option) =>
-      option.name.toLowerCase().includes(filterValue)
-    );
   }
 
   displayFn(user: categ): string {
@@ -108,25 +110,18 @@ export class CreatePostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.AnnouncementService.getTeachers(this.defaultName + query);
-    this.userSub =
-      this.AnnouncementService.getTeacherUpdateListener().subscribe(
-        (users: User[]) => {
-          this.users = users;
-          console.log(this.users);
-          this.userlength = users.length;
-        }
-      );
-
-
-
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => (typeof value === 'string' ? value : value.name)),
-      map((name) => (name ? this._filter(name) : this.options.slice()))
+    this.UsersService.getTeachers();
+    this.userSub = this.UsersService.getTeacherUpdateListener().subscribe(
+      (users: User[]) => {
+        this.users = users;
+      }
     );
-
+    this.CategoryService.getCategs();
+    this.categSub = this.CategoryService.getCategUpdateListener().subscribe(
+      (categs: Categ[]) => {
+        this.categs = categs;
+      }
+    );
     this.formGroup = this._formBuilder.group({
       formArray: this._formBuilder.array([
         this._formBuilder.group({
@@ -198,10 +193,4 @@ export class CreatePostComponent implements OnInit {
     this.trueFile = file;
     this.imageName = file.name;
   }
-
-  options: categ[] = [
-    { name: 'Informatique' },
-    { name: 'Math' },
-    { name: 'Writing | Translation' },
-  ];
 }
