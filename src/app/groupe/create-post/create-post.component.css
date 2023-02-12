@@ -4,6 +4,9 @@
   min-height: 750px;
 }
 
+mat-datepicker-toggle{
+  color: aliceblue;
+}
 .mat-stepper-horizontal {
   margin-top: 8px;
 }
@@ -25,7 +28,7 @@ mat-stepper {
 .action-button {
   margin: 30px auto auto 40px;
   background-color: var(--maincolor);
-  color: white;
+  color: var(--darkcolor);
 }
 /********************Profile picture**********/
 input[type="file"] {
@@ -64,7 +67,7 @@ input[type="file"] {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: var(--whitecolor);
   z-index: 1;
 }
 .profile-pic input {

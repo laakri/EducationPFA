@@ -20,7 +20,7 @@
             <mat-label>Object</mat-label>
             <input
               matInput
-              placeholder="I will make a NFT collection for you"
+              placeholder="The Best Way To Learn Angular "
               formControlName="objectFormCtrl"
               required
             />
@@ -31,22 +31,20 @@
             <mat-label>Category</mat-label>
 
             <mat-select
-              type="text"
               matInput
-              [formControl]="myControl"
-              formControlName="categoryFormCtrl"
-              #tooltip="matTooltip"
               matTooltip="category"
-              matTooltipHideDelay="100"
               required
+              formControlName="categoryFormCtrl"
             >
-              <mat-option *ngFor="let categ of categs" [value]="categ.name">
+              <mat-option
+                *ngFor="let categ of categs"
+                [value]="categ.categName"
+              >
                 {{ categ.categName }}
               </mat-option>
             </mat-select>
           </mat-form-field>
-
-          <!-------------------- Teacher ---------------------->
+          <!-------------------- Teacher -------------------->
 
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Teacher</mat-label>
@@ -54,7 +52,6 @@
             <mat-select
               type="text"
               matInput
-              [formControl]="myControl"
               formControlName="teacherFormCtrl"
               #tooltip="matTooltip"
               matTooltip="Teacher"
@@ -66,7 +63,7 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <!--------------------- Description ---------------------->
+          <!-------------------- Description ---------------------->
 
           <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Description</mat-label>

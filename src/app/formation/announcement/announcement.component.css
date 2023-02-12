@@ -5,16 +5,15 @@
   flex: 1 1 auto;
 }
 .mainpage {
-  max-width: 1000px;
-
+  max-width: 1300px;
   margin: 0 auto;
-
   min-height: 100%;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
 }
 @media screen and (max-width: 1600px) {
-  .mainpage {
-    margin-right: 300px;
-  }
+ 
 }
 .top-div {
   height: 40px;
@@ -35,14 +34,16 @@
 
 .announc-list {
   height: 100%;
-  width: 90%;
+  width: 100%;
   border: solid transparent 1px;
+
 }
 .create-announ {
   margin: 10px auto;
   width: 90%;
   overflow: auto;
 }
+
 .button-announ-section {
   margin: 10px auto 60px auto;
   width: 90%;
@@ -66,6 +67,24 @@ mat-form-field {
   border-radius: 10px;
   background-color: var(--soft-darkcolor);
 }
+.announc-content {
+  min-height: 60px;
+  background-color: transparent;
+  color: var(--whitecolor);
+  border: none;
+  font-size: 14px;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.4;  
+  resize: vertical;
+
+
+}
+.button-save{
+  color: var(--maincolor);
+}
 .announc_null {
   border: var(--graycolor) solid 1px;
   color: var(--graycolor);
@@ -87,6 +106,7 @@ mat-form-field {
   height: 40px;
   display: flex;
   align-items: center;
+  
 }
 .announc-teacher > * {
   margin: 2px;
@@ -107,6 +127,10 @@ mat-form-field {
   color: var(--graycolor);
   font-size: 14px;
 }
+.announc-teacher span:last-child {
+  color: var(--graycolor);
+  font-size: 14px;
+}
 .header-button {
   background-color: rgba(128, 128, 128, 0.295);
   color: var(--whitecolor);
@@ -115,18 +139,25 @@ mat-form-field {
 /*****************************************************/
 
 .teacher-list {
-  height: 100%;
+  margin-top: 20px;
+  height: max-content;
   min-width: 320px;
   border-radius: 5px;
-  padding: 10px;
-  border-left: solid 1px var(--bordercolor);
-  position: absolute;
-  right: 0;
-  top: 45px;
-  padding: 20px;
-  z-index: 11;
-}
+  border: var(--bordercolor) solid 1px;
 
+}
+.teacher-list-header{
+  background-color: var(--soft-darkcolor);
+  height: 50px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-left: 20px;
+  font-size: 18px;
+}
+.teacher-list-content{
+  padding: 20px;
+}
 ::ng-deep .menu {
   background-color: var(--soft-darkcolor);
 }
@@ -134,14 +165,13 @@ mat-form-field {
   color: var(--whitecolor) !important ;
 }
 .users {
-  min-height: 75px;
+  min-height: 90px;
   max-width: 100%;
   margin: 10px auto;
   border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
-  border: var(--bordercolor) solid 1px;
-  align-items: center;
+  gap: 20px;
 }
 
 .users-img {
@@ -150,18 +180,43 @@ mat-form-field {
   width: 20%;
 }
 .users-img img {
-  height: 40px;
-  width: 40px;
+  height: 55px;
+  width: 55px;
   border-radius: 50%;
-  margin-left: 10px;
 }
 .users-text {
   width: 45%;
   display: flex;
   flex-direction: column;
+  gap: 2px;
+  font-size: 15px;
+  letter-spacing: 1px;
+
 }
-.users-text :last-child {
+.users-text span:first-child:first-letter {
+  text-transform: uppercase;
+}
+
+.users-text span:first-child {
+  color: var(--maincolor);
+  font-size: 17px;
+  font-weight: 550;
+
+}
+
+.users-text-second {
+  cursor: pointer;
   color: var(--graycolor);
+  
+}
+.users-text span:last-child {
+  color: var(--graycolor);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.users-text span i {
+  font-size: 18px;
 }
 .flex-it-to-right {
   flex: 1 1 auto;

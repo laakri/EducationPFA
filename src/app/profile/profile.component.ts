@@ -41,6 +41,20 @@ export class ProfileComponent implements OnInit {
     this.userSub = this.ProfileService.getUserUpdateListener().subscribe(
       (users: User[]) => {
         this.users = users;
+
+        this.users.forEach((user: { groups: any[] }) => {
+          user.groups.forEach((group) => {
+            const live = new Date(group.createdAt);
+            const date = new Date(group.groupStartDate);
+
+            group.createdAt = date.toDateString();
+            group.groupStartDate = date.toDateString();
+            const currentDate = new Date();
+            const isDateGreater = date.getTime() > currentDate.getTime();
+            group.isDateGreater = isDateGreater;
+          });
+        });
+
         console.log(this.users);
       }
     );

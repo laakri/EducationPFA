@@ -78,20 +78,41 @@ mat-tab-group {
   color: var(--whitecolor) !important;
 }
 
-.tab {
+
+.live-section{
   margin: 20px auto;
-  min-height: 100px;
-  padding: 20px 0;
+  box-sizing: border-box;
+  width: 90%;
+  min-height: 160px;
+  padding: 20px;
+  border:var(--bordercolor) solid 1px  ;  
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  border-radius: 10px;
+}
+
+.live-section span{ 
+  margin-bottom: 20px ;
+  font-size: 16px;
+  color: var(--graycolor);
+
+}
+.live-section button{ 
+  background-color: var(--maincolor);
+  color: var(--darkcolor);
 }
 .profile-content {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 .profile-content div {
-  background-color: var(--soft-darkcolor);
-  border-radius: 20px;
+  border: var(--bordercolor) 1px solid ;
+  border-radius: 10px;
   width: 40%;
-  margin: 30px 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -105,33 +126,7 @@ mat-tab-group {
   font-size: 18px;
   color: var(--whitecolor);
 }
-table {
-  width: 100%;
-  margin: 20px auto;
-  box-shadow: none;
-  border: none;
-  background-color: transparent !important;
-}
-.demo-table {
-  width: 100%;
-}
 
-.mat-row .mat-cell {
-  border-bottom: 1px solid transparent;
-  border-top: 1px solid transparent;
-  cursor: pointer;
-}
-
-.mat-row:hover .mat-cell {
-  background-color: var(--soft-darkcolor);
-}
-
-.demo-row-is-clicked {
-  font-weight: bold;
-}
-table th {
-  border-bottom: rgb(44, 44, 44) solid 1px;
-}
 
 .money-type {
   display: flex;
@@ -171,4 +166,48 @@ table th {
 .groupcategory span {
   margin-left: 10px;
   margin-top: 3px;
+}
+.formation-serction{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.formation{
+  margin: auto;
+  border-bottom: var(--bordercolor) solid 1px ;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 90%;
+  min-height: 120px;
+}
+.inactve-chip{
+  color: #fff !important;
+  background-color: #fa6c62 !important;
+}
+
+.live-chip{ 
+  color: #fff !important;
+  background-color: #4CAF50 !important;
+}
+.formation-text {
+  display: flex;
+  gap: 20px;
+}.formation h2 {
+  color: var(--maincolor);
+  align-items: center;
+}
+.formation-chip{
+  width: max-content;
+  height: max-content;
+  border: #195f35 solid 1px;
+}
+.formation span {
+  color: var(--graycolor);
+  font-size: 16px;
+}
+.formation h3 {
+  margin-top: 20px;
+  font-size: 16px;
+
 }

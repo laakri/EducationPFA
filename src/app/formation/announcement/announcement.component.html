@@ -1,11 +1,11 @@
 <div class="mainpage">
-  <div class="top-div">
-    <div class="top-div-text">
-      <p>Announcement</p>
-    </div>
-  </div>
-
   <div class="announc-list">
+    <div class="top-div">
+      <div class="top-div-text">
+        <p>Announcement</p>
+      </div>
+    </div>
+
     <div class="create-announ">
       <form (submit)="onAddAnnounc(addAnn)" #addAnn="ngForm">
         <mat-form-field appearance="outline">
@@ -60,13 +60,31 @@
             <span>{{ Announc.userId.category }}</span>
           </div>
         </div>
-        <span>
+        <span *ngIf="!Announc.isEditing">
           {{ Announc.content }}
         </span>
+        <textarea
+          class="announc-content"
+          *ngIf="Announc.isEditing"
+          [(ngModel)]="Announc.content"
+        ></textarea>
+
         <div class="date">
           <span>{{ Announc.createdAt }}</span>
           <span class="example-spacer"></span>
-          <a mat-button>edit</a>
+          <a
+            mat-button
+            *ngIf="!Announc.isEditing"
+            (click)="Announc.isEditing = true"
+            >edit</a
+          >
+          <a
+            class="button-save"
+            mat-button
+            *ngIf="Announc.isEditing"
+            (click)="Announc.isEditing = false"
+            >save</a
+          >
           <a mat-button>delete</a>
         </div>
       </div>
@@ -75,45 +93,48 @@
       There is no announcement !
     </div>
   </div>
-</div>
 
-<div class="teacher-list">
-  <h4>TEACHERS</h4>
-  <mat-form-field class="search-bar" appearance="outline">
-    <mat-label> ❉/ Search</mat-label>
-
-    <input
-      type="text"
-      matInput
-      [(ngModel)]="searchQuery"
-      (keyup)="searchSubject.next(searchQuery)"
-    />
-  </mat-form-field>
-
-  <div class="my-spinner-div" *ngIf="spinner">
-    <mat-spinner></mat-spinner>
-  </div>
-  <div class="announc_null" *ngIf="userlength <= 0">"Teacher directory"</div>
-
-  <div class="users" *ngFor="let user of users">
-    <div class="users-img">
-      <img
-        src="{{ user.imgPath }}"
-        [routerLink]="['/Homepage/Profile', user.userId]"
-        alt="imgPath"
-      />
+  <div class="teacher-list">
+    <div class="teacher-list-header">
+      <i class="material-icons">code</i>
+      Teachers
     </div>
-    <div class="users-text">
-      <span>{{ user.name }}</span>
-      <span>
-        {{ user.email }}
-      </span>
-    </div>
-    <div class="flex-it-to-right"></div>
-    <div class="users-button">
-      <button mat-raised-button (click)="onCopy(user.email)">
-        <i class="material-icons">content_copy</i>
-      </button>
+    <div class="teacher-list-content">
+      <mat-form-field class="search-bar" appearance="outline">
+        <mat-label> ❉/ Search</mat-label>
+
+        <input
+          type="text"
+          matInput
+          [(ngModel)]="searchQuery"
+          (keyup)="searchSubject.next(searchQuery)"
+        />
+      </mat-form-field>
+
+      <div class="my-spinner-div" *ngIf="spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div class="announc_null" *ngIf="userlength <= 0">
+        "Teacher directory"
+      </div>
+
+      <div class="users" *ngFor="let user of users">
+        <div class="users-img">
+          <img
+            src="{{ user.imgPath }}"
+            [routerLink]="['/Homepage/Profile', user.userId]"
+            alt="imgPath"
+          />
+        </div>
+        <div class="users-text">
+          <span>{{ user.name }}</span>
+          <span (click)="onCopy(user.email)" class="users-text-second">
+            {{ user.email }} </span
+          ><span>
+            <i class="material-icons">bookmark_border</i>{{ user.email }}
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </div>

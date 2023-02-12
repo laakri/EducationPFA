@@ -176,7 +176,7 @@ router.get("/data/:id", (req, res, next) => {
     .populate({
       path: "groups",
       select:
-        "-groupObject -groupDescription -groupPrice -groupExperienseNeed -groupExperienseGain -groupDetails -groupUsers -createdAt -updatedAt -__v",
+        " -groupPrice -groupExperienseNeed -groupExperienseGain -groupDetails -groupUsers  -updatedAt -__v",
     })
     .then((documents) => {
       res.status(200).json({

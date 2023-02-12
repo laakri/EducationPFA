@@ -1,0 +1,39 @@
+.dialog-container {
+  min-height: 110px;
+  width: 400px;
+    position: fixed;
+    background-color: var(--soft-darkcolor);
+    border: 1px solid var(--bordercolor);
+    color: var(--whitecolor);
+    padding: 16px;
+    border-radius: 4px;
+    z-index: 10000;
+  }
+
+  .dialog-content {
+    display: flex;
+    flex-direction: column;
+  }  
+  .dialog-content div {
+position: relative;
+  } .dialog-content h3 {
+
+    width: 70%;
+  }
+  .dialog-content img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100px;
+    width: 100px;
+  }
+
+  .dialog-content button {
+    background-color: var(--maincolor);
+    color: var(--darkcolor);
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin-top: 5px;
+    cursor: pointer;
+    width: 150px;
+  }
