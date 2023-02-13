@@ -32,7 +32,7 @@ export class WaitingListComponent implements OnInit {
       width: '620px',
       minHeight: '150px',
       backdropClass: 'backdropBackground',
-      data: { id: Id, data: 'delete from Waitlist' },
+      data: { userId: Id, data: 'Delete from Waitlist' },
     });
 
     dialogRef.afterClosed().subscribe((result) => {});

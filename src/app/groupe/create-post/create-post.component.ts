@@ -29,7 +29,7 @@ import { Subject, Subscription } from 'rxjs';
 })
 export class CreatePostComponent implements OnInit {
   formGroup!: FormGroup;
-  isLinear = true;
+  isLinear = false;
   myControl = new FormControl();
   value = 1;
   valuebase = 1;
@@ -161,8 +161,8 @@ export class CreatePostComponent implements OnInit {
 
     this.GroupService.addGroup(
       form.value.formArray[0].objectFormCtrl,
-      form.value.formArray[0].categoryFormCtrl.name,
-      form.value.formArray[0].teacherFormCtrl.name,
+      form.value.formArray[0].categoryFormCtrl,
+      form.value.formArray[0].teacherFormCtrl,
       form.value.formArray[0].descriptionFormCtrl,
 
       this.trueFile,

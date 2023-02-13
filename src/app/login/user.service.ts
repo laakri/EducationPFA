@@ -61,7 +61,12 @@ export class UsersService {
       )
       .subscribe(
         () => {
-          console.log('User Added !');
+          const successMessage = 'User Added Successfuly !';
+          this._snackBar.openFromComponent(SuccesComponent, {
+            data: { message: successMessage },
+            duration: 2500,
+            panelClass: ['green-snackbar'],
+          });
         },
         (error) => {
           console.log(error);

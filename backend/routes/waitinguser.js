@@ -21,7 +21,7 @@ router.post("/AddToWl", (req, res, next) => {
     })
     .catch((err) => {
       res.status(500).json({
-        message: "We couldn't add you to this formation",
+        message: "You are already in our Waitlist",
         error: err,
       });
     });
@@ -55,13 +55,14 @@ router.get("/GetAll", (req, res, next) => {
 
 /******************-Delete from waitlist-**********/
 
-router.delete("/delete", async (req, res, next) => {
+router.delete("/delete/:id", async (req, res, next) => {
   try {
-    await Wuser.findByIdAndDelete(req.params.id);
+    await Wuser.deleteOne({ userId: req.params.id });
     res.status(200).json({
       message: "User  Deleted succesfully !",
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json({
       error: err,
     });

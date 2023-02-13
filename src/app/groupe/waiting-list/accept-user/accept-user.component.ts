@@ -14,9 +14,7 @@ export class AcceptUserComponent implements OnInit {
     private GroupService: GroupService
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.data.groupId, this.data.userId);
-  }
+  ngOnInit(): void {}
   onSubmit(form: NgForm) {
     if (form.invalid) {
       return;
@@ -29,6 +27,6 @@ export class AcceptUserComponent implements OnInit {
       '&+Paymentstatu=' +
       form.value.status;
 
-    this.GroupService.AddUserGroup(ch);
+    this.GroupService.AddUserGroup(ch, this.data.userId);
   }
 }

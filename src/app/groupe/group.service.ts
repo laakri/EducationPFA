@@ -269,7 +269,7 @@ export class GroupService {
   }
 
   /**************** Stats ******************** */
-  AddUserGroup(paramms: string) {
+  AddUserGroup(paramms: string, userId: string) {
     const queryParams = new HttpParams({ fromString: paramms });
 
     this.http
@@ -364,5 +364,19 @@ export class GroupService {
   }
   getWaitListUpdateListener() {
     return this.waitlistsUpdate.asObservable();
+  }
+  /**************************************** */
+  deletUser(userId: string) {
+    return this.http
+      .delete('http://localhost:4401/api/wuser/delete/' + userId)
+      .subscribe((responseData) => {
+        console.log('User Deleted from wl successfully');
+        const successMessage = 'User Deleted Successfuly !';
+        this._snackBar.openFromComponent(SuccesComponent, {
+          data: { message: successMessage },
+          duration: 2500,
+          panelClass: ['green-snackbar'],
+        });
+      });
   }
 }

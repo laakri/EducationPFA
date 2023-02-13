@@ -13,10 +13,10 @@ import { Subscription } from 'rxjs';
 })
 export class GroupsListComponent implements OnInit {
   length = 50;
-  pageSize = 10;
+  pageSize = 15;
   page = 0;
   filter?: any;
-  pageSizeOptions = [10, 1, 2, 3, 4];
+  pageSizeOptions = [5, 10, 15, 20, 30];
   pageEvent?: PageEvent;
   groupCategorie = '';
   groupLevel = '';

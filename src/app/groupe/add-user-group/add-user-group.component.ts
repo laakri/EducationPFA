@@ -33,6 +33,6 @@ export class AddUserGroupComponent implements OnInit {
       form.value.UserId +
       '&Paymentstatu=' +
       form.value.Paymentstatu;
-    this.GroupService.AddUserGroup(params);
+    this.GroupService.AddUserGroup(params, form.value.UserId);
   }
 }

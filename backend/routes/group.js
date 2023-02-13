@@ -38,8 +38,9 @@ router.post(
     const url = req.protocol + "://" + req.get("host");
     const group = new Group({
       groupObject: req.body.groupObject,
-      groupCategory: req.body.groupCategory,
       teacherId: req.body.teacherId,
+
+      groupCategory: req.body.groupCategory,
       groupDescription: req.body.groupDescription,
 
       groupFilePath: url + "/file-folder/" + req.file.filename,
