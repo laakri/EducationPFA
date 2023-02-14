@@ -128,4 +128,69 @@ export class AnnouncementService {
   getTeacherUpdateListener() {
     return this.userUpdated.asObservable();
   }
+
+  /***************************************** */
+
+  deleteAnnouncement(announcId: string, userId: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.http
+        .delete(`${this.apiURL}/api/announcs/delete/`, {
+          body: { announcId, userId },
+        })
+        .subscribe(
+          (response) => {
+            console.log('Announc deleted successfully');
+            const successMessage = 'Announc deleted Successfuly !';
+            this._snackBar.openFromComponent(SuccesComponent, {
+              data: { message: successMessage },
+              duration: 2500,
+              panelClass: ['green-snackbar'],
+            });
+            resolve();
+          },
+          (error) => {
+            console.log(
+              'An error occurred while deleting the announcement',
+              error
+            );
+            reject(error);
+          }
+        );
+    });
+  }
+
+  /***************************************** */
+  updateAnnouncement(
+    announcId: string,
+    userId: string,
+    content: string
+  ): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.http
+        .patch(`${this.apiURL}/api/announcs/update/`, {
+          announcId,
+          userId,
+          content,
+        })
+        .subscribe(
+          (response) => {
+            console.log('Announcement updated successfully');
+            const successMessage = 'Announc updated Successfuly !';
+            this._snackBar.openFromComponent(SuccesComponent, {
+              data: { message: successMessage },
+              duration: 2500,
+              panelClass: ['green-snackbar'],
+            });
+            resolve();
+          },
+          (error) => {
+            console.log(
+              'An error occurred while updating the announcement',
+              error
+            );
+            reject(error);
+          }
+        );
+    });
+  }
 }

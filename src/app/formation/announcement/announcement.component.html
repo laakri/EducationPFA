@@ -83,9 +83,10 @@
             mat-button
             *ngIf="Announc.isEditing"
             (click)="Announc.isEditing = false"
+            (click)="onUpdate(Announc)"
             >save</a
           >
-          <a mat-button>delete</a>
+          <a mat-button (click)="onDelete(Announc.id)">delete</a>
         </div>
       </div>
     </div>

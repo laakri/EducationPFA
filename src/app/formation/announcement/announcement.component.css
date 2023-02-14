@@ -185,7 +185,7 @@ mat-form-field {
   border-radius: 50%;
 }
 .users-text {
-  width: 45%;
+  width: 200px;
   display: flex;
   flex-direction: column;
   gap: 2px;

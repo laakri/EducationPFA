@@ -1,9 +1,9 @@
+import { UsersService } from './../../login/user.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AnnouncementService } from './announcement.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
-import { reverse } from 'dns';
 import { User } from '../../login/user.model';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { debounceTime } from 'rxjs/operators';
@@ -32,9 +32,10 @@ export class AnnouncementComponent implements OnInit {
   searchSubject = new Subject<string>();
   searchQuery = '';
   defaultName = '?name=';
-
+  UserId: any;
   constructor(
     private AnnouncementService: AnnouncementService,
+    private UserService: UsersService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private clipboard: Clipboard
@@ -48,6 +49,7 @@ export class AnnouncementComponent implements OnInit {
     { value: 'student', namevalue: 'Teacher', iconvalue: 'wallet_travel' },
   ];
   ngOnInit(): void {
+    this.UserId = this.UserService.getUserId();
     this.spinner = true;
     this.activatedRoute.queryParams
       .pipe(map(({ filter }) => filter || this.filter))
@@ -59,7 +61,6 @@ export class AnnouncementComponent implements OnInit {
       this.AnnouncementService.getAnnouncUpdateListener().subscribe(
         (Announs: []) => {
           this.Announs = Announs;
-          console.log(this.Announs);
           this.announslength = Announs.length;
         }
       );
@@ -70,7 +71,6 @@ export class AnnouncementComponent implements OnInit {
         this.AnnouncementService.getTeacherUpdateListener().subscribe(
           (users: User[]) => {
             this.users = users;
-            console.log(this.users);
             this.userlength = users.length;
           }
         );
@@ -78,7 +78,6 @@ export class AnnouncementComponent implements OnInit {
     this.spinner = false;
   }
   onChange(filter: string) {
-    console.log(filter);
     this.router.navigate([], { queryParams: { filter } });
     this.filterToSend = '?userRole=' + filter;
     this.AnnouncementService.getAnnouncs(this.filterToSend);
@@ -93,9 +92,10 @@ export class AnnouncementComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    this.userId = localStorage.getItem('userId');
-    this.userRole = localStorage.getItem('userRole');
+    this.userId = this.UserService.getUserId();
+    this.userRole = this.UserService.getUserRole();
 
+    console.log(this.userId, this.userRole);
     await this.AnnouncementService.addAnnounc(
       this.userId,
       this.userRole,
@@ -110,7 +110,44 @@ export class AnnouncementComponent implements OnInit {
         }
       );
   }
+  onDelete(announcId: string) {
+    this.userId = this.UserService.getUserId();
 
+    this.AnnouncementService.deleteAnnouncement(announcId, this.UserId)
+      .then(() => {
+        this.AnnouncementService.getAnnouncs(this.filterToSend);
+        this.AnnounSub =
+          this.AnnouncementService.getAnnouncUpdateListener().subscribe(
+            (Announs: []) => {
+              this.Announs = Announs;
+            }
+          );
+      })
+      .catch((error) => {
+        console.log('An error occurred while Deleting the announcement', error);
+        // handle the error here
+      });
+  }
+  onUpdate(announc: any) {
+    this.AnnouncementService.updateAnnouncement(
+      announc.id,
+      this.UserId,
+      announc.content
+    )
+      .then(() => {
+        this.AnnouncementService.getAnnouncs(this.filterToSend);
+        this.AnnounSub =
+          this.AnnouncementService.getAnnouncUpdateListener().subscribe(
+            (Announs: []) => {
+              this.Announs = Announs;
+            }
+          );
+      })
+      .catch((error) => {
+        console.log('An error occurred while updating the announcement', error);
+        // handle the error here
+      });
+  }
   onCopy(emailvalue: string) {
     this.clipboard.copy(emailvalue);
   }

@@ -28,9 +28,8 @@ export class NavbarComponent implements OnInit {
   }
   ngOnInit(): void {
     this.userIdLocal = localStorage.getItem('userId');
-    console.log(this.userIdLocal);
-
     this.userName = this.UsersService.getUserName();
+
     this.isAuth = this.UsersService.getIsAuth();
     this.isAuthListenerSubs =
       this.UsersService.getAuthStatusListener().subscribe((isAuthenticated) => {

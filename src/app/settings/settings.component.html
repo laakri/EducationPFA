@@ -14,7 +14,7 @@
             name="name"
             #name="ngModel"
             minlength="4"
-            maxlength="20"
+            maxlength="25"
             required
           />
           <mat-error *ngIf="name.invalid"
@@ -72,7 +72,7 @@
         name="email"
         #email="ngModel"
         minlength="4"
-        maxlength="20"
+        maxlength="40"
         required
       />
       <mat-error *ngIf="email.invalid"
@@ -103,7 +103,6 @@
         #location="ngModel"
         placeholder="6 *** Rue *** Mourouj ***"
         minlength="4"
-        maxlength="20"
         required
       ></textarea>
       <mat-error *ngIf="location.invalid"

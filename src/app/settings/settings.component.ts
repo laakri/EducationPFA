@@ -52,7 +52,7 @@ export class SettingsComponent implements OnInit {
       form.value.category,
       form.value.location
     );
-    console.log(form.value);
+    console.log(form.value, this.trueFile);
   }
 
   onFilePicked(event: Event) {

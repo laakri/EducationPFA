@@ -11,7 +11,7 @@ const userSchema = mongoose.Schema(
       default: "../../assets/deafault-profile-pic.png",
     },
     password: { type: String, required: true },
-    email: { type: String, unique: true, default: "None" },
+    email: { type: String, default: "None" },
     category: { type: String, default: "None" },
     speciality: { type: String, default: "None" },
     location: { type: String, default: "None" },

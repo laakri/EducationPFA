@@ -95,10 +95,13 @@ export class UsersService {
     userData.append('location', location);
 
     this.http
-      .post<{ message: string }>(this.apiURL + '/api/users/EditUser', userData)
+      .patch<{ message: string }>(
+        this.apiURL + '/api/users/UpdateUser',
+        userData
+      )
       .subscribe(
         () => {
-          console.log('User Added !');
+          console.log('User Update !');
         },
         (error) => {
           console.log(error);

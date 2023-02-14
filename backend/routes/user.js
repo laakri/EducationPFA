@@ -106,6 +106,7 @@ router.patch(
 /*************-Signup-********** */
 
 router.post("/signup", (req, res, next) => {
+  console.log(req.body.name, req.body.phonenum);
   bcrypt.hash(req.body.password, 10).then((hash) => {
     const user = new User({
       name: req.body.name,
@@ -145,7 +146,7 @@ router.post("/login", (req, res, next) => {
     .then((result) => {
       if (!result) {
         return res.status(401).json({
-          message: "Incorrect password !",
+          message: "Incorrecst password !",
         });
       }
       const token = jwt.sign(
@@ -277,7 +278,7 @@ router.get("/GetTeacher", async (req, res) => {
 
 router.patch(
   "/UpdateUser",
-  multer({ storage: storage }).single("imgPath"),
+  multer({ storage: storage }).single("file"),
   async (req, res, next) => {
     try {
       const id = req.body.userId;
@@ -287,13 +288,9 @@ router.patch(
         name: req.body.name,
         phonenum: req.body.phonenum,
         imgPath: url + "/file-folder/" + req.file.filename,
-
-        password: hash,
         email: req.body.email,
         category: req.body.category,
-        speciality: req.body.speciality,
         location: req.body.location,
-        roles: [req.body.role],
       };
       const options = { new: true };
 
