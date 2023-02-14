@@ -269,8 +269,8 @@ export class GroupService {
   }
 
   /**************** Stats ******************** */
-  AddUserGroup(paramms: string, userId: string) {
-    const queryParams = new HttpParams({ fromString: paramms });
+  AddUserGroup(params: string, userId: string) {
+    const queryParams = new HttpParams({ fromString: params });
 
     this.http
       .post<{ message: string }>(
@@ -284,6 +284,7 @@ export class GroupService {
       )
       .subscribe(
         () => {
+          this.deletUser(userId);
           console.log('user <=> group Added !');
           const successMessage = 'User Added To group Successfully!';
           this._snackBar.openFromComponent(SuccesComponent, {

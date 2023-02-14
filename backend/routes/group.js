@@ -85,7 +85,7 @@ router.post("/AddUserGroup", async (req, res, next) => {
   const groupId = req.query.groupId;
   const userId = req.query.userId;
   const Paymentstatu = req.query.Paymentstatu;
-
+  console.log(Paymentstatu, userId, groupId);
   try {
     await Group.findByIdAndUpdate(
       groupId,

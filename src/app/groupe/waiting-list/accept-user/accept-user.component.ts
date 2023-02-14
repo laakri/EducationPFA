@@ -22,9 +22,9 @@ export class AcceptUserComponent implements OnInit {
     const ch =
       '?groupId=' +
       this.data.groupId +
-      '&+userId=' +
+      '&userId=' +
       this.data.userId +
-      '&+Paymentstatu=' +
+      '&Paymentstatu=' +
       form.value.status;
 
     this.GroupService.AddUserGroup(ch, this.data.userId);
