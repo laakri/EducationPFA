@@ -5,6 +5,7 @@ const User = require("./user");
 
 const groupSchema = mongoose.Schema(
   {
+    groupCode: { type: String, required: true, unique: true },
     groupObject: { type: String, required: true },
     teacherId: { type: String, required: true },
     groupCategory: { type: String, required: true },

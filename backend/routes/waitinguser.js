@@ -2,30 +2,64 @@ const express = require("express");
 const { async } = require("rxjs");
 const Wuser = require("../models/waitinguser");
 const router = express.Router();
-
+const User = require("../models/user");
+const Group = require("../models/group");
 router.post("/AddToWl", (req, res, next) => {
-  const wuser = new Wuser({
-    userId: req.body.userId,
-    groupId: req.body.groupId,
-  });
-  wuser
-    .save()
-    .then((result) => {
-      res.status(201).json({
-        message: "User added to waitlist ",
-        result: {
-          ...result,
-          id: result._id,
-        },
+  const userId = req.body.userId;
+  const groupId = req.body.groupId;
+
+  // Check if group exists and user is not already in it
+  Group.findById(groupId)
+    .populate("groupUsers")
+    .exec((err, group) => {
+      if (err) {
+        return res.status(500).json({
+          message: "Error finding group",
+          error: err,
+        });
+      }
+
+      if (!group) {
+        return res.status(404).json({
+          message: "Group not found",
+        });
+      }
+
+      const userIndex = group.groupUsers.findIndex((user) =>
+        user._id.equals(userId)
+      );
+      if (userIndex !== -1) {
+        // User is already in the group
+        return res.status(400).json({
+          message: "User is already in the group",
+        });
+      }
+
+      const wuser = new Wuser({
+        userId: userId,
+        groupId: groupId,
       });
-    })
-    .catch((err) => {
-      res.status(500).json({
-        message: "You are already in our Waitlist",
-        error: err,
-      });
+
+      wuser
+        .save()
+        .then((result) => {
+          res.status(201).json({
+            message: "User added to waitlist",
+            result: {
+              ...result,
+              id: result._id,
+            },
+          });
+        })
+        .catch((err) => {
+          res.status(500).json({
+            message: "Error saving waitlist entry",
+            error: err,
+          });
+        });
     });
 });
+
 /******************-Get All-**********/
 router.get("/GetAll", (req, res, next) => {
   Wuser.find()

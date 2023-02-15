@@ -6,6 +6,7 @@ const Group = require("../models/group");
 const User = require("../models/user");
 const fs = require("fs");
 const { group } = require("console");
+const randomstring = require("randomstring");
 
 const MIME_TYPE_MAP = {
   "image/png": "png",
@@ -36,7 +37,9 @@ router.post(
   multer({ storage: storage }).single("file"),
   (req, res, next) => {
     const url = req.protocol + "://" + req.get("host");
+    const randomString = randomstring.generate(8);
     const group = new Group({
+      groupCode: randomString,
       groupObject: req.body.groupObject,
       teacherId: req.body.teacherId,
 
@@ -85,7 +88,6 @@ router.post("/AddUserGroup", async (req, res, next) => {
   const groupId = req.query.groupId;
   const userId = req.query.userId;
   const Paymentstatu = req.query.Paymentstatu;
-  console.log(Paymentstatu, userId, groupId);
   try {
     await Group.findByIdAndUpdate(
       groupId,
