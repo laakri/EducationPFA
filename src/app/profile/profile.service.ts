@@ -29,6 +29,7 @@ export class ProfileService {
               category: any;
               speciality: any;
               location: any;
+              verified: any;
               Paymentstatu: any;
               roles: any;
               groups: any;
@@ -44,6 +45,7 @@ export class ProfileService {
                 category: user.category,
                 speciality: user.speciality,
                 location: user.location,
+                verified: user.verified,
                 Paymentstatu: user.Paymentstatu,
                 roles: user.roles,
                 groups: user.groups,

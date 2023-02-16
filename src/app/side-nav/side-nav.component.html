@@ -57,11 +57,7 @@
 <div class="side-bar-bottom">
   <mat-divider></mat-divider>
   <div class="sidebar-content" *ngIf="isAuth">
-    <button
-      mat-button
-      [routerLink]="['/Homepage/Profile', getUserId]"
-      routerLinkActive="activebutton"
-    >
+    <button mat-button routerLinkActive="activebutton" (click)="onProfile()">
       <mat-icon aria-label="person">person</mat-icon>
       <span *ngIf="showContentOnHover">Account</span>
     </button>

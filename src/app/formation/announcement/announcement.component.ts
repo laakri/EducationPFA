@@ -98,28 +98,8 @@ export class AnnouncementComponent implements OnInit {
         }
       );
   }
-  /*async*/ onAddAnnounc(form: NgForm) {
-    /*
-    if (form.invalid) {
-      return;
-    }
-    this.userId = this.UserService.getUserId();
-    this.userRole = this.UserService.getUserRole();
-*/
-    console.log(this.groupsFormControl.value);
-    /* await this.AnnouncementService.addAnnounc(
-      this.userId,
-      this.userRole,
-      form.value.content
-    );
-
-    this.AnnouncementService.getAnnouncs(this.filterToSend);
-    this.AnnounSub =
-      this.AnnouncementService.getAnnouncUpdateListener().subscribe(
-        (Announs: []) => {
-          this.Announs = Announs;
-        }
-      );*/
+  async onAddAnnounc(form: NgForm) {
+    console.log(form);
   }
   onDelete(announcId: string) {
     this.userId = this.UserService.getUserId();

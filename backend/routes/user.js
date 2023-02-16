@@ -48,6 +48,7 @@ router.post(
         category: req.body.category,
         speciality: req.body.speciality,
         location: req.body.location,
+        verified: "true",
         roles: [req.body.role],
       });
       user
@@ -106,7 +107,6 @@ router.patch(
 /*************-Signup-********** */
 
 router.post("/signup", (req, res, next) => {
-  console.log(req.body.name, req.body.phonenum);
   bcrypt.hash(req.body.password, 10).then((hash) => {
     const user = new User({
       name: req.body.name,
@@ -287,13 +287,13 @@ router.patch(
       const userUpdated = {
         name: req.body.name,
         phonenum: req.body.phonenum,
-        imgPath: url + "/file-folder/" + req.file.filename,
+        imgPath: url + "/file-profile/" + req.file.filename,
         email: req.body.email,
         category: req.body.category,
         location: req.body.location,
+        verified: "true",
       };
       const options = { new: true };
-
       const userYP = await User.findByIdAndUpdate(id, userUpdated, options);
       res.send(userYP);
       console.log("User updated !");

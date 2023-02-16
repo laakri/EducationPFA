@@ -40,6 +40,17 @@
   height: 150px;
   width: 150px;
   border-radius: 50%;
+  position: relative;
+  }
+.verified{
+  background-color: var(--soft-darkcolor);
+  padding:3px 2px;
+  border-radius: 50%;
+  color: var(--maincolor );
+  position: absolute;
+  left: 60px;
+  bottom: -12px;
+  font-size:30px ;
 }
 .left-content-1 img {
   height: 150px;
@@ -61,6 +72,7 @@
   font-size: 30px;
   margin: 20px;
 }
+
 .user-y-c {
   display: flex;
   margin: 20px;

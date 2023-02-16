@@ -5,11 +5,12 @@ const Announc = require("../models/announc");
 const User = require("../models/user");
 
 /******************-Add Announcement-**********/
-
 router.post("/Add", (req, res, next) => {
   const userId = req.body.userId;
   const userRole = req.body.userRole;
   const content = req.body.content;
+  const ArrayOfGroups = req.body.ArrayOfGroups;
+  let createdAnnounc;
   User.findById(userId)
     .then((user) => {
       if (!user) {
@@ -24,17 +25,27 @@ router.post("/Add", (req, res, next) => {
           userRole: userRole,
           content: content,
         });
+        createdAnnounc = announc;
         return announc.save();
       } else {
         throw new Error("User role not authorized to add announcement");
       }
     })
     .then((result) => {
+      const promises = ArrayOfGroups.map((groupId) => {
+        return Group.findById(groupId).then((group) => {
+          group.announcs.push(createdAnnounc);
+          return group.save();
+        });
+      });
+      return Promise.all(promises);
+    })
+    .then(() => {
       res.status(201).json({
         message: "Announcement added successfully",
         result: {
-          ...result._doc,
-          id: result._id,
+          ...createdAnnounc._doc,
+          id: createdAnnounc._id,
         },
       });
     })

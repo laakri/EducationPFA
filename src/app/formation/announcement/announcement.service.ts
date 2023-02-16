@@ -23,7 +23,12 @@ export class AnnouncementService {
   ) {}
 
   /***************************************************** */
-  addAnnounc(userId: string, userRole: string, content: string): Promise<void> {
+  addAnnounc(
+    userId: string,
+    userRole: string,
+    content: string,
+    groupIds: string[]
+  ): Promise<void> {
     return new Promise((resolve, reject) => {
       const resultData: Announc = {
         userId: userId,
@@ -37,7 +42,7 @@ export class AnnouncementService {
       this.http
         .post<{ message: string; result: Announc }>(
           this.apiURL + '/api/announcs/Add/',
-          resultData
+          { resultData, ArrayOfGroups: groupIds }
         )
         .subscribe(
           (responseData) => {

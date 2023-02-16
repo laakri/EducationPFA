@@ -7,10 +7,15 @@
       <div class="left-content">
         <div class="left-content-1">
           <img src="{{ user.imgPath }}" alt="" />
+          <div class="verified" *ngIf="user.verified == 'true'">
+            <i class="material-icons">verified</i>
+          </div>
         </div>
 
         <div class="left-content-2">
-          <div class="user-name">{{ user.name }}</div>
+          <div class="user-name">
+            {{ user.name }}
+          </div>
           <mat-chip-list class="user-y-c">
             <mat-chip class="user-category">{{ user.category }}</mat-chip>
           </mat-chip-list>
