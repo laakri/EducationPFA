@@ -16,6 +16,7 @@ const userSchema = mongoose.Schema(
     speciality: { type: String, default: "None" },
     location: { type: String, default: "None" },
     Paymentstatu: { type: String, default: "Not-Payed" },
+    verified: { type: String, default: "false" },
 
     roles: {
       type: [

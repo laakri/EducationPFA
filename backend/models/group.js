@@ -2,12 +2,13 @@ const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 const enumValues = require("mongoose-enumvalues");
 const User = require("./user");
+const Anounc = require("./announc");
 
 const groupSchema = mongoose.Schema(
   {
     groupCode: { type: String, required: true, unique: true },
     groupObject: { type: String, required: true },
-    teacherId: { type: String, required: true },
+    teacherId: { type: mongoose.Schema.Types.ObjectId, ref: User },
     groupCategory: { type: String, required: true },
     groupDescription: { type: String, required: true },
 
@@ -15,7 +16,6 @@ const groupSchema = mongoose.Schema(
       type: String,
       default: "../../assets/reactjs.png",
     },
-
     groupPrice: { type: String, required: true },
     groupLevel: { type: String, default: "Beginner" },
     groupStartDate: { type: String, required: true },
@@ -32,6 +32,12 @@ const groupSchema = mongoose.Schema(
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+      },
+    ],
+    announcs: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Anounc",
       },
     ],
   },

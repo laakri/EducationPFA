@@ -58,7 +58,7 @@
               matTooltipHideDelay="100"
               required
             >
-              <mat-option *ngFor="let user of users" [value]="user.name">
+              <mat-option *ngFor="let user of users" [value]="user.id">
                 {{ user.name }}
               </mat-option>
             </mat-select>

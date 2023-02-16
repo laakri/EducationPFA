@@ -29,11 +29,11 @@ import { Subject, Subscription } from 'rxjs';
 })
 export class CreatePostComponent implements OnInit {
   formGroup!: FormGroup;
-  isLinear = false;
+  isLinear = true;
   myControl = new FormControl();
   value = 1;
   valuebase = 1;
-  users: User[] | undefined;
+  users: any;
   categs: any;
   valuetrait = 1;
   valuevariation = 1;
@@ -57,10 +57,8 @@ export class CreatePostComponent implements OnInit {
 
     if (this.selectedDate < today) {
       this.showError = false;
-      console.log(this.showError);
     } else {
       this.showError = true;
-      console.log(this.showError);
     }
   }
   /********************************************************** */
@@ -114,6 +112,7 @@ export class CreatePostComponent implements OnInit {
     this.userSub = this.UsersService.getTeacherUpdateListener().subscribe(
       (users: User[]) => {
         this.users = users;
+        console.log(this.users);
       }
     );
     this.CategoryService.getCategs();

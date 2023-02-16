@@ -250,3 +250,19 @@ mat-form-field {
   background-color: rgba(155, 89, 89, 0.151);
 }
 /*****************************************************/
+
+::ng-deep .mat-pseudo-checkbox-checked,
+::ng-deep .mat-option.mat-selected .mat-pseudo-checkbox {
+  background-color:var(--secendcolor);
+  border-color: var(--secendcolor);
+}
+::ng-deep .mat-select-panel {
+  background-color: var(--soft-darkcolor);
+}
+::ng-deep .mat-option-text {
+  color: var(--whitecolor) ;
+
+}
+.mat-checkbox-checked .mat-checkbox-background {
+  background-color: var(--whitecolor) !important;
+}

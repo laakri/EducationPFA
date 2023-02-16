@@ -89,29 +89,34 @@ router.post("/AddUserGroup", async (req, res, next) => {
   const userId = req.query.userId;
   const Paymentstatu = req.query.Paymentstatu;
   try {
-    await Group.findByIdAndUpdate(
-      groupId,
-      { $push: { groupUsers: userId } },
-      { new: true, useFindAndModify: true }
-    );
+    const group = await Group.findById(groupId);
+    if (!group.groupUsers.includes(userId)) {
+      await Group.findByIdAndUpdate(
+        groupId,
+        { $push: { groupUsers: userId } },
+        { new: true, useFindAndModify: true }
+      );
 
-    await User.findByIdAndUpdate(
-      userId,
-      { $push: { groups: groupId } },
-      { new: true, useFindAndModify: true }
-    );
-    await User.findByIdAndUpdate(
-      userId,
-      { Paymentstatu: Paymentstatu },
-      { new: true }
-    );
+      await User.findByIdAndUpdate(
+        userId,
+        { $push: { groups: groupId } },
+        { new: true, useFindAndModify: true }
+      );
+      await User.findByIdAndUpdate(
+        userId,
+        { Paymentstatu: Paymentstatu },
+        { new: true }
+      );
 
-    res.status(201).json({
-      message: "User <=> Group Succesfully ",
-    });
+      res.status(201).json({
+        message: "User <=> Group Succesfully ",
+      });
+    } else {
+      throw "User already exists in the group";
+    }
   } catch (err) {
     res.status(500).json({
-      message: "Couldn't Add User <=> Group  !",
+      message: "User already exists in the group",
       error: err,
     });
   }

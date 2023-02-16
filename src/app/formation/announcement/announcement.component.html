@@ -16,12 +16,27 @@
             required
             #content="ngModel"
             placeholder="❉/  Create Announcememnt ..."
-          >
-            <mat-error *ngIf="content.invalid"
-            >Content is <strong>required</strong></mat-error
-          ></textarea
-          >
+          ></textarea>
+          <mat-error *ngIf="content.invalid"
+            >Content is <strong>required</strong>
+          </mat-error>
         </mat-form-field>
+
+        <mat-form-field appearance="outline" class="my-custom-class">
+          <mat-select
+            [formControl]="groupsFormControl"
+            placeholder="Select Group"
+            multiple
+          >
+            <mat-option *ngFor="let category of groups" [value]="category">
+              {{ category }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="groupsFormControl.hasError('required')">
+            At least one category is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
         <button mat-flat-button class="button-announ" type="submit">
           Submit
         </button>

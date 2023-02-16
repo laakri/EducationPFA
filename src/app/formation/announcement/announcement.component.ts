@@ -1,6 +1,6 @@
 import { UsersService } from './../../login/user.service';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, NgForm, Validators } from '@angular/forms';
 import { AnnouncementService } from './announcement.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -15,6 +15,16 @@ import { Subject, Subscription } from 'rxjs';
   styleUrls: ['./announcement.component.css'],
 })
 export class AnnouncementComponent implements OnInit {
+  groups = [
+    'Category 1',
+    'Category 2',
+    'Category 3',
+    'Category 4',
+    'Category 5',
+  ];
+  selectedGroups: string[] = [];
+  groupsFormControl = new FormControl(null, Validators.required);
+
   showFiller = false;
   private userId: any;
   private userRole: any;
@@ -88,15 +98,16 @@ export class AnnouncementComponent implements OnInit {
         }
       );
   }
-  async onAddAnnounc(form: NgForm) {
+  /*async*/ onAddAnnounc(form: NgForm) {
+    /*
     if (form.invalid) {
       return;
     }
     this.userId = this.UserService.getUserId();
     this.userRole = this.UserService.getUserRole();
-
-    console.log(this.userId, this.userRole);
-    await this.AnnouncementService.addAnnounc(
+*/
+    console.log(this.groupsFormControl.value);
+    /* await this.AnnouncementService.addAnnounc(
       this.userId,
       this.userRole,
       form.value.content
@@ -108,7 +119,7 @@ export class AnnouncementComponent implements OnInit {
         (Announs: []) => {
           this.Announs = Announs;
         }
-      );
+      );*/
   }
   onDelete(announcId: string) {
     this.userId = this.UserService.getUserId();
