@@ -269,7 +269,13 @@ mat-card {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
 }
-
+.one-content-right {
+  width: 43%;
+  min-height: 250px;
+  border-radius: 20px;
+  box-shadow: rgba(211, 211, 211, 0.02) 0px 1px 3px 0px,
+    rgba(218, 218, 218, 0.15) 0px 0px 0px 1px;
+}
 @media screen and (max-width: 1250px) {
   .one-content-flex {
     flex-direction: column;
