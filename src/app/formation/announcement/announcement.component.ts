@@ -22,8 +22,6 @@ export class AnnouncementComponent implements OnInit {
     'Category 4',
     'Category 5',
   ];
-  selectedGroups: string[] = [];
-  groupsFormControl = new FormControl(null, Validators.required);
 
   showFiller = false;
   private userId: any;
@@ -43,6 +41,7 @@ export class AnnouncementComponent implements OnInit {
   searchQuery = '';
   defaultName = '?name=';
   UserId: any;
+  UserRole: any;
   constructor(
     private AnnouncementService: AnnouncementService,
     private UserService: UsersService,
@@ -99,8 +98,35 @@ export class AnnouncementComponent implements OnInit {
       );
   }
   async onAddAnnounc(form: NgForm) {
-    console.log(form);
+    if (form.invalid) {
+      return;
+    }
+
+    const userId = this.UserService.getUserId();
+    const userRole = this.UserService.getUserRole();
+    const content = form.value.content;
+    const groupIds = form.value.groupsControl;
+    try {
+      await this.AnnouncementService.addAnnounc(
+        userId,
+        userRole,
+        content,
+        groupIds
+      );
+
+      this.AnnouncementService.getAnnouncs(this.filterToSend);
+      this.AnnounSub =
+        this.AnnouncementService.getAnnouncUpdateListener().subscribe(
+          (Announs: []) => {
+            this.Announs = Announs;
+            this.announslength = Announs.length;
+          }
+        );
+    } catch (error) {
+      console.error('Failed to add announcement', error);
+    }
   }
+
   onDelete(announcId: string) {
     this.userId = this.UserService.getUserId();
 

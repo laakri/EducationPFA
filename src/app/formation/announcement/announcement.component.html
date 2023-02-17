@@ -24,15 +24,19 @@
 
         <mat-form-field appearance="outline" class="my-custom-class">
           <mat-select
-            [formControl]="groupsFormControl"
+            matInput
+            ngModel
+            name="groupsControl"
+            #groupsControl="ngModel"
             placeholder="Select Group"
+            required
             multiple
           >
             <mat-option *ngFor="let groupId of groups" [value]="groupId">
               {{ groupId }}
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="groupsFormControl.hasError('required')">
+          <mat-error *ngIf="groupsControl.invalid">
             At least one groupId is <strong>required</strong>
           </mat-error>
         </mat-form-field>

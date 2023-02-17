@@ -23,6 +23,7 @@ export class AnnouncementService {
   ) {}
 
   /***************************************************** */
+
   addAnnounc(
     userId: string,
     userRole: string,
@@ -42,7 +43,10 @@ export class AnnouncementService {
       this.http
         .post<{ message: string; result: Announc }>(
           this.apiURL + '/api/announcs/Add/',
-          { resultData, ArrayOfGroups: groupIds }
+          {
+            ...resultData,
+            ArrayOfGroups: groupIds,
+          }
         )
         .subscribe(
           (responseData) => {
