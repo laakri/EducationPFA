@@ -12,7 +12,6 @@ router.post("/Add", (req, res, next) => {
   const userRole = req.body.userRole;
   const content = req.body.content;
   const ArrayOfGroups = req.body.ArrayOfGroups;
-  console.log(userId, userRole, content, ArrayOfGroups);
 
   let createdAnnounc;
   User.findById(userId)

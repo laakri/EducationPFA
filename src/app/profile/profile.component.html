@@ -53,15 +53,29 @@
       <!----------------------------------------->
 
       <mat-tab label="Profile">
-        <div class="live-section">
-          <h2>Start coding instantly with GitHub Codespaces</h2>
+        <div class="live-section" *ngIf="user.verified == 'false'">
+          <h2>
+            complete your profile to join our verified professional community.
+          </h2>
           <span
-            >Spin up fully configured dev environments on powerful VMs that
-            start in seconds. Get up to 60 hours a month of free time.
+            >Unlock new opportunities and expand your professional network by
+            joining our verified community. Complete your profile now and start
+            connecting with like-minded peers
           </span>
-          <button mat-flat-button>Start</button>
+          <button mat-flat-button [routerLink]="['/Homepage/Settings']">
+            Complete Profile
+          </button>
         </div>
-
+        <div class="live-section" *ngIf="user.verified == 'true'">
+          <h2>explore online courses to learn new skills now.</h2>
+          <span
+            >Gain access to comprehensive training resources and learn at your
+            own pace with our flexible online courses
+          </span>
+          <button mat-flat-button [routerLink]="['/Homepage/GroupsList']">
+            Start Learning
+          </button>
+        </div>
         <div class="tab profile-content">
           <div>
             <span>Phone</span>

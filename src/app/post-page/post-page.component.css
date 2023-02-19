@@ -157,6 +157,9 @@
 .content-details > * {
   margin: 20px;
 }
+.content-details h1 {
+  color: var(--maincolor);
+}
 .class-chip {
   margin: 10px;
 }
