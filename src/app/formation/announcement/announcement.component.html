@@ -32,8 +32,11 @@
             required
             multiple
           >
-            <mat-option *ngFor="let groupId of groups" [value]="groupId">
-              {{ groupId }}
+            <mat-option
+              *ngFor="let groupId of GroupCodes"
+              [value]="groupId._id"
+            >
+              {{ groupId.groupCode }}
             </mat-option>
           </mat-select>
           <mat-error *ngIf="groupsControl.invalid">

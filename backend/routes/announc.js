@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const checkauth = require("../middleware/check-user");
 const Announc = require("../models/announc");
 const User = require("../models/user");
+const Group = require("../models/group");
+const checkauth = require("../middleware/check-user");
 
 /******************-Add Announcement-**********/
+
 router.post("/Add", (req, res, next) => {
   const userId = req.body.userId;
   const userRole = req.body.userRole;
@@ -22,25 +24,50 @@ router.post("/Add", (req, res, next) => {
         user.roles.includes(userRole) &&
         (userRole === "student" || userRole === "admin")
       ) {
-        const announc = new Announc({
-          userId: userId,
-          userRole: userRole,
-          content: content,
+        // Check if the ArrayOfGroups contains valid group IDs
+        const promises = ArrayOfGroups.map((groupId) => {
+          return Group.findById(groupId).then((group) => {
+            if (!group) {
+              throw new Error(`Group ${groupId} not found`);
+            }
+            return true;
+          });
         });
-        createdAnnounc = announc;
-        return announc.save();
+        return Promise.all(promises).then((results) => {
+          if (results.some((result) => !result)) {
+            throw new Error("One or more group IDs are invalid");
+          }
+          const announc = new Announc({
+            userId: userId,
+            userRole: userRole,
+            content: content,
+          });
+          createdAnnounc = announc;
+
+          // Check if the user has permission to add announcement to all groups
+          const promises2 = ArrayOfGroups.map((groupId) => {
+            return Group.findById(groupId).then((group) => {
+              if (!group) {
+                throw new Error(`Group ${groupId} not found`);
+              }
+              if (!user.groups.includes(groupId)) {
+                throw new Error(
+                  `User ${userId} is not a member of group ${groupId}`
+                );
+              }
+              group.announcs.push(createdAnnounc);
+              return group.save();
+            });
+          });
+
+          return Promise.all(promises2);
+        });
       } else {
         throw new Error("User role not authorized to add announcement");
       }
     })
-    .then((result) => {
-      const promises = ArrayOfGroups.map((groupId) => {
-        return Group.findById(groupId).then((group) => {
-          group.announcs.push(createdAnnounc);
-          return group.save();
-        });
-      });
-      return Promise.all(promises);
+    .then(() => {
+      return createdAnnounc.save();
     })
     .then(() => {
       res.status(201).json({

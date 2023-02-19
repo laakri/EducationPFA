@@ -15,22 +15,16 @@ import { Subject, Subscription } from 'rxjs';
   styleUrls: ['./announcement.component.css'],
 })
 export class AnnouncementComponent implements OnInit {
-  groups = [
-    'Category 1',
-    'Category 2',
-    'Category 3',
-    'Category 4',
-    'Category 5',
-  ];
-
   showFiller = false;
   private userId: any;
   private userRole: any;
   fontStyle = 'all';
   Announs: any;
+  GroupCodes: any;
   filter = '';
   filterToSend = '';
   AnnounSub: Subscription = new Subscription();
+  GroupCodesByTeacherSub: Subscription = new Subscription();
   userSub: Subscription = new Subscription();
   users: any;
   userlength = 0;
@@ -60,12 +54,27 @@ export class AnnouncementComponent implements OnInit {
   ngOnInit(): void {
     this.UserId = this.UserService.getUserId();
     this.spinner = true;
+
+    /**************************************** */
+    this.AnnouncementService.getAnnouncs(this.filterToSend);
+    this.GroupCodesByTeacherSub =
+      this.AnnouncementService.getGroupCodeUpdateListener().subscribe(
+        (GroupCodes: []) => {
+          this.GroupCodes = GroupCodes;
+          console.log(this.GroupCodes);
+        }
+      );
+
+    /**************************************** */
+
     this.activatedRoute.queryParams
       .pipe(map(({ filter }) => filter || this.filter))
       .subscribe((filter) => (this.filter = filter));
     this.filterToSend = '?userRole=' + this.filter;
 
-    this.AnnouncementService.getAnnouncs(this.filterToSend);
+    /**************************************** */
+
+    this.AnnouncementService.getGroupCodesByTeacher('63ee428ad3c6a248bb1ae14e');
     this.AnnounSub =
       this.AnnouncementService.getAnnouncUpdateListener().subscribe(
         (Announs: []) => {
@@ -73,6 +82,8 @@ export class AnnouncementComponent implements OnInit {
           this.announslength = Announs.length;
         }
       );
+
+    /**************************************** */
 
     this.searchSubject.pipe(debounceTime(500)).subscribe((query) => {
       this.AnnouncementService.getTeachers(this.defaultName + query);

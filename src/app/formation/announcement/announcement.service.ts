@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SuccesComponent } from '../../succes/succes.component';
 import { map } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { User } from '../../login/user.model';
 import { environment } from '@envi/environment';
 
@@ -14,7 +14,9 @@ export class AnnouncementService {
   private announcs: [] = [];
   private announcUpdate = new Subject<[]>();
   private users: User[] = [];
+  private groupCodes: any;
   private userUpdated = new Subject<User[]>();
+  private groupCodeUpdated = new Subject<any>();
   apiURL = environment.apiURL;
   constructor(
     private http: HttpClient,
@@ -166,6 +168,32 @@ export class AnnouncementService {
           }
         );
     });
+  }
+  /***************************************** */
+
+  getGroupCodesByTeacher(teacherId: string) {
+    this.http
+      .get<{ message: string; groups: any }>(
+        this.apiURL + '/api/groups/GetGroupsCodeById/' + teacherId
+      )
+      .pipe(
+        map((responseData) => {
+          return responseData.groups.map((group: any) => {
+            return {
+              _id: group._id,
+              groupCode: group.groupCode,
+            };
+          });
+        })
+      )
+      .subscribe((transformedGroupCodes) => {
+        this.groupCodes = transformedGroupCodes;
+        this.groupCodeUpdated.next([...this.groupCodes]);
+      });
+  }
+
+  getGroupCodeUpdateListener() {
+    return this.groupCodeUpdated.asObservable();
   }
 
   /***************************************** */

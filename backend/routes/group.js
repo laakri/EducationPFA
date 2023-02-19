@@ -225,6 +225,29 @@ router.get("/GetOne/:id", (req, res, next) => {
       });
     });
 });
+/******************-Get  All the Groups By Teacher Id-**********/
+router.get("/GetGroupsCodeById/:teacherId", async (req, res, next) => {
+  const teacherId = req.params.teacherId;
+  try {
+    const groups = await Group.find({ teacherId: teacherId }).select(
+      "_id groupCode"
+    );
+    if (groups.length === 0) {
+      return res.status(404).json({
+        message: `No groups found for teacher with ID ${teacherId}`,
+      });
+    }
+
+    res.status(200).json({
+      message: "Group codes retrieved successfully",
+      groups: groups,
+    });
+  } catch (err) {
+    res.status(500).json({
+      error: err,
+    });
+  }
+});
 
 /******************-Get Groups -**********/
 router.get("/GetAllFiltred", async (req, res, next) => {
