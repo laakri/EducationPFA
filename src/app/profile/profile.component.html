@@ -120,8 +120,12 @@
                 >
               </mat-chip-list>
             </div>
+
             <span>{{ group.groupDescription }} </span>
             <h3>Started at {{ group.createdAt }}</h3>
+            <button mat-raised-button>
+              {{ group.groupCode }}
+            </button>
           </div>
         </div>
       </mat-tab>

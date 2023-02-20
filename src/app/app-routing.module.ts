@@ -44,7 +44,7 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: '/Formation/Announcement', pathMatch: 'full' },
       { path: 'Announcement', component: AnnouncementComponent },
-      { path: 'Meeting', component: GroupMeetComponent },
+      { path: 'Meeting/:groupCode', component: GroupMeetComponent },
     ],
   },
   {

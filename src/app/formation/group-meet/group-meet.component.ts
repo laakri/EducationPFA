@@ -1,6 +1,8 @@
+import { throwError } from 'rxjs';
+import { UsersService } from './../../login/user.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 declare var JitsiMeetExternalAPI: any;
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-group-meet',
@@ -13,16 +15,27 @@ export class GroupMeetComponent implements OnInit, AfterViewInit {
   options: any;
   api: any;
   user: any;
-
+  userName: any;
+  userRole: any;
+  groupCode: any;
   // For Custom Controls
   isAudioMuted = false;
   isVideoMuted = false;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private UsersService: UsersService,
+    private route: ActivatedRoute
+  ) {}
   ngOnInit(): void {
-    this.room = 'bwb-bfqi-vmh'; // set your room name
+    this.groupCode = this.route.snapshot.paramMap.get('groupCode'); // Get the groupCode from params
+    console.log(this.groupCode);
+    this.userName = this.UsersService.getUserName();
+    this.userRole = this.UsersService.getUserRole();
+
+    this.room = this.groupCode; // Set the room to the groupCode
     this.user = {
-      name: 'Akash Verma', // set your username
+      name: this.userName, // Set the user name to the userName
     };
   }
   ngAfterViewInit(): void {
@@ -47,6 +60,10 @@ export class GroupMeetComponent implements OnInit, AfterViewInit {
       },
     };
 
-    this.api = new JitsiMeetExternalAPI(this.domain, this.options);
+    if (this.userRole === 'teacher') {
+      this.api = new JitsiMeetExternalAPI(this.domain, this.options);
+    } else {
+      throwError('User is not authorized to control the group meet');
+    }
   }
 }
