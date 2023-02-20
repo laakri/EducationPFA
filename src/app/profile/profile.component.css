@@ -124,10 +124,13 @@ mat-tab-group {
 .profile-content div {
   border: var(--bordercolor) 1px solid ;
   border-radius: 10px;
+  min-height: 10px;
   width: 40%;
   padding: 20px;
   display: flex;
   flex-direction: column;
+  word-break: break-word;
+  
 }
 .profile-content span {
   color: var(--graycolor);
@@ -193,15 +196,25 @@ mat-tab-group {
   width: 90%;
   min-height: 120px;
 }
+.upcoming-chip{
+  color: #fff !important;
+  background-color: #808080       !important;
+}
+.started-chip{ 
+  color: #fff !important;
+  background-color: #4169E1  !important;
+}
 .inactve-chip{
   color: #fff !important;
   background-color: #fa6c62 !important;
 }
-
-.live-chip{ 
-  color: #fff !important;
-  background-color: #4CAF50 !important;
+.live-button{
+  color: #fff ;
+  background-color: #4CAF50 ;
+  letter-spacing: 1px;
+  font-size: 16px;
 }
+
 .formation-text {
   display: flex;
   gap: 20px;
@@ -222,4 +235,24 @@ mat-tab-group {
   margin-top: 20px;
   font-size: 16px;
 
+}
+@keyframes scaling {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.3;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.button-live {
+  padding-top: 6px;
+  color: #fff ;
+  font-size: 16px;
+  animation-name: scaling;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
 }

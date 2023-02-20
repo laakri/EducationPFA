@@ -18,27 +18,34 @@ export class GroupMeetComponent implements OnInit, AfterViewInit {
   userName: any;
   userRole: any;
   groupCode: any;
-  // For Custom Controls
-  isAudioMuted = false;
-  isVideoMuted = false;
 
   constructor(
     private router: Router,
     private UsersService: UsersService,
     private route: ActivatedRoute
   ) {}
+
   ngOnInit(): void {
-    this.groupCode = this.route.snapshot.paramMap.get('groupCode'); // Get the groupCode from params
-    console.log(this.groupCode);
+    this.groupCode = this.route.snapshot.paramMap.get('groupCode');
     this.userName = this.UsersService.getUserName();
     this.userRole = this.UsersService.getUserRole();
+    console.log(this.groupCode, this.userName, this.userRole);
 
-    this.room = this.groupCode; // Set the room to the groupCode
+    this.room = this.groupCode;
     this.user = {
-      name: this.userName, // Set the user name to the userName
+      name: this.userName,
     };
   }
+
   ngAfterViewInit(): void {
+    let configOverwrite = {};
+    if (this.userRole === 'student') {
+      configOverwrite = {
+        TOOLBAR_BUTTONS: [],
+        SETTINGS_SECTIONS: [],
+      };
+    }
+
     this.options = {
       roomName: this.room,
       minwidth: 900,
@@ -53,6 +60,7 @@ export class GroupMeetComponent implements OnInit, AfterViewInit {
       configOverwrite: {
         startWithAudioMuted: true,
         startWithVideoMuted: true,
+        ...configOverwrite,
       },
       parentNode: document.querySelector('#jitsi-iframe'),
       userInfo: {
@@ -60,10 +68,6 @@ export class GroupMeetComponent implements OnInit, AfterViewInit {
       },
     };
 
-    if (this.userRole === 'teacher') {
-      this.api = new JitsiMeetExternalAPI(this.domain, this.options);
-    } else {
-      throwError('User is not authorized to control the group meet');
-    }
+    this.api = new JitsiMeetExternalAPI(this.domain, this.options);
   }
 }

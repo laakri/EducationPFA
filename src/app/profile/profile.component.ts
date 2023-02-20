@@ -51,7 +51,8 @@ export class ProfileComponent implements OnInit {
             group.groupStartDate = date.toDateString();
             const currentDate = new Date();
             const isDateGreater = date.getTime() > currentDate.getTime();
-            group.isDateGreater = isDateGreater;
+            if (date.getTime() > currentDate.getTime())
+              group.isDateGreater = isDateGreater;
           });
         });
 
