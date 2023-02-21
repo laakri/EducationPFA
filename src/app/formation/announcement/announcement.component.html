@@ -6,7 +6,7 @@
       </div>
     </div>
 
-    <div class="create-announ">
+    <div class="create-announ" *ngIf="userRole != 'student' && isAuth">
       <form (submit)="onAddAnnounc(addAnn)" #addAnn="ngForm">
         <mat-form-field appearance="outline">
           <textarea
@@ -75,8 +75,8 @@
     <div>
       <div class="announc" *ngFor="let Announc of Announs">
         <div class="announc-info">
-          <h3 *ngIf="Announc.userRole == 'admin'">Announcement</h3>
-          <div *ngIf="Announc.userRole == 'student'" class="announc-teacher">
+          <h3 *ngIf="Announc.serRole == 'admin'">Announcement</h3>
+          <div *ngIf="Announc.userRole == 'teacher'" class="announc-teacher">
             <img src="{{ Announc.userId.imgPath }}" alt="" />
             <span>{{ Announc.userId.name }}</span>
             <span>{{ Announc.userId.category }}</span>
@@ -94,21 +94,23 @@
         <div class="date">
           <span>{{ Announc.createdAt }}</span>
           <span class="example-spacer"></span>
-          <a
-            mat-button
-            *ngIf="!Announc.isEditing"
-            (click)="Announc.isEditing = true"
-            >edit</a
-          >
-          <a
-            class="button-save"
-            mat-button
-            *ngIf="Announc.isEditing"
-            (click)="Announc.isEditing = false"
-            (click)="onUpdate(Announc)"
-            >save</a
-          >
-          <a mat-button (click)="onDelete(Announc.id)">delete</a>
+          <div *ngIf="Announc.userId._id == userId && isAuth">
+            <a
+              mat-button
+              *ngIf="!Announc.isEditing"
+              (click)="Announc.isEditing = true"
+              >edit</a
+            >
+            <a
+              class="button-save"
+              mat-button
+              *ngIf="Announc.isEditing"
+              (click)="Announc.isEditing = false"
+              (click)="onUpdate(Announc)"
+              >save</a
+            >
+            <a mat-button (click)="onDelete(Announc.id)">delete</a>
+          </div>
         </div>
       </div>
     </div>

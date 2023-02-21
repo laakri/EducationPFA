@@ -16,8 +16,9 @@ import { Subject, Subscription } from 'rxjs';
 })
 export class AnnouncementComponent implements OnInit {
   showFiller = false;
-  private userId: any;
-  private userRole: any;
+  userId: any;
+  userRole: any;
+  isAuth: any;
   fontStyle = 'all';
   Announs: any;
   GroupCodes: any;
@@ -34,8 +35,6 @@ export class AnnouncementComponent implements OnInit {
   searchSubject = new Subject<string>();
   searchQuery = '';
   defaultName = '?name=';
-  UserId: any;
-  UserRole: any;
   constructor(
     private AnnouncementService: AnnouncementService,
     private UserService: UsersService,
@@ -52,7 +51,9 @@ export class AnnouncementComponent implements OnInit {
     { value: 'student', namevalue: 'Teacher', iconvalue: 'wallet_travel' },
   ];
   ngOnInit(): void {
-    this.UserId = this.UserService.getUserId();
+    this.isAuth = this.UserService.getIsAuth();
+    this.userId = this.UserService.getUserId();
+    this.userRole = this.UserService.getUserRole();
     this.spinner = true;
 
     /**************************************** */
@@ -61,7 +62,6 @@ export class AnnouncementComponent implements OnInit {
       this.AnnouncementService.getGroupCodeUpdateListener().subscribe(
         (GroupCodes: []) => {
           this.GroupCodes = GroupCodes;
-          console.log(this.GroupCodes);
         }
       );
 
@@ -73,12 +73,13 @@ export class AnnouncementComponent implements OnInit {
     this.filterToSend = '?userRole=' + this.filter;
 
     /**************************************** */
-
-    this.AnnouncementService.getGroupCodesByTeacher('63ee428ad3c6a248bb1ae14e');
+    this.AnnouncementService.getGroupCodesByTeacher(this.userId);
     this.AnnounSub =
       this.AnnouncementService.getAnnouncUpdateListener().subscribe(
         (Announs: []) => {
           this.Announs = Announs;
+          console.log(this.Announs);
+
           this.announslength = Announs.length;
         }
       );
@@ -112,7 +113,6 @@ export class AnnouncementComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-
     const userId = this.UserService.getUserId();
     const userRole = this.UserService.getUserRole();
     const content = form.value.content;
@@ -124,7 +124,7 @@ export class AnnouncementComponent implements OnInit {
         content,
         groupIds
       );
-
+      console.log(userId, userRole, content, groupIds);
       this.AnnouncementService.getAnnouncs(this.filterToSend);
       this.AnnounSub =
         this.AnnouncementService.getAnnouncUpdateListener().subscribe(
@@ -141,7 +141,7 @@ export class AnnouncementComponent implements OnInit {
   onDelete(announcId: string) {
     this.userId = this.UserService.getUserId();
 
-    this.AnnouncementService.deleteAnnouncement(announcId, this.UserId)
+    this.AnnouncementService.deleteAnnouncement(announcId, this.userId)
       .then(() => {
         this.AnnouncementService.getAnnouncs(this.filterToSend);
         this.AnnounSub =
@@ -159,7 +159,7 @@ export class AnnouncementComponent implements OnInit {
   onUpdate(announc: any) {
     this.AnnouncementService.updateAnnouncement(
       announc.id,
-      this.UserId,
+      this.userId,
       announc.content
     )
       .then(() => {

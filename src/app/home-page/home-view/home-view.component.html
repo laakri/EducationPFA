@@ -75,29 +75,105 @@
   </div>
 
   <!--------------------------------------------->
-
   <div class="between-component-text">
-    <span>Des details a Notre Laboratoire</span>
+    <span>Learn from Industry Experts</span>
   </div>
   <div class="one-content">
     <div class="mainpage">
       <div class="one-content-flex">
         <div class="one-content-left">
-          <div class="one-content-text">COMUNICATION PROTOCOL</div>
-          <h1>Whether you're looking to advance your career</h1>
-
+          <div class="one-content-text">OUR ONLINE COURSES</div>
+          <h1>
+            Advance Your Career or Start a New Business with Our Formation
+            Programs
+          </h1>
           <h3>
-            start a new business, or simply learn something new, our formation
-            courses are tailored to your individual needs and goals.
+            Our expert-led courses are tailored to your individual needs and
+            goals, whether you're looking to learn a new skill or enhance your
+            existing expertise.
           </h3>
         </div>
-
         <div class="one-content-right">
           <div class="one-content-right-item"></div>
         </div>
       </div>
     </div>
   </div>
+  <!--------------------------------------------->
+  <div class="between-component-text">
+    <span>Learn from Industry Experts</span>
+  </div>
+  <div class="one-content">
+    <div class="mainpage">
+      <div class="one-content-flex">
+        <div class="one-content-right2">
+          <div class="one-content-right-item"></div>
+        </div>
+        <div class="one-content-left">
+          <div class="one-content-text">OUR ONLINE COURSES</div>
+          <h1>
+            Advance Your Career or Start a New Business with Our Formation
+            Programs
+          </h1>
+          <h3>
+            Our expert-led courses are tailored to your individual needs and
+            goals, whether you're looking to learn a new skill or enhance your
+            existing expertise.
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--------------------------------------------------------------------------------------->
+  <div class="between-component-text">
+    <span>Our online courses</span>
+  </div>
+  <div class="slick-carousel-content">
+    <div class="slick-carousel-content-size">
+      <div class="see-more" [routerLink]="['/Homepage/GroupsList']">
+        <a mat-button>
+          <span>See More</span>
+          <mat-icon>arrow_forward_ios</mat-icon>
+        </a>
+      </div>
+      <ngx-slick-carousel
+        class="carousel"
+        #slickModal="slick-carousel"
+        [config]="slideConfig"
+      >
+        <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+          <div class="post" width="280px;" height="370px;">
+            <div>
+              <img class="post-img" src="../../../assets/post-img.jpg" alt="" />
+            </div>
+
+            <div class="post-tag">
+              Data Engineering with AWS with angular material
+            </div>
+
+            <div class="post-description">
+              Data Engineering with AWS with angular material Data Engineering
+              with AWS with angular material Data Engineering with AWS with
+              angular material
+            </div>
+            <div class="post-more">
+              <div>
+                <mat-icon> code </mat-icon>
+                <span class="post-more-text"> Beginner</span>
+              </div>
+
+              <div>
+                <mat-icon> access_time </mat-icon>
+                <span class="post-more-text"> 4 Months</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </div>
+
   <!--------------------------------------------------------------------------------------->
 
   <div class="four-layout-content">
@@ -169,71 +245,21 @@
   </div>
 
   <!--------------------------------------------------------------------------------------->
-
-  <div class="slick-carousel-content">
-    <div class="slick-carousel-content-size">
-      <div class="see-more" [routerLink]="['/Homepage/GroupsList']">
-        <a mat-button>
-          <span>See More</span>
-          <mat-icon>arrow_forward_ios</mat-icon>
-        </a>
-      </div>
-      <ngx-slick-carousel
-        class="carousel"
-        #slickModal="slick-carousel"
-        [config]="slideConfig"
-      >
-        <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-          <div class="post" width="280px;" height="370px;">
-            <div>
-              <img class="post-img" src="../../../assets/post-img.jpg" alt="" />
-            </div>
-
-            <div class="post-tag">
-              Data Engineering with AWS with angular material
-            </div>
-
-            <div class="post-description">
-              Data Engineering with AWS with angular material Data Engineering
-              with AWS with angular material Data Engineering with AWS with
-              angular material
-            </div>
-            <div class="post-more">
-              <div>
-                <mat-icon> code </mat-icon>
-                <span class="post-more-text"> Beginner</span>
-              </div>
-
-              <div>
-                <mat-icon> access_time </mat-icon>
-                <span class="post-more-text"> 4 Months</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ngx-slick-carousel>
-    </div>
-  </div>
-
-  <!--------------------------------------------------------------------------------------->
   <!--------------------------------------------->
-
   <div class="between-component-text">
-    <span>Des details a Notre Laboratoire</span>
+    <span>Learn from Industry Experts</span>
   </div>
   <div class="one-content">
     <div class="mainpage">
       <div class="one-content-flex">
         <div class="one-content-left">
-          <div class="one-content-text">COMUNICATION PROTOCOL</div>
-          <h1>Whether you're looking to advance your career</h1>
-
+          <h1>Unlock Your Potential with Our Formation Programs</h1>
           <h3>
-            start a new business, or simply learn something new, our formation
-            courses are tailored to your individual needs and goals.
+            Level up your skills with our expert-led courses, designed for both
+            beginners and professionals. Gain the knowledge you need to achieve
+            your goals and succeed in your field.
           </h3>
         </div>
-
         <div class="one-content-right-youtube">
           <iframe
             width="560"
@@ -245,5 +271,16 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!--------------------------------------------------------------------------------------->
+</div>
+<div class="cross-color-component">
+  <div class="cross-color-component-mainpage">
+    <h1>
+      Join the thousands who use NextGen every day. See how we're changing the
+      way the world learns at work.
+    </h1>
+    <button mat-stroked-button>Get Started</button>
   </div>
 </div>

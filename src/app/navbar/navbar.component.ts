@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
 export class NavbarComponent implements OnInit {
   isAuth = false;
   userName = '';
+  userPicture = '';
 
   private isAuthListenerSubs!: Subscription;
   userIdLocal!: string | null;
@@ -29,6 +30,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.userIdLocal = localStorage.getItem('userId');
     this.userName = this.UsersService.getUserName();
+    this.userPicture = this.UsersService.getUserPicture();
 
     this.isAuth = this.UsersService.getIsAuth();
     this.isAuthListenerSubs =

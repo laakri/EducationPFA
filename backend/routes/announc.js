@@ -12,7 +12,6 @@ router.post("/Add", (req, res, next) => {
   const userRole = req.body.userRole;
   const content = req.body.content;
   const ArrayOfGroups = req.body.ArrayOfGroups;
-
   let createdAnnounc;
   User.findById(userId)
     .then((user) => {
@@ -21,7 +20,7 @@ router.post("/Add", (req, res, next) => {
       }
       if (
         user.roles.includes(userRole) &&
-        (userRole === "student" || userRole === "admin")
+        (userRole === "teacher" || userRole === "admin")
       ) {
         // Check if the ArrayOfGroups contains valid group IDs
         const promises = ArrayOfGroups.map((groupId) => {
@@ -49,11 +48,6 @@ router.post("/Add", (req, res, next) => {
               if (!group) {
                 throw new Error(`Group ${groupId} not found`);
               }
-              if (!user.groups.includes(groupId)) {
-                throw new Error(
-                  `User ${userId} is not a member of group ${groupId}`
-                );
-              }
               group.announcs.push(createdAnnounc);
               return group.save();
             });
@@ -78,6 +72,7 @@ router.post("/Add", (req, res, next) => {
       });
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json({
         message: "Couldn't add Announcement !",
         error: err.message,

@@ -44,7 +44,7 @@
     <div *ngIf="isAuth" class="username-text">{{ userName }}</div>
     <img
       *ngIf="isAuth"
-      src="../../assets/deafault-profile-pic.png"
+      src="{{ userPicture }}"
       alt="userPic"
       [routerLink]="['/Homepage/Profile/', '63ba8b3e75924707c96ee71a']"
     />

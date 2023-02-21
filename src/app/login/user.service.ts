@@ -15,6 +15,7 @@ export class UsersService {
   private isAdminAuthenticated = false;
   private userId: any;
   private userName: any;
+  private userPicture: any;
   private userRole: any;
   private token: any;
   private tokenTimer: any;
@@ -143,11 +144,15 @@ export class UsersService {
   getUserId() {
     return this.userId;
   }
+
   getUserName() {
     return this.userName;
   }
   getUserRole() {
     return this.userRole;
+  }
+  getUserPicture() {
+    return this.userPicture;
   }
   getIsAuth() {
     return this.isAuthenticated;
@@ -184,6 +189,7 @@ export class UsersService {
         userId: string;
         userName: string;
         userRole: string;
+        userPicture: string;
       }>(this.apiURL + '/api/users/login', user)
       .subscribe(
         (response) => {
@@ -196,6 +202,7 @@ export class UsersService {
             this.userId = response.userId;
             this.userName = response.userName;
             this.userRole = response.userRole;
+            this.userPicture = response.userPicture;
             if (this.userRole == 'admin') {
               this.isAdminAuthenticated = true;
               this.authAdminStatusListener.next(true);
@@ -211,7 +218,8 @@ export class UsersService {
               expirationDate,
               this.userId,
               this.userName,
-              this.userRole
+              this.userRole,
+              this.userPicture
             );
             const successMessage = 'Login Successfuly !';
             this._snackBar.openFromComponent(SuccesComponent, {
@@ -241,6 +249,7 @@ export class UsersService {
       this.isAuthenticated = true;
       this.userId = authInformation.userId;
       this.userName = authInformation.userName;
+      this.userPicture = authInformation.userPicture;
       this.userRole = authInformation.userRole;
 
       this.setAuthTimer(expiresIn / 1000);
@@ -259,6 +268,7 @@ export class UsersService {
     this.authAdminStatusListener.next(false);
     this.userId = null;
     this.userName = null;
+    this.userPicture = null;
     this.userRole = null;
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
@@ -278,13 +288,15 @@ export class UsersService {
     expirationDate: Date,
     userId: string,
     userName: string,
-    userRole: string
+    userRole: string,
+    userPicture: string
   ) {
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());
     localStorage.setItem('userId', userId);
     localStorage.setItem('userName', userName);
     localStorage.setItem('userRole', userRole);
+    localStorage.setItem('userPicture', userPicture);
   }
 
   private clearAuthData() {
@@ -293,6 +305,7 @@ export class UsersService {
     localStorage.removeItem('userId');
     localStorage.removeItem('userName');
     localStorage.removeItem('userRole');
+    localStorage.removeItem('userPicture');
   }
 
   private getAuthData() {
@@ -301,6 +314,7 @@ export class UsersService {
     const userId = localStorage.getItem('userId');
     const userName = localStorage.getItem('userName');
     const userRole = localStorage.getItem('userRole');
+    const userPicture = localStorage.getItem('userPicture');
 
     if (!token || !expirationDate) {
       return;
@@ -311,6 +325,7 @@ export class UsersService {
       userId: userId,
       userName: userName,
       userRole: userRole,
+      userPicture: userPicture,
     };
   }
 

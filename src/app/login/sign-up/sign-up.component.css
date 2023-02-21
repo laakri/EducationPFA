@@ -23,9 +23,9 @@
     text-align: center;
     width: 140px;
     bottom: 5px;
-    background: linear-gradient(to right, #7a80a1 0%, #5764af 50%, #3145b4 100%);
+    background: var(--maincolor);
     font-size: 16px;
-    color:var(--whitecolor);
+    color:var(--darkcolor);
 
 }
 .submit-button:hover{

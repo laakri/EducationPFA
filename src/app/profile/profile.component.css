@@ -2,7 +2,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 1000;
+  z-index: 1200;
 }
 .mainpage {
   max-width: 1100px;
@@ -210,7 +210,7 @@ mat-tab-group {
 }
 .live-button{
   color: #fff ;
-  background-color: #4CAF50 ;
+  background-color: #3e9141 ;
   letter-spacing: 1px;
   font-size: 16px;
 }

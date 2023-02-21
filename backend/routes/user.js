@@ -159,6 +159,7 @@ router.post("/login", (req, res, next) => {
         expiresIn: 3600,
         userId: fetchedUser._id,
         userName: fetchedUser.name,
+        userPicture: fetchedUser.imgPath,
         userRole: fetchedUser.roles[0],
       });
     })

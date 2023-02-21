@@ -2,7 +2,6 @@
   max-width: 1300px;
   margin: 10px auto;
 }
-
 .left-text-field {
   max-width: 1100px;
   min-height: 500px;
@@ -97,6 +96,7 @@ mat-card {
 }
 
 .between-component-text {
+  margin-top: 30px;
   text-align: center;
   font-size: 30px;
 }
@@ -173,6 +173,36 @@ mat-card {
     max-width: 90%;
   }
 }
+/*/********************************************************************************/
+.cross-color-component{
+  margin-top: 50px ;
+  background-color: var(--soft-darkcolor);
+  text-align: center;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+.cross-color-component-mainpage{
+  max-width: 950px;
+  margin: 10px auto;
+}
+.cross-color-component h1{
+  letter-spacing: 0.5;
+font-size: 30px;
+font-weight: 570;
+margin-top: 40px;
+line-height: 1.5;
+}
+.cross-color-component button{
+  margin-top: 40px;
+  background-color: var(--maincolor);
+  color: var(--darkcolor);
+  border-radius: 25px;
+  }
+  
+
+
+
 /*/********************************************************************************/
 
 .secend-content-card {
@@ -266,8 +296,21 @@ mat-card {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
+  
+}
+.one-content-right2 {
+  width: 43%;
+  min-height: 250px;
+  border-radius: 20px;
+  box-shadow: rgba(211, 211, 211, 0.02) 0px 1px 3px 0px,
+    rgba(218, 218, 218, 0.15) 0px 0px 0px 1px;
+  background-image: url(../../../assets/homepage3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  
 }
 .one-content-right-youtube {
   width: 43%;
