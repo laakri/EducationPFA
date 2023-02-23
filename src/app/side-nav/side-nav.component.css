@@ -1,20 +1,11 @@
-.logo1 {
-  margin: 10px auto;
-  width: max-content;
-  height: max-content;
-  display: flex;
-  align-items: center;
-}
-.logo {
-  width: 50px;
-  height: 45px;
-}
+
 .logo-text {
   font-size: 20px;
 }
 .sidebar-content {
   margin: 35px 0;
-  height: max-content;
+  height: max-content; 
+
 }
 .sidebar-content button {
   height: 100%;

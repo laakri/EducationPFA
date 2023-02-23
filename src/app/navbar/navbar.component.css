@@ -1,15 +1,36 @@
 .mat-toolbar {
-  height: 50px;
+  height: 70px;
   background-color: #0c1017;
-  border-bottom: 1px solid var(--bordercolor);
-  position: -webkit-sticky; /* Safari */
+  border-bottom: 1px solid #2f353c;
+  position: -webkit-sticky; 
+  display: flex;
+  justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
+.logo1 {
+  width: max-content;
+  height: max-content;
+  display: flex;
+  align-items: center;
+}
+
+.logo1 span {
+  font-size: 27px ;
+  letter-spacing: 1px;
+  margin-left: 5px;
+}
+.logo {
+  width: 50px;
+  height: 45px;
+}
 .top-bar-button {
   margin: auto 5px;
+}
+button{
+  font-size: 16px;
 }
 .absolute {
   position: absolute;
@@ -21,23 +42,21 @@
 .home-victors {
   width: 100%;
 }
-.puch-right {
-  flex: 1 1 auto;
-}
+
 .right-navbar-button {
-  margin: auto 40px;
   align-items: center;
   display: flex;
+  margin-right: 10px;
 }
 .right-navbar-button img {
-  height: 27px;
-  width: 27px;
+  height: 34px;
+  width: 34px;
   border-radius: 50%;
   margin-left: 20px;
 }
 .username-text {
   background-color: transparent;
-  color: var(--graycolor);
+  color: #fff;
   font-size: 16px;
 }
 #button1 {

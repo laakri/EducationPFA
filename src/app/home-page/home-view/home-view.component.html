@@ -75,9 +75,7 @@
   </div>
 
   <!--------------------------------------------->
-  <div class="between-component-text">
-    <span>Learn from Industry Experts</span>
-  </div>
+
   <div class="one-content">
     <div class="mainpage">
       <div class="one-content-flex">
@@ -100,9 +98,7 @@
     </div>
   </div>
   <!--------------------------------------------->
-  <div class="between-component-text">
-    <span>Learn from Industry Experts</span>
-  </div>
+
   <div class="one-content">
     <div class="mainpage">
       <div class="one-content-flex">
@@ -122,55 +118,6 @@
           </h3>
         </div>
       </div>
-    </div>
-  </div>
-
-  <!--------------------------------------------------------------------------------------->
-  <div class="between-component-text">
-    <span>Our online courses</span>
-  </div>
-  <div class="slick-carousel-content">
-    <div class="slick-carousel-content-size">
-      <div class="see-more" [routerLink]="['/Homepage/GroupsList']">
-        <a mat-button>
-          <span>See More</span>
-          <mat-icon>arrow_forward_ios</mat-icon>
-        </a>
-      </div>
-      <ngx-slick-carousel
-        class="carousel"
-        #slickModal="slick-carousel"
-        [config]="slideConfig"
-      >
-        <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-          <div class="post" width="280px;" height="370px;">
-            <div>
-              <img class="post-img" src="../../../assets/post-img.jpg" alt="" />
-            </div>
-
-            <div class="post-tag">
-              Data Engineering with AWS with angular material
-            </div>
-
-            <div class="post-description">
-              Data Engineering with AWS with angular material Data Engineering
-              with AWS with angular material Data Engineering with AWS with
-              angular material
-            </div>
-            <div class="post-more">
-              <div>
-                <mat-icon> code </mat-icon>
-                <span class="post-more-text"> Beginner</span>
-              </div>
-
-              <div>
-                <mat-icon> access_time </mat-icon>
-                <span class="post-more-text"> 4 Months</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ngx-slick-carousel>
     </div>
   </div>
 
@@ -243,7 +190,52 @@
       </div>
     </div>
   </div>
+  <!--------------------------------------------------------------------------------------->
 
+  <div class="slick-carousel-content">
+    <div class="slick-carousel-content-size">
+      <div class="see-more" [routerLink]="['/Homepage/GroupsList']">
+        <a mat-button>
+          <span>See More</span>
+          <mat-icon>arrow_forward_ios</mat-icon>
+        </a>
+      </div>
+      <ngx-slick-carousel
+        class="carousel"
+        #slickModal="slick-carousel"
+        [config]="slideConfig"
+      >
+        <div ngxSlickItem *ngFor="let slide of slides" class="slide">
+          <div class="post" width="280px;" height="370px;">
+            <div>
+              <img class="post-img" src="../../../assets/post-img.jpg" alt="" />
+            </div>
+
+            <div class="post-tag">
+              Data Engineering with AWS with angular material
+            </div>
+
+            <div class="post-description">
+              Data Engineering with AWS with angular material Data Engineering
+              with AWS with angular material Data Engineering with AWS with
+              angular material
+            </div>
+            <div class="post-more">
+              <div>
+                <mat-icon> code </mat-icon>
+                <span class="post-more-text"> Beginner</span>
+              </div>
+
+              <div>
+                <mat-icon> access_time </mat-icon>
+                <span class="post-more-text"> 4 Months</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </div>
   <!--------------------------------------------------------------------------------------->
   <!--------------------------------------------->
   <div class="between-component-text">

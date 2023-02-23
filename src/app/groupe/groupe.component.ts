@@ -16,7 +16,7 @@ import { Clipboard } from '@angular/cdk/clipboard';
 export class GroupeComponent implements OnInit {
   spinner = false;
   searchQuery = '';
-  showFiller = false;
+  showFiller = true;
   myControl = new FormControl();
   userSub: Subscription = new Subscription();
   searchSubject = new Subject<string>();

@@ -1,15 +1,17 @@
 .example-container {
   width: 100%;
   background-color: var(--dark-color) !important;
-  height: 100%;
+  height: calc(100vh - 70px); 
   color: var(--whitecolor);
 }
 
 .sidebar {
   min-width: 75px;
-  height: 100%;
+  height: calc(100vh - 70px); 
   padding: 5px;
   border-right: solid rgb(44, 44, 44) 1px;
   background-color: #0c1017;
   color: #e2e2e2;
+  transition: 1.5s ease-in-out;
+
 }

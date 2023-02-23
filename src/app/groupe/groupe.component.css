@@ -39,6 +39,7 @@
   border-right: solid var(--bordercolor) 1px;
   padding: 30px 10px;
   width: 350px;
+  height: (100vh - 115px);
   margin: auto;
 }
 .search-bar {

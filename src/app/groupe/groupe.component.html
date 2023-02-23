@@ -7,14 +7,6 @@
   >
     Groups
   </button>
-  <button
-    mat-button
-    class="top-bar-button"
-    routerLinkActive="activebutton"
-    [routerLink]="['/Group/CatGroup/Informatique']"
-  >
-    Category
-  </button>
 
   <button
     mat-button
@@ -31,20 +23,12 @@
     routerLinkActive="activebutton"
     [routerLink]="['/Group/CreatePost']"
   >
-    CreatePost
+    Create Formation
   </button>
-  <a
-    mat-button
-    class="top-bar-button"
-    routerLinkActive="activebutton"
-    [routerLink]="['/Group/GroupUsers/63aac6f9ddd3d25b418e495d']"
-  >
-    GroupUsers
-  </a>
 </mat-toolbar>
 
 <mat-drawer-container class="full-content">
-  <mat-drawer #drawer class="seach-content" mode="side" opened>
+  <mat-drawer #drawer class="seach-content" mode="side">
     <h4>STUDENTS</h4>
     <mat-form-field class="search-bar" appearance="outline">
       <mat-label> ❉/ Search</mat-label>
@@ -117,12 +101,7 @@
         <i class="material-icons">auto_stories</i>
         <i class="material-icons">add</i>
       </button>
-      <!--
-    <button mat-raised-button class="open-side-button">
-      <i class="material-icons">admin_panel_settings</i>
-      <i class="material-icons">add</i>
-    </button>
-    --></div>
+    </div>
   </div>
   <router-outlet></router-outlet>
 </mat-drawer-container>

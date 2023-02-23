@@ -1,45 +1,43 @@
 <mat-toolbar color="primary">
-  <button
-    mat-button
-    class="top-bar-button"
-    routerLinkActive="activebutton"
-    [routerLink]="['/Homepage/View']"
-  >
-    Home
-  </button>
-  <button
-    mat-button
-    class="top-bar-button"
-    routerLinkActive="activebutton"
-    [routerLink]="['/Homepage/AboutUs']"
-  >
-    About us
-  </button>
-  <button
-    mat-button
-    class="top-bar-button"
-    routerLinkActive="activebutton"
-    [routerLink]="['/Homepage/ContactUs']"
-  >
-    Contact
-  </button>
-  <button
-    mat-button
-    class="top-bar-button"
-    routerLinkActive="activebutton"
-    [routerLink]="['/Homepage/PostPage/63ee42e5d3c6a248bb1ae156']"
-  >
-    PostPage
-  </button>
-  <button
-    mat-button
-    class="top-bar-button"
-    routerLinkActive="activebutton"
-    [routerLink]="['/Homepage/GroupsList']"
-  >
-    Discover
-  </button>
-  <div class="puch-right"></div>
+  <div class="logo1">
+    <img src="../../assets/logo1.png" class="logo" alt="Logo" />
+    <span>NextGen</span>
+  </div>
+  <div>
+    <button
+      mat-button
+      class="top-bar-button"
+      routerLinkActive="activebutton"
+      [routerLink]="['/Homepage/View']"
+    >
+      Home
+    </button>
+    <button
+      mat-button
+      class="top-bar-button"
+      routerLinkActive="activebutton"
+      [routerLink]="['/Homepage/AboutUs']"
+    >
+      About us
+    </button>
+    <button
+      mat-button
+      class="top-bar-button"
+      routerLinkActive="activebutton"
+      [routerLink]="['/Homepage/ContactUs']"
+    >
+      Contact
+    </button>
+
+    <button
+      mat-button
+      class="top-bar-button"
+      routerLinkActive="activebutton"
+      [routerLink]="['/Homepage/GroupsList']"
+    >
+      Discover
+    </button>
+  </div>
   <div class="right-navbar-button">
     <div *ngIf="isAuth" class="username-text">{{ userName }}</div>
     <img
