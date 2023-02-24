@@ -29,8 +29,4 @@ export class SideNavComponent implements OnInit {
     const id = this.UsersService.getUserId();
     this.router.navigate(['/Homepage/Profile/' + id]);
   }
-
-  logout() {
-    this.UsersService.logout();
-  }
 }

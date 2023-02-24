@@ -58,12 +58,6 @@
       <span *ngIf="showContentOnHover">Account</span>
     </button>
   </div>
-  <div class="sidebar-content" *ngIf="isAuth" (click)="logout()">
-    <button mat-button>
-      <mat-icon aria-label="logout" class="logout-icon">logout</mat-icon>
-      <span class="logout-icon" *ngIf="showContentOnHover">LOGOUT</span>
-    </button>
-  </div>
 
   <div class="sidebar-content">
     <button
@@ -71,9 +65,7 @@
       [routerLink]="['/Homepage/AboutUs']"
       routerLinkActive="activebutton"
     >
-      <mat-icon aria-label="logout" class="info_outline" (click)="logout()"
-        >info_outline</mat-icon
-      >
+      <mat-icon aria-label="logout" class="info_outline">info_outline</mat-icon>
       <span *ngIf="showContentOnHover">About</span>
     </button>
   </div>

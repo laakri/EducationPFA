@@ -46,6 +46,7 @@ const routes: Routes = [
       { path: 'Announcement', component: AnnouncementComponent },
       { path: 'Meeting/:groupCode', component: GroupMeetComponent },
     ],
+    canActivate: [AuthGuard],
   },
   {
     path: 'Group',
@@ -59,6 +60,7 @@ const routes: Routes = [
       { path: 'GroupUsers/:groupId', component: GroupUsersComponent },
       { path: 'WaitingList', component: WaitingListComponent },
     ],
+    canActivate: [AuthGuard],
   },
 ];
 

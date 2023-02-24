@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
-  <div class="logo1">
-    <img src="../../assets/logo1.png" class="logo" alt="Logo" />
+  <div class="logo1" [routerLink]="['/Homepage/View']">
+    <img [src]="getImgSrc()" class="logo" alt="Logo" />
     <span>NextGen</span>
   </div>
   <div>
@@ -39,20 +39,37 @@
     </button>
   </div>
   <div class="right-navbar-button">
-    <div *ngIf="isAuth" class="username-text">{{ userName }}</div>
-    <img
-      *ngIf="isAuth"
-      src="{{ userPicture }}"
-      alt="userPic"
-      [routerLink]="['/Homepage/Profile/', '63ba8b3e75924707c96ee71a']"
-    />
+    <button mat-button [matMenuTriggerFor]="beforeMenu">
+      <img *ngIf="isAuth" src="{{ userPicture }}" alt="userPic" />
+    </button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before" class="menu-container">
+      <button
+        mat-button
+        class="username-text menu-button"
+        [routerLink]="['/Homepage/Profile/', userId]"
+      >
+        <mat-icon aria-label="campaign">person</mat-icon>
+        <span>{{ userName }}</span>
+      </button>
+      <button mat-button (click)="logout()" class="menu-button">
+        <mat-icon aria-label="logout" class="logout-icon">logout</mat-icon>
+        <span class="logout-icon">Logout</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-button (click)="change_theme()" class="menu-button">
+        <mat-icon aria-label="campaign">brightness_medium</mat-icon>
+        <span>Brightness</span>
+      </button>
+    </mat-menu>
+
     <button *ngIf="!isAuth" mat-button id="button1" (click)="login()">
       login
     </button>
     <button *ngIf="!isAuth" mat-raised-button id="button2" (click)="login()">
       Get started
     </button>
-    <button mat-button (click)="change_theme()">
+
+    <button *ngIf="!isAuth" mat-button (click)="change_theme()">
       <mat-icon aria-label="campaign">brightness_medium</mat-icon>
     </button>
   </div>

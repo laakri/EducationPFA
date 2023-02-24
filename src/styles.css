@@ -1,7 +1,7 @@
 @import "@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-
+/*
 html,
 body {
   height: 100%;
@@ -26,29 +26,58 @@ body {
   --soft-darktranscolor: #26272b69;
   --goldcolor: #d48a0d;
 }
+*/
+html,
+body {
+  transition: 0.4s ease-in-out;
 
-body.bright-theme {
   height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: black;
-  background: white;
+  color: var(--whtiecolor);
+  background: var(--darkcolor);
+  font-family: "Roboto", sans-serif;
+
+  --bordercolor: #2f353c;
+
+  --darkcolor: #0c1017;
+  --soft-darkcolor: #171a22;
+  --whitecolor: #e2e2e2;
+  --graycolor: #8a8d8e;
+  --maincolor: #726fdd;
+  --maintranscolor: #3b7fed71;
+  --secendcolor: #c04e14;
+  --darktranscolor: #19181ada;
+  --soft-darktranscolor: #26272b69;
+  --buttonactive:#2e37469c;
+}
+
+body.bright-theme {
+  transition: 0.4s ease-in-out;
+
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #1E2022;
+  background: var(--darkcolor);
   font-family: "Roboto", sans-serif;
 
   --bordercolor: rgb(219, 219, 219);
 
-  --darkcolor: #fdfdfd;
-  --soft-darkcolor: #f1f0f0;
+  --darkcolor: #fff;
+  --soft-darkcolor: #F0F5F9;
   --whitecolor: #000000;
   --graycolor: #444444;
-  --maincolor: #13a187;
-  --maintranscolor: #3b7fed71;
+  --maincolor: #504be6;
+  --maintranscolor: #85586F71;
   --secendcolor: #c04e14;
   --darktranscolor: #fdfdfdce;
   --soft-darktranscolor: #94959769;
-  --goldcolor: #d48a0d;
+  --buttonactive: #b7b6e5;
 }
 
 a,
@@ -78,7 +107,7 @@ ul {
 /*********************-Active Button********************/
 
 .activebutton {
-  background-color: #2e37469c;
+  background-color: var(--buttonactive);
 }
 
 /*********************-Snack Bar************************/

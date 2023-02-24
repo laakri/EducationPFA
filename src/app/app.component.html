@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
 <mat-drawer-container class="example-container">
   <mat-drawer
+    *ngIf="isAuth"
     (mouseenter)="hovered = true"
     (mouseleave)="hovered = false"
     class="sidebar"

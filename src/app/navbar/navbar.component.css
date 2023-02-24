@@ -1,7 +1,7 @@
 .mat-toolbar {
   height: 70px;
-  background-color: #0c1017;
-  border-bottom: 1px solid #2f353c;
+  background-color: var(--darkcolor);
+  border-bottom: 1px solid var(--bordercolor);
   position: -webkit-sticky; 
   display: flex;
   justify-content: space-between;
@@ -15,12 +15,14 @@
   height: max-content;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .logo1 span {
   font-size: 27px ;
   letter-spacing: 1px;
   margin-left: 5px;
+  color: var(--whitecolor);
 }
 .logo {
   width: 50px;
@@ -30,6 +32,7 @@
   margin: auto 5px;
 }
 button{
+  color: var(--whitecolor);
   font-size: 16px;
 }
 .absolute {
@@ -54,9 +57,21 @@ button{
   width: 34px;
   border-radius: 50%;
 }
+.menu-button{
+  color: black !important;
+  margin: 10px 20px;
+  display: flex;
+}
+.logout-icon{
+  color: red;
+}
+.menu-button mat-icon{
+  margin-right: 5px;
+  margin-left: -10px;
+}
 .username-text {
   background-color: transparent;
-  color: #fff;
+  color: black;
   font-size: 16px;
 }
 #button1 {

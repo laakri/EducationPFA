@@ -10,8 +10,10 @@ import { Subscription } from 'rxjs';
 })
 export class NavbarComponent implements OnInit {
   isAuth = false;
+  userId = '';
   userName = '';
   userPicture = '';
+  isBrightTheme: any;
 
   private isAuthListenerSubs!: Subscription;
   userIdLocal!: string | null;
@@ -28,12 +30,15 @@ export class NavbarComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {});
   }
   ngOnInit(): void {
+    this.isBrightTheme = document.body.classList.contains('bright-theme');
+
     const savedTheme = localStorage.getItem('mode');
 
     if (savedTheme) {
       document.body.classList.add(savedTheme);
     }
     this.userIdLocal = localStorage.getItem('userId');
+    this.userId = this.UsersService.getUserId();
     this.userName = this.UsersService.getUserName();
     this.userPicture = this.UsersService.getUserPicture();
 
@@ -57,5 +62,12 @@ export class NavbarComponent implements OnInit {
 
     document.body.classList.remove(currentTheme);
     document.body.classList.add(newTheme);
+  }
+  getImgSrc(): string {
+    const isBrightTheme = document.body.classList.contains('bright-theme');
+    return isBrightTheme ? '../../assets/logo2.png' : '../../assets/logo1.png';
+  }
+  logout() {
+    this.UsersService.logout();
   }
 }
