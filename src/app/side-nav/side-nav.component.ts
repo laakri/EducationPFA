@@ -33,8 +33,4 @@ export class SideNavComponent implements OnInit {
   logout() {
     this.UsersService.logout();
   }
-  change_theme(): void {
-    //localStorage.setItem('mode', 'bright-theme');
-    document.body.classList.toggle('bright-theme');
-  }
 }

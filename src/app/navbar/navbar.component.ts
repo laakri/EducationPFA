@@ -28,6 +28,11 @@ export class NavbarComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {});
   }
   ngOnInit(): void {
+    const savedTheme = localStorage.getItem('mode');
+
+    if (savedTheme) {
+      document.body.classList.add(savedTheme);
+    }
     this.userIdLocal = localStorage.getItem('userId');
     this.userName = this.UsersService.getUserName();
     this.userPicture = this.UsersService.getUserPicture();
@@ -39,5 +44,18 @@ export class NavbarComponent implements OnInit {
       });
 
     this.isAuth = this.UsersService.getIsAuth();
+  }
+
+  change_theme(): void {
+    const currentTheme = document.body.classList.contains('bright-theme')
+      ? 'bright-theme'
+      : 'dark-theme';
+    const newTheme =
+      currentTheme === 'bright-theme' ? 'dark-theme' : 'bright-theme';
+
+    localStorage.setItem('mode', newTheme);
+
+    document.body.classList.remove(currentTheme);
+    document.body.classList.add(newTheme);
   }
 }

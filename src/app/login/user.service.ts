@@ -130,7 +130,13 @@ export class UsersService {
       .post<{ message: string }>(this.apiURL + '/api/users/signup', userData)
       .subscribe(
         () => {
-          console.log('User Added !');
+          console.log('SignUp Successf !');
+          const successMessage = 'SignUp Successf !';
+          this._snackBar.openFromComponent(SuccesComponent, {
+            data: { message: successMessage },
+            duration: 2500,
+            panelClass: ['green-snackbar'],
+          });
         },
         (error) => {
           console.log(error);

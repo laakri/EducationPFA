@@ -84,7 +84,7 @@ input[type="file"] {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: var(--whitecolor);
   z-index: 1;
 }
 .profile-pic input {

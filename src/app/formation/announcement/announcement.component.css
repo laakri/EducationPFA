@@ -1,5 +1,7 @@
-.spinner {
-  margin: 40px;
+.my-spinner-div {
+  display: flex;
+  justify-content: center;
+  margin: auto ;
 }
 .example-spacer {
   flex: 1 1 auto;
@@ -62,6 +64,8 @@ mat-form-field {
 .announc {
   margin: 20px 20px;
   padding: 20px;
+  border: solid 1px var(--bordercolor);
+  border-radius:10px ;
 }
 .announc:hover {
   border-radius: 10px;
@@ -96,10 +100,24 @@ mat-form-field {
   line-height: 50px;
   font-size: 16px;
 }
+
 .announc-info {
-  display: flex;
   margin-bottom: 10px;
   position: relative;
+  display: flex;
+}
+.admin{
+  background-color: rgba(21, 71, 50, 0.151);
+}
+.admin:hover{
+  background-color: rgba(23, 95, 67, 0.24);
+}
+.announc-info h3{
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color:var(--maincolor);
 }
 .announc-teacher {
   margin: -5px 5px;
@@ -121,7 +139,7 @@ mat-form-field {
 .announc-teacher span {
   margin-left: 5px;
   font-size: 18px;
-  color: var(--whitecolor);
+  color: var(--maincolor);
 }
 .announc-teacher span:last-child {
   color: var(--graycolor);

@@ -47,7 +47,7 @@
 .delete-button button:first-child{
     background-color: transparent;
     border: solid var(--bordercolor) 1px;
-    color: white;
+    color: var(--whitecolor);
 }
 
 .delete-button button:last-child{

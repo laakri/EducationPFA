@@ -25,6 +25,7 @@ export class GroupsListComponent implements OnInit {
   filterHandle: any;
   filterHandleX = '&groupCategory=';
   filterHandleY = '&groupLevel=';
+  isBrightTheme: any;
   groupSub: Subscription = new Subscription();
   groups: any;
   constructor(
@@ -123,6 +124,8 @@ export class GroupsListComponent implements OnInit {
     );
   }
   ngOnInit(): void {
+    this.isBrightTheme = document.body.classList.contains('bright-theme');
+
     this.filterToSend = '?pageSize=' + this.pageSize + '&page=' + this.page;
 
     this.activatedRoute.queryParams.subscribe((queryParams) => {
@@ -147,5 +150,11 @@ export class GroupsListComponent implements OnInit {
         this.groups = groups;
       }
     );
+  }
+  getImgSrc(): string {
+    const isBrightTheme = document.body.classList.contains('bright-theme');
+    return isBrightTheme
+      ? '../../assets/post-img2.png'
+      : '../../assets/post-img.png';
   }
 }

@@ -6,7 +6,6 @@ const Group = require("../models/group");
 const checkauth = require("../middleware/check-user");
 
 /******************-Add Announcement-**********/
-
 router.post("/Add", (req, res, next) => {
   const userId = req.body.userId;
   const userRole = req.body.userRole;
@@ -22,6 +21,16 @@ router.post("/Add", (req, res, next) => {
         user.roles.includes(userRole) &&
         (userRole === "teacher" || userRole === "admin")
       ) {
+        if (userRole === "admin") {
+          const announc = new Announc({
+            userId: userId,
+            userRole: userRole,
+            content: content,
+          });
+          createdAnnounc = announc;
+          return createdAnnounc.save();
+        }
+
         // Check if the ArrayOfGroups contains valid group IDs
         const promises = ArrayOfGroups.map((groupId) => {
           return Group.findById(groupId).then((group) => {

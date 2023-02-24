@@ -43,6 +43,8 @@
 .hype-banner button {
   margin: auto 20px;
   font-size: 16px;
+  background-color: var(--maincolor);
+  color: var(--darkcolor);
 }
 
 /********************************************************************************/

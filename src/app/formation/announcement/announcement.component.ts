@@ -30,7 +30,7 @@ export class AnnouncementComponent implements OnInit {
   users: any;
   userlength = 0;
   announslength = 0;
-  spinner = false;
+  spinner = true;
   query = '';
   searchSubject = new Subject<string>();
   searchQuery = '';
@@ -48,7 +48,7 @@ export class AnnouncementComponent implements OnInit {
   options = [
     { value: '', namevalue: 'all', iconvalue: 'density_small' },
     { value: 'admin', namevalue: 'Announce', iconvalue: 'campaign' },
-    { value: 'student', namevalue: 'Teacher', iconvalue: 'wallet_travel' },
+    { value: 'teacher', namevalue: 'Teacher', iconvalue: 'wallet_travel' },
   ];
   ngOnInit(): void {
     this.isAuth = this.UserService.getIsAuth();
@@ -57,14 +57,15 @@ export class AnnouncementComponent implements OnInit {
     this.spinner = true;
 
     /**************************************** */
-    this.AnnouncementService.getAnnouncs(this.filterToSend);
-    this.GroupCodesByTeacherSub =
-      this.AnnouncementService.getGroupCodeUpdateListener().subscribe(
-        (GroupCodes: []) => {
-          this.GroupCodes = GroupCodes;
-        }
-      );
-
+    if (this.userRole == 'teacher') {
+      this.AnnouncementService.getGroupCodesByTeacher(this.userId);
+      this.GroupCodesByTeacherSub =
+        this.AnnouncementService.getGroupCodeUpdateListener().subscribe(
+          (GroupCodes: []) => {
+            this.GroupCodes = GroupCodes;
+          }
+        );
+    }
     /**************************************** */
 
     this.activatedRoute.queryParams
@@ -73,13 +74,11 @@ export class AnnouncementComponent implements OnInit {
     this.filterToSend = '?userRole=' + this.filter;
 
     /**************************************** */
-    this.AnnouncementService.getGroupCodesByTeacher(this.userId);
+    this.AnnouncementService.getAnnouncs(this.filterToSend);
     this.AnnounSub =
       this.AnnouncementService.getAnnouncUpdateListener().subscribe(
         (Announs: []) => {
           this.Announs = Announs;
-          console.log(this.Announs);
-
           this.announslength = Announs.length;
         }
       );
@@ -99,6 +98,7 @@ export class AnnouncementComponent implements OnInit {
     this.spinner = false;
   }
   onChange(filter: string) {
+    this.spinner = true;
     this.router.navigate([], { queryParams: { filter } });
     this.filterToSend = '?userRole=' + filter;
     this.AnnouncementService.getAnnouncs(this.filterToSend);
@@ -108,6 +108,7 @@ export class AnnouncementComponent implements OnInit {
           this.Announs = Announs;
         }
       );
+    this.spinner = false;
   }
   async onAddAnnounc(form: NgForm) {
     if (form.invalid) {
@@ -137,7 +138,11 @@ export class AnnouncementComponent implements OnInit {
       console.error('Failed to add announcement', error);
     }
   }
-
+  confirmDelete(id: string) {
+    if (confirm('Are you sure you want to delete this item?')) {
+      this.onDelete(id);
+    }
+  }
   onDelete(announcId: string) {
     this.userId = this.UserService.getUserId();
 

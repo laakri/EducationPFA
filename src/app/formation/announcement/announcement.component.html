@@ -22,7 +22,11 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field appearance="outline" class="my-custom-class">
+        <mat-form-field
+          appearance="outline"
+          class="my-custom-class"
+          *ngIf="userRole == 'teacher' && isAuth"
+        >
           <mat-select
             matInput
             ngModel
@@ -73,9 +77,18 @@
     </div>
 
     <div>
-      <div class="announc" *ngFor="let Announc of Announs">
+      <div class="my-spinner-div" *ngIf="spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div
+        class="announc"
+        *ngFor="let Announc of Announs"
+        [ngClass]="{ admin: Announc.userRole == 'admin' }"
+      >
         <div class="announc-info">
-          <h3 *ngIf="Announc.serRole == 'admin'">Announcement</h3>
+          <h3 *ngIf="Announc.userRole == 'admin'">
+            <mat-icon>campaign</mat-icon> Announcement
+          </h3>
           <div *ngIf="Announc.userRole == 'teacher'" class="announc-teacher">
             <img src="{{ Announc.userId.imgPath }}" alt="" />
             <span>{{ Announc.userId.name }}</span>
@@ -109,7 +122,7 @@
               (click)="onUpdate(Announc)"
               >save</a
             >
-            <a mat-button (click)="onDelete(Announc.id)">delete</a>
+            <a mat-button (click)="confirmDelete(Announc.id)">delete</a>
           </div>
         </div>
       </div>
@@ -135,7 +148,6 @@
           (keyup)="searchSubject.next(searchQuery)"
         />
       </mat-form-field>
-
       <div class="my-spinner-div" *ngIf="spinner">
         <mat-spinner></mat-spinner>
       </div>

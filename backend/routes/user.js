@@ -171,7 +171,6 @@ router.post("/login", (req, res, next) => {
 });
 
 /*************-Get User for profile -********** */
-
 router.get("/data/:id", (req, res, next) => {
   User.find({ _id: req.params.id })
     .select(["-password", "-__v"])
@@ -179,6 +178,9 @@ router.get("/data/:id", (req, res, next) => {
       path: "groups",
       select:
         " -groupPrice -groupExperienseNeed -groupExperienseGain -groupDetails -groupUsers  -updatedAt -__v",
+      options: {
+        sort: { groupStartDate: 1 },
+      },
     })
     .then((documents) => {
       res.status(200).json({
@@ -194,6 +196,7 @@ router.get("/data/:id", (req, res, next) => {
       });
     });
 });
+
 /*************-Get Users-********** */
 
 router.get("/data", (req, res, next) => {

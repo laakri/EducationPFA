@@ -47,12 +47,12 @@ button{
   align-items: center;
   display: flex;
   margin-right: 10px;
+  gap: 10px;
 }
 .right-navbar-button img {
   height: 34px;
   width: 34px;
   border-radius: 50%;
-  margin-left: 20px;
 }
 .username-text {
   background-color: transparent;
@@ -60,7 +60,6 @@ button{
   font-size: 16px;
 }
 #button1 {
-  margin: auto 7px;
   font-size: 16px;
 }
 #button2 {
