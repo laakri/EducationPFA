@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { GroupService } from '../group.service';
 import { MatDialog } from '@angular/material/dialog';
-import { AcceptUserComponent } from './accept-user/accept-user.component';
 import { DeleteConfirmationComponent } from '../../delete-confirmation/delete-confirmation.component';
+import { AcceptUserComponent } from './accept-user/accept-user.component';
 
 @Component({
   selector: 'app-waiting-list',

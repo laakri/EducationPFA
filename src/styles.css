@@ -97,6 +97,13 @@ ul {
   font-size: 15px;
   border-left: solid 10px green;
 }
+.red-snackbar .mat-button-wrapper {
+  color: white;
+  padding: 5px 10px;
+  background-color: rgb(209, 72, 72);
+  border-radius: 5px;
+  text-align: center;
+}
 /*********************-Dialog***************************/
 
 mat-dialog-container {

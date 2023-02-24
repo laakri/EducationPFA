@@ -13,9 +13,7 @@ export class DeleteConfirmationComponent implements OnInit {
     private GroupService: GroupService
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.data.userId);
-  }
+  ngOnInit(): void {}
 
   submit() {
     this.GroupService.deletUser(this.data.userId);

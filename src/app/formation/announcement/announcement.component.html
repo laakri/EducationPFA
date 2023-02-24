@@ -122,7 +122,9 @@
               (click)="onUpdate(Announc)"
               >save</a
             >
-            <a mat-button (click)="confirmDelete(Announc.id)">delete</a>
+            <a mat-button (click)="openConfirmationSnackBar(Announc.id)"
+              >delete</a
+            >
           </div>
         </div>
       </div>

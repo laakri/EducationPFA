@@ -8,6 +8,7 @@ import { User } from '../../login/user.model';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { debounceTime } from 'rxjs/operators';
 import { Subject, Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-announcement',
@@ -40,7 +41,8 @@ export class AnnouncementComponent implements OnInit {
     private UserService: UsersService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private clipboard: Clipboard
+    private clipboard: Clipboard,
+    private snackBar: MatSnackBar
   ) {}
   Show() {
     this.showFiller = !this.showFiller;
@@ -138,11 +140,25 @@ export class AnnouncementComponent implements OnInit {
       console.error('Failed to add announcement', error);
     }
   }
-  confirmDelete(id: string) {
-    if (confirm('Are you sure you want to delete this item?')) {
+
+  /*************************************************************** */
+  openConfirmationSnackBar(id: string): void {
+    const snackBarRef = this.snackBar.open(
+      'Are you sure you want to delete this item?',
+      'Yes',
+      {
+        duration: 5000,
+        verticalPosition: 'bottom',
+        panelClass: ['red-snackbar'],
+      }
+    );
+
+    snackBarRef.onAction().subscribe(() => {
       this.onDelete(id);
-    }
+    });
   }
+  /*************************************************************** */
+
   onDelete(announcId: string) {
     this.userId = this.UserService.getUserId();
 
@@ -158,7 +174,6 @@ export class AnnouncementComponent implements OnInit {
       })
       .catch((error) => {
         console.log('An error occurred while Deleting the announcement', error);
-        // handle the error here
       });
   }
   onUpdate(announc: any) {
