@@ -11,8 +11,8 @@ import { Subscription } from 'rxjs';
 export class NavbarComponent implements OnInit {
   isAuth = false;
   userId = '';
-  userName = '';
-  userPicture = '';
+  userName: any;
+  userPicture: any;
   isBrightTheme: any;
 
   private isAuthListenerSubs!: Subscription;
@@ -39,8 +39,6 @@ export class NavbarComponent implements OnInit {
     }
     this.userIdLocal = localStorage.getItem('userId');
     this.userId = this.UsersService.getUserId();
-    this.userName = this.UsersService.getUserName();
-    this.userPicture = this.UsersService.getUserPicture();
 
     this.isAuth = this.UsersService.getIsAuth();
     this.isAuthListenerSubs =
@@ -48,7 +46,19 @@ export class NavbarComponent implements OnInit {
         this.isAuth = isAuthenticated;
       });
 
-    this.isAuth = this.UsersService.getIsAuth();
+    this.userName = this.UsersService.getUserName();
+    this.isAuthListenerSubs = this.UsersService.getUserNameListener().subscribe(
+      (userName) => {
+        this.userName = userName;
+      }
+    );
+
+    this.userPicture = this.UsersService.getUserPicture();
+    this.isAuthListenerSubs = this.UsersService.getUserImgListener().subscribe(
+      (userPicture) => {
+        this.userPicture = userPicture;
+      }
+    );
   }
 
   change_theme(): void {

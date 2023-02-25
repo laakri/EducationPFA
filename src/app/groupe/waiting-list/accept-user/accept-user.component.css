@@ -32,4 +32,6 @@
 }
 .accept-button button{
     width: 200px;
+    background-color: var(--maincolor);
+    color: var(--darkcolor);
 }

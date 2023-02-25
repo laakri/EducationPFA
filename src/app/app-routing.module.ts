@@ -10,7 +10,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { AnnouncementComponent } from './formation/announcement/announcement.component';
 import { ContactPageComponent } from './home-page/contact-page/contact-page.component';
 import { ViewGroupComponent } from './groupe/view-group/view-group.component';
-import { AuthGuard } from './login/user.guard';
 import { PostPageComponent } from './post-page/post-page.component';
 import { CreatePostComponent } from './groupe/create-post/create-post.component';
 import { GroupsListComponent } from './groups-list/groups-list.component';
@@ -19,7 +18,8 @@ import { GroupMeetComponent } from './formation/group-meet/group-meet.component'
 import { FormationComponent } from './formation/formation.component';
 import { WaitingListComponent } from './groupe/waiting-list/waiting-list.component';
 import { SettingsComponent } from './settings/settings.component';
-
+import { AuthGuard } from './login/user.guard';
+import { AuthAdminGuard } from './groupe/admin.guard';
 const routes: Routes = [
   { path: '', redirectTo: '/Homepage/View', pathMatch: 'full' },
 
@@ -33,8 +33,16 @@ const routes: Routes = [
       { path: 'ContactUs', component: ContactPageComponent },
       { path: 'PostPage/:groupId', component: PostPageComponent },
       { path: 'GroupsList', component: GroupsListComponent },
-      { path: 'Profile/:userId', component: ProfileComponent },
-      { path: 'Settings', component: SettingsComponent },
+      {
+        path: 'Profile/:userId',
+        component: ProfileComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'Settings',
+        component: SettingsComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
   {
@@ -60,13 +68,13 @@ const routes: Routes = [
       { path: 'GroupUsers/:groupId', component: GroupUsersComponent },
       { path: 'WaitingList', component: WaitingListComponent },
     ],
-    canActivate: [AuthGuard],
+    canActivate: [AuthAdminGuard],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard],
+  providers: [[AuthGuard], [AuthAdminGuard]],
 })
 export class AppRoutingModule {}

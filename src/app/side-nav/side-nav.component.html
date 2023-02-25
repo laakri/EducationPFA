@@ -19,7 +19,7 @@
     <span *ngIf="showContentOnHover">Announce</span>
   </button>
 </div>
-<div class="sidebar-content">
+<div class="sidebar-content" *ngIf="isAdminAuth">
   <button
     mat-button
     [routerLink]="['/Formation/Meeting/FGScvsqgs']"
@@ -32,6 +32,7 @@
 
 <div class="sidebar-content">
   <button
+    *ngIf="isAdminAuth"
     mat-button
     [routerLink]="['/Group/View']"
     routerLinkActive="activebutton"
@@ -42,6 +43,7 @@
 </div>
 <div class="sidebar-content">
   <button
+    *ngIf="isAdminAuth"
     mat-button
     [routerLink]="['/Group/WaitingList']"
     routerLinkActive="activebutton"

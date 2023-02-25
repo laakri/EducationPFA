@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class SideNavComponent implements OnInit {
   @Input() showContentOnHover?: boolean;
   isAuth = false;
+  isAdminAuth = false;
   private isAuthListenerSubs!: Subscription;
   getUserId: any;
   constructor(public UsersService: UsersService, private router: Router) {}
@@ -22,6 +23,16 @@ export class SideNavComponent implements OnInit {
       this.UsersService.getAuthStatusListener().subscribe((isAuthenticated) => {
         this.isAuth = isAuthenticated;
       });
+
+    this.isAuth = this.UsersService.getIsAuth();
+
+    this.isAuth = this.UsersService.getAdminIsAuth();
+    this.isAuthListenerSubs =
+      this.UsersService.getAuthAdminStatusListener().subscribe(
+        (isAuthenticated) => {
+          this.isAdminAuth = isAuthenticated;
+        }
+      );
 
     this.isAuth = this.UsersService.getIsAuth();
   }

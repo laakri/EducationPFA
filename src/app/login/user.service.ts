@@ -21,6 +21,8 @@ export class UsersService {
   private tokenTimer: any;
   private users: User[] = [];
   private teachers: User[] = [];
+  private userimgListener = new Subject<String>();
+  private usernameListener = new Subject<String>();
   private authStatusListener = new Subject<boolean>();
   private authAdminStatusListener = new Subject<boolean>();
   private userUpdated = new Subject<User[]>();
@@ -166,9 +168,16 @@ export class UsersService {
   getAdminIsAuth() {
     return this.isAdminAuthenticated;
   }
+  getUserImgListener() {
+    return this.userimgListener.asObservable();
+  }
+  getUserNameListener() {
+    return this.usernameListener.asObservable();
+  }
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
   }
+
   getAuthAdminStatusListener() {
     return this.authAdminStatusListener.asObservable();
   }
@@ -214,6 +223,9 @@ export class UsersService {
               this.authAdminStatusListener.next(true);
             }
             this.authStatusListener.next(true);
+            this.userimgListener.next(this.userPicture);
+            this.usernameListener.next(this.userName);
+
             const now = new Date();
             const expirationDate = new Date(
               now.getTime() + expiresInDuration * 1000
@@ -238,6 +250,9 @@ export class UsersService {
         },
         (error) => {
           this.authStatusListener.next(false);
+          this.userimgListener.next('');
+          this.usernameListener.next('');
+
           this.authAdminStatusListener.next(false);
         }
       );
@@ -260,6 +275,9 @@ export class UsersService {
 
       this.setAuthTimer(expiresIn / 1000);
       this.authStatusListener.next(true);
+      this.userimgListener.next(this.userPicture);
+      this.usernameListener.next(this.userName);
+
       if (this.userRole == 'admin') {
         this.isAdminAuthenticated = true;
         this.authAdminStatusListener.next(true);
@@ -270,6 +288,9 @@ export class UsersService {
     this.token = null;
     this.isAuthenticated = false;
     this.isAdminAuthenticated = false;
+    this.userimgListener.next('');
+    this.usernameListener.next('');
+
     this.authStatusListener.next(false);
     this.authAdminStatusListener.next(false);
     this.userId = null;
