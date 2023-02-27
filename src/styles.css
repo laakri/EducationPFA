@@ -36,12 +36,11 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: var(--whtiecolor);
+  color: var(--whitecolor);
   background: var(--darkcolor);
   font-family: "Roboto", sans-serif;
 
   --bordercolor: #2f353c;
-
   --darkcolor: #0c1017;
   --soft-darkcolor: #171a22;
   --whitecolor: #e2e2e2;

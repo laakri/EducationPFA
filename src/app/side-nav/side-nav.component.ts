@@ -26,15 +26,14 @@ export class SideNavComponent implements OnInit {
 
     this.isAuth = this.UsersService.getIsAuth();
 
-    this.isAuth = this.UsersService.getAdminIsAuth();
+    this.isAdminAuth = this.UsersService.getAdminIsAuth();
     this.isAuthListenerSubs =
       this.UsersService.getAuthAdminStatusListener().subscribe(
         (isAuthenticated) => {
           this.isAdminAuth = isAuthenticated;
         }
       );
-
-    this.isAuth = this.UsersService.getIsAuth();
+    this.isAdminAuth = this.UsersService.getAdminIsAuth();
   }
   onProfile() {
     const id = this.UsersService.getUserId();
