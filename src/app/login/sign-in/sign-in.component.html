@@ -1,11 +1,13 @@
 <div class="sign">
   <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
     <mat-form-field appearance="outline">
-      <mat-label>Enter your Email</mat-label>
+      <mat-label>Enter your Phone</mat-label>
       <input
         matInput
         type="text"
         ngModel
+        minlength="8"
+        maxlength="8"
         name="phonenum"
         #phonenum="ngModel"
         placeholder="22 333 444"
@@ -41,7 +43,6 @@
         <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
     </mat-form-field>
-
 
     <button mat-raised-button class="submit-button" type="submit">Login</button>
   </form>

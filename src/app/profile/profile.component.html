@@ -105,7 +105,7 @@
       </mat-tab>
       <!----------------------------------------->
 
-      <mat-tab label="History">
+      <mat-tab label="History" *ngIf="userRole == 'student'">
         <div class="formation-serction" *ngFor="let group of user.groups">
           <div class="formation">
             <div class="formation-text">
@@ -138,6 +138,40 @@
         </div>
       </mat-tab>
       <!----------------------------------------->
+
+      <mat-tab label="History" *ngIf="userRole == 'teacher'">
+        <div class="formation-serction" *ngFor="let group of GroupsByTeacherId">
+          <div class="formation">
+            <div class="formation-text">
+              <h2>{{ group.groupObject }}</h2>
+              <mat-chip-list>
+                <mat-chip>{{ group.groupCategory }}</mat-chip>
+                <mat-chip>{{ group.groupLevel }}</mat-chip>
+                <mat-chip *ngIf="!group.isDateGreater" class="upcoming-chip"
+                  >Upcoming</mat-chip
+                ><mat-chip *ngIf="group.isDateGreater" class="started-chip"
+                  >Started</mat-chip
+                >
+                <mat-chip *ngIf="false" class="inactve-chip">Inactve</mat-chip>
+              </mat-chip-list>
+            </div>
+
+            <span>{{ group.groupDescription }} </span>
+            <h3>Started at {{ group.createdAt }}</h3>
+            <button
+              mat-raised-button
+              *ngIf="group.isDateGreater"
+              [routerLink]="['/Formation/Meeting', group.groupCode]"
+              class="live-button"
+            >
+              <mat-icon aria-label="adjust" class="button-live"
+                >adjust</mat-icon
+              >
+              Join Live
+            </button>
+          </div>
+        </div>
+      </mat-tab>
     </mat-tab-group>
   </div>
 </div>

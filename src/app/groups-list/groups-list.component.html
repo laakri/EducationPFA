@@ -17,11 +17,8 @@
         [(ngModel)]="groupCategory"
         (ngModelChange)="onChangeCategory(groupCategory)"
       >
-        <mat-option
-          *ngFor="let option of categoryoptions"
-          [value]="option.value"
-        >
-          {{ option.viewValue }}
+        <mat-option *ngFor="let option of categs" [value]="option.categName">
+          {{ option.categName }}
         </mat-option>
       </mat-select>
     </mat-form-field>

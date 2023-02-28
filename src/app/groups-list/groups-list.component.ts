@@ -1,3 +1,5 @@
+import { Categ } from './../groupe/category.model';
+import { CategoryService } from './../groupe/category.service';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { GroupService } from './../groupe/group.service';
@@ -12,6 +14,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./groups-list.component.css'],
 })
 export class GroupsListComponent implements OnInit {
+  categs: any;
+  categSub: Subscription = new Subscription();
   length = 50;
   pageSize = 15;
   page = 0;
@@ -30,20 +34,15 @@ export class GroupsListComponent implements OnInit {
   groups: any;
   constructor(
     private GroupService: GroupService,
+    private CategoryService: CategoryService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
   leveloptions = [
-    { value: '', viewValue: '- -' },
     { value: 'Beginner', viewValue: 'Beginner' },
     { value: 'Intermediate', viewValue: 'Intermediate' },
     { value: 'Advanced', viewValue: 'Advanced' },
     { value: 'Expert', viewValue: 'Expert' },
-  ];
-  categoryoptions = [
-    { value: '', viewValue: '- -' },
-    { value: 'Informatique', viewValue: 'Informatique' },
-    { value: 'Math', viewValue: 'Math' },
   ];
 
   onChangeCategory(groupCategory: string) {
@@ -127,6 +126,14 @@ export class GroupsListComponent implements OnInit {
     this.isBrightTheme = document.body.classList.contains('bright-theme');
 
     this.filterToSend = '?pageSize=' + this.pageSize + '&page=' + this.page;
+    /************************************/
+    this.CategoryService.getCategs();
+    this.categSub = this.CategoryService.getCategUpdateListener().subscribe(
+      (categs: Categ[]) => {
+        this.categs = categs;
+      }
+    );
+    /************************************/
 
     this.activatedRoute.queryParams.subscribe((queryParams) => {
       this.filter = Object.entries(queryParams).map(([key, value]) => {

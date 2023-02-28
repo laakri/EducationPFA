@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const { async } = require("rxjs");
+const { async, throwError } = require("rxjs");
 const Group = require("../models/group");
 const User = require("../models/user");
 const fs = require("fs");
@@ -248,12 +248,12 @@ router.get("/GetGroupsCodeById/:teacherId", async (req, res, next) => {
     });
   }
 });
-/******************-Get  All the GroupCodes By Teacher Id-**********/
+/******************-Get  All the groups By Teacher Id-**********/
 router.get("/GetGroupsById/:teacherId", async (req, res, next) => {
   const teacherId = req.params.teacherId;
   try {
     const groups = await Group.find({ teacherId: teacherId }).select(
-      "-announcs -groupExperienseNeed -groupExperienseGain -groupHourPerWeek -groupFuturesGain -groupDetails -groupUsers -__v -teacherId -groupFilePath  "
+      "-announcs -groupExperienseNeed -groupExperienseGain -groupPrice -groupHourPerWeek -groupFuturesGain -groupDetails -groupUsers -__v -teacherId -groupFilePath  "
     );
     if (groups.length === 0) {
       return res.status(404).json({

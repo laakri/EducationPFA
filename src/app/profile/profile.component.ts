@@ -3,6 +3,7 @@ import { ProfileService } from './profile.service';
 import { User } from './../login/user.model';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { UsersService } from '../login/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,9 +12,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   spinner = false;
+  GroupsByTeacherId: any;
 
-  UserID!: string;
+  UserId!: string;
   userSub: Subscription = new Subscription();
+  userRole: any;
+  GroupsByTeacherSub: Subscription = new Subscription();
   users: any;
   private routeSub: Subscription | undefined;
 
@@ -26,6 +30,7 @@ export class ProfileComponent implements OnInit {
   ];
   constructor(
     private ProfileService: ProfileService,
+    private UserService: UsersService,
     public route: ActivatedRoute
   ) {}
 
@@ -33,10 +38,11 @@ export class ProfileComponent implements OnInit {
     this.spinner = true;
 
     this.routeSub = this.route.params.subscribe((params) => {
-      this.UserID = params['userId'];
+      this.UserId = params['userId'];
     });
+    this.userRole = this.UserService.getUserRole();
 
-    this.ProfileService.getusers(this.UserID);
+    this.ProfileService.getusers(this.UserId);
 
     this.userSub = this.ProfileService.getUserUpdateListener().subscribe(
       (users: User[]) => {
@@ -60,10 +66,38 @@ export class ProfileComponent implements OnInit {
             group.isDateGreater = isDateGreater;
           });
         });
-
-        console.log(this.users);
       }
     );
+
+    /**************************************** */
+    if (this.userRole == 'teacher') {
+      this.ProfileService.getGroupsByTeacher(this.UserId);
+      this.GroupsByTeacherSub =
+        this.ProfileService.getGroupsByTeacherIdUpdateListener().subscribe(
+          (GroupsByTeacherId: []) => {
+            this.GroupsByTeacherId = GroupsByTeacherId;
+
+            this.GroupsByTeacherId.forEach((group: any) => {
+              const live = new Date(group.createdAt);
+              group.createdAt = live.toDateString();
+
+              const date = new Date(group.groupStartDate);
+
+              group.groupStartDate = date.toDateString();
+
+              const currentDate = new Date();
+              let isDateGreater = false;
+
+              if (date.getTime() < currentDate.getTime()) {
+                isDateGreater = true;
+              }
+              group.isDateGreater = isDateGreater;
+            });
+          }
+        );
+    }
+    /**************************************** */
+
     this.spinner = false;
   }
 }

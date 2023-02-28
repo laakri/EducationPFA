@@ -77,7 +77,7 @@ export class GroupService {
       .subscribe(
         () => {
           console.log('Group Added !');
-          const successMessage = 'Category Added Successfuly !';
+          const successMessage = 'Formation Added Successfuly !';
           this._snackBar.openFromComponent(SuccesComponent, {
             data: { message: successMessage },
             duration: 2500,

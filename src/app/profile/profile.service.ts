@@ -4,18 +4,23 @@ import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { environment } from '@envi/environment';
 
 @Injectable({ providedIn: 'root' })
 export class ProfileService {
   private users: User[] = [];
   private userUpdated = new Subject<User[]>();
+  apiURL = environment.apiURL;
+
+  private groupTeacherId: any;
+  private groupTeacherIdUpdated = new Subject<any>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
   getusers(UserId: string) {
     this.http
       .get<{ message: string; users: any }>(
-        'http://localhost:4401/api/users/data/' + UserId
+        this.apiURL + '/api/users/data/' + UserId
       )
       .pipe(
         map((usertData) => {
@@ -63,5 +68,40 @@ export class ProfileService {
   }
   getUserUpdateListener() {
     return this.userUpdated.asObservable();
+  }
+
+  /***************************************** */
+
+  getGroupsByTeacher(teacherId: string) {
+    this.http
+      .get<{ message: string; groups: any }>(
+        this.apiURL + '/api/groups/GetGroupsById/' + teacherId
+      )
+      .pipe(
+        map((responseData) => {
+          return responseData.groups.map((group: any) => {
+            return {
+              _id: group._id,
+              groupCode: group.groupCode,
+              groupObject: group.groupObject,
+              groupCategory: group.groupCategory,
+              groupDescription: group.groupDescription,
+              groupPrice: group.groupPrice,
+              groupLevel: group.groupLevel,
+              groupStartDate: group.groupStartDate,
+              groupPeriode: group.groupPeriode,
+              createdAt: group.createdAt,
+            };
+          });
+        })
+      )
+      .subscribe((transformedGroupCodes) => {
+        this.groupTeacherId = transformedGroupCodes;
+        this.groupTeacherIdUpdated.next([...this.groupTeacherId]);
+      });
+  }
+
+  getGroupsByTeacherIdUpdateListener() {
+    return this.groupTeacherIdUpdated.asObservable();
   }
 }
