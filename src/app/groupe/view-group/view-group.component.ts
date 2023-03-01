@@ -37,7 +37,7 @@ export type ChartOptions = {
 })
 export class ViewGroupComponent implements OnInit {
   spinner = false;
-  displayedColumns: string[] = ['name', 'created', 'view', 'delete'];
+  displayedColumns: string[] = ['name', 'created', 'view'];
   categSub: Subscription = new Subscription();
   categs: any;
   categlength = 0;

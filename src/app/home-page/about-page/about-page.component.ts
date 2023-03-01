@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { filter, map, startWith } from 'rxjs/operators';export interface Code {
+import { filter, map, startWith } from 'rxjs/operators';
+export interface Code {
   name: string;
   imgPath: string;
   discription: string;
@@ -10,7 +11,7 @@ import { filter, map, startWith } from 'rxjs/operators';export interface Code {
 @Component({
   selector: 'app-about-page',
   templateUrl: './about-page.component.html',
-  styleUrls: ['./about-page.component.css']
+  styleUrls: ['./about-page.component.css'],
 })
 export class AboutPageComponent implements OnInit {
   myControl = new FormControl();
@@ -103,6 +104,12 @@ export class AboutPageComponent implements OnInit {
       discription:
         ' API platform for developers to design, build, test their APIs .',
       type: 'API Platform',
+    },
+    {
+      name: 'Nginx',
+      imgPath: 'https://i.ibb.co/N2tJsCC/nginx-logo.png',
+      discription: ' A web server that can also be used as a reverse proxy .',
+      type: 'Web Server',
     },
   ];
 }

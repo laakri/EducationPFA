@@ -12,7 +12,10 @@
     </div>
     <div class="secend-content-secend">
       <mat-card>
-        <form>
+        <form
+          (submit)="onSignup(signupForm); signupForm.resetForm()"
+          #signupForm="ngForm"
+        >
           <h1>Send Message</h1>
 
           <mat-form-field appearance="outline">
@@ -21,11 +24,11 @@
               matInput
               type="text"
               ngModel
-              name="nom"
-              #nom="ngModel"
+              name="name"
+              #name="ngModel"
               required
             />
-            <mat-error *ngIf="nom.invalid">you must enter a value</mat-error>
+            <mat-error *ngIf="name.invalid">you must enter a value</mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">

@@ -2,9 +2,9 @@
   min-height: 110px;
   width: 420px;
     position: fixed;
-    background-color: #171a22;
+    background-color: var(--soft-darkcolor);
     border: 1px solid var(--bordercolor);
-    color: #fff;
+    color: var(--whitecolor);
     padding: 16px;
     border-radius: 6px;
     z-index: 10000;
@@ -32,9 +32,9 @@ position: relative;
   gap: 10px;
 }
   .buttons a {
-    background-color: #fff;
+    background-color: var(--whitecolor);
     text-align: center;
-    color: #0c1017;
+    color: var(--darkcolor);
     border-radius: 4px;
     font-weight: 550;
     padding: 8px 16px;
@@ -47,5 +47,5 @@ position: relative;
     background-color: transparent;
     border: var(--bordercolor) 1px solid ;
     width: 120px;
-    color: #fff;
+    color: var(--whitecolor);
   }

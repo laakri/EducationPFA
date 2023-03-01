@@ -9,11 +9,14 @@ export class PopupInformationComponent implements OnInit {
   constructor() {}
   right = -9999;
   bottom = -9999;
+  isBrightTheme: any;
 
   ngOnInit() {
+    this.isBrightTheme = document.body.classList.contains('bright-theme');
+
     setTimeout(() => {
       this.showDialog();
-    }, 5000);
+    }, 3000);
   }
 
   showDialog() {
@@ -24,5 +27,12 @@ export class PopupInformationComponent implements OnInit {
   closeDialog() {
     this.right = -9999;
     this.bottom = -9999;
+  }
+
+  getImgSrc(): string {
+    const isBrightTheme = document.body.classList.contains('bright-theme');
+    return isBrightTheme
+      ? '../../assets/rock-dark.png'
+      : '../../assets/rock.png';
   }
 }

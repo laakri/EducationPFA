@@ -13,8 +13,8 @@
             </div>
 
             <div>
-              <div class="content-item-stat">140</div>
-              <div class="content-item-object">Student</div>
+              <div class="content-item-stat">5</div>
+              <div class="content-item-object">Teachers</div>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@
             </div>
 
             <div>
-              <div class="content-item-stat">140</div>
+              <div class="content-item-stat">21</div>
               <div class="content-item-object">Student</div>
             </div>
           </div>
@@ -46,8 +46,8 @@
             </div>
 
             <div>
-              <div class="content-item-stat">140</div>
-              <div class="content-item-object">Student</div>
+              <div class="content-item-stat">5</div>
+              <div class="content-item-object">Category</div>
             </div>
           </div>
         </div>
@@ -94,13 +94,6 @@
         [dataSource]="categs"
         class="mat-elevation-z8"
       >
-        <ng-container matColumnDef="delete">
-          <th mat-header-cell *matHeaderCellDef>updatedAt</th>
-          <td mat-cell *matCellDef="let element">
-            <button mat-raised-button color="warn">Delete</button>
-          </td>
-        </ng-container>
-        s
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef>Category Name.</th>
           <td mat-cell *matCellDef="let element">{{ element.categName }}</td>
@@ -112,7 +105,7 @@
         </ng-container>
 
         <ng-container matColumnDef="view">
-          <th mat-header-cell *matHeaderCellDef>updatedAt</th>
+          <th mat-header-cell *matHeaderCellDef>View</th>
           <td mat-cell *matCellDef="let element">
             <button
               mat-raised-button
