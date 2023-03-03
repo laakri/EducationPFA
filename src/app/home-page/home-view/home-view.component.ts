@@ -26,12 +26,10 @@ export class HomeViewComponent implements OnInit {
     };
   }
   slides = [
-    { img: '../../../post-img.jpg' },
-    { img: '../../../post-img.jpg' },
-    { img: '../../../post-img.jpg' },
-    { img: '../../../post-img.jpg' },
-    { img: '../../../post-img.jpg' },
-    { img: '../../../post-img.jpg' },
+    { img: '../../../assets/Formation1.jpg' },
+    { img: '../../../assets/Formation3.jpg' },
+    { img: '../../../assets/Formation4.jpg' },
+    { img: '../../../assets/Formation2.jpg' },
   ];
   slideConfig = { slidesToShow: this.slidesToShow, slidesToScroll: 1 };
 

@@ -1,8 +1,6 @@
-<div class="addgroup" >
-    <div class="detail-text" > Add Group </div>
-    <form (submit)="onSubmit(signUpForm)" #signUpForm="ngForm">
-    
-    
+<div class="addgroup">
+  <div class="detail-text">Add Category</div>
+  <form (submit)="onSubmit(signUpForm)" #signUpForm="ngForm">
     <mat-form-field appearance="outline">
       <mat-label>Category name</mat-label>
       <input
@@ -14,14 +12,9 @@
       />
       <mat-error> Group Name is <strong>required</strong> </mat-error>
     </mat-form-field>
-    
-  
-    
-    <button mat-raised-button  class="submit-button" type="submit">
-        Submit
-      </button>
-    
-    </form>
-    
-    
-    </div>
+
+    <button mat-raised-button class="submit-button" type="submit">
+      Submit
+    </button>
+  </form>
+</div>

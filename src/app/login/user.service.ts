@@ -105,6 +105,12 @@ export class UsersService {
       .subscribe(
         () => {
           console.log('User Update !');
+          const successMessage = 'User Update !';
+          this._snackBar.openFromComponent(SuccesComponent, {
+            data: { message: successMessage },
+            duration: 2500,
+            panelClass: ['green-snackbar'],
+          });
         },
         (error) => {
           console.log(error);
