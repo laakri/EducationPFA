@@ -13,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
   constructor(private _snackBar: MatSnackBar) {}
+  
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     return next.handle(req).pipe(
