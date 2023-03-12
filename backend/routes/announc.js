@@ -31,7 +31,7 @@ router.post("/Add", (req, res, next) => {
           return createdAnnounc.save();
         }
 
-        // Check if the ArrayOfGroups contains valid group IDs
+        // Check if the ArrayOfGroups contains valid group Ids
         const promises = ArrayOfGroups.map((groupId) => {
           return Group.findById(groupId).then((group) => {
             if (!group) {
