@@ -5,7 +5,7 @@ const User = require("../models/user");
 const Group = require("../models/group");
 const checkauth = require("../middleware/check-user");
 
-/******************-Add Announcement-**********/
+/******************-Add AAnnouncement-**********/
 router.post("/Add", (req, res, next) => {
   const userId = req.body.userId;
   const userRole = req.body.userRole;
