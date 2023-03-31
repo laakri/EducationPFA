@@ -35,6 +35,8 @@ import { WaitingListComponent } from './groupe/waiting-list/waiting-list.compone
 import { AcceptUserComponent } from './groupe/waiting-list/accept-user/accept-user.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { SettingsComponent } from './settings/settings.component';
+import { PopupInformationComponent } from './popup-information/popup-information.component';
+
 /* *******************MODELS******************** */
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -74,7 +76,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { PopupInformationComponent } from './popup-information/popup-information.component';
 
 /* ********************************************* */
 
